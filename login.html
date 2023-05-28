@@ -16,11 +16,13 @@
                 <span>
                     <img id="logo" src="logo.png" alt="Logo"/> 
 
-                    <div class="login-form">
+                    <form class="login-form" method="post">
                         <div id="user-info">
                             <div id="animo-cafe">Animo Café.</div>
-                            <input type="text" placeholder="Username"/> <br><br>
-                            <input type="password" placeholder="Password"/> <br><br>
+                            <input type="text" placeholder="Username" required/> <br><br>
+                            <!-- <div id="email_error">Invalid username.</div> -->
+                            <input type="password" placeholder="Password" required/> <br><br>
+                            <!-- <div id="password-error">Invalid password.</div> -->
                             <button id="login">Login</button> <br><br>
                         </div>
                         
@@ -33,7 +35,7 @@
                             <input id="remember" type="checkbox"/>
                             <label for="remember">&nbsp Remember me</label> <br>
                         </span>
-                    </div>
+                    </form>
                 </span>
             </div>
         </div>
