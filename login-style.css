@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+span {
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    width: 15vw; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    margin-right: 20vw; /* Adjust the margin as needed */
+    border-radius: 50%;
+}
+
+.login-form {
+    margin-left: 10px; /* Adjust this value as needed */
+    outline: solid black;
+    text-align: center;
+    padding: 15px;
+}
+
+.register {
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
+#sign-in {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#sign-in:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
