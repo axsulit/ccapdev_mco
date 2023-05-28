@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="login-style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Login Page">
         <meta name="keyword" content="Animo Cafe, Login">
         <meta name="author" content="CCAPDEV S19 Group 5">
     </head>
     <body>
-        <div class="container">
-            <span>
-                <img id="logo" src="logo.png" alt="Logo"/> 
+        <div class="background">
+            <img class="doodle-bg" src="doodle.png" alt="background">
+            <div class="container">
+                <span>
+                    <img id="logo" src="logo.png" alt="Logo"/> 
 
-                <div class="login-form">
-                    <div id="animo-cafe">Animo Café.</div>
-                    <input type="text" placeholder="Username"/> <br><br>
-                    <input type="password" placeholder="Password"/> <br><br>
-                    <button id="sign-in">Sign In</button> <br><br>
-                    <span class="register">
-                        Don't have an account? &nbsp&nbsp
+                    <div class="login-form">
+                        <div id="user-info">
+                            <div id="animo-cafe">Animo Café.</div>
+                            <input type="text" placeholder="Username"/> <br><br>
+                            <input type="password" placeholder="Password"/> <br><br>
+                            <button id="login">Login</button> <br><br>
+                        </div>
+                        
+                        <span class="register">
+                            Don't have an account? &nbsp
 
-                        <a href="register.html">Register</a>
-                    </span>
-                    <input id="remember" type="checkbox"/>
-                    <label for="remember">Remember me</label> <br>
-                </div>
-            </span>
+                            <a id="reg-link" href="register.html">Register</a>
+                        </span>
+                        <span id="remember-span">
+                            <input id="remember" type="checkbox"/>
+                            <label for="remember">&nbsp Remember me</label> <br>
+                        </span>
+                    </div>
+                </span>
+            </div>
         </div>
+        
         
     </body>
 </html>
