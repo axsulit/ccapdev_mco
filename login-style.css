@@ -95,7 +95,7 @@ span {
     text-align: center;
     padding: 15px;
     height: 400px;
-    width: 300px;
+    /* width: 300px; */
 
     background-color: rgba(14, 34, 4, 0.349);
     border-radius: 10px;
@@ -143,6 +143,7 @@ input[type="password"] {
     z-index: 1;
     color: #090909;
     padding: 0.7em 1.7em;
+    font-family: Montserrat, sans-serif;
     font-size: 18px;
     border-radius: 0.5em;
     background: #d68e11;
@@ -211,6 +212,10 @@ input[type="password"] {
 #reg-link {
     color: #d68e11;
     font-weight: 700;
+}
+
+#reg-link:hover{
+    color: #80a03d;
 }
 
 #remember-span{
