@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color:  white;
+    font-family: Montserrat, sans-serif;
+}
+
+
+/*  ======
+    NAVBAR 
+    ======  */
+#nav-container {
+    display: flex;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 0;
+} ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+
+} li {
+    display: inline-block;
+    padding-right: 15px;
+    margin: 0;
+}
+
+/* nav-logo */
+#nav-logo-container {
+    flex-grow: 1;
+    text-align: left;
+    margin: 3px;
+}
+
+#nav-logo {
+    list-style-image: url('img/logo3.png');
+    float: left;
+    height: 50px;
+    margin-left: 10px;
+}
+
+#nav-name {
+    color: #566a23;
+    margin-left: 5px;
+    font-weight: bolder;
+    font-size: 22px;
+    
+}
+
+/* nav-menu */
+#nav-menu-container {
+    flex-grow: 6;
+    /* text-align: center; */
+    align-items: center;
+    color:  #566a23;
+} a:hover {
+    color:  #b5be85;
+} a:visited {
+    color: #566a23;
+}
+
+#menu {
+    float: right;
+}
+
+/* nav search */
+#search {
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 20px;
+    background: #566a23;
+    border-radius: 30px;
+    align-items: center;
+}
+
+#search:hover input{
+    width: 80px;
+}
+
+#search-btn{
+    width: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    color:white;
+    margin-right: 3px;
+}
+
+#search-input::placeholder{
+    font-family: Montserrat, sans-serif;
+    color: white;
+}
+
+#search input{
+    font-family: Montserrat, sans-serif;
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+    padding: 4px;
+    color: white;
+}
+
+#search a .fas{
+    color: #b5be85;
+    font-size: 18px;
+}
+
+
+/*  ========
+    OVERVIEW 
+    ========  */
+#overview-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 2% 8% 1% 8%;
+    margin: 0;
+}
+
+#overview-logo {
+    height: 70%;
+}
+
+#overview-name {
+    position:static;
+    color: #566a23;
+    font-weight: bolder;
+    font-size: 90px;
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+#overview-tagline {
+    color: #9c722a  ;
+    margin-left: 80px;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+
+/*  =====
+    ABOUT 
+    =====  */
+#about-container {
+    display: flex;
+    background-color: lavenderblush;
+    margin: 5px;
+}
+
+
+/*  =======================
+    FEATURED ESTABLISHMENTS 
+    =======================  */
+#featured-establishments-container {
+    display: flex;
+    background-color: lavender;
+    margin: 5px;
+}
+
+
+/*  ===
+    MAP 
+    ===  */
+#map-container {
+    display: flex;
+    background-color: lavenderblush;
+    margin: 5px;
+}
+
+
+/*  ======
+    FOOTER 
+    ======  */
+#footer-container {
+    display: flex;
+    background-color: lavender;
+    margin: 5px;
+}
