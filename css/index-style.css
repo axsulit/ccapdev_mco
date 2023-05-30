@@ -3,6 +3,7 @@
 body {
     background-color:  white;
     font-family: Montserrat, sans-serif;
+    margin: 0%;
 }
 
 
@@ -11,12 +12,17 @@ body {
     ======  */
 #nav-container {
     display: flex;
-    border-radius: 20px;
+    border-radius: 40px;
     padding: 5px;
-    margin: 0;
+    margin: 8px 8px;
+    position: fixed;
+    width: 98%;
+    height: 6%;
+    /* outline: solid black; */
+    background-color: #b5be85;
 } ul {
     list-style-type: none;
-    padding: 10px;
+    padding: 2px;
     margin: 0;
 
 } li {
@@ -36,8 +42,9 @@ body {
 #nav-logo {
     list-style-image: url('img/logo3.png');
     float: left;
-    height: 50px;
+    height: 30px;
     margin-left: 10px;
+    border-radius: 50%;
 }
 
 #nav-name {
@@ -45,7 +52,7 @@ body {
     margin-left: 5px;
     font-weight: bolder;
     font-size: 22px;
-    
+    /* padding-top: 1px; */
 }
 
 /* nav-menu */
@@ -55,9 +62,11 @@ body {
     align-items: center;
     color:  #566a23;
 } a:hover {
-    color:  #b5be85;
+    color:  #9c722a;
 } a:visited {
     color: #566a23;
+} a {
+    color: antiquewhite;
 }
 
 #menu {
@@ -117,12 +126,23 @@ body {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    padding: 2% 8% 1% 8%;
+    padding: 8% 8% 1% 8%;
     margin: 0;
+}
+
+.doodle-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    opacity: 0.2;
+    background-color: #b6a986;
 }
 
 #overview-logo {
     height: 70%;
+    border-radius: 50%;
 }
 
 #overview-name {
@@ -147,8 +167,18 @@ body {
     =====  */
 #about-container {
     display: flex;
-    background-color: lavenderblush;
+    background-color: #9c722a;
     margin: 5px;
+    height: 70%;
+} #about-title {
+    margin: 50px;
+    font-size: 400%;
+    font-weight: bolder;
+    color: antiquewhite;
+} #about-content {
+    margin: 50px;
+    margin-top: 100px;
+    color: antiquewhite;
 }
 
 
@@ -159,6 +189,7 @@ body {
     display: flex;
     background-color: lavender;
     margin: 5px;
+    height: 100%;
 }
 
 
@@ -169,6 +200,7 @@ body {
     display: flex;
     background-color: lavenderblush;
     margin: 5px;
+    height: 90%;
 }
 
 
@@ -179,4 +211,5 @@ body {
     display: flex;
     background-color: lavender;
     margin: 5px;
+    height: 35%;
 }
