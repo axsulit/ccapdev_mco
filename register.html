@@ -1,7 +1,80 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Register</title>
+        <link rel="stylesheet" href="register_style.css">
+        <script src="register_js.js"></script>
     </head>
-    <body>Register</body>
+    <body>
+    <p>Create your free account</p>
+    <div class="basicinfo">
+        <form action="post">
+       
+            <p>Registration Type</p>
+            <input id="personal" type="radio" value="Personal" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
+            <label for="personal">Personal</label>
+            <input id="company" type="radio" value="Company" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
+            <label for="company">Company</label>
+            <br>
+
+            <label for="uname" > <img src="sprites/icon_username.png" class="icon"></label>
+            <input type="text" id="uname" name="uname" placeholder="Username">
+            <br>
+            <label for="pword" > <img src="sprites/icon_pw.png" class="icon"></label>
+            <input type="text" id="pword" name="pword" placeholder="Password">
+            <br>
+
+            <div class="next-elements hidden company">
+                <!-- Elements to be shown after clicking the "Next" button -->
+              
+                    <label for="compimg">Upload logo</label>
+                    <br>
+                    <input type="file" id="compimg" name="compimg" accept="image/*">
+                    <br>
+                    <label for="compname" > <img src="sprites/icon_company.png" class="icon"></label>
+                    <input type="text" id="compname" name="compname" placeholder="Company Name">
+                    <br>
+                    <label for="location" > <img src="sprites/icon_location.png" class="icon"></label>
+                    <input type="text" id="location" name="location" placeholder="Location">
+                    <br>
+                    <label for="website" > <img src="sprites/icon_web.png" class="icon"></label>
+                    <input type="text" id="website" name="website" placeholder="website">
+                    <br>
+                    <label for="compdesc">Company description: </label>
+                    <br>
+                    <textarea id="compdesc" name="compdesc" rows="5" cols="33" placeholder="Short description..."></textarea>
+                    <br>
+                    <input type="submit">
+                
+              </div>
+              <div class="next-elements hidden personal">
+                <!-- Elements to be shown after clicking the "Next" button -->
+               
+                    <label for="accimg">Upload avatar</label>
+                    <br>
+                    <input type="file" id="accimg" name="accimg" accept="image/*">
+                    <br>
+                    <label for="personname" > <img src="sprites/icon_username.png" class="icon"></label>
+                    <input type="text" id="personname" name="personname" placeholder="Name">
+                    <br>
+                    <label for="persondesc">Tell us about yourself: </label>
+                    <br>
+                    <textarea id="persondesc" name="persondesc" rows="5" cols="33" placeholder="Short description..."></textarea>
+                    <br>
+                    <input type="submit">
+              </div>
+
+           
+            
+        </form>
+        
+    </div>
+    
+
+   
+
+    
+            
+  
+    <p>Already have an account? Sign In</p>
+    </body>
 </html>
