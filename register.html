@@ -1,73 +1,98 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="register_style.css">
-        <script src="register_js.js"></script>
+        <!--Linking css and javascript files-->
+        <link rel="stylesheet" href="css/register_style.css">
+        <script src="javascript/register_js.js"></script>
     </head>
     <body>
-    <p>Create your free account</p>
-    <div class="basicinfo">
-        <form action="post">
+    <div id="register_container">
+        <div id="logo_container">
+            <img src="img/logo3.png" id="animocafe_logo">
+            <p>Animo Cafe.</p>
+        </div>
        
-            <p>Registration Type</p>
-            <input id="personal" type="radio" value="Personal" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
-            <label for="personal">Personal</label>
-            <input id="company" type="radio" value="Company" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
-            <label for="company">Company</label>
-            <br>
-
-            <label for="uname" > <img src="sprites/icon_username.png" class="icon"></label>
-            <input type="text" id="uname" name="uname" placeholder="Username">
-            <br>
-            <label for="pword" > <img src="sprites/icon_pw.png" class="icon"></label>
-            <input type="text" id="pword" name="pword" placeholder="Password">
-            <br>
-
-            <div class="next-elements hidden company">
-                <!-- Elements to be shown after clicking the "Next" button -->
-              
-                    <label for="compimg">Upload logo</label>
+        <div id="create_container">
+            <p id="create_acc_line">Create your free account</p>
+            <div class="basicinfo">
+                <form action="post">
+                    <!--Registration type of user: company or personal-->
+                    <p id="registration_type">Registration Type</p>
+                    <input id="personal" type="radio" value="Personal" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
+                    <label for="personal">Personal</label>
+                    <input id="company" type="radio" value="Company" name="acctype" onclick="showNextElements()" required autocomplete="off"/>
+                    <label for="company">Company</label>
                     <br>
-                    <input type="file" id="compimg" name="compimg" accept="image/*">
+        
+                    <!--Asks for username and password-->
+                    <label for="uname" > <img src="sprites/icon_username.png" class="icon" oninput="checkExistAcc()"></label>
+                    <input type="text" id="uname" name="uname" placeholder="Username">
                     <br>
-                    <label for="compname" > <img src="sprites/icon_company.png" class="icon"></label>
-                    <input type="text" id="compname" name="compname" placeholder="Company Name">
+                    <label for="pword" > <img src="sprites/icon_pw.png" class="icon"></label>
+                    <input type="password" id="pword" name="pword" placeholder="Password">
                     <br>
-                    <label for="location" > <img src="sprites/icon_location.png" class="icon"></label>
-                    <input type="text" id="location" name="location" placeholder="Location">
-                    <br>
-                    <label for="website" > <img src="sprites/icon_web.png" class="icon"></label>
-                    <input type="text" id="website" name="website" placeholder="website">
-                    <br>
-                    <label for="compdesc">Company description: </label>
-                    <br>
-                    <textarea id="compdesc" name="compdesc" rows="5" cols="33" placeholder="Short description..."></textarea>
-                    <br>
-                    <input type="submit">
+        
+                    <!-- If user chooses company, then it will show previously hidden details about company that needs to be filled out-->
+                    <div class="next-elements hidden company">
+        
+                            <!-- Upload logo of company REQUIRED -->
+                            <label for="compimg">Upload logo</label>
+                            <br>
+                            <input type="file" id="compimg" name="compimg" accept="image/*" >
+        
+                            <!-- Company name REQUIRED-->
+                            <br>
+                            <label for="compname" > <img src="sprites/icon_company.png" class="icon" ></label>
+                            <input type="text" id="compname" name="compname" placeholder="Company Name"  >
+        
+                            <!--Location of company REQUIRED-->
+                            <br>
+                            <label for="location" > <img src="sprites/icon_location.png" class="icon"></label>
+                            <input type="text" id="location" name="location" placeholder="Location" >
+        
+                            <!--Website of company OPTIONAL-->
+                            <br>
+                            <label for="website" > <img src="sprites/icon_web.png" class="icon"></label>
+                            <input type="text" id="website" name="website" placeholder="website">
+        
+                            <!-- Company description OPTIONAL-->
+                            <br>
+                            <label for="compdesc">Company description: </label>
+                            <br>
+                            <textarea id="compdesc" name="compdesc" rows="5" cols="33" placeholder="Short description..."></textarea>
+                            <br>
+                            <input class="submit_button" type="submit" onclick="checkExistAcc()">
+                        
+                    </div>
+                    <div class="next-elements hidden personal">
+                    
+                            <!--User's avatar REQUIRED-->
+                            <label for="accimg">Upload avatar</label>
+                            <br>
+                            <input type="file" id="accimg" name="accimg" accept="image/*"  >
+                            <br>
+        
+                            <!-- User's name REQUIRED-->
+                            <label for="personname" > <img src="sprites/icon_username.png" class="icon" ></label>
+                            <input type="text" id="personname" name="personname" placeholder="Name" >
+                            <br>
+        
+                            <!-- Short description of user OPTIONAL-->
+                            <label for="persondesc">Tell us about yourself: </label>
+                            <br>
+                            <textarea id="persondesc" name="persondesc" rows="5" cols="33" placeholder="Short description..."></textarea>
+                            <br>
+                            <input id="submit_button" type="submit">
+                    </div> 
+                </form>
                 
-              </div>
-              <div class="next-elements hidden personal">
-                <!-- Elements to be shown after clicking the "Next" button -->
-               
-                    <label for="accimg">Upload avatar</label>
-                    <br>
-                    <input type="file" id="accimg" name="accimg" accept="image/*">
-                    <br>
-                    <label for="personname" > <img src="sprites/icon_username.png" class="icon"></label>
-                    <input type="text" id="personname" name="personname" placeholder="Name">
-                    <br>
-                    <label for="persondesc">Tell us about yourself: </label>
-                    <br>
-                    <textarea id="persondesc" name="persondesc" rows="5" cols="33" placeholder="Short description..."></textarea>
-                    <br>
-                    <input type="submit">
-              </div>
-
-           
+            </div>
+            <p>Already have an account? <a href="login.html">Sign In</a></p>
             
-        </form>
+        </div>
         
     </div>
+    
     
 
    
@@ -75,6 +100,6 @@
     
             
   
-    <p>Already have an account? Sign In</p>
+    
     </body>
 </html>
