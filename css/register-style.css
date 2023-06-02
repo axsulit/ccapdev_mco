@@ -13,13 +13,14 @@ body {
 .content-container{
     display:flex;
     justify-content:center;
-    align-items:center;
+
     margin-top:15%;
 }
 /*contains logo and tagline*/
 .logo-container{
     display:inline-block;
     margin-left:-10%;
+    margin-top:5%;
 }
 
 #center-web-tag{
@@ -51,8 +52,19 @@ body {
     margin-right:5%;
 }
 
+#create-acc{
+    color: #9c722a  ;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-bottom:10px;
+}
 .form-container{
-    display:inline-block;
+    border:2px solid  #9c722a ;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    /*background-color: rgba(86, 106, 35, 0.5); */
+
 }
 /*background*/
 .doodle-bg{
