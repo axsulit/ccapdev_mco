@@ -13,14 +13,14 @@ body {
 .content-container{
     display:flex;
     justify-content:center;
-
     margin-top:15%;
+    margin-left:10%;
 }
 /*contains logo and tagline*/
 .logo-container{
     display:inline-block;
     margin-left:-10%;
-    margin-top:5%;
+    margin-top:3%;
 }
 
 #center-web-tag{
