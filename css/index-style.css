@@ -129,7 +129,6 @@ html {
     flex-grow: 4;
     /* background-color: pink; */
     margin: 0; padding: 0;
-    flex-direction: column;
 } #overview {
     position:relative;
     color: #566a23;
@@ -143,8 +142,7 @@ html {
     margin: 0;
     position:relative;
     padding: 0;
-    width: 100%;
-    top: 15%; left: 40%;
+    top: 15%;
 } .doodle-bg{
     position: absolute;
     top: 0;
@@ -212,17 +210,77 @@ html {
     =====  */
 #about-container {
     display: flex;
-    background-color: #9c722a;
-    height: 70%;
+    flex-direction: row;
+    background-color: #566a23;
+    height: 100%;
+} #about-content {
+    flex-grow: 1;
+    color: antiquewhite;
+    position: relative;
+    top: 25%; left: 2%;
+} #tagline {
+    font-style: italic;
+    margin: 0; padding: 0;
 } #about-title {
-    margin: 50px;
     font-size: 400%;
     font-weight: bolder;
     color: antiquewhite;
-} #about-content {
-    margin: 50px;
-    margin-top: 100px;
+    width:0;
+    min-width:80%;
+    margin: 0; padding: 0;
+} #about-description {
+    width:0;
+    min-width:80%;
+    text-align: justify;
+} #about-picture-container {
+    flex-grow: 3;
+    /* background-color: pink; */
+    margin: 0; padding: 0;
+} #about-picture {
+    position: relative;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    border-radius: 30px;
+    box-shadow: 0 10px 10px -10px rgba(86, 106, 35, 1);
+} #about-btn-container {
+    position: relative;
+    left: 25%;
+} .view-cafes-btn {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid antiquewhite;
+    border-radius: 15px;
+    box-sizing: border-box;
     color: antiquewhite;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 10px;
+    min-width: 0;
+    outline: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 25%;
+    will-change: transform;
+} .view-cafes-btn:disabled {
+    pointer-events: none;
+} .view-cafes-btn:hover {
+    color: #fff;
+    background-color: #9c722a;
+    border: #9c722a;
+    /* box-shadow: rgba(86, 106, 35, 1) 0 8px 10px; */
+    transform: translateY(-2px);
+} .view-cafes-btn:active {
+    box-shadow: none;
+    transform: translateY(0);
 }
 
 
@@ -231,7 +289,7 @@ html {
     =======================  */
 #featured-establishments-container {
     display: flex;
-    background-color: lavender;
+    background-color: #9c722a;
     height: 100%;
 }
 
