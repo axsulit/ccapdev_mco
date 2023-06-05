@@ -18,9 +18,8 @@ html {
     ======  */
 #nav-container {
     display: flex;
-    /* border-radius: 40px; */
+    z-index: 1;
     padding: 5px;
-    /* margin: 8px 8px; */
     position: fixed;
     width: 100%;
     height: 5%;
@@ -45,6 +44,7 @@ html {
     text-align: left;
     margin: 3px;
     width:500px;
+    z-index: 1;
 } #nav-logo {
     list-style-image: url('img/logo3.png');
     float: left;
@@ -125,6 +125,7 @@ html {
     flex-grow: 1;
     /* background-color: white; */
     margin: 0; padding: 0; 
+    
 } #intro-container {
     flex-grow: 4;
     /* background-color: pink; */
@@ -160,7 +161,7 @@ html {
     color: #566a23;
     font-weight: bolder;
     font-size: 90px;
-    padding-top: 10%;
+    padding-top: 15%;
     padding-left: 10%;
 } #overview-tagline {
     color: #9c722a  ;
@@ -217,16 +218,16 @@ html {
     flex-grow: 1;
     color: antiquewhite;
     position: relative;
-    top: 25%; left: 2%;
+    top: 15%; left: 2%;
 } #tagline {
     font-style: italic;
     margin: 0; padding: 0;
-} #about-title {
+} .title {
     font-size: 400%;
     font-weight: bolder;
     color: antiquewhite;
     width:0;
-    min-width:80%;
+    min-width:85%;
     margin: 0; padding: 0;
 } #about-description {
     width:0;
@@ -238,7 +239,7 @@ html {
     margin: 0; padding: 0;
 } #about-picture {
     position: relative;
-    top: 20%;
+    top: 15%;
     left: 10%;
     width: 80%;
     border-radius: 30px;
@@ -284,14 +285,23 @@ html {
 }
 
 
-/*  =======================
-    FEATURED ESTABLISHMENTS 
-    =======================  */
-#featured-establishments-container {
+/*  ==============
+    FEATURED CAFES 
+    ============== */
+#featured-cafes-container {
     display: flex;
-    background-color: #9c722a;
+    flex-direction: column;
+    background-color: white;
     height: 100%;
-}
+} #featured-title-container {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0; padding: 0;
+    background-color: #b6a986;
+} #featured-card-container {
+    flex-grow: 7;
+    background-color: pink;
+} 
 
 
 /*  ===
