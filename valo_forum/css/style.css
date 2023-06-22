@@ -1,0 +1,202 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('fonts/Gilroy/Gilroy-ExtraBold.otf') format('opentype'),
+        url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
+}
+
+:root {
+    --b-black: rgb(28, 37, 46);
+    --b-red: rgb(255, 70, 84);
+    --b-grey: rgb(76, 76, 76);
+    --b-white: rgb(249, 249, 249);
+    --b-green: rgb(76, 217, 100);
+}
+
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    background-color: var(--b-black);
+    margin: 0;
+}
+
+.navbar {
+    padding-left: 0;
+    overflow: hidden;
+    background-color: var(--b-red);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: var(--b-black);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.navbar a:hover {
+    background: var(--b-black);
+    color: var(--b-red);
+}
+
+.main {
+    margin: 80px 0 0 0;
+    display: flex;
+    height: 100vh;
+}
+
+
+#left-pane {
+    flex: 0.50;
+    position: relative;
+    /*    background-color: blue;*/
+}
+
+#left-pane ul {
+    list-style-type: none;
+}
+
+.tags {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 25px;
+}
+
+.tag {
+    /*    background-color: brown;*/
+    margin: 10px 0 10px 0px;
+    padding: 10px 10px;
+    width: 300px;
+
+}
+
+#left-pane a {
+    text-decoration: none;
+    color: var(--b-white);
+}
+
+#left-pane a:hover {
+    color: var(--b-red);
+}
+
+.start-discussion-btn {
+    background-color: var(--b-red);
+    color: var(--b-white);
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0 10px 0px;
+    padding: 10px 10px;
+    width: 300px;
+    cursor: pointer;
+}
+
+#right-pane {
+    flex: 1;
+margin: 10px;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: var(--b-grey);
+    color: white;
+    padding: 10px;
+    width: 50px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: var(--b-white);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--b-red);
+    color: var(--b-white);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: black;
+}
+
+
+.filters {
+    margin-top: 10px;
+}
+
+.post-item {
+    padding:20px;
+    display:flex;
+    margin:5px 30px 5px 0;
+    color: aliceblue;
+    border-radius:5px;
+    width: 900px;
+}
+
+.pfp {
+    padding-right:20px;
+    border-radius: 50%;
+}
+
+.top-row {
+    padding-bottom:6px;
+}
+.title {
+    font-size:21px;
+    
+}
+
+.status {
+    font-size:14px;
+    padding-bottom:10px;
+    color: lightgray;
+}
+
+.status b {
+    color:aliceblue;
+}
+
+.description {
+    font-size:14px;
+    padding-top:10px;
+    padding-bottom:10px;
+    color: lightgray;
+}
+
+.post-item:hover {
+    background-color: black;
+}
