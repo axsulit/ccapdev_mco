@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('fonts/Gilroy/Gilroy-ExtraBold.otf') format('opentype'),
+        url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
+}
+
+:root {
+    --b-black: rgb(28, 37, 46);
+    --b-red: rgb(255, 70, 84);
+    --b-grey: rgb(76, 76, 76);
+    --b-white: rgb(249, 249, 249);
+    --b-green: rgb(76, 217, 100);
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    background-color: var(--b-black);
+    margin: 0;
+}
+
+.navbar {
+    padding-left: 0;
+    overflow: hidden;
+    background-color: var(--b-red);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}.navbar a {
+    float: left;
+    display: block;
+    color: var(--b-black);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}.navbar a:hover {
+    background: var(--b-black);
+    color: var(--b-red);
+}
+
+.main {
+    /* outline: solid white;  */
+    margin: 10% 20%;
+    padding: 20px;
+
+} #left-pane {
+    outline: solid grey;
+} #right-pane {
+    outline: solid grey;
+}
+
+.post-item {
+    padding:20px;
+    display:flex;
+    margin:5px 30px 5px 0;
+    color: aliceblue;
+    border-radius:5px;
+    width: 900px;
+} .comment-item {
+    padding:20px;
+    display:flex;
+    margin:5px 30px 5px 0;
+    color: aliceblue;
+    border-radius:5px;
+    width: 900px;
+}
+.pfp {
+    /* margin: 100px; */
+    height: 100px;
+    width: 100px;
+    /* display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box; */
+    border-radius: 50%;
+    margin-right: 25px;
+} .comment-pfp {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 25px;
+    margin-left: 38px;
+}
+
+.top-row {
+    padding-bottom:6px;
+}
+.title {
+    font-size:25px;
+}
+
+.status {
+    font-size:14px;
+    padding-bottom:10px;
+    color: lightgray;
+}
+.status b {
+    color:aliceblue;
+}
+
+.description {
+    font-size:14px;
+    padding-top:10px;
+    padding-bottom:10px;
+    color: lightgray;
+    padding-right: 40px;
+    font-size: medium;
+}
