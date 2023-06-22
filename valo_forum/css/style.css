@@ -200,3 +200,52 @@ margin: 10px;
 .post-item:hover {
     background-color: black;
 }
+
+#popup-container {
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    padding-top: 26px;
+    background-color: var(--b-grey);
+    border: 1px solid grey;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically */
+    align-items: center;
+
+    display: none;
+}
+/* form elements */
+#popup-container input[type="text"],
+#popup-container textarea {
+    background-color: var(--b-grey);
+    border: none;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+/* submit button */
+#popup-container input[type="submit"] {
+    background-color: var(--b-red);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+} .close-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}

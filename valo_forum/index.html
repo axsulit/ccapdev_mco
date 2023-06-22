@@ -4,6 +4,8 @@
 <head>
     <title>SpikeZone</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="./script/index.js"></script>
 </head>
 
 <body>
@@ -16,7 +18,7 @@
         <span id="left-pane">
             <!--add icons-->
             <ul class="tags">
-                <button class="start-discussion-btn">Start Discussion</button>
+                <button class="start-discussion-btn" onclick="showPopup()">Start Discussion</button>
                 <li><a href="#">
                         <div class="tag">
                             <img class="icon" src="images/fade-icon.png" height=20px width=20px>
@@ -44,6 +46,21 @@
             </ul>
 
         </span>
+
+        <!-- WRITE POST -->
+        <div id="popup-container">
+            <button class="close-button" onclick="closePopup()">X</button>
+            
+            <form id="post-form" onsubmit="submitPost(event)">
+                <label for="post-title"></label>
+                <input type="text" id="post-title" placeholder="Title">
+
+                <label for="post-caption"></label>
+                <textarea id="post-caption" rows="12" placeholder="Write a Post..." required></textarea>
+
+                <input type="submit" value="Plant the Spike">
+            </form>
+        </div>
 
         <span id="right-pane">
             <!--redo dropdown-->
