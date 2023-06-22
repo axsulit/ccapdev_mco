@@ -3,7 +3,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color:  white;
+    background-color: white;
     font-family: Montserrat, sans-serif;
     margin: 0%;
 }
@@ -27,11 +27,15 @@ html {
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 10px -10px rgba(86, 106, 35, 1);
-} ul {
+}
+
+ul {
     list-style-type: none;
     padding: 2px;
     margin: 0;
-} li {
+}
+
+li {
     display: inline-block;
     padding-right: 15px;
     margin: 0;
@@ -43,15 +47,19 @@ html {
     flex-grow: 1;
     text-align: left;
     margin: 3px;
-    width:500px;
+    width: 500px;
     z-index: 1;
-} #nav-logo {
+}
+
+#nav-logo {
     list-style-image: url('img/logo3.png');
     float: left;
     height: 30px;
     margin-left: 10px;
     border-radius: 50%;
-} #nav-name {
+}
+
+#nav-name {
     color: white;
     margin-left: 5px;
     font-weight: bolder;
@@ -62,16 +70,21 @@ html {
 /* nav-menu */
 #nav-menu-container {
     flex-grow: 6;
-    width: 100%; height: auto;
+    width: 100%;
+    height: auto;
     text-align: right;
-} #menu li {
+}
+
+#menu li {
     padding: 0 20px;
     font-size: 18px;
     font-weight: 500;
     color: white;
     cursor: pointer;
-} #menu li:hover {
-    color:#b6a986;
+}
+
+#menu li:hover {
+    color: #b6a986;
 }
 
 
@@ -83,21 +96,29 @@ html {
     background: #566a23;
     border-radius: 30px;
     align-items: center;
-} #search:hover input{
+}
+
+#search:hover input {
     width: 90px;
-} #search-btn{
+}
+
+#search-btn {
     width: 0;
     outline: none;
     border: none;
     background: transparent;
-    color:white;
+    color: white;
     margin-right: 3px;
     font-size: 17px;
-} #search-input::placeholder{
+}
+
+#search-input::placeholder {
     font-family: Montserrat, sans-serif;
     color: white;
     font-size: 15px;
-} #search input{
+}
+
+#search input {
     font-family: Montserrat, sans-serif;
     width: 0;
     outline: none;
@@ -107,7 +128,9 @@ html {
     background: transparent;
     padding: 4px;
     color: white;
-} #search a .fas{
+}
+
+#search a .fas {
     color: #b5be85;
     font-size: 18px;
 }
@@ -121,17 +144,25 @@ html {
     display: flex;
     height: 100%;
     margin: 5%;
-} #logo-container {
+}
+
+#logo-container {
     flex-grow: 1;
     /* background-color: white; */
-    margin: 0; padding: 0; 
-    
-} #intro-container {
+    margin: 0;
+    padding: 0;
+
+}
+
+#intro-container {
     flex-grow: 4;
     /* background-color: pink; */
-    margin: 0; padding: 0;
-} #overview {
-    position:relative;
+    margin: 0;
+    padding: 0;
+}
+
+#overview {
+    position: relative;
     color: #566a23;
     font-weight: bolder;
     font-size: 90px;
@@ -139,12 +170,16 @@ html {
     padding-top: 10%;
     padding-left: 10%;
     margin: 0;
-} #button-container {
+}
+
+#button-container {
     margin: 0;
-    position:relative;
+    position: relative;
     padding: 0;
     top: 15%;
-} .doodle-bg{
+}
+
+.doodle-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -152,23 +187,32 @@ html {
     width: 100%;
     opacity: 0.2;
     background-color: #b6a986;
-} #overview-logo {
+}
+
+#overview-logo {
     height: 70%;
     border-radius: 50%;
-    margin: 0; padding: 5%;
-} #overview-name {
-    position:static;
+    margin: 0;
+    padding: 5%;
+}
+
+#overview-name {
+    position: static;
     color: #566a23;
     font-weight: bolder;
     font-size: 90px;
     padding-top: 15%;
     padding-left: 10%;
-} #overview-tagline {
-    color: #9c722a  ;
+}
+
+#overview-tagline {
+    color: #9c722a;
     margin-left: 100px;
     font-weight: bolder;
     font-size: 25px;
-} .see-more {
+}
+
+.see-more {
     appearance: none;
     background-color: transparent;
     border: 2px solid #566a23;
@@ -192,14 +236,20 @@ html {
     touch-action: manipulation;
     width: 12%;
     will-change: transform;
-} .see-more:disabled {
+}
+
+.see-more:disabled {
     pointer-events: none;
-} .see-more:hover {
+}
+
+.see-more:hover {
     color: #fff;
     background-color: #566a23;
     /* box-shadow: rgba(86, 106, 35, 1) 0 8px 10px; */
     transform: translateY(-2px);
-} .see-more:active {
+}
+
+.see-more:active {
     box-shadow: none;
     transform: translateY(0);
 }
@@ -214,40 +264,60 @@ html {
     flex-direction: row;
     background-color: #566a23;
     height: 100%;
-} #about-content {
+}
+
+#about-content {
     flex-grow: 1;
     color: antiquewhite;
     position: relative;
-    top: 15%; left: 2%;
-} #tagline {
+    top: 15%;
+    left: 2%;
+}
+
+#tagline {
     font-style: italic;
-    margin: 0; padding: 0;
-} .title {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
     font-size: 400%;
     font-weight: bolder;
     color: antiquewhite;
-    width:0;
-    min-width:85%;
-    margin: 0; padding: 0;
-} #about-description {
-    width:0;
-    min-width:80%;
+    width: 0;
+    min-width: 85%;
+    margin: 0;
+    padding: 0;
+}
+
+#about-description {
+    width: 0;
+    min-width: 80%;
     text-align: justify;
-} #about-picture-container {
+}
+
+#about-picture-container {
     flex-grow: 3;
     /* background-color: pink; */
-    margin: 0; padding: 0;
-} #about-picture {
+    margin: 0;
+    padding: 0;
+}
+
+#about-picture {
     position: relative;
     top: 15%;
     left: 10%;
     width: 80%;
     border-radius: 30px;
     box-shadow: 0 10px 10px -10px rgba(86, 106, 35, 1);
-} #about-btn-container {
+}
+
+#about-btn-container {
     position: relative;
     left: 25%;
-} .view-cafes-btn {
+}
+
+.view-cafes-btn {
     appearance: none;
     background-color: transparent;
     border: 2px solid antiquewhite;
@@ -271,15 +341,21 @@ html {
     touch-action: manipulation;
     width: 25%;
     will-change: transform;
-} .view-cafes-btn:disabled {
+}
+
+.view-cafes-btn:disabled {
     pointer-events: none;
-} .view-cafes-btn:hover {
+}
+
+.view-cafes-btn:hover {
     color: #fff;
     background-color: #9c722a;
     border: #9c722a;
     /* box-shadow: rgba(86, 106, 35, 1) 0 8px 10px; */
     transform: translateY(-2px);
-} .view-cafes-btn:active {
+}
+
+.view-cafes-btn:active {
     box-shadow: none;
     transform: translateY(0);
 }
@@ -293,15 +369,20 @@ html {
     flex-direction: column;
     background-color: white;
     height: 100%;
-} #featured-title-container {
+}
+
+#featured-title-container {
     flex-grow: 1;
     text-align: center;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
     background-color: #b6a986;
-} #featured-card-container {
+}
+
+#featured-card-container {
     flex-grow: 7;
     background-color: pink;
-} 
+}
 
 
 /*  ===
