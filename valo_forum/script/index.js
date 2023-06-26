@@ -1,3 +1,11 @@
+const Post = function (username, picture, date, title, content) {
+    this.username = username;
+    this.picture = picture;
+    this.date = date;
+    this.title = title;
+    this.content = content;
+}
+
 function showPopup() {
     var popupContainer = document.getElementById("popup-container");
     popupContainer.style.display = "block";
@@ -28,13 +36,7 @@ const User = function(username) {
     this.img = "./images/fade-icon.png";
 }
 
-const Post = function (username, picture, date, title, content) {
-    this.username = username;
-    this.picture = picture;
-    this.date = date;
-    this.title = title;
-    this.content = content;
-}
+
 
 let posts = [];
 let messages = [];

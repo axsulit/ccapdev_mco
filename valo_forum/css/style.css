@@ -98,7 +98,7 @@ body {
 
 #right-pane {
     flex: 1;
-margin: 10px;
+    margin: 10px;
 }
 
 /* Style The Dropdown Button */
@@ -159,41 +159,57 @@ margin: 10px;
 }
 
 .post-item {
-    padding:20px;
-    display:flex;
-    margin:5px 30px 5px 0;
+    padding: 20px;
+    display: flex;
+    margin: 5px 30px 5px 0;
     color: aliceblue;
-    border-radius:5px;
+    border-radius: 5px;
     width: 900px;
 }
 
 .pfp {
-    padding-right:20px;
+    padding-right: 20px;
     border-radius: 50%;
 }
 
 .top-row {
-    padding-bottom:6px;
+    padding-bottom: 6px;
+    display: flex;
 }
+
+.post-metadata {
+    margin-left:auto;
+    display: flex;
+}
+
+.post-tag {
+    background-color: var(--b-red);
+    padding: 2px 4px;
+    font-size: 13px;
+    border-radius: 5px;
+    vertical-align: center;
+ margin-right:10px;   
+}
+
 .title {
-    font-size:21px;
-    
+    font-size: 21px;
+
 }
 
 .status {
-    font-size:14px;
-    padding-bottom:10px;
+    font-size: 14px;
+    padding-bottom: 10px;
     color: lightgray;
 }
 
 .status b {
-    color:aliceblue;
+    color: aliceblue;
 }
 
 .description {
-    font-size:14px;
-    padding-top:10px;
-    padding-bottom:10px;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     color: lightgray;
 }
 
@@ -202,7 +218,7 @@ margin: 10px;
 }
 
 #popup-container {
-    
+
     position: fixed;
     top: 50%;
     left: 50%;
@@ -217,11 +233,13 @@ margin: 10px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center elements vertically */
+    justify-content: center;
+    /* Center elements vertically */
     align-items: center;
 
     display: none;
 }
+
 /* form elements */
 #popup-container input[type="text"],
 #popup-container textarea {
@@ -232,6 +250,7 @@ margin: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
 /* submit button */
 #popup-container input[type="submit"] {
     background-color: var(--b-red);
@@ -241,7 +260,9 @@ margin: 10px;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
-} .close-button {
+}
+
+.close-button {
     background-color: transparent;
     border: none;
     color: white;
