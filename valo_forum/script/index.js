@@ -28,6 +28,10 @@ const Comment = function (username, date, content) {
     this.replies = []; // Comments
 }
 
+const Tag = function (type, icon) {
+    this.type = type;
+    this.icon = icon;
+}
 
 /***GLOBAL VARIABLES ***/
 
@@ -133,7 +137,7 @@ function displayPost(newPost) {
 
     // POst votes span
     const postVotesSpan = $('<span>').addClass('post-votes');
-    
+
     // Create the vote up button
     const voteUpButton = $('<button>').addClass('votes').click(upvote);
 
@@ -141,7 +145,7 @@ function displayPost(newPost) {
     const voteUpIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
 
     // Create the vote count paragraph
-    const voteCountP = $('<p>').addClass('vote-cnt').text('69');
+    const voteCountP = $('<p>').addClass('vote-cnt').text(newPost.upvotes - newPost.downvotes);
 
     // Create the vote down button
     const voteDownButton = $('<button>').addClass('votes').click(downvote);
@@ -160,7 +164,7 @@ function displayPost(newPost) {
 
     // Create the profile picture image
     const pfpImg = $('<img>').addClass('pfp').attr({
-        src: 'images/fade-icon.png',
+        src: newPost.picture,
         height: '50px',
         width: '50px'
     });
@@ -172,7 +176,7 @@ function displayPost(newPost) {
     const topRowDiv = $('<div>').addClass('top-row');
 
     // Create the title span
-    const titleSpan = $('<span>').addClass('title').text('This is a title.');
+    const titleSpan = $('<span>').addClass('title').text(newPost.title);
 
     // Create the post metadata div
     const postMetadataDiv = $('<div>').addClass('post-metadata');
@@ -188,7 +192,7 @@ function displayPost(newPost) {
     });
 
     // Append the tag image and text to the post tag span
-    postTagSpan.append(tagImg, 'General Discussion');
+    postTagSpan.append(tagImg, newPost.tag);
 
     // Create the comment count span
     const commentCntSpan = $('<span>').addClass('comment-cnt');
@@ -201,7 +205,7 @@ function displayPost(newPost) {
     });
 
     // Append the comment count image and text to the comment count span
-    commentCntSpan.append(commentCntImg, '50');
+    commentCntSpan.append(commentCntImg, String(newPost.comments.length));
 
     // Append the post tag and comment count spans to the post metadata div
     postMetadataDiv.append(postTagSpan, commentCntSpan);
@@ -209,14 +213,23 @@ function displayPost(newPost) {
     // Append the title and post metadata div to the top row div
     topRowDiv.append(titleSpan, postMetadataDiv);
 
-    // Create the status div
-    const statusDiv = $('<div>').addClass('status').html('<b>aeririyel</b> started 2 hours ago');
+    // Create the status span
+    const statusSpan = $('<span>').addClass('status');
+
+    // Create the username span
+    const usernameSpan = $('<span>').addClass('username').text(newPost.username);
+
+    // Create the post time span
+    const postTimeSpan = $('<span>').addClass('post-time').text(" started this discussion on " + newPost.date);
+
+    // Append the username and post time spans to the status span
+    statusSpan.append(usernameSpan, postTimeSpan);
 
     // Create the description div
-    const descriptionDiv = $('<div>').addClass('description').text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...');
+    const descriptionDiv = $('<div>').addClass('description').text(newPost.content);
 
     // Append the profile picture, top row div, status div, and description div to the details span
-    detailsSpan.append(topRowDiv, statusDiv);
+    detailsSpan.append(topRowDiv, statusSpan);
 
     // Append to post-content-top span
     postContentTopSpan.append(pfpImg, detailsSpan);
@@ -227,58 +240,5 @@ function displayPost(newPost) {
     postItemDiv.append(postVotesSpan, postContentSpan);
 
     // Append the main container div to the desired parent element in the document
-    $('#posts-container').append(postItemDiv); // Replace "parentElement" with the actual ID or selector of the parent element
-
-    // Create elements/tags
-
-
-    //        // Create elements/tags
-    //        const singlePostMain = $("<div></div>");
-    //        const singlePost = $("<div></div>");
-    //        const spLeft = $("<div></div>");
-    //        const imgContainer = $("<div></div>");
-    //        const spPicture = $("<img>");
-    //        const spRight = $("<div></div>");
-    //        const spRightContent = $("<div></div>");
-    //        const spTitle = $("<div></div>");
-    //        const spBody = $("<div></div>");
-    //        const spRightBottom = $("<div></div>");
-    //        const spName = $("<div></div>");
-    //        const spDate = $("<div></div>");
-    //
-    //        // DONE: Add classes to your created elements
-    //        singlePostMain.addClass("single-post-main");
-    //        singlePost.addClass("single-post");
-    //        spLeft.addClass("sp-left");
-    //        spPicture.addClass("sp-picture");
-    //        spRight.addClass("sp-right");
-    //        spRightContent.addClass("sp-right-content");
-    //        spTitle.addClass("sp-title");
-    //        spBody.addClass("sp-body");
-    //        spRightBottom.addClass("sp-right-bottom");
-    //        spName.addClass("sp-name");
-    //        spDate.addClass("sp-date");
-    //
-    //        // DONE: Set the proper hierarchy of the created elements
-    //        singlePostMain.append(singlePost);
-    //        singlePost.append(spLeft);
-    //        spLeft.append(imgContainer);
-    //        imgContainer.append(spPicture);
-    //        singlePost.append(spRight);
-    //        spRight.append(spRightContent);
-    //        spRightContent.append(spTitle);
-    //        spRightContent.append(spBody);
-    //        spRightContent.append(spRightBottom);
-    //        spRightBottom.append(spName);
-    //        spRightBottom.append(spDate);
-    //
-    //        // DONE: Set the proper content/values to the correct elements/tags
-    //        spPicture.attr("src", newPost.picture);
-    //        spTitle.text(newPost.title);
-    //        spBody.text(newPost.content);
-    //        spName.text(newPost.name);
-    //        spDate.text(newPost.date.replace("T", " | "));
-    //
-    //        // DONE: Place the outermost element (single-post-main) inside post-container
-    //        $("div#posts-container").append(singlePostMain);
+    $('#posts-container').append(postItemDiv);
 }

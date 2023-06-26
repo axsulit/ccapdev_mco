@@ -198,11 +198,14 @@ body {
 .post-tag {
     background-color: var(--b-red);
     padding: 2px 4px;
-    font-size: 13px;
+    font-size: 12px;
     border-radius: 5px;
     vertical-align: center;
     margin-right: 10px;
+}
 
+.comment-cnt img {
+    margin-right:5px;
 }
 
 .title {
@@ -305,6 +308,7 @@ body {
 
 .vote-cnt {
     font-size: 15px;
+    text-align: center;
     margin: 0px 3px;
 }
 
