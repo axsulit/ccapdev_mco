@@ -369,7 +369,7 @@ ul {
     /* Center elements vertically */
     align-items: center;
 
-    display: none;
+    display: flex;
 } #edit-profile-container h2 {
     font-size: 22px;
     color: #fff;
