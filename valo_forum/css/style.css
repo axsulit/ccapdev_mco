@@ -4,9 +4,9 @@
         url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
 }
 
-/* * {
+* {
     border: 1px solid
-} */
+}
 
 :root {
     --b-black: rgb(28, 37, 46);
@@ -29,6 +29,36 @@ a {
     color: #FF4654;
 }
 
+<<<<<<< HEAD
+=======
+/*LOGGED IN - profile*/
+.nav-pfp {
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+}
+
+.nav-username {
+    color: #fff;
+    font-size: 12px;
+}
+
+padding-left: 5px;
+
+.profile {
+    cursor: pointer;
+    align-items: center;
+    height: 34px;
+    /* to match search height */
+    border-radius: 5px;
+}
+
+.profile-pic {
+    height: 34px;
+}
+
+
+>>>>>>> parent of 9f16ae1 (added icons and post dropdown)
 /* Remove bullets */
 ul {
     list-style-type: none;
@@ -406,19 +436,6 @@ ul {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-} 
-.post-dropbtn {
-    background-color: var(--b-grey);
-    color: white;
-    padding: 5px;
-    width: 150px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-
-    /* position: inherit;
-    margin-left: 50%; */
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -604,13 +621,7 @@ ul {
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
-    margin-right: 200px;
-} 
-/* #post-form {
-    height: 80%;
-} #submit-bttn {
-    
-} */
+}
 
 .close-button {
     background-color: transparent;

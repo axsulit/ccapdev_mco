@@ -98,11 +98,6 @@ body {
 }
 .title {
     font-size:25px;
-} .edited-tag {
-    color: lightgray;
-    font-style: italic;
-    font-size: 12px;
-    padding: 8px;
 }
 
 .status {
