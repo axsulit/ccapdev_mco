@@ -129,77 +129,111 @@ function displayPosts(newPosts) {
 
 function displayPost(newPost) {
 
+
+    // Create the main container div
+    const postItemDiv = $('<div>').addClass('post-item');
+
+    // POst votes span
+    const postVotesSpan = $('<span>').addClass('post-votes');
+
     
-  // Create the main container div
-const postItemDiv = $('<div>').addClass('post-item');
+    // Create the vote up button
+    const voteUpButton = $('<button>').addClass('votes').click(upvote);
 
-// Create the profile picture image
-const pfpImg = $('<img>').addClass('pfp').attr({
-  src: 'images/fade-icon.png',
-  height: '50px',
-  width: '50px'
-});
+    // Create the vote up icon
+    const voteUpIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
 
-// Create the details span
-const detailsSpan = $('<span>').addClass('details');
+    // Create the vote count paragraph
+    const voteCountP = $('<p>').addClass('vote-cnt').text('69');
 
-// Create the top row div
-const topRowDiv = $('<div>').addClass('top-row');
+    // Create the vote down button
+    const voteDownButton = $('<button>').addClass('votes').click(downvote);
 
-// Create the title span
-const titleSpan = $('<span>').addClass('title').text('This is a title.');
+    // Create the vote down icon
+    const voteDownIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
 
-// Create the post metadata div
-const postMetadataDiv = $('<div>').addClass('post-metadata');
+    // Create the vote buttons container
+    postVotesSpan.append(voteUpButton.append(voteUpIcon), $('<br>'), voteCountP, voteDownButton.append(voteDownIcon))
 
-// Create the post tag span
-const postTagSpan = $('<span>').addClass('post-tag');
+    
 
-// Create the tag image
-const tagImg = $('<img>').attr({
-  src: 'images/fade-icon.png',
-  height: '15px',
-  width: '15px'
-});
+    // Create the post content span
+    const postContentSpan = $('<span>').addClass('post-content');
 
-// Append the tag image and text to the post tag span
-postTagSpan.append(tagImg, 'General Discussion');
-
-// Create the comment count span
-const commentCntSpan = $('<span>').addClass('comment-cnt');
-
-// Create the comment count image
-const commentCntImg = $('<img>').attr({
-  src: 'images/fade-icon.png',
-  height: '15px',
-  width: '15px'
-});
-
-// Append the comment count image and text to the comment count span
-commentCntSpan.append(commentCntImg, '50');
-
-// Append the post tag and comment count spans to the post metadata div
-postMetadataDiv.append(postTagSpan, commentCntSpan);
-
-// Append the title and post metadata div to the top row div
-topRowDiv.append(titleSpan, postMetadataDiv);
-
-// Create the status div
-const statusDiv = $('<div>').addClass('status').html('<b>aeririyel</b> started 2 hours ago');
-
-// Create the description div
-const descriptionDiv = $('<div>').addClass('description').text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...');
-
-// Append the profile picture, top row div, status div, and description div to the details span
-detailsSpan.append(pfpImg, topRowDiv, statusDiv, descriptionDiv);
-
-// Append the details span to the main container div
-postItemDiv.append(detailsSpan);
-
-// Append the main container div to the desired parent element in the document
-$('#posts-container').append(postItemDiv); // Replace "parentElement" with the actual ID or selector of the parent element
+    // Create the post content top span
+    const postContentTopSpan = $('<span>').addClass('post-content-top');
 
 
+    // Create the profile picture image
+    const pfpImg = $('<img>').addClass('pfp').attr({
+        src: 'images/fade-icon.png',
+        height: '50px',
+        width: '50px'
+    });
+
+    // Create the details span
+    const detailsSpan = $('<span>').addClass('details');
+
+    // Create the top row div
+    const topRowDiv = $('<div>').addClass('top-row');
+
+    // Create the title span
+    const titleSpan = $('<span>').addClass('title').text('This is a title.');
+
+    // Create the post metadata div
+    const postMetadataDiv = $('<div>').addClass('post-metadata');
+
+    // Create the post tag span
+    const postTagSpan = $('<span>').addClass('post-tag');
+
+    // Create the tag image
+    const tagImg = $('<img>').attr({
+        src: 'images/fade-icon.png',
+        height: '15px',
+        width: '15px'
+    });
+
+    // Append the tag image and text to the post tag span
+    postTagSpan.append(tagImg, 'General Discussion');
+
+    // Create the comment count span
+    const commentCntSpan = $('<span>').addClass('comment-cnt');
+
+    // Create the comment count image
+    const commentCntImg = $('<img>').attr({
+        src: 'images/fade-icon.png',
+        height: '15px',
+        width: '15px'
+    });
+
+    // Append the comment count image and text to the comment count span
+    commentCntSpan.append(commentCntImg, '50');
+
+    // Append the post tag and comment count spans to the post metadata div
+    postMetadataDiv.append(postTagSpan, commentCntSpan);
+
+    // Append the title and post metadata div to the top row div
+    topRowDiv.append(titleSpan, postMetadataDiv);
+
+    // Create the status div
+    const statusDiv = $('<div>').addClass('status').html('<b>aeririyel</b> started 2 hours ago');
+
+    // Create the description div
+    const descriptionDiv = $('<div>').addClass('description').text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...');
+
+    // Append the profile picture, top row div, status div, and description div to the details span
+    detailsSpan.append(topRowDiv, statusDiv);
+
+    // Append to post-content-top span
+    postContentTopSpan.append(pfpImg, detailsSpan);
+
+    postContentSpan.append(postContentTopSpan, descriptionDiv);
+
+    // Append the details span to the main container div
+    postItemDiv.append(postVotesSpan, postContentSpan);
+
+    // Append the main container div to the desired parent element in the document
+    $('#posts-container').append(postItemDiv); // Replace "parentElement" with the actual ID or selector of the parent element
 
     // Create elements/tags
 
