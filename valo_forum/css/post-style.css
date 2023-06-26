@@ -64,6 +64,17 @@ body {
     border-radius:5px;
     width: 900px;
 }
+.likes-container {
+    margin-right: 10px;
+}
+.likes-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: inline-block; */
+} .upvote-bttn {
+    margin-bottom: 12px;
+} 
 .pfp {
     /* margin: 100px; */
     height: 100px;
