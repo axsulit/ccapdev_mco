@@ -29,6 +29,14 @@ a {
     color: #FF4654;
 }
 
+/* Remove bullets */
+ul {
+    list-style-type: none; 
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+
 /*LOGGED IN - profile*/
 .nav-pfp {
     border-radius: 100%;
@@ -56,15 +64,7 @@ a {
 }
 
 
-/* Remove bullets */
-ul {
-    list-style-type: none;
-    padding: 0;
-    /* Remove padding */
-    margin: 0;
-    /* Remove margins */
-}
-
+/* HEADER */
 .header {
     position: sticky;
     height: 55px;
@@ -77,39 +77,23 @@ ul {
 .nav {
     max-width: 100%;
     width: 100%;
-}
-
-nav,
-.nav-menu {
+} nav, .nav-menu{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    float: left;
-}
-
-nav,
-.nav-menu-right {
+    float:left;
+} nav, .nav-menu-right{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    float: right;
-}
-
-.nav-logo {
+    float: right; 
+}.nav-logo {
     font-size: 25px;
-}
-
-.nav-logo,
-.nav-link,
-.button {
+} .nav-logo, .nav-link, .button {
     color: #fff;
-}
-
-.nav-right {
+} .nav-right {
     float: right;
-}
-
-.logo {
+} .logo {
     height: 40px;
 
 }
@@ -123,36 +107,22 @@ nav,
 .nav {
     max-width: 100%;
     width: 100%;
-}
-
-nav,
-.nav-menu {
+} nav, .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    float: left;
-}
-
-nav,
-.nav-menu-right {
+    float:left;
+} nav, .nav-menu-right{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    float: right;
+    float: right; 
     height: 100%;
-}
-
-.nav-logo {
+}.nav-logo {
     font-size: 25px;
-}
-
-.nav-logo,
-.nav-link,
-.button {
+} .nav-logo, .nav-link, .button {
     color: #fff;
-}
-
-.logo {
+} .logo {
     height: 40px;
 }
 
@@ -168,9 +138,7 @@ nav,
     border: 0;
     background: transparent;
     cursor: pointer;
-}
-
-.button:active {
+} .button:active {
     transform: scale(0.98);
 }
 
@@ -183,17 +151,11 @@ nav,
     border-radius: 5px;
     align-items: center;
     background: #e53e4b;
-}
-
-#search:focus-within {
+} #search:focus-within {
     background: #e12836;
-}
-
-#search:focus-within input {
+} #search:focus-within input {
     width: 300px;
-}
-
-#search-btn {
+} #search-btn {
     width: 0;
     outline: none;
     border: none;
@@ -201,15 +163,11 @@ nav,
     color: white;
     margin-right: 3px;
     font-size: 15px;
-}
-
-#search-input::placeholder {
+} #search-input::placeholder {
     font-family: Montserrat, sans-serif;
     color: white;
     font-size: 12px;
-}
-
-#search input {
+} #search input {
     font-family: Montserrat, sans-serif;
     width: 150px;
     outline: none;
@@ -220,14 +178,191 @@ nav,
     font-size: 12px;
     padding-left: 17px;
     color: white;
-}
-
-#search a .fas {
+} #search a .fas {
     color: #b5be85;
     font-size: 18px;
 }
 
+/* form */
+.form-container{
+    position: absolute;
+    max-width: 320px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #232323;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease-out;
+    
+} .form-container a {
+    color:#FF4654;
+    font-size: 12px;
+} .form-container a:hover {
+    text-decoration: underline;
+} .form-container h2 {
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+} .form-container i {
+    float: right;
+    color: #fff;
+    font-style: normal;
+}
 
+/*LOGGED IN - profile*/
+.nav-pfp {
+    border-radius:100%;
+    height:30px;
+    width:30px;
+} .nav-username {
+    color: #fff;
+    font-size: 12px;
+} .profile {
+    cursor: pointer;
+    align-items: center;
+    height: 34px; /* to match search height */
+    border-radius: 5px;
+} .profile-pic {
+    height: 34px;
+} .username {
+    padding-left: 5px;
+}
+
+/* LOGGED IN - profile dropdown */
+.nav-dropbtn {
+    padding-left: 5px;
+    padding-top: 0px;
+    margin: 0;
+} .dropdown-content{
+    display: none;
+    position:absolute;
+    background-color:#1a1a1a;
+    margin-left: 5px;
+    width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+} .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+} .dropdown-content a:hover {
+    background-color: #ddd;
+} .nav-dropdown:hover .dropdown-content {
+    display: block;
+} .nav-dropdown:hover .nav-menu-dropdown {
+    border-radius: 5px;
+    background-color: #e53e4b;
+} .nav-menu-dropdown{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin-right:80px;
+    height: 34px;
+    width:120px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+/* form close animation */
+.home.show .form-container{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+} .home::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+} .home.show::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* sign up form */
+.signup-form {
+    display: none;
+} .form-container.active .signup-form{
+    display: block;
+} .form-container.active .login-form{
+    display: none;
+} .form-close {
+    cursor: pointer;
+}
+
+/* form input box */
+.input-box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    background-color: #1C252E;
+} .input-box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 3px solid #aaaa;
+    transition: all 0.2s ease;
+} .input-box input:focus {
+    border-color: #FF4654;
+} 
+
+/* remember me/forgot password */
+.option-field {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} .checkbox {
+    display: flex;
+    column-gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+} .checkbox label {
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+} .checkbox input {
+    accent-color: #FF4654;
+}
+
+/* login button */
+.form-container .button {
+    background-color: #FF4654;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+} .login-signup {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+    color: #fff;
+}
+
+#sign-error-msg{
+    color: #fff;
+}
+#login-error-msg{
+    color: #fff;
+}
+
+.hidden{
+    display:none;
+}
 
 .main {
     margin: 50px 0 0 0;

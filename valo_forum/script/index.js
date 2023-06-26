@@ -44,6 +44,31 @@ let lft = new Tag("LFT", "fa-solid fa-user-group");
 let technicalIssues = new Tag("Technical Issues", "fa-solid fa-wrench");
 let offTopic = new Tag("Off Topic", "Off Topic");
 
+//opens up pop-up
+const formOpenBtn = document.querySelector("#form-open"),
+home = document.querySelector(".home"),
+
+//comtains form content for login or signup
+formContainer = document.querySelector(".form-container");
+
+//closes form
+formCloseBtn = document.querySelector(".form-close");
+
+//buttons for transferring between signup and login
+signUpBtn = document.querySelector("#signup");
+loginBtn = document.querySelector("#login");
+
+//buttons for submission of username and password in login/ sign-up
+submitSignBtn = document.querySelector("#sign-submit");
+submitLogBtn=document.querySelector("#log-submit");
+
+//retrieves log out button
+logoutBtn=document.querySelector(".logout");
+//retrieves username + pfp in navbar
+accountBtn=document.querySelector(".user-profile");
+
+//retrieves the content in search bar
+searchInput=document.querySelector("#search-input");
 
 $(document).ready(function () {
 
@@ -60,8 +85,197 @@ $(document).ready(function () {
     //  });
 });
 
+/*** SAMPLE EXISTING USERS ***/
+var reg_users={
+    anne_s:"sulit123",
+    bella_t:"torio123",
+    zhoe_g:"gon123",
+    mar_v:"villa123",
+    jack_e:"eli123",
+    andre_a:"aqui123",
+    bien_m:"mir123",
+    dom_b:"bac123",
+    vinnie_i:"ino123",
+    luis_r:"ran123",
 
-/***POPUP FUNCTIONS ***/
+};
+
+/*** LOG IN FUNCTION ***/
+submitLogBtn.addEventListener("click",async(e)=>{
+    e.preventDefault();
+
+    //retrieves username
+    let login_un=document.querySelector("#login-username").value;
+    //retrieves password
+    let login_pw=document.querySelector("#login-pw").value;
+    //retrieves username in nav bar
+    let nav_un=document.querySelector(".nav-username");
+    
+
+    //retrieves div for displaying error message
+    let errormsg=document.getElementById("login-error-msg");
+
+    if(reg_users.hasOwnProperty(login_un)){
+        //console.log("username exists. valid log in");
+        if(reg_users[login_un]==login_pw){
+            errormsg.textContent="";
+            //hides log in page
+            home.classList.remove("show");
+            accountBtn.classList.remove("hidden");
+            formOpenBtn.classList.add("hidden");
+
+            //displays the user's username in navbar
+            nav_un.textContent=login_un;
+        }
+        else{
+            errormsg.textContent="The password you've entered is incorrect.";
+        }
+    }
+    else{
+        errormsg.textContent="Username does not exist";
+    }
+});
+
+/*** LOG OUT FUNCTION ***/
+logoutBtn.addEventListener("click",async(e)=>{
+    console.log("working");
+    accountBtn.classList.add("hidden");
+    formOpenBtn.classList.remove("hidden");
+
+    //retrieves username in nav bar
+    let nav_un=document.querySelector(".nav-username");
+    nav_un.textContent="";
+
+    //clears form
+    let forms = document.querySelectorAll(".form-log-sign");
+    forms.forEach((form) => form.reset());
+});
+
+
+/*** CREATE ACCOUNT FUNCTION ***/
+submitSignBtn.addEventListener("click", async(e)=>{
+    e.preventDefault();
+
+    //retrieves username
+    let username=document.querySelector("#username").value;
+    console.log(`${username}`);
+
+    //retrieves password and confirmation password
+    let pw=document.querySelector(".pw").value;
+    let confirm_pw=document.querySelector(".confirm-pw").value;
+
+    //retrieves div for displaying error message
+    let errormsg=document.getElementById("sign-error-msg");
+
+    //retrieves username in nav bar
+    let nav_un=document.querySelector(".nav-username");
+    
+
+    if(reg_users.hasOwnProperty(username)){
+        errormsg.textContent="Username is already taken";
+    }
+    else{
+        errormsg.textContent="";
+        //Sets username to be longer than 2 characters
+        if(username.length<3){
+            errormsg.textContent="Username should be longer than 2 characters";
+        }
+        else{
+            //Sets password to be longer than 2 characters
+            if(pw.length<3){
+                errormsg.textContent="Password should be longer than 2 characters";
+            }
+            else{
+                //Confirms the input password is the same as the confirmation password
+                if(pw==confirm_pw){ 
+                    reg_users[username]=pw;
+                    home.classList.remove("show");
+                    accountBtn.classList.remove("hidden");
+                    formOpenBtn.classList.add("hidden");
+                    nav_un.textContent=username;
+                    console.log(reg_users);
+                }
+                else{
+                    errormsg.textContent="Passwords do not match.";
+                }
+            }
+            
+        }  
+    } 
+});
+
+/*** SEARCH FUNCTION ***/
+searchInput.addEventListener("input",e=>{
+    //retrieves input in search bar
+    const value=e.target.value.toLowerCase();
+    //retrieves all post
+    const postsElements=document.querySelectorAll(".post-item");
+    //iterates through each post
+    postsElements.forEach(post=>{
+        //retrieve title in this post
+        const titleElement=post.querySelector(".title").textContent;
+        //retrieve description in this post
+        const descriptionElement=post.querySelector(".description").textContent;
+
+        //checks if title or description includes searched value
+        const isVisible=titleElement.toLowerCase().includes(value)||descriptionElement.toLowerCase().includes(value);
+        post.style.display = isVisible ? "flex" : "none";
+        
+    });
+
+
+});
+
+/*** LOG IN AND SIGN UP FUNCTIONS ***/
+handleLoginSignUp();
+function handleLoginSignUp() {
+    let signup = false;
+    // opens login form
+    formOpenBtn.addEventListener("click", () => {
+        home.classList.add("show");
+        formContainer.classList.remove("active");
+        signup=false;
+        closeLoginSignUp(signup);
+    });
+
+    // switches to signup form
+    signUpBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        formContainer.classList.add("active");
+        signup=true;
+        // DEBUG: console.log(signup);
+        closeLoginSignUp(signup);
+    });
+    //switches to signup form
+    loginBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        formContainer.classList.remove("active");
+        signup=false;
+        // DEBUG: console.log(signup);
+        closeLoginSignUp(signup);
+    });
+};
+
+
+function closeLoginSignUp(signup) {
+    // DEBUG: console.log("inside close: " + signup);
+    if (signup == true) {
+        formCloseBtn.addEventListener("click", () => {
+            home.classList.remove("show");
+            formContainer.classList.add("active");
+            // DEBUG: console.log(signup);
+        });
+    } else {
+        formCloseBtn.addEventListener("click", () => {
+            home.classList.remove("show");
+            formContainer.classList.remove("active");
+            // DEBUG: console.log(signup);
+        });
+    }
+}
+
+
+/*** POPUP FUNCTIONS ***/
 
 function showPopup() {
     var popupContainer = document.getElementById("popup-container");

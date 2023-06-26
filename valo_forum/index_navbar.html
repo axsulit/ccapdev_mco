@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>SpikeZone</title>
-        <link rel="stylesheet" href="css/profile-style.css">
-        <!-- <script src="./script/index.js" defer></script> -->
-    </head>
-    <body>
-        <!-- <div class="navbar">
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-        </div> -->
-        <!-- HEADER -->
+<html>
+
+<head>
+    <title>SpikeZone</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER -->
     <header class="header">
         <!-- navigation bar -->
         <nav class="nav">
@@ -51,7 +45,6 @@
             </div>
         </nav>
     </header>
-    <!-- FORMS -->
     <div class="home">
         <!-- forms -->
         <div class="form-container">
@@ -114,33 +107,129 @@
                 </form>
             </div>
         </div>
-    </div>
-        <div class="top-pane">
-            <img class="pfp" src="images/fade-icon.png">
-            <span class="username">Fade</span>
-        </div>
-        <span class="left-pane">
-            <ul class="profile-tags">
+
+        <!-- main -->
+        <span id="left-pane">
+            <!--add icons-->
+            <ul class="tags">
+                <button class="start-discussion-btn">Start Discussion</button>
                 <li><a href="#">
                         <div class="tag">
                             <img class="icon" src="images/fade-icon.png" height=20px width=20px>
-                            Posts
+                            General Discussion
                         </div>
                     </a></li>
                 <li><a href="#">
                         <div class="tag">
                              <img class="icon" src="images/fade-icon.png" height=20px width=20px>
-                            Replies
+                            LFT
                         </div>
                     </a></li>
                 <li><a href="#">
                         <div class="tag">
                              <img class="icon" src="images/fade-icon.png" height=20px width=20px>
-                            Edit Profile
+                            Technical Issues
+                        </div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="tag">
+                             <img class="icon" src="images/fade-icon.png" height=20px width=20px>
+                            Off Topic
                         </div>
                     </a></li>
             </ul>
+
         </span>
-        <div class="main">post goes here</div>
-    </body>
+
+        <span id="right-pane">
+            <!--redo dropdown-->
+            <div class="filters">
+                <div class="dropdown">
+                    <button class="dropbtn">Top</button>
+                    <div class="dropdown-content">
+                        <a href="#">Latest</a>
+                        <a href="#">Top</a>
+                        <a href="#">Newest</a>
+                        <a href="#">Oldest</a>
+                    </div>
+                </div>
+
+                <!--refresh button-->
+            </div>
+
+
+
+            <div class="posts">
+                <div class="post-item">
+                    <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
+                    <span class="details">
+                        <div class="top-row">
+                            <span class="title">This is a title.</span>
+                            <div class="post-metadata">
+                                <span class="post-tag">
+                                    <img src="images/fade-icon.png" height=15px width=15px>
+                                    General Discussion
+                                </span>
+                                <span class="comment-cnt">
+                                    <img src="images/fade-icon.png" height=15px width=15px>
+                                    50</span>
+                            </div>
+
+                        </div>
+
+                        <div class="status"><b>aeririyel</b> started 2 hours ago</div>
+                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
+                        
+                    </span>
+                </div>
+                <!-- NOTE: used for sample for searching-->
+                <div class="post-item">
+                   
+                        <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
+                        <span class="details">
+                            <div class="top-row">
+                                <span class="title">VCT Tokyo.</span>
+                                <div class="post-metadata">
+                                    <span class="post-tag">
+                                        <img src="images/fade-icon.png" height=15px width=15px>
+                                        General Discussion
+                                    </span>
+                                    <span class="comment-cnt">
+                                        <img src="images/fade-icon.png" height=15px width=15px>
+                                        50</span>
+                                </div>
+
+                            </div>
+
+                            <div class="status"><b>aeririyel</b> started 2 hours ago</div>
+                            <div class="description">Adobo Buff #tswin</div>
+                            
+                        </span>
+                    
+                    
+                </div>
+                <div class="post-item">
+                   
+                    <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
+                    <span class="details">
+                        <div class="top-row">
+                            <span class="title">LF Team</span>
+                            <div class="post-metadata">
+                                <span class="post-tag">
+                                    <img src="images/fade-icon.png" height=15px width=15px>
+                                    General Discussion
+                                </span>
+                                <span class="comment-cnt">
+                                    <img src="images/fade-icon.png" height=15px width=15px>
+                                    50</span>
+                            </div>
+                        </div>
+                        <div class="status"><b>aeririyel</b> started 2 hours ago</div>
+                        <div class="description">I want to go pro</div>
+                    </span>
+                </div>
+            </div>
+        </span>
+    </div>
+</body>
 </html>
