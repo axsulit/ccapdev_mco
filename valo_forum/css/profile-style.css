@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('fonts/Gilroy/Gilroy-ExtraBold.otf') format('opentype'),
+        url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
+}
+
+:root {
+    --b-black: rgb(28, 37, 46);
+    --b-red: rgb(255, 70, 84);
+    --b-grey: rgb(76, 76, 76);
+    --b-white: rgb(249, 249, 249);
+    --b-green: rgb(76, 217, 100);
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    background-color: var(--b-black);
+    margin: 0;
+}
+
+.navbar {
+    padding-left: 0;
+    overflow: hidden;
+    background-color: var(--b-red);
+    position: fixed;
+    top: 0;
+    width: 100%;
+} .navbar a {
+    float: left;
+    display: block;
+    color: var(--b-black);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+} .navbar a:hover {
+    background: var(--b-black);
+    color: var(--b-red);
+}
+
+.top-pane {
+    padding: 3%;
+    padding-top: 6%;
+    padding-left: 10%;
+    background-color: var(--b-grey);
+
+    display: flex;
+    align-items: center;
+}
+.pfp {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-right: 25px;
+    outline: solid var(--b-red);
+} .username {
+    font-size: larger;
+    font-weight: bolder;
+    color: rgb(226, 226, 207);
+} .left-pane {
+    float: left;
+  }
+.left-pane a {
+    text-decoration: none;
+    color: var(--b-white);
+}
+
+.left-pane a:hover {
+    color: var(--b-red);
+}
+ .profile-tags {
+    /* outline: solid white; */
+    padding-left: 10%;
+    position: absolute;
+    /* top: 0;
+    right: 0; */
+    margin-right: 25px;
+    list-style-type: none;
+
+} .tag {
+    /*    background-color: brown;*/
+    margin: 10px 0 10px 0px;
+    padding: 10px 10px;
+    width: 300px;
+
+}
+
+.main {
+    /* outline: solid white; */
+    flex: 1;
+    margin: 20px;
+    float: right;
+    width: 67%;
+    color: rgb(226, 226, 207);
+    padding-top: 20px;
+}
