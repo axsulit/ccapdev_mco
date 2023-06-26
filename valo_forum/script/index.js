@@ -41,3 +41,4 @@ let messages = [];
 let postCtr = 0;
 
 let currentUser = new User("Fade");
+
