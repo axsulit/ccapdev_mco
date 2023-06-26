@@ -114,8 +114,19 @@
                 <label for="post-caption"></label>
                 <textarea id="post-caption" rows="12" placeholder="Write a Post..." required></textarea>
 
-                <input type="submit" value="Plant the Spike">
+                <input id="submit-bttn" type="submit" value="Plant the Spike">
+                
+                <div class="dropdown">
+                    <button class="post-dropbtn">Choose Tags</button>
+                    <div class="dropdown-content">
+                        <a href="#">General Discussion</a>
+                        <a href="#">LFT</a>
+                        <a href="#">Off Topic</a>
+                        <a href="#">Technical Issues</a>
+                    </div>
+                </div>
             </form>
+
         </div>
 
         <span id="right-pane">
@@ -155,11 +166,11 @@
                                     <span class="edited">Edited</span>
                                     <span class="post-metadata">
                                         <span class="post-tag">
-                                            <img src="images/fade-icon.png" height=13px width=13px>
+                                            <img src="images/default.jpg" height=13px width=13px>
                                             General Discussion
                                         </span>
                                         <span class="comment-cnt">
-                                            <img src="images/fade-icon.png" height=15px width=15px>
+                                            <i class="fa-solid fa-comment" style="color: #ff4654;"></i>
                                             50</span>
                                     </span>
                                 </div>
