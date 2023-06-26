@@ -46,10 +46,10 @@ let offTopic = new Tag("Off Topic", "Off Topic");
 
 //opens up pop-up
 const formOpenBtn = document.querySelector("#form-open"),
-home = document.querySelector(".home"),
+    home = document.querySelector(".home"),
 
-//comtains form content for login or signup
-formContainer = document.querySelector(".form-container");
+    //comtains form content for login or signup
+    formContainer = document.querySelector(".form-container");
 
 //closes form
 formCloseBtn = document.querySelector(".form-close");
@@ -60,91 +60,103 @@ loginBtn = document.querySelector("#login");
 
 //buttons for submission of username and password in login/ sign-up
 submitSignBtn = document.querySelector("#sign-submit");
-submitLogBtn=document.querySelector("#log-submit");
+submitLogBtn = document.querySelector("#log-submit");
 
 //retrieves log out button
-logoutBtn=document.querySelector(".logout");
+logoutBtn = document.querySelector(".logout");
 //retrieves username + pfp in navbar
-accountBtn=document.querySelector(".user-profile");
+accountBtn = document.querySelector(".user-profile");
 
 //retrieves the content in search bar
-searchInput=document.querySelector("#search-input");
+searchInput = document.querySelector("#search-input");
 
 $(document).ready(function () {
 
-    //  // Load the JSON file and store the posts in the array
-    //  $.getJSON('posts.json', function(data) {
-    //    // Iterate over each post in the JSON data
-    //    $.each(data.posts, function(index, post) {
-    //      // Add the post to the array
-    //      posts.push(post);
-    //    });
-    //
-    //    // Do something with the postsArray
-    //    refreshPostDisplay(posts);
-    //  });
+    // Load the JSON file and store the posts in the array
+    $.getJSON('posts.json', function (data) {
+        
+        data.posts.sort(function(a, b) {
+    var diffA = a.upvotes - a.downvotes;
+    var diffB = b.upvotes - b.downvotes;
+    return diffB - diffA;
+  });
+        
+        // Iterate over each post in the JSON data
+        $.each(data.posts, function (index, post) {
+            // Add the post to the array
+            posts.push(post);
+        });
+        
+        
+
+        // Do something with the postsArray
+        refreshPostDisplay(posts);
+    });
 });
 
-/*** SAMPLE EXISTING USERS ***/
-var reg_users={
-    anne_s:"sulit123",
-    bella_t:"torio123",
-    zhoe_g:"gon123",
-    mar_v:"villa123",
-    jack_e:"eli123",
-    andre_a:"aqui123",
-    bien_m:"mir123",
-    dom_b:"bac123",
-    vinnie_i:"ino123",
-    luis_r:"ran123",
+//$(document).ready(function() {
+//  $('.post-item').on('click', function() {
+//    window.location.href = 'post.html';
+//  });
+//});
 
+/*** SAMPLE EXISTING USERS ***/
+var reg_users = {
+    anne_s: "sulit123",
+    bella_t: "torio123",
+    zhoe_g: "gon123",
+    mar_v: "villa123",
+    jack_e: "eli123",
+    andre_a: "aqui123",
+    bien_m: "mir123",
+    dom_b: "bac123",
+    vinnie_i: "ino123",
+    luis_r: "ran123",
 };
 
 /*** LOG IN FUNCTION ***/
-submitLogBtn.addEventListener("click",async(e)=>{
+submitLogBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
     //retrieves username
-    let login_un=document.querySelector("#login-username").value;
+    let login_un = document.querySelector("#login-username").value;
     //retrieves password
-    let login_pw=document.querySelector("#login-pw").value;
+    let login_pw = document.querySelector("#login-pw").value;
     //retrieves username in nav bar
-    let nav_un=document.querySelector(".nav-username");
-    
+    let nav_un = document.querySelector(".nav-username");
+
 
     //retrieves div for displaying error message
-    let errormsg=document.getElementById("login-error-msg");
+    let errormsg = document.getElementById("login-error-msg");
 
-    if(reg_users.hasOwnProperty(login_un)){
+    if (reg_users.hasOwnProperty(login_un)) {
         //console.log("username exists. valid log in");
-        if(reg_users[login_un]==login_pw){
-            errormsg.textContent="";
+        if (reg_users[login_un] == login_pw) {
+            errormsg.textContent = "";
             //hides log in page
             home.classList.remove("show");
             accountBtn.classList.remove("hidden");
             formOpenBtn.classList.add("hidden");
 
             //displays the user's username in navbar
-            nav_un.textContent=login_un;
+            nav_un.textContent = login_un;
+        } else {
+            errormsg.textContent = "The password you've entered is incorrect.";
         }
-        else{
-            errormsg.textContent="The password you've entered is incorrect.";
-        }
-    }
-    else{
-        errormsg.textContent="Username does not exist";
+    } else {
+        errormsg.textContent = "Username does not exist";
     }
 });
 
 /*** LOG OUT FUNCTION ***/
-logoutBtn.addEventListener("click",async(e)=>{
+logoutBtn.addEventListener("click", async (e) => {
     console.log("working");
     accountBtn.classList.add("hidden");
     formOpenBtn.classList.remove("hidden");
 
     //retrieves username in nav bar
-    let nav_un=document.querySelector(".nav-username");
-    nav_un.textContent="";
+    let nav_un = document.querySelector(".nav-username");
+    nav_un.textContent = "";
 
     //clears form
     let forms = document.querySelectorAll(".form-log-sign");
@@ -153,74 +165,70 @@ logoutBtn.addEventListener("click",async(e)=>{
 
 
 /*** CREATE ACCOUNT FUNCTION ***/
-submitSignBtn.addEventListener("click", async(e)=>{
+submitSignBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
     //retrieves username
-    let username=document.querySelector("#username").value;
+    let username = document.querySelector("#username").value;
     console.log(`${username}`);
 
     //retrieves password and confirmation password
-    let pw=document.querySelector(".pw").value;
-    let confirm_pw=document.querySelector(".confirm-pw").value;
+    let pw = document.querySelector(".pw").value;
+    let confirm_pw = document.querySelector(".confirm-pw").value;
 
     //retrieves div for displaying error message
-    let errormsg=document.getElementById("sign-error-msg");
+    let errormsg = document.getElementById("sign-error-msg");
 
     //retrieves username in nav bar
-    let nav_un=document.querySelector(".nav-username");
-    
+    let nav_un = document.querySelector(".nav-username");
 
-    if(reg_users.hasOwnProperty(username)){
-        errormsg.textContent="Username is already taken";
-    }
-    else{
-        errormsg.textContent="";
+
+    if (reg_users.hasOwnProperty(username)) {
+        errormsg.textContent = "Username is already taken";
+    } else {
+        errormsg.textContent = "";
         //Sets username to be longer than 2 characters
-        if(username.length<3){
-            errormsg.textContent="Username should be longer than 2 characters";
-        }
-        else{
+        if (username.length < 3) {
+            errormsg.textContent = "Username should be longer than 2 characters";
+        } else {
             //Sets password to be longer than 2 characters
-            if(pw.length<3){
-                errormsg.textContent="Password should be longer than 2 characters";
-            }
-            else{
+            if (pw.length < 3) {
+                errormsg.textContent = "Password should be longer than 2 characters";
+            } else {
                 //Confirms the input password is the same as the confirmation password
-                if(pw==confirm_pw){ 
-                    reg_users[username]=pw;
+                if (pw == confirm_pw) {
+                    reg_users[username] = pw;
                     home.classList.remove("show");
                     accountBtn.classList.remove("hidden");
                     formOpenBtn.classList.add("hidden");
-                    nav_un.textContent=username;
+                    nav_un.textContent = username;
                     console.log(reg_users);
-                }
-                else{
-                    errormsg.textContent="Passwords do not match.";
+                } else {
+                    errormsg.textContent = "Passwords do not match.";
                 }
             }
-            
-        }  
-    } 
+
+        }
+    }
 });
 
 /*** SEARCH FUNCTION ***/
-searchInput.addEventListener("input",e=>{
+searchInput.addEventListener("input", e => {
     //retrieves input in search bar
-    const value=e.target.value.toLowerCase();
+    const value = e.target.value.toLowerCase();
     //retrieves all post
-    const postsElements=document.querySelectorAll(".post-item");
+    const postsElements = document.querySelectorAll(".post-item");
     //iterates through each post
-    postsElements.forEach(post=>{
+    postsElements.forEach(post => {
         //retrieve title in this post
-        const titleElement=post.querySelector(".title").textContent;
+        const titleElement = post.querySelector(".title").textContent;
         //retrieve description in this post
-        const descriptionElement=post.querySelector(".description").textContent;
+        const descriptionElement = post.querySelector(".description").textContent;
 
         //checks if title or description includes searched value
-        const isVisible=titleElement.toLowerCase().includes(value)||descriptionElement.toLowerCase().includes(value);
+        const isVisible = titleElement.toLowerCase().includes(value) || descriptionElement.toLowerCase().includes(value);
         post.style.display = isVisible ? "flex" : "none";
-        
+
     });
 
 
@@ -228,13 +236,14 @@ searchInput.addEventListener("input",e=>{
 
 /*** LOG IN AND SIGN UP FUNCTIONS ***/
 handleLoginSignUp();
+
 function handleLoginSignUp() {
     let signup = false;
     // opens login form
     formOpenBtn.addEventListener("click", () => {
         home.classList.add("show");
         formContainer.classList.remove("active");
-        signup=false;
+        signup = false;
         closeLoginSignUp(signup);
     });
 
@@ -242,7 +251,7 @@ function handleLoginSignUp() {
     signUpBtn.addEventListener("click", (e) => {
         e.preventDefault();
         formContainer.classList.add("active");
-        signup=true;
+        signup = true;
         // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
     });
@@ -250,7 +259,7 @@ function handleLoginSignUp() {
     loginBtn.addEventListener("click", (e) => {
         e.preventDefault();
         formContainer.classList.remove("active");
-        signup=false;
+        signup = false;
         // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
     });
@@ -384,112 +393,60 @@ function displayPosts(newPosts) {
 }
 
 function displayPost(newPost) {
-    // Create the main container div
-    const postItemDiv = $('<div>').addClass('post-item');
 
-    // POst votes span
+    const postItemDiv = $('<div>').addClass('post-item').attr('href', 'post.html');
+
     const postVotesSpan = $('<span>').addClass('post-votes');
-
-    // Create the vote up button
     const voteUpButton = $('<button>').addClass('votes').click(upvote);
-
-    // Create the vote up icon
     const voteUpIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
-
-    // Create the vote count paragraph
     const voteCountP = $('<p>').addClass('vote-cnt').text(newPost.upvotes - newPost.downvotes);
-
-    // Create the vote down button
     const voteDownButton = $('<button>').addClass('votes').click(downvote);
-
-    // Create the vote down icon
     const voteDownIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
-
-    // Create the vote buttons container
     postVotesSpan.append(voteUpButton.append(voteUpIcon), $('<br>'), voteCountP, voteDownButton.append(voteDownIcon))
 
-    // Create the post content span
     const postContentSpan = $('<span>').addClass('post-content');
-
-    // Create the post content top span
     const postContentTopSpan = $('<span>').addClass('post-content-top');
 
-    // Create the profile picture image
     const pfpImg = $('<img>').addClass('pfp').attr({
         src: newPost.picture,
         height: '50px',
         width: '50px'
     });
 
-    // Create the details span
     const detailsSpan = $('<span>').addClass('details');
-
-    // Create the top row div
     const topRowDiv = $('<div>').addClass('top-row');
-
-    // Create the title span
     const titleSpan = $('<span>').addClass('title').text(newPost.title);
-
-    // Create the post metadata div
+        
     const postMetadataDiv = $('<div>').addClass('post-metadata');
-
-    // Create the post tag span
     const postTagSpan = $('<span>').addClass('post-tag');
 
-    // Create the tag image
     const tagImg = $('<img>').attr({
-        src: 'images/fade-icon.png',
+        src: 'images/default-1.png',
         height: '15px',
         width: '15px'
     });
 
-    // Append the tag image and text to the post tag span
     postTagSpan.append(tagImg, newPost.tag);
 
-    // Create the comment count span
     const commentCntSpan = $('<span>').addClass('comment-cnt');
-
-    // Create the comment count image
-    const commentCntImg = $('<img>').attr({
-        src: 'images/fade-icon.png',
-        height: '15px',
-        width: '15px'
-    });
-
-    // Append the comment count image and text to the comment count span
+    const commentCntImg = $('<i>').addClass('fa-solid fa-comment').attr('id', 'comment-icon').css('color', 'lightgray');
+    
     commentCntSpan.append(commentCntImg, String(newPost.comments.length));
-
-    // Append the post tag and comment count spans to the post metadata div
     postMetadataDiv.append(postTagSpan, commentCntSpan);
-
-    // Append the title and post metadata div to the top row div
     topRowDiv.append(titleSpan, postMetadataDiv);
 
-    // Create the status span
     const statusSpan = $('<span>').addClass('status');
-
-    // Create the username span
     const usernameSpan = $('<span>').addClass('username').text(newPost.username);
-
-    // Create the post time span
     const postTimeSpan = $('<span>').addClass('post-time').text(" started this discussion on " + newPost.date);
 
-    // Append the username and post time spans to the status span
     statusSpan.append(usernameSpan, postTimeSpan);
-    
-    const descriptionDiv = $('<div>').addClass('description').text(newPost.content.substring(0, 130) + "...");
 
-    // Append the profile picture, top row div, status div, and description div to the details span
+    const descriptionDiv = $('<div>').addClass('description').text(newPost.content.substring(0, 120) + "...");
+
     detailsSpan.append(topRowDiv, statusSpan);
-
-    // Append to post-content-top span
     postContentTopSpan.append(pfpImg, detailsSpan);
-
     postContentSpan.append(postContentTopSpan, descriptionDiv);
-
-    // Append the details span to the main container div
     postItemDiv.append(postVotesSpan, postContentSpan);
 
-    // Append the main container div to the desired parent element in the document
     $('#posts-container').append(postItemDiv);
 }

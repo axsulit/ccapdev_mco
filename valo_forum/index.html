@@ -7,24 +7,12 @@
     <script src="https://kit.fontawesome.com/be26300aac.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./script/index.js" defer></script>
-    
-    <script>
-    
-    // Function to handle reading the JSON file
-    function readJSONFile() {
-      
-    }
 
-    // Call the function on webpage start
-    readJSONFile();
-    
-    </script>
-    
 </head>
 
 
 <body>
-    
+
     <!--
     <div class="navbar">
         <a href="#home">Home</a>
@@ -32,16 +20,16 @@
         <a href="#contact">Contact</a>
     </div>
 -->
-    
-     <!-- HEADER -->
+
+    <!-- HEADER -->
     <header class="header">
         <!-- navigation bar -->
         <nav class="nav">
             <ul class="nav-menu">
                 <li class="nav-menu-logo"><a href="index.html" class="nav-logo"><img src="images/logo.png" class="logo"></a></li>
-                <li ><a href="index.html" class="nav-logo">SpikeZone</a></li>
+                <li><a href="index.html" class="nav-logo">SpikeZone</a></li>
             </ul>
-            
+
             <div class="nav-right">
                 <ul class="nav-menu-right">
                     <li id="search">
@@ -57,7 +45,9 @@
                             <div class="nav-dropbtn">
                                 <ul class="nav-menu-dropdown">
                                     <li><img class="nav-pfp" src="images/fade-icon.png"></li>
-                                    <li><div class="nav-username"> hello</div></li>
+                                    <li>
+                                        <div class="nav-username"> hello</div>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="dropdown-content">
@@ -113,7 +103,7 @@
                         <input id="username" type="text" placeholder="Username" required>
                         <!-- <i class="uil uil-envelope-alt email"></i> -->
                     </div>
-            
+
                     <!-- input password -->
                     <div class="input-box">
                         <input class="pw" type="password" placeholder="Create password" required>
@@ -134,7 +124,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="main">
         <span id="left-pane">
             <!--add icons-->
@@ -180,7 +170,7 @@
                 <textarea id="post-caption" rows="12" placeholder="Write a Post..." required></textarea>
 
                 <input id="submit-bttn" type="submit" value="Plant the Spike">
-                
+
                 <div class="dropdown">
                     <button class="post-dropbtn">Choose Tags</button>
                     <div class="dropdown-content">
@@ -213,45 +203,49 @@
 
 
             <div id="posts-container">
-
+<a href="post.html">
                 <div class="post-item">
-                    <span class="post-votes">
+                    
+
+                        <span class="post-votes">
                             <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
                             <br>
                             <p class="vote-cnt">69</p>
                             <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
-                    </span>
-                    <span class="post-content">
+                        </span>
+                        <span class="post-content">
 
-                        <span class="post-content-top">
-                            <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
-                            <span class="details">
-                                <div class="top-row">
-                                    <span class="title">This is a title</span>
-                                    <span class="edited">Edited</span>
-                                    <span class="post-metadata">
-                                        <span class="post-tag">
-                                            <img src="images/default.jpg" height=13px width=13px>
-                                            General Discussion
+                            <span class="post-content-top">
+                                <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
+                                <span class="details">
+                                    <div class="top-row">
+                                        <span class="title">This is a title</span>
+                                        <span class="edited">Edited</span>
+                                        <span class="post-metadata">
+                                            <span class="post-tag">
+                                                <img src="images/default.jpg" height=13px width=13px>
+                                                General Discussion
+                                            </span>
+                                            <span class="comment-cnt">
+                                                <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
+                                                50</span>
                                         </span>
-                                        <span class="comment-cnt">
-                                            <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
-                                            50</span>
-                                    </span>
-                                </div>
+                                    </div>
 
-                                <span class="status">
-                                    <span class="username"> aeririyel</span>
-                                    <span class="post-time">started 2 hours ago</span>
+                                    <span class="status">
+                                        <span class="username"> aeririyel</span>
+                                        <span class="post-time">started 2 hours ago</span>
+                                    </span>
                                 </span>
                             </span>
+
+                            <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
                         </span>
 
-                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
-                    </span>
-
-
+                    
                 </div>
+    
+    </a>
 
             </div>
         </span>
