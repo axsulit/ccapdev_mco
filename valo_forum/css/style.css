@@ -441,6 +441,7 @@ ul {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    outline: dotted white;
 
     /* position: inherit;
     margin-left: 50%; */
@@ -671,6 +672,7 @@ ul {
     padding: 8px;
 }
 
+#comment-icon,
 #gendisc,
 #lft,
 #wrench,

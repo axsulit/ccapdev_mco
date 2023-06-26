@@ -369,7 +369,14 @@ ul {
     font-size: larger;
     font-weight: bolder;
     color: rgb(226, 226, 207);
-} .left-pane {
+} #description {
+    margin: 5px;
+    margin-top: 20px;
+    color: rgb(226, 226, 207);
+    font-style: italic;
+}
+
+.left-pane {
     float: left;
   }
 .left-pane a {
@@ -395,6 +402,13 @@ ul {
     padding: 10px 10px;
     width: 300px;
 
+} #gendisc, #lft, #wrench {
+    color: var(--b-red);
+    font-weight: bold;
+    border: none;
+    background: none;
+    outline: none;
+    margin-right: 5px;
 }
 
 .main {

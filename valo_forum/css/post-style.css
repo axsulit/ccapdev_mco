@@ -421,6 +421,15 @@ ul {
     color:aliceblue;
 }
 
+#comment-icon {
+    color: var(--b-red);
+    font-weight: bold;
+    border: none;
+    background: none;
+    outline: none;
+    margin-right: 5px;
+}
+
 .description {
     font-size:14px;
     padding-top:10px;
