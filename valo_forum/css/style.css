@@ -178,7 +178,7 @@ body {
 }
 
 .post-metadata {
-    margin-left:auto;
+    margin-left: auto;
     display: flex;
 }
 
@@ -188,12 +188,12 @@ body {
     font-size: 13px;
     border-radius: 5px;
     vertical-align: center;
- margin-right:10px;   
+    margin-right: 10px;
+    
 }
 
 .title {
     font-size: 21px;
-
 }
 
 .status {
