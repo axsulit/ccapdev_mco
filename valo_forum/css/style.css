@@ -4,6 +4,12 @@
         url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
 }
 
+/*
+* {
+    border: 1px solid 
+}
+*/
+
 :root {
     --b-black: rgb(28, 37, 46);
     --b-red: rgb(255, 70, 84);
@@ -160,21 +166,28 @@ body {
 
 .post-item {
     padding: 20px;
-    display: flex;
+    display:flex;
     margin: 5px 30px 5px 0;
     color: aliceblue;
     border-radius: 5px;
     width: 900px;
 }
 
+.post-content-top {
+    display: flex;
+}
+
 .pfp {
-    padding-right: 20px;
+    margin-right: 20px;
     border-radius: 50%;
+    
+    
 }
 
 .top-row {
     padding-bottom: 6px;
     display: flex;
+    width:100%;
 }
 
 .post-metadata {
@@ -189,17 +202,28 @@ body {
     border-radius: 5px;
     vertical-align: center;
     margin-right: 10px;
-    
+
 }
 
 .title {
     font-size: 21px;
 }
 
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .status {
     font-size: 14px;
     padding-bottom: 10px;
     color: lightgray;
+}
+
+.username {
+    font-weight: bold;
+    color: var(--b-white);
 }
 
 .status b {
@@ -269,4 +293,28 @@ body {
     top: 10px;
     right: 10px;
     position: absolute;
+}
+
+.votes {
+    background: none;
+    border: none;
+    font-size: 12px;
+	color: var(--b-white);
+	outline: none;
+}
+
+.vote-cnt {
+    font-size: 15px;
+    margin: 0px 3px;
+}
+
+.post-votes {
+    margin-right: 10px;
+}
+
+.edited {
+    color: lightgray;
+    font-style: italic;
+    font-size: 12px;
+    padding: 8px;
 }

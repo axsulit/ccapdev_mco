@@ -4,8 +4,10 @@
 <head>
     <title>SpikeZone</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <script src="https://kit.fontawesome.com/be26300aac.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./script/index.js"></script>
+    
 </head>
 
 <body>
@@ -80,31 +82,45 @@
 
 
 
-            <div class="posts">
+            <div id="posts-container">
 
                 <div class="post-item">
-                    <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
-                    <span class="details">
-                        <div class="top-row">
-                            <span class="title">This is a title.</span>
-                            <div class="post-metadata">
-                                <span class="post-tag">
-                                    <img src="images/fade-icon.png" height=15px width=15px>
-                                    General Discussion
+                    <span class="post-votes">
+                            <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
+                            <br>
+                            <p class="vote-cnt">69</p>
+                            <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
+                    </span>
+                    <span class="post-content">
+
+                        <span class="post-content-top">
+                            <img class="pfp" src="images/fade-icon.png" height=50px width=50px>
+                            <span class="details">
+                                <div class="top-row">
+                                    <span class="title">This is a title</span>
+                                    <span class="edited">Edited</span>
+                                    <span class="post-metadata">
+                                        <span class="post-tag">
+                                            <img src="images/fade-icon.png" height=15px width=15px>
+                                            General Discussion
+                                        </span>
+                                        <span class="comment-cnt">
+                                            <img src="images/fade-icon.png" height=15px width=15px>
+                                            50</span>
+                                    </span>
+                                </div>
+
+                                <span class="status">
+                                    <span class="username"> aeririyel</span>
+                                    <span class="post-time">started 2 hours ago</span>
                                 </span>
-                                <span class="comment-cnt">
-                                    <img src="images/fade-icon.png" height=15px width=15px>
-                                    50</span>
-                            </div>
-
-                        </div>
-
-                        <span class="status">
-                            <span class="username"> aeririyel</span>
-                            <span class="post-time">started 2 hours ago</span>
+                            </span>
                         </span>
+
                         <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
                     </span>
+
+
                 </div>
 
 
