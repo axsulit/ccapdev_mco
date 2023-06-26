@@ -39,6 +39,27 @@ let posts = [];
 let comments = [];
 let postCtr = 0;
 
+let generalDiscussion = new Tag("General Discussion", "fa-regular fa-comments");
+let lft = new Tag("LFT", "fa-solid fa-user-group");
+let technicalIssues = new Tag("Technical Issues", "fa-solid fa-wrench");
+let offTopic = new Tag("Off Topic", "Off Topic");
+
+
+$(document).ready(function () {
+
+    //  // Load the JSON file and store the posts in the array
+    //  $.getJSON('posts.json', function(data) {
+    //    // Iterate over each post in the JSON data
+    //    $.each(data.posts, function(index, post) {
+    //      // Add the post to the array
+    //      posts.push(post);
+    //    });
+    //
+    //    // Do something with the postsArray
+    //    refreshPostDisplay(posts);
+    //  });
+});
+
 
 /***POPUP FUNCTIONS ***/
 
@@ -67,7 +88,24 @@ function submitPost(event) {
     postCtr++;
     let currentUser = new User("Fade");
 
-    var item = new Post(postCtr, currentUser.username, currentUser.picture, "date", title, caption, "General Discussion");
+    // Get today's date
+    const today = new Date();
+
+    // Format the date into "Month Day, Year hour:minutes AM/PM" format
+    const options = {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: false
+    };
+    const formattedDate = today.toLocaleString('en-US', options);
+
+    console.log(formattedDate); // Output: May 29, 2023 10:30 AM
+
+
+    var item = new Post(postCtr, currentUser.username, currentUser.picture, formattedDate, title, caption, "General Discussion");
     posts.push(item);
 
     console.log(item);
@@ -224,9 +262,8 @@ function displayPost(newPost) {
 
     // Append the username and post time spans to the status span
     statusSpan.append(usernameSpan, postTimeSpan);
-
-    // Create the description div
-    const descriptionDiv = $('<div>').addClass('description').text(newPost.content);
+    
+    const descriptionDiv = $('<div>').addClass('description').text(newPost.content.substring(0, 130) + "...");
 
     // Append the profile picture, top row div, status div, and description div to the details span
     detailsSpan.append(topRowDiv, statusSpan);
