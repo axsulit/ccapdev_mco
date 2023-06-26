@@ -128,14 +128,11 @@ function displayPosts(newPosts) {
 }
 
 function displayPost(newPost) {
-
-
     // Create the main container div
     const postItemDiv = $('<div>').addClass('post-item');
 
     // POst votes span
     const postVotesSpan = $('<span>').addClass('post-votes');
-
     
     // Create the vote up button
     const voteUpButton = $('<button>').addClass('votes').click(upvote);
@@ -155,14 +152,11 @@ function displayPost(newPost) {
     // Create the vote buttons container
     postVotesSpan.append(voteUpButton.append(voteUpIcon), $('<br>'), voteCountP, voteDownButton.append(voteDownIcon))
 
-    
-
     // Create the post content span
     const postContentSpan = $('<span>').addClass('post-content');
 
     // Create the post content top span
     const postContentTopSpan = $('<span>').addClass('post-content-top');
-
 
     // Create the profile picture image
     const pfpImg = $('<img>').addClass('pfp').attr({
