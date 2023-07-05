@@ -74,20 +74,20 @@ $(document).ready(function () {
 
     // Load the JSON file and store the posts in the array
     $.getJSON('posts.json', function (data) {
-        
-        data.posts.sort(function(a, b) {
-    var diffA = a.upvotes - a.downvotes;
-    var diffB = b.upvotes - b.downvotes;
-    return diffB - diffA;
-  });
-        
+
+        data.posts.sort(function (a, b) {
+            var diffA = a.upvotes - a.downvotes;
+            var diffB = b.upvotes - b.downvotes;
+            return diffB - diffA;
+        });
+
         // Iterate over each post in the JSON data
         $.each(data.posts, function (index, post) {
             // Add the post to the array
             posts.push(post);
         });
-        
-        
+
+
 
         // Do something with the postsArray
         refreshPostDisplay(posts);
@@ -392,17 +392,58 @@ function displayPosts(newPosts) {
     }
 }
 
+function handleVote(buttons, newPost, type, voteCountP) {
+    return function () {
+        let status = $(this).css('color');
+        let button = $(this);
+
+        //activate button
+        if (status !== 'rgb(211, 84, 0)') {
+            console.log("clicked" + newPost.title);
+
+            if (type == 1) {
+                newPost.upvotes += 1;
+                buttons[0].css('color', '#d35400');
+                buttons[1].css('color', '#95a5a6');
+            } else {
+                newPost.downvotes += 1;
+                buttons[1].css('color', '#d35400');
+                buttons[0].css('color', '#95a5a6');
+            }
+
+            voteCountP.text(newPost.upvotes - newPost.downvotes);
+        }
+        //unclick button
+        else {
+            console.log("unclicked" + newPost.title);
+
+            type == 1 ? newPost.upvotes -= 1 : newPost.downvotes -= 1;
+
+            voteCountP.text(newPost.upvotes - newPost.downvotes);
+            button.css('color', '#95a5a6');
+        }
+    };
+}
+
 function displayPost(newPost) {
 
     const postItemDiv = $('<div>').addClass('post-item').attr('href', 'post.html');
 
     const postVotesSpan = $('<span>').addClass('post-votes');
-    const voteUpButton = $('<button>').addClass('votes').click(upvote);
+    const voteUpButton = $('<button>').addClass('votes');
     const voteUpIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
+
+
     const voteCountP = $('<p>').addClass('vote-cnt').text(newPost.upvotes - newPost.downvotes);
-    const voteDownButton = $('<button>').addClass('votes').click(downvote);
+    const voteDownButton = $('<button>').addClass('votes');
     const voteDownIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
+
+    let buttons = [voteUpButton, voteDownButton];
+    voteUpButton.bind('click', handleVote(buttons, newPost, 1, voteCountP));
+    voteDownButton.bind('click', handleVote(buttons, newPost, 0, voteCountP));
+
     postVotesSpan.append(voteUpButton.append(voteUpIcon), $('<br>'), voteCountP, voteDownButton.append(voteDownIcon))
+
 
     const postContentSpan = $('<span>').addClass('post-content');
     const postContentTopSpan = $('<span>').addClass('post-content-top');
@@ -416,7 +457,7 @@ function displayPost(newPost) {
     const detailsSpan = $('<span>').addClass('details');
     const topRowDiv = $('<div>').addClass('top-row');
     const titleSpan = $('<span>').addClass('title').text(newPost.title);
-        
+
     const postMetadataDiv = $('<div>').addClass('post-metadata');
     const postTagSpan = $('<span>').addClass('post-tag');
 
@@ -430,7 +471,7 @@ function displayPost(newPost) {
 
     const commentCntSpan = $('<span>').addClass('comment-cnt');
     const commentCntImg = $('<i>').addClass('fa-solid fa-comment').attr('id', 'comment-icon').css('color', 'lightgray');
-    
+
     commentCntSpan.append(commentCntImg, String(newPost.comments.length));
     postMetadataDiv.append(postTagSpan, commentCntSpan);
     topRowDiv.append(titleSpan, postMetadataDiv);
