@@ -397,6 +397,11 @@ function handleVote(buttons, newPost, type, voteCountP) {
         let status = $(this).css('color');
         let button = $(this);
 
+        /**************************
+        
+        if(user == logged in), do the items below, else 
+        
+        *********************************/
         //activate button
         if (status !== 'rgb(211, 84, 0)') {
             console.log("clicked" + newPost.title);
@@ -427,7 +432,7 @@ function handleVote(buttons, newPost, type, voteCountP) {
 
 function displayPost(newPost) {
 
-    const postItemDiv = $('<div>').addClass('post-item').attr('href', 'post.html');
+    const postItemDiv = $('<div>').addClass('post-item');
 
     const postVotesSpan = $('<span>').addClass('post-votes');
     const voteUpButton = $('<button>').addClass('votes');
@@ -450,8 +455,8 @@ function displayPost(newPost) {
 
     const pfpImg = $('<img>').addClass('pfp').attr({
         src: newPost.picture,
-        height: '50px',
-        width: '50px'
+        height: '45px',
+        width: '45px'
     });
 
     const detailsSpan = $('<span>').addClass('details');
@@ -488,6 +493,19 @@ function displayPost(newPost) {
     postContentTopSpan.append(pfpImg, detailsSpan);
     postContentSpan.append(postContentTopSpan, descriptionDiv);
     postItemDiv.append(postVotesSpan, postContentSpan);
+    
+    postItemDiv.hover(function(){
+       postItemDiv.css('cursor', 'pointer');
+    });
+
+    
+    postItemDiv.bind('click', function(){
+       console.log("clicked" + newPost.postid); 
+        //window.location.href = 'post.html';
+        let postId = newPost.postid;
+        
+        window.location.href = `post.html?postid=${postId}`;
+    });
 
     $('#posts-container').append(postItemDiv);
 }

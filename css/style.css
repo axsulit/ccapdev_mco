@@ -6,9 +6,11 @@
 }
 */
 
-/* * {
+/*
+ * {
     border: 1px solid
-} */
+} 
+*/
 
 :root {
     --b-black: rgb(28, 37, 46);
@@ -516,7 +518,7 @@ ul {
 }
 
 .pfp {
-    margin-right: 20px;
+    margin-right: 15px;
     border-radius: 50%;
 
 
@@ -570,11 +572,6 @@ ul {
 }
 
 .description {
-/*
-    font-size: 14px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-*/
     padding: 10px 0px 10px 0px;
     color: lightgray;
     resize: none;
@@ -583,6 +580,7 @@ ul {
     white-space: nowrap;
     width: inherit;
     height:inherit;
+    text-align: justify;
 }
 
 .post-item:hover {

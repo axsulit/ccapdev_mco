@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>SpikeZone</title>
     <link rel="stylesheet" href="css/post-style.css">
-    <script src="./script/index.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/be26300aac.js" crossorigin="anonymous"></script>
+    <script src="./script/post.js" defer></script>
 </head>
 
 <body>
@@ -16,9 +19,9 @@
         <nav class="nav">
             <ul class="nav-menu">
                 <li class="nav-menu-logo"><a href="index.html" class="nav-logo"><img src="images/logo.png" class="logo"></a></li>
-                <li ><a href="index.html" class="nav-logo">SpikeZone</a></li>
+                <li><a href="index.html" class="nav-logo">SpikeZone</a></li>
             </ul>
-            
+
             <div class="nav-right">
                 <ul class="nav-menu-right">
                     <li id="search">
@@ -34,7 +37,9 @@
                             <div class="nav-dropbtn">
                                 <ul class="nav-menu-dropdown">
                                     <li><img class="nav-pfp" src="images/fade-icon.png"></li>
-                                    <li><div class="nav-username"> hello</div></li>
+                                    <li>
+                                        <div class="nav-username"> hello</div>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="dropdown-content">
@@ -90,7 +95,7 @@
                         <input id="username" type="text" placeholder="Username" required>
                         <!-- <i class="uil uil-envelope-alt email"></i> -->
                     </div>
-            
+
                     <!-- input password -->
                     <div class="input-box">
                         <input class="pw" type="password" placeholder="Create password" required>
@@ -112,85 +117,99 @@
         </div>
     </div>
 
-    <!-- <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-    </div> -->
-
-    <!-- <div class="main">
-        <span id="left-pane"><img class="pfp" src="images/fade-icon.png" alt="pfp"></span>
-        
-        <span id="right-pane">
-            <div class="header">This is a title. | username</div>
-            <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
-        </span>
-        
-    </div> -->
+    <div class="main-header">
+        <div class="post-tag">
+            <img src="images/default-1-red.png" height=13px width=13px>
+            General Discussion
+        </div>
+        <div class="title">This is a title</div>
+    </div>
 
     <div class="main">
 
-        <div class="post-item">
-            <span class="likes-container">
+        <span class="post-container">
+            <div class="post-item">
+                <!--
+            <span class="post-votes">
+                <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
                 <br>
-                <!-- <span class="upvote-bttn">up</span> -->
-                <img class="upvote-bttn" src="images/upvote.png" alt="upvote" height="20px">
-                <br>
-                <span class="likes-ctr">69</span>
-                <br>
-                <img class="downvote-bttn" src="images/downvote.png" alt="upvote" height="20px">
+                <p class="vote-cnt">69</p>
+                <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
             </span>
-            <img class="pfp" src="images/fade-icon.png">
-            <span class="details">
-                <div class="top-row">
-                    <span class="title">This is a title.</span>
-                    <div class="post-metadata">
-                        <span class="post-tag">
-                            <img src="images/fade-icon.png" height=15px width=15px>
-                            General Discussion
-                        </span>
-                        <span class="comment-cnt">
-                            <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
-                            1</span>
-                    </div>
+            <img class="pfp" src="images/fade-icon.png" height=60px width=60px>
+            <span class="post-content">
+                <span class="details">
+                    <span class="status">
+                        <span class="username"> aeririyel</span>
+                        <span class="post-date">July 26, 2023</span>
+                        <span class="edited">Edited</span>
+                    </span>
+                </span>
 
-                </div>
-
-                <div class="status"><b><span class="username">aeririyel</span> </b><span class="post-date"> | July 26, 2023, 9:30 am</span> <span class="edited-tag">· Edited</span></div>
                 <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
-                <br>
-                <div>
-                    <span class="reply-bttn">Reply</span>
-                    <!-- | <span class="likes-container"><span class="upvotes">69 Upvotes</span> <span class="donwvotes">2 Downvotes</span></span> -->
-                </div> 
             </span>
-        </div>
+-->
+            </div>
+
+            <span class="actions">
+                <div class="reply">Reply</div>
+                <div class="meatballs">Options</div>
+
+
+            </span>
+
+
+        </span>
+
+
+
 
         <!-- COMMENT -->
-        <div class="comment-item">
-            <span class="likes-container">
-                <br>
-                <!-- <span class="upvote-bttn">up</span> -->
-                <img class="upvote-bttn" src="images/upvote.png" alt="upvote" height="20px">
-                <br>
-                <span class="likes-ctr">2</span>
-                <br>
-                <img class="downvote-bttn" src="images/downvote.png" alt="upvote" height="20px">
-            </span>
-            <img class="comment-pfp" src="images/fade-icon.png">
-            <span class="details">
-                <div class="status"><b><span class="username">aeririyel</span></b><span class="post-date"> | July 26, 2023, 10:30 am</span> <span class="edited-tag">· Edited</span></div>
-                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
-                <br>
-                <div>
-                    <span class="reply-bttn">Reply</span>
-                    <!-- | <span class="likes-container"><span class="upvotes">69 Upvotes</span> <span class="donwvotes">2 Downvotes</span></span> -->
-                </div> 
-            </span>
+        <div id="comments-container">
+
+<!--
+            <hr>
+            
+            <div class="comment-item">
+                <span class="comment">
+                    <span class="post-votes">
+                        <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
+                        <br>
+                        <p class="vote-cnt">69</p>
+                        <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
+                    </span>
+                    <img class="comment-pfp" src="images/fade-icon.png" height=60px width=60px>
+                    <span class="post-content">
+                        <span class="details">
+                            <span class="status">
+                                <span class="username"> aeririyel</span>
+                                <span class="post-date">July 26, 2023</span>
+                                <span class="edited">Edited</span>
+                            </span>
+                        </span>
+                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel iaculis nulla. Integer cursus ligula et diam congue placerat...</div>
+                    </span>
+                </span>
+                <span class="actions">
+                    <div class="reply">Reply</div>
+                    <div class="meatballs">Options</div>
+                </span>
+            </div>
+-->
+
+
+
+
+
+
+
+
         </div>
+
+
+
 
 
     </div>
 
-</body>
-</html>
+</body></html>
