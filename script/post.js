@@ -3,38 +3,66 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('postid');
 
+    $.getJSON("users.json", function (usersData) {
+        $.getJSON('comments.json', function (commentsData) {
+            $.getJSON('posts.json', function (data) {
 
-    $.getJSON('posts.json', function (data) {
+                const post = data.posts.find(function (item) {
+                    return item.postid === postId;
+                });
 
-        const post = data.posts.find(function (item) {
-            return item.postid === postId;
-        });
+                const user = usersData.users.find(function (user) {
+                    return user.username === post.username;
+                });
 
-        // Check if the post is found
-        if (post) {
-            // Render the post content in the postContainer div
-            console.log(post);
 
-            refreshPost(post);
+                $.each(data.posts, function (index, post) {
+                    var postComments = commentsData.comments.filter(function (comment) {
+                        return comment.postid === post.postid;
+                    });
 
-            if (post.comments.length != 0) {
-                console.log(post.comments.length);
+                    post.comments = postComments;
 
-                for (const c of post.comments) {
-                    refreshComment(c);
+                });
+
+                $.each(commentsData.comments, function (index, comment) {
+                    var user = usersData.users.find(function (user) {
+                        return user.username === comment.username;
+                    });
+
+                    var picture = user ? user.picture : "./images/default-1.png";
+                    comment.picture = picture;
+                });
+
+
+                // Check if the post is found
+                if (post) {
+
+                    var picture = user ? user.picture : "default_icon.png";
+                    post.picture = picture;
+
+                    console.log(post);
+
+                    refreshPost(post);
+
+                    if (post.comments.length != 0) {
+                        for (const c of post.comments) {
+                            refreshComment(c);
+                        }
+                    }
+                } else {
+                    console.log("not found");
                 }
-            }
-        } else {
-            console.log("not found");
-        }
+            });
+        });
     });
-
 
     function handleVote(buttons, newPost, type, voteCountP) {
         return function () {
             let status = $(this).css('color');
             let button = $(this);
 
+            console.log(newPost);
             /**************************
             
             if(user == logged in), do the items below, else 
@@ -42,7 +70,7 @@ $(document).ready(function () {
             *********************************/
             //activate button
             if (status !== 'rgb(211, 84, 0)') {
-                console.log("clicked" + newPost.title);
+                console.log("clicked" + newPost.content);
 
                 if (type == 1) {
                     newPost.upvotes += 1;
@@ -58,7 +86,7 @@ $(document).ready(function () {
             }
             //unclick button
             else {
-                console.log("unclicked" + newPost.title);
+                console.log("unclicked" + newPost.content);
 
                 type == 1 ? newPost.upvotes -= 1 : newPost.downvotes -= 1;
 
@@ -104,33 +132,33 @@ $(document).ready(function () {
 
     function refreshComment(c) {
         console.log(c);
-
+        /**
+        no functionality for reply, option, error when clicking updown vote on comments
+        **/
 
         const commentItem = $('<div>').addClass('comment-item');
         const comment = $('<span>').addClass('comment');
-        const postVotes = $('<span>').addClass('post-votes').text(String(c.upvotes - c.downvotes));
+
         const upvoteButton = $('<button>').addClass('votes');
         const upvoteIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
-        const upvoteCount = $('<p>').addClass('vote-cnt').text(c.upvotes + c.downvotes);
+        const upvoteCount = $('<p>').addClass('vote-cnt').text(String(c.upvotes - c.downvotes));
+
+        const postVotes = $('<span>').addClass('post-votes');
         const downvoteButton = $('<button>').addClass('votes');
         const downvoteIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
 
         let buttons = [upvoteButton, downvoteButton];
-        upvoteButton.bind('click', handleVote(buttons, comment, 1, postVotes));
-        downvoteButton.bind('click', handleVote(buttons, comment, 0, postVotes));
-
-        const commentPfp = $('<img>').addClass('comment-pfp').attr({
-            src: 'images/fade-icon.png',
-            height: '60px',
-            width: '60px'
-        });
+        upvoteButton.bind('click', handleVote(buttons, c, 1, upvoteCount));
+        downvoteButton.bind('click', handleVote(buttons, c, 0, upvoteCount));
+        
+        const commentPfp = $('<img>').addClass('comment-pfp').attr('src', c.picture).attr('height', '60px').attr('width', '60px');        
         const postContent = $('<span>').addClass('post-content');
         const details = $('<span>').addClass('details');
         const status = $('<span>').addClass('status');
         const username = $('<span>').addClass('username').text(c.username);
         const postDate = $('<span>').addClass('post-date').text(c.date);
         const edited = $('<span>').addClass('edited').text('Edited');
-        const description = $('<div>').addClass('description').text(c.comment);
+        const description = $('<div>').addClass('description').text(c.content);
         const actions = $('<span>').addClass('actions');
         const reply = $('<div>').addClass('reply').text('Reply');
         const meatballs = $('<div>').addClass('meatballs').text('Options');
