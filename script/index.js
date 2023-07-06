@@ -92,8 +92,9 @@ $(document).ready(function () {
                 // Access the user's icon
                 var picture = user ? user.picture : "default_icon.png";
                 post.picture = picture;
-
                 posts.push(post);
+
+                postCtr++;
 
                 refreshPostDisplay(posts);
             });
@@ -495,12 +496,12 @@ function displayPost(newPost) {
     postContentSpan.append(postContentTopSpan, descriptionDiv);
     postItemDiv.append(postVotesSpan, postContentSpan);
 
-    postItemDiv.hover(function () {
-        postItemDiv.css('cursor', 'pointer');
+    postContentSpan.hover(function () {
+        postContentSpan.css('cursor', 'pointer');
     });
 
 
-    postItemDiv.bind('click', function () {
+    postContentSpan.bind('click', function () {
         console.log("clicked" + newPost.postid);
         //window.location.href = 'post.html';
         let postId = newPost.postid;
@@ -509,4 +510,6 @@ function displayPost(newPost) {
     });
 
     $('#posts-container').append(postItemDiv);
+    
+    
 }
