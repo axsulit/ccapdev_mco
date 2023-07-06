@@ -1,8 +1,9 @@
 /***CONSTRUCTORS ***/
 
-const User = function (username) {
+const User = function (username, password) {
     this.username = username;
     this.picture = "./images/fade-icon.png";
+    this.password = password;
 }
 
 const Post = function (postid, username, picture, date, title, content, tag) {
@@ -72,33 +73,33 @@ searchInput = document.querySelector("#search-input");
 
 $(document).ready(function () {
 
-    // Load the JSON file and store the posts in the array
-    $.getJSON('posts.json', function (data) {
+    $.getJSON("users.json", function (usersData) {
+        $.getJSON("posts.json", function (postsData) {
 
-        data.posts.sort(function (a, b) {
-            var diffA = a.upvotes - a.downvotes;
-            var diffB = b.upvotes - b.downvotes;
-            return diffB - diffA;
+            postsData.posts.sort(function (a, b) {
+                var diffA = a.upvotes - a.downvotes;
+                var diffB = b.upvotes - b.downvotes;
+                return diffB - diffA;
+            });
+
+            // Access the posts
+            $.each(postsData.posts, function (index, post) {
+                // Find the matching user
+                var user = usersData.users.find(function (user) {
+                    return user.username === post.username;
+                });
+
+                // Access the user's icon
+                var picture = user ? user.picture : "default_icon.png";
+                post.picture = picture;
+
+                posts.push(post);
+
+                refreshPostDisplay(posts);
+            });
         });
-
-        // Iterate over each post in the JSON data
-        $.each(data.posts, function (index, post) {
-            // Add the post to the array
-            posts.push(post);
-        });
-
-
-
-        // Do something with the postsArray
-        refreshPostDisplay(posts);
     });
 });
-
-//$(document).ready(function() {
-//  $('.post-item').on('click', function() {
-//    window.location.href = 'post.html';
-//  });
-//});
 
 /*** SAMPLE EXISTING USERS ***/
 var reg_users = {
@@ -493,17 +494,17 @@ function displayPost(newPost) {
     postContentTopSpan.append(pfpImg, detailsSpan);
     postContentSpan.append(postContentTopSpan, descriptionDiv);
     postItemDiv.append(postVotesSpan, postContentSpan);
-    
-    postItemDiv.hover(function(){
-       postItemDiv.css('cursor', 'pointer');
+
+    postItemDiv.hover(function () {
+        postItemDiv.css('cursor', 'pointer');
     });
 
-    
-    postItemDiv.bind('click', function(){
-       console.log("clicked" + newPost.postid); 
+
+    postItemDiv.bind('click', function () {
+        console.log("clicked" + newPost.postid);
         //window.location.href = 'post.html';
         let postId = newPost.postid;
-        
+
         window.location.href = `post.html?postid=${postId}`;
     });
 
