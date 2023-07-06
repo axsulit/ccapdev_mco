@@ -1,7 +1,24 @@
+const Comment = function (postid, commentid, username, date, content) {
+    this.postid = postid;
+    this.commentid = commentid;
+    this.username = username;
+    this.date = date;
+    this.content = content;
+    this.upvotes = 0;
+    this.downvotes = 0;
+    this.edited = false;
+    this.replies = []; // Comments
+}
+
+var commentsCnt = 0;
+var comments = [];
+
 $(document).ready(function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('postid');
+    
+    window.postid = postId;
 
     $.getJSON("users.json", function (usersData) {
         $.getJSON('comments.json', function (commentsData) {
@@ -32,8 +49,11 @@ $(document).ready(function () {
 
                     var picture = user ? user.picture : "./images/default-1.png";
                     comment.picture = picture;
+                    
+                    commentsCnt++;
                 });
 
+                console.log("num of comments:" + commentsCnt);
 
                 // Check if the post is found
                 if (post) {
@@ -47,6 +67,7 @@ $(document).ready(function () {
 
                     if (post.comments.length != 0) {
                         for (const c of post.comments) {
+                            comments.push(c);
                             refreshComment(c);
                         }
                     }
@@ -56,13 +77,12 @@ $(document).ready(function () {
             });
         });
     });
-
+    
     function handleVote(buttons, newPost, type, voteCountP) {
         return function () {
             let status = $(this).css('color');
             let button = $(this);
 
-            console.log(newPost);
             /**************************
             
             if(user == logged in), do the items below, else 
@@ -70,8 +90,6 @@ $(document).ready(function () {
             *********************************/
             //activate button
             if (status !== 'rgb(211, 84, 0)') {
-                console.log("clicked" + newPost.content);
-
                 if (type == 1) {
                     newPost.upvotes += 1;
                     buttons[0].css('color', '#d35400');
@@ -86,8 +104,6 @@ $(document).ready(function () {
             }
             //unclick button
             else {
-                console.log("unclicked" + newPost.content);
-
                 type == 1 ? newPost.upvotes -= 1 : newPost.downvotes -= 1;
 
                 voteCountP.text(newPost.upvotes - newPost.downvotes);
@@ -130,6 +146,8 @@ $(document).ready(function () {
         $('.post-item').append(postVotesSpan, pfpImg, postContentSpan);
     }
 
+    window.fresfreshComment = refreshComment;
+    
     function refreshComment(c) {
         console.log(c);
         /**
@@ -163,6 +181,7 @@ $(document).ready(function () {
         const reply = $('<div>').addClass('reply').text('Reply');
         const meatballs = $('<div>').addClass('meatballs').text('Options');
 
+        edited.css('visibility', 'hidden');
         upvoteButton.append(upvoteIcon);
         downvoteButton.append(downvoteIcon);
         postVotes.append(upvoteButton, $('<br>'), upvoteCount, downvoteButton);
@@ -176,3 +195,48 @@ $(document).ready(function () {
 
     }
 });
+
+function replyToPost(){
+    $('#popup-container').css('display','block');
+}
+
+function closePopup() {
+    $('#popup-container').css('display','none');
+}
+
+function submitReply(event){
+    event.preventDefault();
+    
+    commentsCnt++;
+    var content = $('#reply-caption').val();
+    
+    // Get today's date
+    const today = new Date();
+
+    // Format the date into "Month Day, Year hour:minutes AM/PM" format
+    const options = {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: false
+    };
+    const formattedDate = today.toLocaleString('en-US', options);
+    
+    var reply = new Comment(postid, commentsCnt, "Fade", formattedDate, content);
+    
+    
+    
+    comments.push(reply);
+    
+    console.log(comments);
+    
+    $("#comments-container").html('');
+    for (const c of comments) {
+            fresfreshComment(c);
+        }
+    
+    $('#reply-form')[0].reset();
+    closePopup();
+}

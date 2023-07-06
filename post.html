@@ -152,17 +152,12 @@
             </div>
 
             <span class="actions">
-                <div class="reply">Reply</div>
-                <div class="meatballs">Options</div>
-
-
+                <div class="reply"><button onclick="replyToPost()">Reply</button></div>
+                <div class="meatballs"><button>Options</button></div>
             </span>
 
 
         </span>
-
-
-
 
         <!-- COMMENT -->
         <div id="comments-container">
@@ -196,19 +191,24 @@
                 </span>
             </div>
 -->
-
-
-
-
-
-
-
-
         </div>
 
 
 
+<!-- WRITE POST -->
+        <div id="popup-container">
+            <button class="close-button" onclick="closePopup()">X</button>
 
+            <form id="reply-form" onsubmit="submitReply(event)">
+                <div class="reply-title">RE: New Agent Speculations</div>
+
+                <label for="reply-caption"></label>
+                <textarea id="reply-caption" rows="12" placeholder="Write a reply..." required></textarea>
+
+                <input id="submit-bttn" type="submit" value="Plant the Spike">
+            </form>
+
+        </div>
 
     </div>
 
