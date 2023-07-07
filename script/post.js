@@ -192,29 +192,38 @@ $(document).ready(function () {
         const edited = $('<span>').addClass('edited').text('Edited');
         const description = $('<div>').addClass('description').text(c.content);
         const actions = $('<span>').addClass('actions');
-        var replyBtn = $('<button>').text('Reply').on('click', replyToPost);
-        var replyDiv = $('<div>').addClass('reply').append(replyBtn);
+        var replyBtn = $('<button>').text('Reply').on('click', replyToComment);
+        var replyDiv = $('<span>').addClass('reply').append(replyBtn);
 
         edited.css('visibility', 'hidden');
         upvoteButton.append(upvoteIcon);
         downvoteButton.append(downvoteIcon);
         postVotes.append(upvoteButton, $('<br>'), upvoteCount, downvoteButton);
+        
         status.append(username, postDate, edited);
+        
+        if (c.username == currentUsername) {
+            var optionsBtn = $('<button>').text('Options');
+            var optionsDiv = $('<span>').addClass('meatballs').append(optionsBtn);
+            status.append(optionsDiv);
+        } 
+        
+        status.append(replyDiv);
         details.append(status);
         postContent.append(details, description);
         comment.append(postVotes, commentPfp, postContent);
-
-        if (c.username == currentUsername) {
-            var optionsBtn = $('<button>').text('Options');
-            var optionsDiv = $('<div>').addClass('meatballs').append(optionsBtn);
-            actions.append(replyDiv, optionsDiv);
-        } else
-            actions.append(replyDiv);
 
         commentItem.append(comment, actions);
         $('#comments-container').append($('<hr>'), commentItem);
     }
 });
+
+function replyToComment() {
+    $('#popup-container').css('display', 'block');
+    $('.reply-title').text("RE: " + $(this).description);
+    
+    console.log($(this).closest('.details').find('.description'));
+}
 
 function replyToPost() {
     $('#popup-container').css('display', 'block');

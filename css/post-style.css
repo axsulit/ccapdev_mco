@@ -747,10 +747,16 @@ hr {
     color: var(--b-white);
     padding:5px 10px;;
     border-radius: 5px;
+    float: right;
 }
 
 .reply-title {
     color: var(--b-white);
     margin:0px 5px 15px 0px;
     font-weight: bold;
+}
+
+.reply {
+    margin-left:auto;
+    
 }
