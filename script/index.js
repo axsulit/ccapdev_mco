@@ -1,4 +1,8 @@
-/***CONSTRUCTORS ***/
+// ._____________________________________.
+// ||									||
+// ||          CONSTRUCTORS             ||
+// ||___________________________________||
+// '
 
 const User = function (username, password) {
     this.username = username;
@@ -21,82 +25,84 @@ const Post = function (postid, username, picture, date, title, content, tag) {
     this.edited = false;
 }
 
-const Comment = function (username, date, content) {
-    this.username = username;
-    this.date = date;
-    this.content = content;
-    this.edited = false;
-    this.replies = []; // Comments
-}
-
 const Tag = function (type, icon) {
     this.type = type;
     this.icon = icon;
 }
 
-/***GLOBAL VARIABLES ***/
+// ._____________________________________.
+// ||									||
+// ||         GLOBAL VARIABLES          ||
+// ||___________________________________||
+// '
 
 let posts = [];
 let comments = [];
 let postCtr = 0;
 
+// Tags
 let generalDiscussion = new Tag("General Discussion", "fa-regular fa-comments");
 let lft = new Tag("LFT", "fa-solid fa-user-group");
 let technicalIssues = new Tag("Technical Issues", "fa-solid fa-wrench");
 let offTopic = new Tag("Off Topic", "Off Topic");
 
-//opens up pop-up
-const formOpenBtn = document.querySelector("#form-open"),
-    home = document.querySelector(".home"),
+const formOpenBtn = $("#form-open");
+const home = $(".home");
+const formContainer = $(".form-container"); // contains form content for login or signup
+const formCloseBtn = $(".form-close"); // closes form
 
-    //comtains form content for login or signup
-    formContainer = document.querySelector(".form-container");
+// buttons for transferring between signup and login
+const signUpBtn = $("#signup");
+const loginBtn = $("#login");
 
-//closes form
-formCloseBtn = document.querySelector(".form-close");
+// buttons for submission of username and password in login/sign-up
+const submitSignBtn = $("#sign-submit");
+const submitLogBtn = $("#log-submit");
 
-//buttons for transferring between signup and login
-signUpBtn = document.querySelector("#signup");
-loginBtn = document.querySelector("#login");
-
-//buttons for submission of username and password in login/ sign-up
-submitSignBtn = document.querySelector("#sign-submit");
-submitLogBtn = document.querySelector("#log-submit");
-
-//retrieves log out button
-logoutBtn = document.querySelector(".logout");
-//retrieves username + pfp in navbar
-accountBtn = document.querySelector(".user-profile");
-
-//retrieves the content in search bar
-searchInput = document.querySelector("#search-input");
+const logoutBtn = $(".logout"); // retrieves log out button
+const accountBtn = $(".user-profile"); // retrieves username + pfp in navbar
+const searchInput = $("#search-input"); // retrieves the content in search bar
 
 $(document).ready(function () {
-
+    // Load data from users.json
     $.getJSON("users.json", function (usersData) {
-        $.getJSON("posts.json", function (postsData) {
+        // Load data from comments.json
+        $.getJSON("comments.json", function (commentsData) {
+            // Load data from posts.json
+            $.getJSON("posts.json", function (postsData) {
 
-            postsData.posts.sort(function (a, b) {
-                var diffA = a.upvotes - a.downvotes;
-                var diffB = b.upvotes - b.downvotes;
-                return diffB - diffA;
-            });
-
-            // Access the posts
-            $.each(postsData.posts, function (index, post) {
-                // Find the matching user
-                var user = usersData.users.find(function (user) {
-                    return user.username === post.username;
+                // Default sort posts based on votes score
+                postsData.posts.sort(function (a, b) {
+                    var diffA = a.upvotes - a.downvotes;
+                    var diffB = b.upvotes - b.downvotes;
+                    return diffB - diffA;
                 });
 
-                // Access the user's icon
-                var picture = user ? user.picture : "default_icon.png";
-                post.picture = picture;
-                posts.push(post);
+                //Access and store list of comments per post
+                $.each(postsData.posts, function (index, post) {
+                    var postComments = commentsData.comments.filter(function (comment) {
+                        return comment.postid === post.postid;
+                    });
+                    post.comments = postComments;
+                });
 
-                postCtr++;
 
-                refreshPostDisplay(posts);
+                // Access the posts
+                $.each(postsData.posts, function (index, post) {
+                    // Find the matching user in usersData
+                    var user = usersData.users.find(function (user) {
+                        return user.username === post.username;
+                    });
+
+                    // Access the user's picture 
+                    var picture = user ? user.picture : "default_icon.png";
+                    post.picture = picture;
+
+                    // Add post
+                    posts.push(post);
+                    postCtr++;
+                    refreshPostDisplay(posts);
+                });
             });
         });
     });
@@ -116,7 +122,17 @@ var reg_users = {
     luis_r: "ran123",
 };
 
-/*** LOG IN FUNCTION ***/
+// ._____________________________________.
+// ||									||
+// ||          LOGIN FUNCTIONS           ||
+// ||___________________________________||
+// '
+
+
+function showLoginForm(){
+    formContainer.css('display', 'block');
+}
+
 submitLogBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -240,6 +256,7 @@ searchInput.addEventListener("input", e => {
 handleLoginSignUp();
 
 function handleLoginSignUp() {
+    
     let signup = false;
     // opens login form
     formOpenBtn.addEventListener("click", () => {
@@ -286,28 +303,30 @@ function closeLoginSignUp(signup) {
 }
 
 
-/*** POPUP FUNCTIONS ***/
 
-function showPopup() {
-    var popupContainer = document.getElementById("popup-container");
-    popupContainer.style.display = "block";
+// ._____________________________________.
+// ||									||
+// ||       DISCUSSION FUNCTIONS        ||
+// ||___________________________________||
+// '
+
+function showWritePost() {
+    $('#popup-container').css('display', 'block');
 }
 
-function closePopup() {
-    var popupContainer = document.getElementById("popup-container");
-    popupContainer.style.display = "none";
+function closeWritePost() {
+    $('#popup-container').css('display', 'none');
 }
 
 function submitPost(event) {
     event.preventDefault(); // Prevent form submission
 
-    var title = document.getElementById("post-title").value;
-    var caption = document.getElementById("post-caption").value;
+    var title = $("#post-title").val();
+    var caption = $("#post-caption").val();
 
     // Clear and Close form
-    document.getElementById("post-form").reset();
-    closePopup();
-
+    $("#post-form")[0].reset();
+    closeWritePost();
 
     // Create a new post and add it to posts
     postCtr++;
@@ -340,38 +359,12 @@ function submitPost(event) {
     refreshPostDisplay(posts);
 }
 
-// try
 
-/***VOTE BUTTON FUNCTIONS***/
-
-var upvote_state = false;
-var downvote_state = false;
-
-function upvote() {
-    if (upvote_state === false) {
-        document.getElementById("upvote").style.color = "#d35400";
-        document.getElementById("downvote").style.color = "#95a5a6";
-        upvote_state = true;
-        downvote_state = false;
-    } else {
-        document.getElementById("upvote").style.color = "#95a5a6";
-        upvote_state = false;
-    }
-}
-
-function downvote() {
-    if (downvote_state === false) {
-        document.getElementById("downvote").style.color = "#d35400";
-        document.getElementById("upvote").style.color = "#95a5a6";
-        upvote_state = false;
-        downvote_state = true;
-    } else {
-        document.getElementById("downvote").style.color = "#95a5a6";
-        downvote_state = false;
-    }
-}
-
-/***POST FUNCTIONS***/
+// ._____________________________________.
+// ||									||
+// ||          POST FUNCTIONS           ||
+// ||___________________________________||
+// '
 
 function refreshPostDisplay(displayedPosts) {
     $("#posts-container").html('');
@@ -510,6 +503,4 @@ function displayPost(newPost) {
     });
 
     $('#posts-container').append(postItemDiv);
-    
-    
 }
