@@ -36,7 +36,7 @@ $(document).ready(function () {
                 const post = data.posts.find(function (item) {
                     return item.postid === postId;
                 });
-                
+
                 origPost = post;
 
                 const user = usersData.users.find(function (user) {
@@ -155,9 +155,9 @@ $(document).ready(function () {
         postContentSpan.append(detailsSpan, $('<div>').addClass('description').text(post.content));
 
         $('.post-item').append(postVotesSpan, pfpImg, postContentSpan);
-        
-        if(post.username != currentUsername){
-            $('.meatballs').css('display','none');
+
+        if (post.username != currentUsername) {
+            $('.meatballs').css('display', 'none');
         }
     }
 
@@ -192,8 +192,8 @@ $(document).ready(function () {
         const edited = $('<span>').addClass('edited').text('Edited');
         const description = $('<div>').addClass('description').text(c.content);
         const actions = $('<span>').addClass('actions');
-        const reply = $('<div>').addClass('reply').text('Reply');
-        const meatballs = $('<div>').addClass('meatballs').text('Options');
+        var replyBtn = $('<button>').text('Reply').on('click', replyToPost);
+        var replyDiv = $('<div>').addClass('reply').append(replyBtn);
 
         edited.css('visibility', 'hidden');
         upvoteButton.append(upvoteIcon);
@@ -203,11 +203,16 @@ $(document).ready(function () {
         details.append(status);
         postContent.append(details, description);
         comment.append(postVotes, commentPfp, postContent);
-        
-        actions.append(reply, meatballs);
+
+        if (c.username == currentUsername) {
+            var optionsBtn = $('<button>').text('Options');
+            var optionsDiv = $('<div>').addClass('meatballs').append(optionsBtn);
+            actions.append(replyDiv, optionsDiv);
+        } else
+            actions.append(replyDiv);
+
         commentItem.append(comment, actions);
         $('#comments-container').append($('<hr>'), commentItem);
-
     }
 });
 
@@ -244,7 +249,7 @@ function submitReply(event) {
     var reply = new Comment(postid, commentsCnt, currentUsername, formattedDate, content);
 
     reply.picture = currentuserPfp;
-    
+
     comments.push(reply);
 
 
@@ -252,7 +257,7 @@ function submitReply(event) {
     for (const c of comments) {
         fresfreshComment(c);
     }
-    
+
     $('#reply-form')[0].reset();
     closePopup();
 }
