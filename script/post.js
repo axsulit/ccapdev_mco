@@ -12,12 +12,21 @@ const Comment = function (postid, commentid, username, date, content) {
 
 var commentsCnt = 0;
 var comments = [];
+var currentUsername = "";
+var currentuserPfp = "";
+var origPost = 0;
 
 $(document).ready(function () {
 
+    currentUsername = localStorage.getItem("username");
+    currentuserPfp = localStorage.getItem("profilepic");
+
+    $('.nav-username').text(currentUsername);
+    $('.nav-pfp').attr('src', currentuserPfp);
+
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('postid');
-    
+
     window.postid = postId;
 
     $.getJSON("users.json", function (usersData) {
@@ -27,6 +36,8 @@ $(document).ready(function () {
                 const post = data.posts.find(function (item) {
                     return item.postid === postId;
                 });
+                
+                origPost = post;
 
                 const user = usersData.users.find(function (user) {
                     return user.username === post.username;
@@ -49,7 +60,7 @@ $(document).ready(function () {
 
                     var picture = user ? user.picture : "./images/default-1.png";
                     comment.picture = picture;
-                    
+
                     commentsCnt++;
                 });
 
@@ -77,7 +88,7 @@ $(document).ready(function () {
             });
         });
     });
-    
+
     function handleVote(buttons, newPost, type, voteCountP) {
         return function () {
             let status = $(this).css('color');
@@ -144,12 +155,15 @@ $(document).ready(function () {
         postContentSpan.append(detailsSpan, $('<div>').addClass('description').text(post.content));
 
         $('.post-item').append(postVotesSpan, pfpImg, postContentSpan);
+        
+        if(post.username != currentUsername){
+            $('.meatballs').css('display','none');
+        }
     }
 
     window.fresfreshComment = refreshComment;
-    
+
     function refreshComment(c) {
-        console.log(c);
         /**
         no functionality for reply, option, error when clicking updown vote on comments
         **/
@@ -168,8 +182,8 @@ $(document).ready(function () {
         let buttons = [upvoteButton, downvoteButton];
         upvoteButton.bind('click', handleVote(buttons, c, 1, upvoteCount));
         downvoteButton.bind('click', handleVote(buttons, c, 0, upvoteCount));
-        
-        const commentPfp = $('<img>').addClass('comment-pfp').attr('src', c.picture).attr('height', '60px').attr('width', '60px');        
+
+        const commentPfp = $('<img>').addClass('comment-pfp').attr('src', c.picture).attr('height', '60px').attr('width', '60px');
         const postContent = $('<span>').addClass('post-content');
         const details = $('<span>').addClass('details');
         const status = $('<span>').addClass('status');
@@ -189,6 +203,7 @@ $(document).ready(function () {
         details.append(status);
         postContent.append(details, description);
         comment.append(postVotes, commentPfp, postContent);
+        
         actions.append(reply, meatballs);
         commentItem.append(comment, actions);
         $('#comments-container').append($('<hr>'), commentItem);
@@ -196,20 +211,21 @@ $(document).ready(function () {
     }
 });
 
-function replyToPost(){
-    $('#popup-container').css('display','block');
+function replyToPost() {
+    $('#popup-container').css('display', 'block');
+    $('.reply-title').text("RE: " + origPost.title);
 }
 
 function closePopup() {
-    $('#popup-container').css('display','none');
+    $('#popup-container').css('display', 'none');
 }
 
-function submitReply(event){
+function submitReply(event) {
     event.preventDefault();
-    
+
     commentsCnt++;
     var content = $('#reply-caption').val();
-    
+
     // Get today's date
     const today = new Date();
 
@@ -223,19 +239,19 @@ function submitReply(event){
         hour12: false
     };
     const formattedDate = today.toLocaleString('en-US', options);
-    
-    var reply = new Comment(postid, commentsCnt, "Fade", formattedDate, content);
-    
-    
+
+
+    var reply = new Comment(postid, commentsCnt, currentUsername, formattedDate, content);
+
+    reply.picture = currentuserPfp;
     
     comments.push(reply);
-    
-    console.log(comments);
-    
+
+
     $("#comments-container").html('');
     for (const c of comments) {
-            fresfreshComment(c);
-        }
+        fresfreshComment(c);
+    }
     
     $('#reply-form')[0].reset();
     closePopup();
