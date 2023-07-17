@@ -4,9 +4,9 @@
 // ||___________________________________||
 // '
 
-const User = function (username, password) {
+const User = function (username, password, picture) {
     this.username = username;
-    this.picture = "./images/fade-icon.png";
+    this.picture = picture;
     this.password = password;
 }
 
@@ -39,6 +39,7 @@ const Tag = function (type, icon) {
 let posts = [];
 let comments = [];
 let postCtr = 0;
+let currentUser = new User("placeholder", 123, "./images/fade-icon.png");
 
 // Tags
 let generalDiscussion = new Tag("General Discussion", "fa-regular fa-comments");
@@ -103,6 +104,7 @@ $(document).ready(function () {
                     postCtr++;
                     refreshPostDisplay(posts);
                 });
+
             });
         });
     });
@@ -124,184 +126,181 @@ var reg_users = {
 
 // ._____________________________________.
 // ||									||
-// ||          LOGIN FUNCTIONS           ||
+// ||          LOGIN FUNCTIONS          ||
 // ||___________________________________||
 // '
 
-
-function showLoginForm(){
-    formContainer.css('display', 'block');
-}
-
-submitLogBtn.addEventListener("click", async (e) => {
+// Login
+submitLogBtn.on("click", async function (e) {
     e.preventDefault();
 
-    //retrieves username
-    let login_un = document.querySelector("#login-username").value;
-    //retrieves password
-    let login_pw = document.querySelector("#login-pw").value;
-    //retrieves username in nav bar
-    let nav_un = document.querySelector(".nav-username");
+    $.getJSON("users.json", function (usersData) {
+        let login_un = $("#login-username").val(); // Retrieves username
+        let login_pw = $("#login-pw").val(); // Retrieves password
+        let nav_un = $(".nav-username"); // Username in nav bar
+        let nav_pfp = $(".nav-pfp"); // PFP in nav bar
+        let errormsg = $("#login-error-msg"); // Div for displaying error message
 
+        var matchingUser = usersData.users.find(function (user) {
+            return user.username === login_un && user.password === login_pw;
+        });
 
-    //retrieves div for displaying error message
-    let errormsg = document.getElementById("login-error-msg");
+        if (matchingUser) {
+            errormsg.text("Login successful!"); // Username and password are correct
 
-    if (reg_users.hasOwnProperty(login_un)) {
-        //console.log("username exists. valid log in");
-        if (reg_users[login_un] == login_pw) {
-            errormsg.textContent = "";
-            //hides log in page
-            home.classList.remove("show");
-            accountBtn.classList.remove("hidden");
-            formOpenBtn.classList.add("hidden");
+            // Hides log in page
+            $(".home").removeClass("show");
+            $(".user-profile").removeClass("hidden");
+            $("#form-open").addClass("hidden");
 
-            //displays the user's username in navbar
-            nav_un.textContent = login_un;
+            currentUser = new User(matchingUser.username, matchingUser.password, matchingUser.picture);
+            
+            // Displays the user's username in navbar
+            nav_un.text(login_un);
+            nav_pfp.attr('src', currentUser.picture);
+            
+            localStorage.setItem("username", currentUser.username);
+            localStorage.setItem("profilepic", currentUser.picture);
+            
         } else {
-            errormsg.textContent = "The password you've entered is incorrect.";
+            errormsg.text("Invalid username or password!"); // Invalid username or password
         }
-    } else {
-        errormsg.textContent = "Username does not exist";
-    }
-});
-
-/*** LOG OUT FUNCTION ***/
-logoutBtn.addEventListener("click", async (e) => {
-    console.log("working");
-    accountBtn.classList.add("hidden");
-    formOpenBtn.classList.remove("hidden");
-
-    //retrieves username in nav bar
-    let nav_un = document.querySelector(".nav-username");
-    nav_un.textContent = "";
-
-    //clears form
-    let forms = document.querySelectorAll(".form-log-sign");
-    forms.forEach((form) => form.reset());
-});
-
-
-/*** CREATE ACCOUNT FUNCTION ***/
-submitSignBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    //retrieves username
-    let username = document.querySelector("#username").value;
-    console.log(`${username}`);
-
-    //retrieves password and confirmation password
-    let pw = document.querySelector(".pw").value;
-    let confirm_pw = document.querySelector(".confirm-pw").value;
-
-    //retrieves div for displaying error message
-    let errormsg = document.getElementById("sign-error-msg");
-
-    //retrieves username in nav bar
-    let nav_un = document.querySelector(".nav-username");
-
-
-    if (reg_users.hasOwnProperty(username)) {
-        errormsg.textContent = "Username is already taken";
-    } else {
-        errormsg.textContent = "";
-        //Sets username to be longer than 2 characters
-        if (username.length < 3) {
-            errormsg.textContent = "Username should be longer than 2 characters";
-        } else {
-            //Sets password to be longer than 2 characters
-            if (pw.length < 3) {
-                errormsg.textContent = "Password should be longer than 2 characters";
-            } else {
-                //Confirms the input password is the same as the confirmation password
-                if (pw == confirm_pw) {
-                    reg_users[username] = pw;
-                    home.classList.remove("show");
-                    accountBtn.classList.remove("hidden");
-                    formOpenBtn.classList.add("hidden");
-                    nav_un.textContent = username;
-                    console.log(reg_users);
-                } else {
-                    errormsg.textContent = "Passwords do not match.";
-                }
-            }
-
-        }
-    }
-});
-
-/*** SEARCH FUNCTION ***/
-searchInput.addEventListener("input", e => {
-    //retrieves input in search bar
-    const value = e.target.value.toLowerCase();
-    //retrieves all post
-    const postsElements = document.querySelectorAll(".post-item");
-    //iterates through each post
-    postsElements.forEach(post => {
-        //retrieve title in this post
-        const titleElement = post.querySelector(".title").textContent;
-        //retrieve description in this post
-        const descriptionElement = post.querySelector(".description").textContent;
-
-        //checks if title or description includes searched value
-        const isVisible = titleElement.toLowerCase().includes(value) || descriptionElement.toLowerCase().includes(value);
-        post.style.display = isVisible ? "flex" : "none";
 
     });
-
-
 });
 
-/*** LOG IN AND SIGN UP FUNCTIONS ***/
+// Logout
+logoutBtn.on("click", async function (e) {
+    console.log("working");
+    $(".user-profile").addClass("hidden");
+    $("#form-open").removeClass("hidden");
+
+    // Retrieves username in nav bar
+    let nav_un = $(".nav-username");
+    nav_un.text("");
+
+    // Clears form
+    $(".form-log-sign").each(function () {
+        this.reset();
+    });
+});
+
+//
+//
+///*** CREATE ACCOUNT FUNCTION ***/
+//submitSignBtn.addEventListener("click", async (e) => {
+//    e.preventDefault();
+//
+//    //retrieves username
+//    let username = document.querySelector("#username").value;
+//    console.log(`${username}`);
+//
+//    //retrieves password and confirmation password
+//    let pw = document.querySelector(".pw").value;
+//    let confirm_pw = document.querySelector(".confirm-pw").value;
+//
+//    //retrieves div for displaying error message
+//    let errormsg = document.getElementById("sign-error-msg");
+//
+//    //retrieves username in nav bar
+//    let nav_un = document.querySelector(".nav-username");
+//
+//
+//    if (reg_users.hasOwnProperty(username)) {
+//        errormsg.textContent = "Username is already taken";
+//    } else {
+//        errormsg.textContent = "";
+//        //Sets username to be longer than 2 characters
+//        if (username.length < 3) {
+//            errormsg.textContent = "Username should be longer than 2 characters";
+//        } else {
+//            //Sets password to be longer than 2 characters
+//            if (pw.length < 3) {
+//                errormsg.textContent = "Password should be longer than 2 characters";
+//            } else {
+//                //Confirms the input password is the same as the confirmation password
+//                if (pw == confirm_pw) {
+//                    reg_users[username] = pw;
+//                    home.classList.remove("show");
+//                    accountBtn.classList.remove("hidden");
+//                    formOpenBtn.classList.add("hidden");
+//                    nav_un.textContent = username;
+//                    console.log(reg_users);
+//                } else {
+//                    errormsg.textContent = "Passwords do not match.";
+//                }
+//            }
+//
+//        }
+//    }
+//});
+//
+///*** SEARCH FUNCTION ***/
+//searchInput.addEventListener("input", e => {
+//    //retrieves input in search bar
+//    const value = e.target.value.toLowerCase();
+//    //retrieves all post
+//    const postsElements = document.querySelectorAll(".post-item");
+//    //iterates through each post
+//    postsElements.forEach(post => {
+//        //retrieve title in this post
+//        const titleElement = post.querySelector(".title").textContent;
+//        //retrieve description in this post
+//        const descriptionElement = post.querySelector(".description").textContent;
+//
+//        //checks if title or description includes searched value
+//        const isVisible = titleElement.toLowerCase().includes(value) || descriptionElement.toLowerCase().includes(value);
+//        post.style.display = isVisible ? "flex" : "none";
+//
+//    });
+//
+//
+//});
+
+/*** OPENING FORMS ***/
 handleLoginSignUp();
 
 function handleLoginSignUp() {
-    
     let signup = false;
+
     // opens login form
-    formOpenBtn.addEventListener("click", () => {
-        home.classList.add("show");
-        formContainer.classList.remove("active");
+    $("#form-open").on("click", function () {
+        $(".home").addClass("show");
+        $(".form-container").removeClass("active");
         signup = false;
         closeLoginSignUp(signup);
     });
 
     // switches to signup form
-    signUpBtn.addEventListener("click", (e) => {
+    $("#signup").on("click", function (e) {
         e.preventDefault();
-        formContainer.classList.add("active");
+        $(".form-container").addClass("active");
         signup = true;
-        // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
     });
-    //switches to signup form
-    loginBtn.addEventListener("click", (e) => {
+
+    // switches to login form
+    $("#login").on("click", function (e) {
         e.preventDefault();
-        formContainer.classList.remove("active");
+        $(".form-container").removeClass("active");
         signup = false;
-        // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
     });
 };
 
-
 function closeLoginSignUp(signup) {
-    // DEBUG: console.log("inside close: " + signup);
     if (signup == true) {
-        formCloseBtn.addEventListener("click", () => {
-            home.classList.remove("show");
-            formContainer.classList.add("active");
-            // DEBUG: console.log(signup);
+        $(".form-close").on("click", function () {
+            $(".home").removeClass("show");
+            $(".form-container").addClass("active");
         });
     } else {
-        formCloseBtn.addEventListener("click", () => {
-            home.classList.remove("show");
-            formContainer.classList.remove("active");
-            // DEBUG: console.log(signup);
+        $(".form-close").on("click", function () {
+            $(".home").removeClass("show");
+            $(".form-container").removeClass("active");
         });
     }
 }
-
 
 
 // ._____________________________________.
@@ -330,7 +329,6 @@ function submitPost(event) {
 
     // Create a new post and add it to posts
     postCtr++;
-    let currentUser = new User("Fade");
 
     // Get today's date
     const today = new Date();
