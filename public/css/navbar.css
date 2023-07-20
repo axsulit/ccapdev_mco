@@ -1,0 +1,289 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FF4654;
+}
+
+/* Remove bullets */
+ul {
+    list-style-type: none; 
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+/* HEADER */
+.header {
+    position: fixed;
+    height: 55px;
+    width: 100%;
+    background: #FF4654;
+    z-index: 100;
+}
+
+/* navigation bar */
+.nav {
+    max-width: 100%;
+    width: 100%;
+} nav, .nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float:left;
+} nav, .nav-menu-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float: right; 
+}.nav-logo {
+    font-size: 25px;
+} .nav-logo, .nav-link, .button {
+    color: #fff;
+} .nav-right {
+    float: right;
+} .logo {
+    height: 40px;
+
+}
+
+.nav-menu-logo {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 20px;
+}
+
+/* login button */
+.button {
+    padding: 6px 24px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+} .button:active {
+    transform: scale(0.98);
+}
+
+/* nav search */
+#search {
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    align-items: center;
+    background: #e53e4b;
+} #search:focus-within {
+    background: #e12836;
+} #search:focus-within input {
+    width: 300px;
+} #search-btn {
+    width: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    margin-right: 3px;
+    font-size: 15px;
+} #search-input::placeholder {
+    font-family: Montserrat, sans-serif;
+    color: white;
+    font-size: 12px;
+} #search input {
+    font-family: Montserrat, sans-serif;
+    width: 150px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+    font-size: 12px;
+    padding-left: 17px;
+    color: white;
+} #search a .fas {
+    color: #b5be85;
+    font-size: 18px;
+}
+
+/* form */
+.form-container{
+    position: absolute;
+    max-width: 320px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #1C252E;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease-out;
+} .form-container a {
+    color:#FF4654;
+    font-size: 12px;
+} .form-container a:hover {
+    text-decoration: underline;
+} .form-container h2 {
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+} .form-container i {
+    float: right;
+    color: #fff;
+    font-style: normal;
+}
+
+
+/* HOME */
+.home.show .form-container{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+} .home::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+} .home.show::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* sign up form */
+.signup-form {
+    display: none;
+} .form-container.active .signup-form{
+    display: block;
+} .form-container.active .login-form{
+    display: none;
+}
+
+/* form input box */
+.input-box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    background-color: #1C252E;
+} .input-box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 3px solid #aaaa;
+    transition: all 0.2s ease;
+} .input-box input:focus {
+    border-color: #FF4654;
+} 
+
+/* remember me/forgot password */
+.option-field {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} .checkbox {
+    display: flex;
+    column-gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+} .checkbox label {
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+} .checkbox input {
+    accent-color: #FF4654;
+}
+
+/* login button */
+.form-container .button {
+    background-color: #FF4654;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+} .login-signup {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+    color: #fff;
+}
+
+#sign-error-msg{
+    color: #fff;
+}
+#login-error-msg{
+    color: #fff;
+}
+
+/*nav bar pfp*/
+.pfp{
+    border-radius:100%;
+    height:100%;
+    width:30px;
+} .nav-username {
+    color: #fff;
+    font-size: 12px;
+    padding-left: 5px;
+} .dropdown-content{
+    display: none;
+    position:absolute;
+    background-color:#1a1a1a;
+    margin-top: 35px;
+    min-width:50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+} .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+} .dropdown-content a:hover {
+    background-color: #ddd;
+} .dropdown:hover .dropdown-content {
+    display: block;
+} .dropdown:hover .dropbtn {
+    border-radius: 5px;
+    background-color: #e12836;
+} .nav-menu-dropdown{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float:left;
+    margin: 0; padding: 0;
+    padding-top:3px;
+    border-radius: 3px;
+    margin:5px;
+    margin-right:80px;
+} .nav-menu-dropdown:hover{
+    background: #e12836;
+} 
+
+/* dropdown
+.dropbtn {
+    border-radius: 3px;
+    margin:5px;
+    margin-right:80px;
+}  */
+
+
+.hidden{
+    display:none;
+}
+
+
+
+

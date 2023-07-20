@@ -7,7 +7,8 @@ import { fileURLToPath } from 'url';
 import express from 'express';
 import exphbs from 'express-handlebars';
 
-//TO DO: Routes modules
+//Route modules
+import router from "./src/routes/index.js";
 
 //import database
 import { connectToMongo } from "./src/db/conn.js";
@@ -26,6 +27,8 @@ async function main(){
     app.set("view cache", false);
 
     app.use(express.json());
+
+    app.use(router);
 
     app.listen(process.env.SERVER_PORT, () => {
         console.log("Express app now listening...");
