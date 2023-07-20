@@ -3,7 +3,7 @@ import {Router} from 'express';
 const router=Router();
 
 router.get("/",(req, res)=>{
-    res.render("partials/navbar",{
+    res.render("layouts/main",{
         title: "Homepage"
     });
 });
