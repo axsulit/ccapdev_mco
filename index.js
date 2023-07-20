@@ -19,7 +19,10 @@ async function main(){
 
     app.use("/static", express.static(__dirname + "/public"));
     app.engine("hbs", exphbs.engine({
-        extname: 'hbs'
+        extname: 'hbs',
+        layoutsDir: "src/views/layouts",
+        partialsDir: "src/views/partials",
+        defaultLayout: "main"
     }));
 
     app.set("view engine", "hbs");
