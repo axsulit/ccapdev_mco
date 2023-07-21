@@ -7,7 +7,10 @@ router.get("/",(req, res)=>{
     //     title: "Homepage"
     // });
     // res.send("hello World!");
-    res.render("partials/test",{test: "/views/main"});
+   // res.render("partials/test",{test: "/views/main"});
+   res.render("index", {
+    title: "Homepage"
+    });
   
 });
 

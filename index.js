@@ -18,15 +18,12 @@ async function main(){
     const app = express();
 
     app.use("/static", express.static(__dirname + "/public"));
+
     app.engine("hbs", exphbs.engine({
         extname: 'hbs',
-        layoutsDir: "src/views/layouts",
-        partialsDir: "src/views/partials",
-        defaultLayout: "main"
     }));
-
     app.set("view engine", "hbs");
-    app.set("views","./src/views");
+    app.set("views", "./src/views");
     app.set("view cache", false);
 
     app.use(express.json());
