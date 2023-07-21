@@ -5,19 +5,18 @@ const userRouter=Router();
 const db=getDb();
 const users = db.collection("users");
 
-// userRouter.get("/users", async (req, res) => {
-//     console.log("meow");
-//     //const usersArray = await users.find({}).toArray();
-//     res.render("users", {
-//         title: "Users",
-//         //users: usersArray
-//     });
-// });
-
 //Register In
  userRouter.post("/register",async (req, res)=>{
    console.log("POST request for homepage for Register received");
     console.log(req.body);
+
+     //checking username exists
+    // const existUsername = await users.findOne({ 
+    //     username: req.body.username
+    // });
+    // if (existUsername) {
+    //     console.log('username taken');
+    // }
     try {
         const result = await users.insertOne({
             username: req.body.username, 

@@ -97,7 +97,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
         picture:""
     };
     const jnewUser=JSON.stringify(newUser);
-    console.log(jnewUser);
+    //console.log(jnewUser);
     //retrieves username
     let username=document.querySelector("#username").value;
    // console.log(`${username}`);
