@@ -1,54 +1,52 @@
-{
-    "users": [
+[
         {
-            "username": "@anne_s",
+            "username": "anne_s",
             "password": "sulit123",
-            "picture": "images/fade-icon.png"
+            "picture": "static/images/fade-icon.png"
         },
         {
-            "username": "@bella_t",
+            "username": "bella_t",
             "password": "torio123",
-            "picture": "images/neon-icon.png"
+            "picture": "static/images/neon-icon.png"
         },
         {
-            "username": "@zhoe_g",
+            "username": "zhoe_g",
             "password": "gon123",
-            "picture": "images/killjoy-icon.png"
+            "picture": "static/images/killjoy-icon.png"
         },
         {
-            "username": "@mar_v",
+            "username": "mar_v",
             "password": "villa123",
-            "picture": "images/phoenix-icon.png"
+            "picture": "static/images/phoenix-icon.png"
         },
         {
-            "username": "@jack_e",
+            "username": "jack_e",
             "password": "eli123",
-            "picture": "images/fade-icon.png"
+            "picture": "static/images/fade-icon.png"
         },
         {
-            "username": "@andre_a",
+            "username": "andre_a",
             "password": "aqui123",
-            "picture": "images/brimstone-icon.png"
+            "picture": "static/images/brimstone-icon.png"
         },
         {
             "username": "@bien_m",
             "password": "mir123",
-            "picture": "images/omen-icon.png"
+            "picture": "static/images/omen-icon.png"
         },
         {
-            "username": "@dom_b",
+            "username": "dom_b",
             "password": "bac123",
-            "picture": "images/jett-icon.png"
+            "picture": "static/images/jett-icon.png"
         },
         {
-            "username": "@vinnie_i",
+            "username": "vinnie_i",
             "password": "ino123",
-            "picture": "images/omen-icon.png"
+            "picture": "static/images/omen-icon.png"
         },
         {
             "username": "@luis_r",
             "password": "ran123",
-            "picture": "images/fade-icon.png"
+            "picture": "static/images/fade-icon.png"
         }
 ]
-}

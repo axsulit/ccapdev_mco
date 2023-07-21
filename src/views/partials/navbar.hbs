@@ -1,6 +1,5 @@
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/css/navbar.css" defer/>
+<link rel="stylesheet" href="/static/css/navbar.css"/>
    
 <header class="header">
     <nav class="nav">
@@ -44,7 +43,7 @@
             <i class="uil uil-times form-close">x</i><br>
             <!-- login form -->
             <div class="form login-form">
-                <form action="#" class="form-log-sign">
+                <form action="#" class="form-log-sign" id="loginForm">
                     <h2>Login</h2>
                     <div id="login-error-msg"></div>
                     <!-- input username -->
@@ -71,17 +70,17 @@
             </div>
             <!-- sign up form -->
             <div class="form signup-form">
-                <form action="#" class="form-log-sign">
+                <form action="#" class="form-log-sign" id="signForm">
                     <h2>Sign Up</h2>
                     <!-- input username -->
                     <div id="sign-error-msg"></div>
                     <div class="input-box">
-                        <input id="username" type="text" placeholder="Username" required>
+                        <input name="signUsername" id="username" type="text" placeholder="Username" required>
                     </div>
             
                     <!-- input password -->
                     <div class="input-box">
-                        <input class="pw" type="password" placeholder="Create password" required>
+                        <input name="signPassword" class="pw" type="password" placeholder="Create password" required>
                     </div>
                     <!-- confirm password -->
                     <div class="input-box">

@@ -15,6 +15,8 @@ loginBtn = document.querySelector("#login");
 //buttons for submission of username and password in login/ sign-up
 submitSignBtn = document.querySelector("#sign-submit");
 submitLogBtn=document.querySelector("#log-submit");
+const loginForm=document.forms.loginForm;
+const signForm=document.forms.signForm;
 
 //retrieves log out button
 logoutBtn=document.querySelector(".logout");
@@ -81,13 +83,24 @@ logoutBtn.addEventListener("click",async(e)=>{
 });
 
 // Allows user to create an account
-submitSignBtn.addEventListener("click", async(e)=>{
+submitSignBtn?.addEventListener("click", async(e)=>{
     e.preventDefault();
+    const signData=new FormData(signForm);
+    //DEBUG for getting data
     //console.log("working");
+    //console.log(signData.get("signUsername"),signData.get("signPassword"));
 
+    //store new users in object
+    const  newUser={
+        username:signData.get("signUsername"),
+        password:signData.get("signPassword"),
+        //picture:""
+    };
+    const jnewUser=JSON.stringify(newUser);
+    console.log(jnewUser);
     //retrieves username
     let username=document.querySelector("#username").value;
-    console.log(`${username}`);
+   // console.log(`${username}`);
 
     //retrieves password and confirmation password
     let pw=document.querySelector(".pw").value;
@@ -114,11 +127,27 @@ submitSignBtn.addEventListener("click", async(e)=>{
             accountBtn.classList.remove("hidden");
             formOpenBtn.classList.add("hidden");
             nav_un.textContent=username;
-            console.log(reg_users);
+            //console.log(reg_users);
+            try {
+                const signResponse = await fetch("/", {
+                  method: 'POST',
+                  body: jnewUser,
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                });
+                console.log(signResponse);
+              } catch (err) {
+                console.error('Error occurred:', err);
+              }
+              
         }
         else{
             errormsg.textContent="Passwords do not match.";
         }
+
+        //debug to check new users
+        //console.log(newUser);
     } 
 });
 
