@@ -92,7 +92,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
 
     //store new users in object
     const  newUser={
-        username:signData.get("signUsername"),
+        username:"@"+signData.get("signUsername"),
         password:signData.get("signPassword"),
         picture:""
     };
