@@ -129,7 +129,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
             nav_un.textContent=username;
             //console.log(reg_users);
             try {
-                const signResponse = await fetch("/", {
+                const signResponse = await fetch("/register", {
                   method: 'POST',
                   body: jnewUser,
                   headers: {

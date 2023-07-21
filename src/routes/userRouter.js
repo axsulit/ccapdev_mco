@@ -15,7 +15,7 @@ const users = db.collection("users");
 // });
 
 //Register In
- userRouter.post("/",async (req, res)=>{
+ userRouter.post("/register",async (req, res)=>{
    console.log("POST request for homepage for Register received");
     console.log(req.body);
     try {
