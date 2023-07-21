@@ -33,7 +33,7 @@ var reg_users={
     jack_e:"eli123"
 };
 // Allows user to log in
-submitLogBtn.addEventListener("click",async(e)=>{
+submitLogBtn?.addEventListener("click",async(e)=>{
     e.preventDefault();
 
     //retrieves username
@@ -97,7 +97,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
         picture:""
     };
     const jnewUser=JSON.stringify(newUser);
-    //console.log(jnewUser);
+    console.log(jnewUser);
     //retrieves username
     let username=document.querySelector("#username").value;
    // console.log(`${username}`);
@@ -136,7 +136,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
                     'Content-Type': 'application/json'
                   }
                 });
-                console.log(signResponse);
+                //console.log(signResponse);
               } catch (err) {
                 console.error('Error occurred:', err);
               }
