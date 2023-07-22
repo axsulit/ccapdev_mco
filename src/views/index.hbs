@@ -1,123 +1,152 @@
 <link rel="stylesheet" href="/static/css/posts.css" />
 <link rel="stylesheet" href="/static/css/main.css" />
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+></script>
+<script src="/static/js/posts.js" defer></script>
 
 <div class="main">
-    <span id="left-pane">
-        <!--add icons-->
-        <ul class="tags">
-            <button class="start-discussion-btn" onclick="showWritePost()">Start Discussion</button>
-            <li><a href="#">
-                    <div class="tag">
-                        <i class="fa-regular fa-comments" id="gendisc"></i>
-                        General Discussion
-                    </div>
-                </a></li>
-            <li><a href="#">
-                    <div class="tag">
-                        <i class="fa-solid fa-user-group" id="lft"></i>
-                        LFT
-                    </div>
-                </a></li>
-            <li><a href="#">
-                    <div class="tag">
-                        <i class="fa-solid fa-wrench" id="wrench"></i>
-                        Technical Issues
-                    </div>
-                </a></li>
-            <li><a href="#">
-                    <div class="tag">
-                        <i class="fa-solid fa-comment-dots" id="oft"></i>
-                        Off Topic
-                    </div>
-                </a></li>
-        </ul>
+  <span id="left-pane">
+    <!--add icons-->
+    <ul class="tags">
+      <button class="start-discussion-btn" onclick="showWritePost()">Start
+        Discussion</button>
+      <li><a href="#">
+          <div class="tag">
+            <i class="fa-regular fa-comments" id="gendisc"></i>
+            General Discussion
+          </div>
+        </a></li>
+      <li><a href="#">
+          <div class="tag">
+            <i class="fa-solid fa-user-group" id="lft"></i>
+            LFT
+          </div>
+        </a></li>
+      <li><a href="#">
+          <div class="tag">
+            <i class="fa-solid fa-wrench" id="wrench"></i>
+            Technical Issues
+          </div>
+        </a></li>
+      <li><a href="#">
+          <div class="tag">
+            <i class="fa-solid fa-comment-dots" id="oft"></i>
+            Off Topic
+          </div>
+        </a></li>
+    </ul>
 
-    </span>
+  </span>
 
-    <!-- WRITE POST -->
-    <div id="popup-container">
-        <button class="close-button" onclick="closeWritePost()">X</button>
+  <!-- WRITE POST -->
+  <div id="popup-container">
+    <button class="close-button" onclick="closeWritePost()">X</button>
 
-        <form id="post-form" onsubmit="submitPost(event)">
-            <label for="post-title"></label>
-            <input type="text" id="post-title" placeholder="Title">
+    <form id="post-form" onsubmit="submitPost(event)">
+      <label for="post-title"></label>
+      <input type="text" id="post-title" placeholder="Title" />
 
-            <label for="post-caption"></label>
-            <textarea id="post-caption" rows="12" placeholder="Write a Post..." required></textarea>
+      <label for="post-caption"></label>
+      <textarea
+        id="post-caption"
+        rows="12"
+        placeholder="Write a Post..."
+        required
+      ></textarea>
 
-            <input id="submit-bttn" type="submit" value="Plant the Spike">
+      <input id="submit-bttn" type="submit" value="Plant the Spike" />
 
-            <div class="dropdown">
-                <button class="post-dropbtn">Choose Tags</button>
-                <div class="dropdown-content">
-                    <a href="#">General Discussion</a>
-                    <a href="#">LFT</a>
-                    <a href="#">Off Topic</a>
-                    <a href="#">Technical Issues</a>
-                </div>
-            </div>
-        </form>
+      <div class="dropdown">
+        <button class="post-dropbtn">Choose Tags</button>
+        <div class="dropdown-content">
+          <a href="#">General Discussion</a>
+          <a href="#">LFT</a>
+          <a href="#">Off Topic</a>
+          <a href="#">Technical Issues</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <span id="right-pane">
+
+    <div class="filters">
+      <div class="dropdown">
+        <button class="dropbtn">Top</button>
+        <div class="dropdown-content">
+          <a href="#">Latest</a>
+          <a href="#">Top</a>
+          <a href="#">Newest</a>
+          <a href="#">Oldest</a>
+        </div>
+      </div>
+
+      <!--refresh button-->
     </div>
 
-    <span id="right-pane">
+    <div id="posts-container">
+      {{#each posts}}
 
-        <div class="filters">
-            <div class="dropdown">
-                <button class="dropbtn">Top</button>
-                <div class="dropdown-content">
-                    <a href="#">Latest</a>
-                    <a href="#">Top</a>
-                    <a href="#">Newest</a>
-                    <a href="#">Oldest</a>
-                </div>
-            </div>
-
-            <!--refresh button-->
-        </div>
-
-        <div id="posts-container">
-            {{#each posts}}
-
-                <div class="post-item">
-                    <span class="post-votes">
-                        <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
-                        <br>
-                        <p class="vote-cnt">{{upvotes}}</p>
-                        <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
+        <div class="post-item">
+          <span class="post-votes">
+            <button class="votes" onclick="upvote()"><i
+                class="fa-solid fa-arrow-up"
+                id="upvote"
+              ></i></button>
+            <br />
+            <p class="vote-cnt">{{upvotes}}</p>
+            <button class="votes" onclick="downvote()"><i
+                class="fa-solid fa-arrow-down"
+                id="downvote"
+              ></i></button>
+          </span>
+          <span class="post-content">
+            <span class="post-content-top">
+              <!-- TO DO: retrieve images of user in users database and put it here -->
+              <img
+                class="pfp"
+                src="static/images/fade-icon.png"
+                height="50px"
+                width="50px"
+              />
+              <span class="details">
+                <div class="top-row">
+                  <span class="title">{{title}}</span>
+                  <!-- TO DO: edited should be enabled based on status -->
+                  <span class="edited">Edited</span>
+                  <span class="post-metadata">
+                    <span class="post-tag">
+                      <!-- TO DO: retrieve default icon for gendisc -->
+                      <img
+                        src="images/default.jpg"
+                        height="13px"
+                        width="13px"
+                      />
+                      {{tag}}
                     </span>
-                    <span class="post-content">
-                        <span class="post-content-top">
-                            <!-- TO DO: retrieve images of user in users database and put it here -->
-                            <img class="pfp" src="static/images/fade-icon.png" height="50px" width="50px" />
-                            <span class="details">
-                                <div class="top-row">
-                                    <span class="title">{{title}}</span>
-                                    <!-- TO DO: edited should be enabled based on status -->
-                                    <span class="edited">Edited</span>
-                                    <span class="post-metadata">
-                                        <span class="post-tag">
-                                            <!-- TO DO: retrieve default icon for gendisc -->
-                                            <img src="images/default.jpg" height="13px" width="13px" />
-                                            {{tag}}
-                                        </span>
-                                        <span class="comment-cnt">
-                                            <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
-                                            <!--TO DO: display comment count-->
-                                        </span>
-                                    </span>
-                                </div>
-
-                                <span class="status">
-                                    <span class="username"> {{username}}</span>
-                                    started at
-                                    <span class="post-time">{{date}}</span>
-                                </span>
-                            </span>
-                        </span>
-                        <div class="description">{{content}}</div>
+                    <span class="comment-cnt">
+                      <i
+                        class="fa-solid fa-comment"
+                        id="comment-icon"
+                        style="color: #ff4654;"
+                      ></i>
+                      <!--TO DO: display comment count-->
                     </span>
+                  </span>
                 </div>
-            {{/each}}
+
+                <span class="status">
+                  <span class="username"> {{username}}</span>
+                  started at
+                  <span class="post-time">{{date}}</span>
+                </span>
+              </span>
+            </span>
+            <div class="description">{{content}}</div>
+          </span>
         </div>
-    </span>
+      {{/each}}
+    </div>
+  </span>
 </div>
