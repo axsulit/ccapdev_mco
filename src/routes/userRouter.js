@@ -18,7 +18,7 @@ const users = db.collection("users");
      });
     if (existUsername) {
         console.log("ERROR in Registering: username is taken");
-    
+        res.sendStatus(500);
     }
     else{
         try {
@@ -28,7 +28,6 @@ const users = db.collection("users");
                 picture: req.body.picture
             });
     
-            //console.log(result);
             console.log("new user: ",req.body.username, " has been created. You are logged in.");
             res.sendStatus(200);
         } catch (err) {
@@ -55,12 +54,12 @@ userRouter.post("/login",async (req, res)=>{
          res.sendStatus(500);
      }
      else{
-        // TO DO: render homepage where in navbar, user's  username is displayed in navbar
-        //i think rendering should not occur here
         console.log("You have logged in")
+        const userPicture=existUser.picture;
+        console.log(userPicture);
         res.sendStatus(200);
+        //.json({userPicture});
      }
-    
  });
 
 export default userRouter;

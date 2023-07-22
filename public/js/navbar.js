@@ -23,15 +23,6 @@ logoutBtn=document.querySelector(".logout");
 //retrieves username + pfp in navbar
 accountBtn=document.querySelector(".user-profile");
 
-
-//Sample existing users
-var reg_users={
-    anne_s:"sulit123",
-    bella_t:"torio123",
-    zhoe_g:"gon123",
-    mar_v:"villa123",
-    jack_e:"eli123"
-};
 // Allows user to log in
 submitLogBtn?.addEventListener("click",async(e)=>{
     e.preventDefault();
@@ -45,6 +36,7 @@ submitLogBtn?.addEventListener("click",async(e)=>{
 
     const jUser=JSON.stringify(user);
     console.log(jUser);
+    
     //retrieves div for displaying error message
     let errormsg=document.getElementById("login-error-msg");
 
@@ -59,7 +51,6 @@ submitLogBtn?.addEventListener("click",async(e)=>{
             'Content-Type': 'application/json'
           }
         });
-        console.log(response);
         if(response.status==200){
             errormsg.textContent="";
             home.classList.remove("show");
@@ -67,7 +58,6 @@ submitLogBtn?.addEventListener("click",async(e)=>{
             formOpenBtn.classList.add("hidden");
 
             nav_un.textContent=loginData.get("logUsername");
-            //location.reload();
         }
         else{
             console.log("Status code received: ", response.status);
@@ -76,36 +66,6 @@ submitLogBtn?.addEventListener("click",async(e)=>{
       } catch (err) {
         console.error('Error occurred:', err);
       }
-
-    //retrieves username
-    // let login_un=document.querySelector("#login-username").value;
-    // //retrieves password
-    // let login_pw=document.querySelector("#login-pw").value;
-    // //retrieves username in nav bar
-    // let nav_un=document.querySelector(".nav-username");
-    
-    // //retrieves div for displaying error message
-    // let errormsg=document.getElementById("login-error-msg");
-
-    // if(reg_users.hasOwnProperty(login_un)){
-    //     //console.log("username exists. valid log in");
-    //     if(reg_users[login_un]==login_pw){
-    //         errormsg.textContent="";
-    //         //hides log in page
-    //         home.classList.remove("show");
-    //         accountBtn.classList.remove("hidden");
-    //         formOpenBtn.classList.add("hidden");
-
-    //         //displays the user's username in navbar
-    //         nav_un.textContent=login_un;
-    //     }
-    //     else{
-    //         errormsg.textContent="The password you've entered is incorrect.";
-    //     }
-    // }
-    // else{
-    //     errormsg.textContent="Username does not exist";
-    // }
 });
 
 logoutBtn.addEventListener("click",async(e)=>{
@@ -126,21 +86,15 @@ logoutBtn.addEventListener("click",async(e)=>{
 submitSignBtn?.addEventListener("click", async(e)=>{
     e.preventDefault();
     const signData=new FormData(signForm);
-    //DEBUG for getting data
-    //console.log("working");
-    //console.log(signData.get("signUsername"),signData.get("signPassword"));
 
     //store new users in object
     const  newUser={
         username:"@"+signData.get("signUsername"),
         password:signData.get("signPassword"),
-        picture:""
+        picture:"static/images/default.jpg"
     };
     const jnewUser=JSON.stringify(newUser);
     console.log(jnewUser);
-    //retrieves username
-    let username=document.querySelector("#username").value;
-   // console.log(`${username}`);
 
     //retrieves password and confirmation password
     let pw=document.querySelector(".pw").value;
@@ -151,44 +105,37 @@ submitSignBtn?.addEventListener("click", async(e)=>{
 
     //retrieves username in nav bar
     let nav_un=document.querySelector(".nav-username");
-    
-    // TO DO: Replace IF statement to check if username is taken from the database
-    // if(reg_users.hasOwnProperty(username)){
-    //     errormsg.textContent="Username is already taken";
-    // }
-    // else{
-        //console.log("username not taken");
-        errormsg.textContent="";
 
-        if(pw==confirm_pw){
-            //console.log("same passwords");
-            reg_users[username]=pw;
-            home.classList.remove("show");
-            accountBtn.classList.remove("hidden");
-            formOpenBtn.classList.add("hidden");
-            nav_un.textContent=username;
-            //console.log(reg_users);
-            try {
-                const signResponse = await fetch("/register", {
-                  method: 'POST',
-                  body: jnewUser,
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-                });
-                //console.log(signResponse);
-              } catch (err) {
-                console.error('Error occurred:', err);
-              }
-              
-        }
-        else{
-            errormsg.textContent="Passwords do not match.";
-        }
+    if(pw==confirm_pw){
+        try {
+            const response = await fetch("/register", {
+                method: 'POST',
+                body: jnewUser,
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            });
+        
+            if(response.status==200){
+                errormsg.textContent="";
+                home.classList.remove("show");
+                accountBtn.classList.remove("hidden");
+                formOpenBtn.classList.add("hidden");
 
-        //debug to check new users
-        //console.log(newUser);
-    //} 
+                nav_un.textContent=loginData.get("signUsername");
+               // console.log(response.userPicture);
+            }
+            else{
+                console.log("Status code received: ", response.status);
+                errormsg.textContent="Username is taken";
+            }
+        } catch (err) {
+            console.error('Error occurred:', err);
+        }
+    }
+    else{
+        errormsg.textContent="Passwords do not match.";
+    }
 });
 
 // LOGIN AND SIGN UP FUNCTIONS

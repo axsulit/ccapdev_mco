@@ -8,8 +8,6 @@ const router=Router();
 router.get("/",async (req, res)=>{
    res.render("index", {
     title: "Homepage",
-    //errorMessage:"kemer"
-    testingErrorMessage:"hello"
     });
   
 });
@@ -26,10 +24,5 @@ router.get("/profile",(req, res)=>{
         title: "Page not Found."
     });
 });
-
-
-
-//router.use(userRouter);
-
 
 export default router;
