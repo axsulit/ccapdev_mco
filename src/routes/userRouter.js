@@ -7,8 +7,8 @@ const users = db.collection("users");
 
 //Register 
  userRouter.post("/register",async (req, res)=>{
-   console.log("POST request for homepage for Register received");
-    console.log(req.body);
+    //    console.log("POST request for homepage for Register received");
+    //     console.log(req.body);
     //console.log("req.body.username: ",req.body.username);
 
      //checking username exists
@@ -17,7 +17,8 @@ const users = db.collection("users");
             
      });
     if (existUsername) {
-        console.log("username is taken");
+        console.log("ERROR in Registering: username is taken");
+    
     }
     else{
         try {
@@ -27,33 +28,35 @@ const users = db.collection("users");
                 picture: req.body.picture
             });
     
-            console.log(result);
-            res.sendStatus(200);
+            //console.log(result);
+            console.log("new user: ",req.body.username, " has been created. You are logged in.");
        
         } catch (err) {
             console.error(err);
             res.sendStatus(500);
         }
     }
-   
 });
 
-//Register 
+//Log In
 userRouter.post("/login",async (req, res)=>{
     console.log("POST request for Login received");
-    // console.log(req.body);
-     //console.log("req.body.username: ",req.body.username);
- 
-      //checking username exists
-     const existUsername = await users.findOne({ 
-             username: req.body.username
-             
-      });
-     if (!existUsername) {
-         console.log("username does not exist");
+    console.log("LOGIN: ", req.body);
+    //console.log("req.body.username: ",req.body.username);
+    const usersArray = await users.find({}).toArray();
+    //console.log(usersArray);
+    //checking username exists
+    const existUser = await users.findOne({ 
+             username: req.body.username,
+             password: req.body.password
+    });
+     if (!existUser) {
+         console.log("Username or Password is incorrect");
      }
      else{
-         console.log("sign up first");
+        // TO DO: render homepage where in navbar, user's  username is displayed in navbar
+        //i think rendering should not occur here
+        console.log("You have logged in")
      }
     
  });

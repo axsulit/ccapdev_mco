@@ -35,37 +35,59 @@ var reg_users={
 // Allows user to log in
 submitLogBtn?.addEventListener("click",async(e)=>{
     e.preventDefault();
+    const loginData=new FormData(loginForm);
+    //console.log(loginData.get("logUsername"),loginData.get("logPassword"));
+
+    const  user={
+        username:"@"+loginData.get("logUsername"),
+        password:loginData.get("logPassword"),
+    };
+
+    const jUser=JSON.stringify(user);
+    console.log(jUser);
+
+    try {
+        const response = await fetch("/login", {
+          method: 'POST',
+          body: jUser,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        console.log(response);
+      } catch (err) {
+        console.error('Error occurred:', err);
+      }
 
     //retrieves username
-    let login_un=document.querySelector("#login-username").value;
-    //retrieves password
-    let login_pw=document.querySelector("#login-pw").value;
-    //retrieves username in nav bar
-    let nav_un=document.querySelector(".nav-username");
+    // let login_un=document.querySelector("#login-username").value;
+    // //retrieves password
+    // let login_pw=document.querySelector("#login-pw").value;
+    // //retrieves username in nav bar
+    // let nav_un=document.querySelector(".nav-username");
     
+    // //retrieves div for displaying error message
+    // let errormsg=document.getElementById("login-error-msg");
 
-    //retrieves div for displaying error message
-    let errormsg=document.getElementById("login-error-msg");
+    // if(reg_users.hasOwnProperty(login_un)){
+    //     //console.log("username exists. valid log in");
+    //     if(reg_users[login_un]==login_pw){
+    //         errormsg.textContent="";
+    //         //hides log in page
+    //         home.classList.remove("show");
+    //         accountBtn.classList.remove("hidden");
+    //         formOpenBtn.classList.add("hidden");
 
-    if(reg_users.hasOwnProperty(login_un)){
-        //console.log("username exists. valid log in");
-        if(reg_users[login_un]==login_pw){
-            errormsg.textContent="";
-            //hides log in page
-            home.classList.remove("show");
-            accountBtn.classList.remove("hidden");
-            formOpenBtn.classList.add("hidden");
-
-            //displays the user's username in navbar
-            nav_un.textContent=login_un;
-        }
-        else{
-            errormsg.textContent="The password you've entered is incorrect.";
-        }
-    }
-    else{
-        errormsg.textContent="Username does not exist";
-    }
+    //         //displays the user's username in navbar
+    //         nav_un.textContent=login_un;
+    //     }
+    //     else{
+    //         errormsg.textContent="The password you've entered is incorrect.";
+    //     }
+    // }
+    // else{
+    //     errormsg.textContent="Username does not exist";
+    // }
 });
 
 logoutBtn.addEventListener("click",async(e)=>{
@@ -112,11 +134,11 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     //retrieves username in nav bar
     let nav_un=document.querySelector(".nav-username");
     
-
-    if(reg_users.hasOwnProperty(username)){
-        errormsg.textContent="Username is already taken";
-    }
-    else{
+    // TO DO: Replace IF statement to check if username is taken from the database
+    // if(reg_users.hasOwnProperty(username)){
+    //     errormsg.textContent="Username is already taken";
+    // }
+    // else{
         //console.log("username not taken");
         errormsg.textContent="";
 
@@ -148,7 +170,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
 
         //debug to check new users
         //console.log(newUser);
-    } 
+    //} 
 });
 
 // LOGIN AND SIGN UP FUNCTIONS

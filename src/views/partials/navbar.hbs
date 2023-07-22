@@ -23,7 +23,7 @@
                             <div class="dropbtn">
                                 <ul class="nav-menu-dropdown">
                                     <li><img class="pfp" src="/static/images/default.jpg"></li>
-                                    <li><div class="nav-username"> hello</div></li>
+                                    <li><div class="nav-username"> {{{username}}}</div></li>
                                 </ul>
                             </div>
                             <div class="dropdown-content">
@@ -48,11 +48,11 @@
                     <div id="login-error-msg"></div>
                     <!-- input username -->
                     <div class="input-box">
-                        <input id="login-username" type="text" placeholder="Username" required>
+                        <input name="logUsername" id="login-username" type="text" placeholder="Username" required>
                     </div>
                     <!-- input password -->
                     <div class="input-box">
-                        <input id="login-pw" type="password" placeholder="Password" required>
+                        <input name="logPassword" id="login-pw" type="password" placeholder="Password" required>
                         
                     </div>
                     <div class="option-field">

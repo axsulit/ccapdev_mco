@@ -8,7 +8,8 @@ const router=Router();
 router.get("/",async (req, res)=>{
    res.render("index", {
     title: "Homepage",
-    //errorMessage:"KIMIIII"
+    //errorMessage:"kemer"
+    testingErrorMessage:"hello"
     });
   
 });
