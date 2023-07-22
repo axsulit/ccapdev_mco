@@ -114,34 +114,46 @@
             </div>
 
             <!-- PROFILE CONTENTS -->
-            <div class="profile-header">
+            <!-- <div class="profile-header">
                 <img class="pfp" src="images/fade-icon.png">
                 <div>
                     <div class="username">Fade</div> 
                     <div id="description">Face your fears!</div>
                 </div>
-            </div>
+            </div> -->
+            <div class="main"></div>
             <div class="profile-body">
                 <ul class="profile-tags">
-                    <a href="#"><li class="tag"> Profile </li></a>
-                    <a href="#"><li class="tag"> Replies </li></a>
-                    <a href="#"><li class="tag"> Edit Profile </li></a>
+                    <a href="profile.html"><li class="tag active"> Profile </li></a>
+                    <a href="replies.html"><li class="tag"> Replies </li></a>
+                    <a href="edit-profile.html"><li class="tag"> Edit Profile </li></a>
                 </ul>
                 <div class="profile-content">
                     <div class="edit-profile"> 
                         <span class="edit-profile-header">Your Account</span><br><br>
                         <form id="edit-profile-form">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password"><br>
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username"><br>
-                            <label for="description">Description:</label><br>
-                            <textarea id="description" id="description" name="description" rows="4" cols="50"></textarea><br>
-
-                            <button type="reset">Reset</button>
-                            <button type="submit">Save</button>
+                            <table class="row" border="0">
+                                <tr>
+                                    <td>
+                                        Profile Picture <br>
+                                        <img src="images/fade-icon.png" class="edit-pfp"> <br>
+                                        <input id="file" type="file" onchange="loadFile(event)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Username<br> <input type="text" id="username" name="username" class="profile-input"></td>
+                                    <td>Password<br> <input type="password" id="password" name="password" class="profile-input"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Description<br> <textarea id="description" id="description" name="description" class="description"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> <center>
+                                        <button type="reset" class="btn">Reset</button>
+                                        <button type="submit" class="btn">Save</button>
+                                    </center></td>
+                                </tr>
+                            </table>
                         </form>
                     </div>
                 </div>

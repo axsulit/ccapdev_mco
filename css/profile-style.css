@@ -53,7 +53,8 @@ ul {
 
 /* HEADER */
 .header {
-    position: sticky;
+    position: fixed;
+    top: 0;
     height: 55px;
     width: 100%;
     background: #FF4654;
@@ -64,6 +65,7 @@ ul {
 .nav {
     max-width: 100%;
     width: 100%;
+
 } nav, .nav-menu{
     display: flex;
     align-items: center;
@@ -353,6 +355,7 @@ ul {
 
 /* profile header */
 .profile-header{
+    margin-top: 50px;
     padding: 2%;
     /* padding-top: 6%; */
     padding-left: 12%;
@@ -381,6 +384,7 @@ ul {
 .profile-body {
     display: flex;
     /* background: pink; */
+    
     height: 100%;
     margin: 0; padding: 0;
 } .profile-body a{
@@ -393,6 +397,13 @@ ul {
 } .tag {
     padding: 10%;
     white-space: nowrap;
+} .active, .tag:hover {
+    color: #e53e4b;
+    font-weight: bold;
+}
+
+.main {
+    margin-top:50px;
 }
 
 /* profile content */
@@ -406,8 +417,60 @@ ul {
 } .edit-profile {
     padding-top: 2%;
     padding-left: 4%;
+    margin-right: 50%;
+    /* background-color: pink; */
 } .edit-profile-header {
     font-weight: bold;
-} .edit-profile-form {
-    
+    font-size: x-large;
+} .row {
+    width: 100%;
+    border-radius: 5px;;
+    padding: 10px;
+} td {
+    padding-right: 10px;
+    padding-bottom: 20px;
+} .description {
+    width: 98%;
+    resize: none;
+    line-height: 50px;
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+} .profile-input {
+    width: 95%;
+    margin-left: 5px;
+    margin-top: 10px;
+    background-color: #232323;
+    color: #e2e2e2;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+    padding: 10px;
+} .edit-pfp {
+    height:150px;
+    width: 150px;
+    border-radius: 50%;
+    border: solid 1px #e2e2e2;
+    margin: 15px 0px;
+    padding-left: 2px;
+} .pfp-button {
+    display: inline;
+} 
+
+/* reset and save buttons */
+.btn {
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+} .btn:hover {
+    background-color: #1a1a1a;
+} input::file-selector-button {
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
 }
