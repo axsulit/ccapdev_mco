@@ -19,7 +19,9 @@ router.get("/",async (req, res)=>{
 
 //TO DO: profile
 router.get("/profile",(req, res)=>{ 
-    res.send("Not yet done but working");
+    res.render("index", {
+        title: "Profile",
+    });
  });
 
 
