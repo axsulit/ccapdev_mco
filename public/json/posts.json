@@ -1,6 +1,5 @@
 [
         {
-            "postid": "1",
             "username": "@anne_s",
             "date": "06/21/2023 18:43",
             "title": "New Agent Speculations",
@@ -12,7 +11,6 @@
             "edited": false
 },
         {
-            "postid": "2",
             "username": "@bella_t",
             "date": "07/15/2021 18:45",
             "title": "I Topfragged With No Crosshair",
@@ -24,7 +22,6 @@
             "edited": false
   },
         {
-            "postid": "3",
             "username": "@zhoe_g",
             "date": "06/03/2023 09:15",
             "title": "Killjoy Buff Where",
@@ -36,7 +33,6 @@
             "edited": false
 },
         {
-            "postid": "4",
             "username": "@mar_v",
             "date": "09/12/2021 18:30",
             "title": "Hardstuck Plat? (Advice from a Diamond)",
@@ -48,7 +44,6 @@
             "edited": false
 },
         {
-            "postid": "5",
             "username": "@jack_e",
             "date": "11/28/2022 15:45",
             "title": "LF 1 Gold Lobby",
@@ -60,7 +55,6 @@
             "edited": false
 },
         {
-            "postid": "6",
             "username": "@andre_a",
             "date": "06/26/2023 23:10",
             "title": "LF Duo",
@@ -72,7 +66,6 @@
             "edited": false
 },
         {
-            "postid": "7",
             "username": "@bien_m",
             "date": "11/27/2022 15:49",
             "title": "VCT Tokyo",
@@ -83,7 +76,6 @@
             "downvotes": 1,
             "edited": false
 }, {
-            "postid": "8",
             "username": "@dom_b",
             "date": "11/26/2022 13:48",
             "title": "Returning to Valorant",
@@ -94,9 +86,6 @@
             "downvotes": 0,
             "edited": false
 }
-
-
-
 
 
 ]

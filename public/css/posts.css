@@ -1,0 +1,121 @@
+/**MISSING: posts-container*/
+:root {
+    --b-black: rgb(28, 37, 46);
+    --b-red: rgb(255, 70, 84);
+    --b-grey: rgb(76, 76, 76);
+    --b-white: rgb(249, 249, 249);
+    --b-green: rgb(76, 217, 100);
+}
+.post-item {
+    padding: 20px;
+    display: flex;
+    margin: 5px 0px 5px 0;
+    color: aliceblue;
+    border-radius: 5px;
+    width: 900px;
+    overflow: hidden;
+}
+.post-votes {
+    margin-right: 10px;
+}
+.votes {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--b-white);
+    outline: none;
+}
+
+/**MISSING fa-solid fa-arrow-up*/
+/**MISSING: upvote*/
+.vote-cnt {
+    font-size: 15px;
+    text-align: center;
+    margin: 0px 3px;
+}
+
+/**MISSING: fa-solid fa-arrow-down*/
+/**missing downvote*/
+.post-content {
+    width: 100%;
+    resize: none;
+}
+.post-content-top {
+    display: flex;
+    resize: none;
+    overflow: hidden;
+}
+.pfp {
+    margin-right: 15px;
+    border-radius: 50%;
+
+
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.top-row {
+    display: flex;
+    width: 100%;
+}
+.title {
+    font-size: 21px;
+}
+.edited {
+    color: lightgray;
+    font-style: italic;
+    font-size: 12px;
+    padding: 8px;
+}
+.post-metadata {
+    margin-left: auto;
+}
+.post-tag {
+    background-color: var(--b-red);
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 5px;
+    vertical-align: center;
+    margin-right: 10px;
+}
+.comment-cnt img {
+    margin-right: 5px;
+}
+/** missing: fa-solid fa-comment*/
+
+#comment-icon,
+#gendisc,
+#lft,
+#wrench,
+#oft {
+    color: var(--b-red);
+    font-weight: bold;
+    border: none;
+    background: none;
+    outline: none;
+    margin-right: 5px;
+}
+
+#cmt {
+    color: var(--b-grey);
+}
+
+.status .username {
+    font-weight: bold;
+    color: var(--b-white);
+}
+/**post-time missing css*/
+
+.description {
+    padding: 10px 0px 10px 0px;
+    color: lightgray;
+    resize: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: inherit;
+    height:inherit;
+    text-align: justify;
+}
