@@ -9,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="./script/index.js" defer></script>
         <script src="./script/navbar.js" defer></script>
+        <script src="./script/profile.js" defer></script>
         
     </head>
     <body>
@@ -122,14 +123,24 @@
                 </div>
             </div> -->
             <div class="main"></div>
+            <div class="profile-header">
+                <img class="pfp" src="images/fade-icon.png">
+                <div>
+                    <div class="username">Fade</div> 
+                    <div id="description">Face your fears!</div>
+                </div>
+            </div>
             <div class="profile-body">
                 <ul class="profile-tags">
-                    <a href="profile.html"><li class="tag active"> Profile </li></a>
-                    <a href="replies.html"><li class="tag"> Replies </li></a>
-                    <a href="edit-profile.html"><li class="tag"> Edit Profile </li></a>
+                    <a href="profile.html" id="profile"><li class="tag active"> Profile </li></a>
+                    <a href="replies.html" id="replies"><li class="tag"> Replies </li></a>
+                    <a href="edit-profile.html" id="edit-profile"><li class="tag"> Edit Profile </li></a>
                 </ul>
                 <div class="profile-content">
-                    <div class="edit-profile"> 
+                    <div class="posts">
+                        It looks like there are no posts here.
+                    </div>
+                    <div class="edit-profile invisible"> 
                         <span class="edit-profile-header">Your Account</span><br><br>
                         <form id="edit-profile-form">
                             <table class="row" border="0">

@@ -383,8 +383,6 @@ ul {
 /* profile body */
 .profile-body {
     display: flex;
-    /* background: pink; */
-    
     height: 100%;
     margin: 0; padding: 0;
 } .profile-body a{
@@ -394,10 +392,15 @@ ul {
 } .profile-tags {
     padding-left: 10%;
     margin: 2%;
-} .tag {
+} 
+
+.tag {
     padding: 10%;
     white-space: nowrap;
 } .active, .tag:hover {
+    color: #e53e4b;
+    font-weight: bold;
+} .selected {
     color: #e53e4b;
     font-weight: bold;
 }
@@ -473,4 +476,8 @@ ul {
     padding: 10px;
     border: solid 1px #1a1a1a;
     border-radius: 5px;
+}
+
+.invisible {
+    display: none;
 }
