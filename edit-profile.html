@@ -123,13 +123,26 @@
             </div>
             <div class="profile-body">
                 <ul class="profile-tags">
-                    <a href="profile.html"><li class="tag"> Profile </li></a>
+                    <a href="#"><li class="tag"> Profile </li></a>
                     <a href="#"><li class="tag"> Replies </li></a>
-                    <a href="edit-profile.html"><li class="tag"> Edit Profile </li></a>
+                    <a href="#"><li class="tag"> Edit Profile </li></a>
                 </ul>
                 <div class="profile-content">
-                    <div class="posts">
-                        It looks like there are no posts here.
+                    <div class="edit-profile"> 
+                        <span class="edit-profile-header">Your Account</span><br><br>
+                        <form id="edit-profile-form">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password"><br>
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username"><br>
+                            <label for="description">Description:</label><br>
+                            <textarea id="description" id="description" name="description" rows="4" cols="50"></textarea><br>
+
+                            <button type="reset">Reset</button>
+                            <button type="submit">Save</button>
+                        </form>
                     </div>
                 </div>
             </div>
