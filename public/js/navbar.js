@@ -45,6 +45,11 @@ submitLogBtn?.addEventListener("click",async(e)=>{
 
     const jUser=JSON.stringify(user);
     console.log(jUser);
+    //retrieves div for displaying error message
+    let errormsg=document.getElementById("login-error-msg");
+
+    //retrieves username in nav bar
+    let nav_un=document.querySelector(".nav-username");
 
     try {
         const response = await fetch("/login", {
@@ -55,6 +60,19 @@ submitLogBtn?.addEventListener("click",async(e)=>{
           }
         });
         console.log(response);
+        if(response.status==200){
+            errormsg.textContent="";
+            home.classList.remove("show");
+            accountBtn.classList.remove("hidden");
+            formOpenBtn.classList.add("hidden");
+
+            nav_un.textContent=loginData.get("logUsername");
+            //location.reload();
+        }
+        else{
+            console.log("Status code received: ", response.status);
+            errormsg.textContent="Invalid username or password";
+        }
       } catch (err) {
         console.error('Error occurred:', err);
       }
