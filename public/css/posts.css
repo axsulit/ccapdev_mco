@@ -6,49 +6,94 @@
     --b-white: rgb(249, 249, 249);
     --b-green: rgb(76, 217, 100);
 }
+
 .post-item {
-    padding: 20px;
-    display: flex;
+    padding: 30px;
     margin: 5px 0px 5px 0;
     color: aliceblue;
     border-radius: 5px;
-    width: 900px;
+    width: 1200px;
     overflow: hidden;
 }
-.post-votes {
-    margin-right: 10px;
-}
-.votes {
-    background: none;
-    border: none;
-    font-size: 12px;
-    color: var(--b-white);
-    outline: none;
-}
 
-/**MISSING fa-solid fa-arrow-up*/
-/**MISSING: upvote*/
-.vote-cnt {
-    font-size: 15px;
-    text-align: center;
-    margin: 0px 3px;
-}
-
-/**MISSING: fa-solid fa-arrow-down*/
-/**missing downvote*/
 .post-content {
     width: 100%;
     resize: none;
 }
+
 .post-content-top {
     display: flex;
     resize: none;
     overflow: hidden;
 }
+
 .pfp {
     margin-right: 15px;
     border-radius: 50%;
+}
 
+.top-row {
+    display: flex;
+    width: 100%;
+}
+
+.post-metadata {
+    margin-left: auto;
+}
+
+.post-tag {
+    background-color: var(--b-red);
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 5px;
+    vertical-align: center;
+    margin-right: 10px;
+}
+
+.comment-cnt img {
+    margin-right: 5px;
+}
+
+.title {
+    font-size: 21px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.status {
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: lightgray;
+}
+
+.status .username {
+    font-weight: bold;
+    color: var(--b-white);
+}
+
+.status b {
+    color: aliceblue;
+}
+
+.description {
+    padding: 10px 0px 10px 0px;
+    color: lightgray;
+    resize: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: inherit;
+    height:inherit;
+    text-align: justify;
+}
+
+.post-item:hover {
+    background-color: black;
+}
 
 }
 .details {
@@ -72,6 +117,7 @@
 .post-metadata {
     margin-left: auto;
 }
+
 .post-tag {
     background-color: var(--b-red);
     padding: 2px 4px;
@@ -118,4 +164,56 @@
     width: inherit;
     height:inherit;
     text-align: justify;
+}
+
+
+.close-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+.votes {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--b-white);
+    outline: none;
+}
+
+.vote-cnt {
+    font-size: 15px;
+    text-align: center;
+    margin: 0px 3px;
+}
+
+.post-votes {
+    margin-right: 10px;
+}
+
+.edited {
+    color: lightgray;
+    font-style: italic;
+    font-size: 12px;
+    padding: 8px;
+}
+
+#comment-icon,
+#gendisc,
+#lft,
+#wrench,
+#oft {
+    color: var(--b-red);
+    font-weight: bold;
+    border: none;
+    background: none;
+    outline: none;
+    margin-right: 5px;
+}
+
+#cmt {
+    color: var(--b-grey);
 }
