@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="public\css\profile-style.css">
+
+<!-- PROFILE CONTENTS -->
+<!-- <div class="profile-header">
+    <img class="pfp" src="images/fade-icon.png">
+    <div>
+        <div class="username">Fade</div> 
+        <div id="description">Face your fears!</div>
+    </div>
+</div> -->
+<div class="main"></div>
+<div class="profile-body">
+    <ul class="profile-tags">
+        <a href="/profile"><li class="tag active"> Profile </li></a>
+        <a href="replies.html"><li class="tag"> Replies </li></a>
+        <a href="/profile/editprofile"><li class="tag"> Edit Profile </li></a>
+    </ul>
+    <div class="profile-content">
+        <div class="edit-profile"> 
+            <span class="edit-profile-header">Your Account</span><br><br>
+            <form id="edit-profile-form">
+                <table class="row" border="0">
+                    <tr>
+                        <td>
+                            Profile Picture <br>
+                            <img src={{pfp}} class="edit-pfp"> <br>
+                            <input id="profile-file" type="file" onchange="loadFile(event)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Username<br> <input type="text" id="profile-username" name="profile-username" class="profile-input"></td>
+                        <td>Password<br> <input type="password" id="profile-password" name="profile-password" class="profile-input"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Description<br> <textarea id="profile-description" name="profile-description" class="profile-description"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <center>
+                            <button type="reset" class="btn">Reset</button>
+                            <button type="submit" class="btn">Save</button>
+                        </center></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

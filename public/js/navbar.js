@@ -43,6 +43,10 @@ submitLogBtn?.addEventListener("click",async(e)=>{
     //retrieves username in nav bar
     let nav_un=document.querySelector(".nav-username");
 
+    //retrievves profile href in navbar
+    let nav_profile = $('#profile-link');
+    console.log("nav before ",nav_profile.attr('href'));
+
     try {
         const response = await fetch("/login", {
           method: 'POST',
@@ -56,8 +60,10 @@ submitLogBtn?.addEventListener("click",async(e)=>{
             home.classList.remove("show");
             accountBtn.classList.remove("hidden");
             formOpenBtn.classList.add("hidden");
-
             nav_un.textContent=loginData.get("logUsername");
+
+            nav_profile.attr('href', `/profile/@${loginData.get("logUsername")}`);
+            console.log("nav after: ", nav_profile.attr('href'));
         }
         else{
             console.log("Status code received: ", response.status);
@@ -66,6 +72,8 @@ submitLogBtn?.addEventListener("click",async(e)=>{
       } catch (err) {
         console.error('Error occurred:', err);
       }
+
+      
 });
 
 logoutBtn.addEventListener("click",async(e)=>{
@@ -106,6 +114,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
 
     //retrieves username in nav bar
     let nav_un=document.querySelector(".nav-username");
+
 
     if(pw==confirm_pw){
         try {

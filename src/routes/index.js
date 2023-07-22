@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import userRouter from './userRouter.js';
+import profileRouter from './profileRouter.js';
 import { getDb } from '../db/conn.js';
 
 const db=getDb();
@@ -17,15 +18,11 @@ router.get("/",async (req, res)=>{
   
 });
 
-//TO DO: profile
-router.get("/profile",(req, res)=>{ 
-    res.render("index", {
-        title: "Profile",
-    });
- });
 
 
  router.use(userRouter);
+ router.use(profileRouter);
+
  router.use((req, res) => {
     res.render("error", {
         title: "Page not Found."
