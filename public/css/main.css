@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('fonts/Gilroy/Gilroy-ExtraBold.otf') format('opentype'),
+        url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
+}
+
+:root {
+    --b-black: rgb(28, 37, 46);
+    --b-red: rgb(255, 70, 84);
+    --b-grey: rgb(76, 76, 76);
+    --b-white: rgb(249, 249, 249);
+    --b-green: rgb(76, 217, 100);
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    background-color: var(--b-black);
+    margin: 0;
+}
