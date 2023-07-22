@@ -9,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="./script/index.js" defer></script>
         <script src="./script/navbar.js" defer></script>
+        <script src="./script/profile.js" defer></script>
         
     </head>
     <body>
@@ -112,8 +113,9 @@
                     </form>
                 </div>
             </div>
-
-            <!-- PROFILE CONTENTS -->
+            
+            <!-- MAIN -->
+            <div class="main"></div>
             <div class="profile-header">
                 <img class="pfp" src="images/fade-icon.png">
                 <div>
@@ -123,13 +125,41 @@
             </div>
             <div class="profile-body">
                 <ul class="profile-tags">
-                    <a href="profile.html"><li class="tag active"> Profile </li></a>
-                    <a href="#"><li class="tag"> Replies </li></a>
-                    <a href="edit-profile.html"><li class="tag"> Edit Profile </li></a>
+                    <a href="profile.html" id="profile"><li class="tag active"> Profile </li></a>
+                    <a href="replies.html" id="replies"><li class="tag"> Replies </li></a>
+                    <a href="edit-profile.html" id="edit-profile"><li class="tag"> Edit Profile </li></a>
                 </ul>
                 <div class="profile-content">
                     <div class="posts">
                         It looks like there are no posts here.
+                    </div>
+                    <div class="edit-profile invisible"> 
+                        <span class="edit-profile-header">Your Account</span><br><br>
+                        <form id="edit-profile-form">
+                            <table class="row" border="0">
+                                <tr>
+                                    <td>
+                                        &nbsp; Profile Picture <br> <img src="images/fade-icon.png" class="edit-pfp">
+                                    </td>
+                                    <td> <br>
+                                        <input id="file" type="file" onchange="loadFile(event)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> &nbsp; Username <br> <input type="text" id="username" name="username" class="profile-input"></td>
+                                    <td> &nbsp; Password<br> <input type="password" id="password" name="password" class="profile-input"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp; Description<br> <textarea id="description" id="description" name="description" class="description"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> <center>
+                                        <button type="reset" class="btn">Reset</button>
+                                        <button type="submit" class="btn">Save</button>
+                                    </center></td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>

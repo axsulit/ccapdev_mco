@@ -426,16 +426,18 @@ ul {
     font-weight: bold;
     font-size: x-large;
 } .row {
-    width: 100%;
-    border-radius: 5px;;
-    padding: 10px;
+    width: 80%;
+    /* border-radius: 5px;; */
+    /* padding: 10px; */
 } td {
-    padding-right: 10px;
+    padding-right: 20px;
+    padding-left: 0;
     padding-bottom: 20px;
 } .description {
-    width: 98%;
+    width: 97%;
     resize: none;
-    line-height: 50px;
+    line-height: 20px;
+    height: 100px;
     background-color: #232323;
     color: #e2e2e2;
     padding: 10px;
@@ -455,7 +457,8 @@ ul {
     width: 150px;
     border-radius: 50%;
     border: solid 1px #e2e2e2;
-    margin: 15px 0px;
+    margin-top: 15px;
+    /* margin: 15px 0px; */
     padding-left: 2px;
 } .pfp-button {
     display: inline;
@@ -476,6 +479,8 @@ ul {
     padding: 10px;
     border: solid 1px #1a1a1a;
     border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .invisible {
