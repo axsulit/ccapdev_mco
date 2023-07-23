@@ -23,336 +23,6 @@ ul {
     margin: 0; /* Remove margins */
 }
 
-
-/*LOGGED IN - profile*/
-.nav-pfp {
-    border-radius: 100%;
-    height: 30px;
-    width: 30px;
-}
-
-.nav-username {
-    color: #fff;
-    font-size: 12px;
-}
-
-/* padding-left: 5px; */
-
-.profile {
-    cursor: pointer;
-    align-items: center;
-    height: 34px;
-    /* to match search height */
-    border-radius: 5px;
-}
-
-.profile-pic {
-    height: 34px;
-}
-
-
-/* HEADER */
-.header {
-    position: fixed;
-    top: 0;
-    height: 55px;
-    width: 100%;
-    background: #FF4654;
-    z-index: 100;
-}
-
-/* navigation bar */
-.nav {
-    max-width: 100%;
-    width: 100%;
-
-} nav, .nav-menu{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    float:left;
-} nav, .nav-menu-right{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    float: right; 
-}.nav-logo {
-    font-size: 25px;
-} .nav-logo, .nav-link, .button {
-    color: #fff;
-} .nav-right {
-    float: right;
-} .logo {
-    height: 40px;
-
-}
-
-.nav-menu-logo {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-left: 20px;
-}
-
-.nav {
-    max-width: 100%;
-    width: 100%;
-} nav, .nav-menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    float:left;
-} nav, .nav-menu-right{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    float: right; 
-    height: 100%;
-}.nav-logo {
-    font-size: 25px;
-} .nav-logo, .nav-link, .button {
-    color: #fff;
-} .logo {
-    height: 40px;
-}
-
-.nav-menu-logo {
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-left: 20px;
-}
-
-/* login button */
-.button {
-    padding: 6px 24px;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-} .button:active {
-    transform: scale(0.98);
-}
-
-/* nav search */
-#search {
-    cursor: pointer;
-    margin: 5px;
-    padding: 5px;
-    margin-right: 5px;
-    border-radius: 5px;
-    align-items: center;
-    background: #e53e4b;
-} #search:focus-within {
-    background: #e12836;
-} #search:focus-within input {
-    width: 300px;
-} #search-btn {
-    width: 0;
-    outline: none;
-    border: none;
-    background: transparent;
-    color: white;
-    margin-right: 3px;
-    font-size: 15px;
-} #search-input::placeholder {
-    font-family: Montserrat, sans-serif;
-    color: white;
-    font-size: 12px;
-} #search input {
-    font-family: Montserrat, sans-serif;
-    width: 150px;
-    outline: none;
-    border: none;
-    font-weight: 500;
-    transition: 0.8s;
-    background: transparent;
-    font-size: 12px;
-    padding-left: 17px;
-    color: white;
-} #search a .fas {
-    color: #b5be85;
-    font-size: 18px;
-}
-
-/* form */
-.form-container{
-    position: absolute;
-    max-width: 320px;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2);
-    z-index: 101;
-    background: #232323;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: rgba(0,0,0,0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.4s ease-out;
-    
-} .form-container a {
-    color:#FF4654;
-    font-size: 12px;
-} .form-container a:hover {
-    text-decoration: underline;
-} .form-container h2 {
-    font-size: 22px;
-    color: #fff;
-    text-align: center;
-} .form-container i {
-    float: right;
-    color: #fff;
-    font-style: normal;
-}
-
-/*LOGGED IN - profile*/
-.nav-pfp {
-    border-radius:100%;
-    height:30px;
-    width:30px;
-} .nav-username {
-    color: #fff;
-    font-size: 12px;
-} .profile {
-    cursor: pointer;
-    align-items: center;
-    height: 34px; /* to match search height */
-    border-radius: 5px;
-} .profile-pic {
-    height: 34px;
-} .username {
-    padding-left: 5px;
-}
-
-/* LOGGED IN - profile dropdown */
-.nav-dropbtn {
-    padding-left: 5px;
-    padding-top: 0px;
-    margin: 0;
-} .dropdown-content{
-    display: none;
-    position:absolute;
-    background-color:#1a1a1a;
-    margin-left: 5px;
-    width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-} .dropdown-content a {
-    color: #fff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 12px;
-} .dropdown-content a:hover {
-    background-color: #ddd;
-} .nav-dropdown:hover .dropdown-content {
-    display: block;
-} .nav-dropdown:hover .nav-menu-dropdown {
-    border-radius: 5px;
-    background-color: #e53e4b;
-} .nav-menu-dropdown{
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
-    margin-right:80px;
-    height: 34px;
-    width:120px;
-    padding-left: 5px;
-    padding-top: 5px;
-}
-
-/* form close animation */
-.home.show .form-container{
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-} .home::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    background-color: rgba(0,0,0,0.3);
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease-out;
-} .home.show::before {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* sign up form */
-.signup-form {
-    display: none;
-} .form-container.active .signup-form{
-    display: block;
-} .form-container.active .login-form{
-    display: none;
-} .form-close {
-    cursor: pointer;
-}
-
-/* form input box */
-.input-box {
-    position: relative;
-    margin-top: 30px;
-    width: 100%;
-    height: 40px;
-    background-color: #1C252E;
-} .input-box input {
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-    border: 3px solid #aaaa;
-    transition: all 0.2s ease;
-} .input-box input:focus {
-    border-color: #FF4654;
-} 
-
-/* remember me/forgot password */
-.option-field {
-    margin-top: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} .checkbox {
-    display: flex;
-    column-gap: 8px;
-    white-space: nowrap;
-    font-size: 12px;
-} .checkbox label {
-    font-size: 12px;
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
-} .checkbox input {
-    accent-color: #FF4654;
-}
-
-/* login button */
-.form-container .button {
-    background-color: #FF4654;
-    margin-top: 30px;
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 10px;
-} .login-signup {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 15px;
-    color: #fff;
-}
-
-#sign-error-msg{
-    color: #fff;
-}
-#login-error-msg{
-    color: #fff;
-}
-
-.hidden{
-    display:none;
-}
-
 /* profile header */
 .profile-header{
     margin-top: 50px;
@@ -383,8 +53,6 @@ ul {
 /* profile body */
 .profile-body {
     display: flex;
-    /* background: pink; */
-    
     height: 100%;
     margin: 0; padding: 0;
 } .profile-body a{
@@ -392,17 +60,22 @@ ul {
 } .profile-body a:hover{
     color: #e53e4b
 } .profile-tags {
-    padding-left: 10%;
-    margin: 2%;
-} .tag {
-    padding: 10%;
+    padding-left: 12%;
+} 
+
+.tag {
     white-space: nowrap;
+    width: 30%;
+    height: 3%;
 } .active, .tag:hover {
+    color: #e53e4b;
+    font-weight: bold;
+} .selected {
     color: #e53e4b;
     font-weight: bold;
 }
 
-.main {
+.buffer {
     margin-top:50px;
 }
 
@@ -410,11 +83,17 @@ ul {
 .profile-content{
     flex-grow: 1;
     color: #e2e2e2;
-} .posts {
+} 
+
+/* profile posts */
+.posts {
     font-size: larger;
     padding-top: 5%;
     text-align: center;
-} .edit-profile {
+} 
+
+/* edit profile */
+.edit-profile {
     padding-top: 2%;
     padding-left: 4%;
     margin-right: 50%;
@@ -423,16 +102,16 @@ ul {
     font-weight: bold;
     font-size: x-large;
 } .row {
-    width: 100%;
-    border-radius: 5px;;
-    padding: 10px;
+    width: 80%;
 } td {
-    padding-right: 10px;
+    padding-right: 20px;
+    padding-left: 0;
     padding-bottom: 20px;
 } .description {
-    width: 98%;
+    width: 97%;
     resize: none;
-    line-height: 50px;
+    line-height: 20px;
+    height: 100px;
     background-color: #232323;
     color: #e2e2e2;
     padding: 10px;
@@ -452,7 +131,8 @@ ul {
     width: 150px;
     border-radius: 50%;
     border: solid 1px #e2e2e2;
-    margin: 15px 0px;
+    margin-top: 15px;
+    /* margin: 15px 0px; */
     padding-left: 2px;
 } .pfp-button {
     display: inline;
@@ -473,4 +153,11 @@ ul {
     padding: 10px;
     border: solid 1px #1a1a1a;
     border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* trigger for making posts/replies/edit profile visible (javascript) */
+.invisible {
+    display: none;
 }

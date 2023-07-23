@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/static/css/profile-style.css">
 
 <!-- PROFILE CONTENTS -->
+    <div class="buffer"></div>
     <div class="profile-header">
         <img class="pfp" src={{pfp}}>
         <div>
@@ -14,9 +15,7 @@
             <div class="posts">
                 {{!-- TODO: Add "It looks like there are no posts here." if postCnt == 0 --}}
                 {{displayMsg}}
-
                 {{#each posts}}
-
                     <div class="post-item">
                         <span class="post-votes">
                             <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
@@ -54,6 +53,8 @@
                     </div> 
                 {{/each}}
             </div>
+            <div class="edit-profile invisible">
+                {{>edit-profile}}
+            </div>
         </div>
     </div>
-</div>

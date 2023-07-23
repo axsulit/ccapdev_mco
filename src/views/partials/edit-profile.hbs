@@ -1,9 +1,7 @@
 <link rel="stylesheet" href="\static\css\edit-profile.css">
 <script src="/static/js/edit-profile.js" defer></script>
-<br>
-<br>
 
-<div class="profile-content">
+{{!-- <div class="profile-content">
   
             <div class="edit-profile"> 
                 {{>profiletags}}
@@ -33,4 +31,28 @@
                     </table>
                 </form>
             </div>
-</div>
+</div> --}}
+{{!-- <div class="edit-profile invisible">  --}}
+                        <span class="edit-profile-header">Your Account</span><br><br>
+                        <form id="edit-profile-form">
+                            <table class="row" border="0">
+                                <tr>
+                                    <td>
+                                        &nbsp; Profile Picture <br> <img src={{pfp}} class="edit-pfp">
+                                    </td>
+                                    <td> <br>
+                                        <input id="file" type="file" onchange="loadFile(event)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp; Description<br> <textarea id="description" id="description" name="description" class="description">{{bio}}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> <center>
+                                        <button type="reset" class="btn">Reset</button>
+                                        <button type="submit" class="btn">Save</button>
+                                    </center></td>
+                                </tr>
+                            </table>
+                        </form>
+                    {{!-- </div> --}}
