@@ -86,67 +86,7 @@
     </div>
 
     <div id="posts-container">
-      {{#each posts}}
-
-        <div class="post-item">
-          <span class="post-votes">
-            <button class="votes" onclick="upvote()"><i
-                class="fa-solid fa-arrow-up"
-                id="upvote"
-              ></i></button>
-            <br />
-            <p class="vote-cnt">{{upvotes}}</p>
-            <button class="votes" onclick="downvote()"><i
-                class="fa-solid fa-arrow-down"
-                id="downvote"
-              ></i></button>
-          </span>
-          <span class="post-content">
-            <span class="post-content-top">
-              <!-- TO DO: retrieve images of user in users database and put it here -->
-              <img
-                class="pfp"
-                src="static/images/fade-icon.png"
-                height="50px"
-                width="50px"
-              />
-              <span class="details">
-                <div class="top-row">
-                  <span class="title">{{title}}</span>
-                  <!-- TO DO: edited should be enabled based on status -->
-                  <span class="edited">Edited</span>
-                  <span class="post-metadata">
-                    <span class="post-tag">
-                      <!-- TO DO: retrieve default icon for gendisc -->
-                      <img
-                        src="images/default.jpg"
-                        height="13px"
-                        width="13px"
-                      />
-                      {{tag}}
-                    </span>
-                    <span class="comment-cnt">
-                      <i
-                        class="fa-solid fa-comment"
-                        id="comment-icon"
-                        style="color: #ff4654;"
-                      ></i>
-                      <!--TO DO: display comment count-->
-                    </span>
-                  </span>
-                </div>
-
-                <span class="status">
-                  <span class="username"> {{username}}</span>
-                  started at
-                  <span class="post-time">{{date}}</span>
-                </span>
-              </span>
-            </span>
-            <div class="description">{{content}}</div>
-          </span>
-        </div>
-      {{/each}}
+          {{>posts}}
     </div>
   </span>
 </div>

@@ -11,14 +11,12 @@ const router=Router();
 
 router.get("/",async (req, res)=>{
     const postsArray = await posts.find({}).toArray();
-    res.render("index", {
+    res.render("homepage", {
         title: "Homepage",
         posts: postsArray
     });
   
 });
-
-
 
  router.use(userRouter);
  router.use(profileRouter);
