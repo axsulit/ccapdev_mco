@@ -18,10 +18,14 @@ profileRouter.get("/profile/:username", async (req, res)=>{
     const user = await users.findOne({ 
         username: req.params.username,  
     });
+  
     if(user){
         res.render("profile", {
             title: "Profile",
-            username:user.username
+            pfp: user.picture,
+            username:user.username,
+            bio: user.bio
+
         });
     }
     else{

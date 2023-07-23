@@ -1,62 +1,62 @@
 [
         {
-            "username": "anne_s",
+            "username": "@anne_s",
             "password": "sulit123",
-            "picture": "static/images/fade-icon.png",
-            "bio":""
+            "picture": "/static/images/fade-icon.png",
+            "bio":"Ikaw ang binibini na ninanais ko"
         },
         {
-            "username": "bella_t",
+            "username": "@bella_t",
             "password": "torio123",
-            "picture": "static/images/neon-icon.png",
-            "bio":""
+            "picture": "/static/images/neon-icon.png",
+            "bio":"Binibining marikit na dalangin ko"
         },
         {
-            "username": "zhoe_g",
+            "username": "@zhoe_g",
             "password": "gon123",
-            "picture": "static/images/killjoy-icon.png",
-            "bio":""
+            "picture": "/static/images/killjoy-icon.png",
+            "bio":"Ikaw ang nagbigay ng kulay sa'king mundo"
         },
         {
-            "username": "mar_v",
+            "username": "@mar_v",
             "password": "villa123",
-            "picture": "static/images/phoenix-icon.png",
-            "bio":""
+            "picture": "/static/images/phoenix-icon.png",
+            "bio":"Sana ay pang-habang buhay na ito"
         },
         {
-            "username": "jack_e",
+            "username": "@jack_e",
             "password": "eli123",
-            "picture": "static/images/fade-icon.png",
-            "bio":""
+            "picture": "/static/images/fade-icon.png",
+            "bio":"Mga ngiti mong matamis na ba ay sakto na"
         },
         {
-            "username": "andre_a",
+            "username": "@andre_a",
             "password": "aqui123",
-            "picture": "static/images/brimstone-icon.png",
-            "bio":""
+            "picture": "/static/images/brimstone-icon.png",
+            "bio":"Mala-anghel na mukha sayo'y naakit na"
         },
         {
             "username": "@bien_m",
             "password": "mir123",
-            "picture": "static/images/omen-icon.png",
-            "bio":""
+            "picture": "/static/images/omen-icon.png",
+            "bio":"Ang tangling hiling, Diyos, iyong dinggin"
         },
         {
-            "username": "dom_b",
+            "username": "@dom_b",
             "password": "bac123",
-            "picture": "static/images/jett-icon.png",
-            "bio":""
+            "picture": "/static/images/jett-icon.png",
+            "bio":"Oh, aking binibini, ikaw ang pinipili"
         },
         {
-            "username": "vinnie_i",
+            "username": "@vinnie_i",
             "password": "ino123",
-            "picture": "static/images/omen-icon.png",
-            "bio":""
+            "picture": "/static/images/omen-icon.png",
+            "bio":"'Di ka man ginto, pero ikaw ay mamahalin"
         },
         {
             "username": "@luis_r",
             "password": "ran123",
-            "picture": "static/images/fade-icon.png",
-            "bio":""
+            "picture": "/static/images/fade-icon.png",
+            "bio":"Kislap ng iyong mata'y tanawing napakaganda"
         }
 ]
