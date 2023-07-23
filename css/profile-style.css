@@ -413,11 +413,17 @@ ul {
 .profile-content{
     flex-grow: 1;
     color: #e2e2e2;
-} .posts {
+} 
+
+/* profile posts */
+.posts {
     font-size: larger;
     padding-top: 5%;
     text-align: center;
-} .edit-profile {
+} 
+
+/* edit profile */
+.edit-profile {
     padding-top: 2%;
     padding-left: 4%;
     margin-right: 50%;
@@ -427,8 +433,6 @@ ul {
     font-size: x-large;
 } .row {
     width: 80%;
-    /* border-radius: 5px;; */
-    /* padding: 10px; */
 } td {
     padding-right: 20px;
     padding-left: 0;
@@ -483,6 +487,7 @@ ul {
     margin-right: 10px;
 }
 
+/* trigger for making posts/replies/edit profile visible (javascript) */
 .invisible {
     display: none;
 }
