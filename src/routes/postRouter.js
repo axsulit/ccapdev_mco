@@ -10,7 +10,7 @@ const userposts = db.collection("posts");
 postRouter.get("/post/:id", async (req, res)=>{ 
     try{
         const param_postid=req.params.id;
-        console.log("post id",param_postid);
+       // console.log("post id",param_postid);
 
         const existPost = await userposts.findOne({ 
             _id: new ObjectId(param_postid)
@@ -42,5 +42,24 @@ postRouter.get("/post/:id", async (req, res)=>{
     
    
  });
+
+ 
+ postRouter.post("/saveContent", async(req, res)=>{
+    console.log("POST request for update in content post received");
+    console.log(req.body);
+    try{
+        let updateResult= await userposts.updateOne(
+            {_id: new ObjectId(req.body.id)},
+            {$set: {
+                content: req.body.content
+            }}
+        );
+        console.log(updateResult);
+        res.sendStatus(200);
+    }catch(err){
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
 
  export default postRouter;
