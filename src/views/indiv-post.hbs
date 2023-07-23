@@ -6,7 +6,6 @@
 <br>
 <br>
 <br>
-
         <div class="post-item">
           <span class="post-votes">
             <button class="votes" onclick="upvote()"><i
@@ -35,6 +34,7 @@
                   <!-- TO DO: edited should be enabled based on status -->
                   <span class="edited"><!--Edited--></span>
                   <span class="post-metadata">
+                    <button class="edit-button">Edit</button>
                     <span class="post-tag">
                       <!-- TO DO: retrieve default icon for gendisc -->
                       <img
@@ -62,6 +62,12 @@
                 </span>
               </span>
             </span>
-            <div >{{content}}</div>
+            <div >
+                <!-- ID exists: <p>{{id}}</p>-->
+                <div class="content-text">{{content}}</div>
+                <textarea class="content-edit" style="display: none;">{{content}} </textarea>
+                <button class="save-button" style="display: none;" action="/saveContent">Save</button>
+            </div>
+           
           </span>
         </div>
