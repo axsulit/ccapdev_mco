@@ -5,7 +5,8 @@ saveDescription?.addEventListener("click",async(e)=>{
     e.preventDefault();
     console.log("clicking");
     
-    const newDescription=document.querySelector("#description").value;
+    const newDescription=document.querySelector("#descriptionbio").value;
+    console.log("desc",newDescription);
     const newUsername=document.querySelector("#newUsername").textContent;
     
     console.log(newUsername); 
@@ -26,7 +27,7 @@ saveDescription?.addEventListener("click",async(e)=>{
             });
             console.log(response);
             if (response.status === 200) {
-                location.reload();
+               location.reload();
             } else {
                 console.log("Status code received: " + response.status);
             }

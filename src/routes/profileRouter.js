@@ -57,6 +57,7 @@ profileRouter.get("/profile/:username", async (req, res)=>{
                     bio: req.body.bio
                 }}
             );
+            console.log(updateResult);
             res.sendStatus(200);
         }catch{
             console.error(err);
