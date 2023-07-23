@@ -1,6 +1,8 @@
 import {Router} from 'express';
+
 import userRouter from './userRouter.js';
 import profileRouter from './profileRouter.js';
+import postRouter from './postRouter.js';
 import { getDb } from '../db/conn.js';
 
 const db=getDb();
@@ -19,6 +21,7 @@ router.get("/",async (req, res)=>{
 });
 
  router.use(userRouter);
+ router.use(postRouter);
  router.use(profileRouter);
 
  router.use((req, res) => {

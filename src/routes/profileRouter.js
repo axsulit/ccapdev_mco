@@ -5,7 +5,7 @@ const profileRouter=Router();
 const db=getDb();
 const users = db.collection("users");
 
-//TO DO: profile with userID
+
 profileRouter.get("/profile/:username", async (req, res)=>{ 
     const param_username=req.params.username;
     //console.log("username",param_username);
@@ -34,7 +34,7 @@ profileRouter.get("/profile/:username", async (req, res)=>{
  });
  
 
- //TO DO: edit profile with userID
+ 
  profileRouter.get("/edit-profile/:username", async(req, res)=>{
     const user = await users.findOne({ 
         username: req.params.username,  
