@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('fonts/Gilroy/Gilroy-ExtraBold.otf') format('opentype'),
+        url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 15px;
+    background: #2e2e2e;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FF4654;
+}
+
+/* profile header */
+.profile-header{
+    margin-top: 50px;
+    padding: 2%;
+    /* padding-top: 6%; */
+    padding-left: 12%;
+    display: flex;
+    align-items: center;
+    background-color: #1C252E;
+} .pfp {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-right: 25px;
+    outline: solid 4px #E4E4E4;
+} .username {
+    font-size: x-large;
+    font-weight: bolder;
+    color: #F9F9F9;
+    padding-top: 10px;
+} #description {
+    margin: 5px;
+    /* margin-top: 20px; */
+    color: #e2e2e2;
+    font-style: italic;
+} 
+
+/* profile body */
+.profile-body {
+    display: flex;
+    height: 100%;
+    margin: 0; padding: 0;
+} .profile-body a{
+    color: #E4E4E4;
+} .profile-body a:hover{
+    color: #e53e4b
+} .profile-tags {
+    padding-left: 10%;
+    margin: 2%;
+} 
+
+.tag {
+    padding: 10%;
+    white-space: nowrap;
+} .active, .tag:hover {
+    color: #e53e4b;
+    font-weight: bold;
+} .selected {
+    color: #e53e4b;
+    font-weight: bold;
+}
+
+.main {
+    margin-top:50px;
+}
+
+/* profile content */
+.profile-content{
+    flex-grow: 1;
+    color: #e2e2e2;
+} 
+
+/* profile posts */
+.posts {
+    font-size: larger;
+    padding-top: 5%;
+    text-align: center;
+} 
+
+/* edit profile */
+.edit-profile {
+    padding-top: 2%;
+    padding-left: 4%;
+    margin-right: 50%;
+    /* background-color: pink; */
+} .edit-profile-header {
+    font-weight: bold;
+    font-size: x-large;
+} .row {
+    width: 80%;
+} td {
+    padding-right: 20px;
+    padding-left: 0;
+    padding-bottom: 20px;
+} .description {
+    width: 97%;
+    resize: none;
+    line-height: 20px;
+    height: 100px;
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+} .profile-input {
+    width: 95%;
+    margin-left: 5px;
+    margin-top: 10px;
+    background-color: #232323;
+    color: #e2e2e2;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+    padding: 10px;
+} .edit-pfp {
+    height:150px;
+    width: 150px;
+    border-radius: 50%;
+    border: solid 1px #e2e2e2;
+    margin-top: 15px;
+    /* margin: 15px 0px; */
+    padding-left: 2px;
+} .pfp-button {
+    display: inline;
+} 
+
+/* reset and save buttons */
+.btn {
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+} .btn:hover {
+    background-color: #1a1a1a;
+} input::file-selector-button {
+    background-color: #232323;
+    color: #e2e2e2;
+    padding: 10px;
+    border: solid 1px #1a1a1a;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* trigger for making posts/replies/edit profile visible (javascript) */
+.invisible {
+    display: none;
+}

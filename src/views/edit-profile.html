@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SpikeZone</title>
+        <link rel="stylesheet" href="edit-profile.css">
+        <script src="https://kit.fontawesome.com/be26300aac.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="./script/index.js" defer></script>
+        <script src="./script/navbar.js" defer></script>
+        <script src="./script/profile.js" defer></script>
+    </head>
+    <body>
+        <div class="profile-content">
+            <div class="edit-profile"> 
+                <span class="edit-profile-header">Your Account</span><br><br>
+                <form id="edit-profile-form">
+                    <table class="row" border="0">
+                        <tr>
+                            <td>
+                                &nbsp; Profile Picture <br> <img src="images/fade-icon.png" class="edit-pfp">
+                            </td>
+                            <td> <br>
+                                <input id="file" type="file" onchange="loadFile(event)"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp; Description<br> <textarea id="description" id="description" name="description" class="description"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"> <center>
+                                <button type="reset" class="btn">Reset</button>
+                                <button type="submit" class="btn">Save</button>
+                            </center></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

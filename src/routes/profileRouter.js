@@ -10,10 +10,7 @@ profileRouter.get("/profile/:username", async (req, res)=>{
     const param_username=req.params.username;
     //console.log("username",param_username);
 
-    // const user = await users.findOne({ 
-    //     username: req.body.username
-    // });
-    const usersArray = await users.find({}).toArray();
+   // const usersArray = await users.find({}).toArray();
     //console.log(usersArray);
     const user = await users.findOne({ 
         username: req.params.username,  
@@ -38,17 +35,34 @@ profileRouter.get("/profile/:username", async (req, res)=>{
  
 
  //TO DO: edit profile with userID
- profileRouter.get("/profile/edit-profile",(req, res)=>{
+ profileRouter.get("/edit-profile/:username", async(req, res)=>{
+    const user = await users.findOne({ 
+        username: req.params.username,  
+    });
     res.render("edit-profile",{
-        title:"Edit profile"
+        title:"Edit profile",
+        picture: user.picture,
+        bio: user.bio,
+        username: user.username
     });
  });
 
+ profileRouter.post("/edit-profile/saveDescription", async(req, res)=>{
+        console.log("POST request for homepage for update description received");
+        console.log(req.body.username);
+        try{
+            let updateResult= await users.updateOne(
+                {username: req.body.username},
+                {$set: {
+                    bio: req.body.bio
+                }}
+            );
+            res.sendStatus(200);
+        }catch{
+            console.error(err);
+            res.sendStatus(500);
+        }
+ });
 
-// app.get('/api/courses/:id', (req, res)=>{
-//     const course=courses.find(c=> c.id === parseInt(req.params.id))
-//     if(!course) res.status(404).send('course not found');
-//     res.send(course);
-// });
 
 export default profileRouter;

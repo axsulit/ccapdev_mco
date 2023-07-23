@@ -61,9 +61,8 @@ submitLogBtn?.addEventListener("click",async(e)=>{
             accountBtn.classList.remove("hidden");
             formOpenBtn.classList.add("hidden");
             nav_un.textContent=loginData.get("logUsername");
-
             nav_profile.attr('href', `/profile/@${loginData.get("logUsername")}`);
-            console.log("nav after: ", nav_profile.attr('href'));
+            //console.log("nav after: ", nav_profile.attr('href'));
         }
         else{
             console.log("Status code received: ", response.status);
