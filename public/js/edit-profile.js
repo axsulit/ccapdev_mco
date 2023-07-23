@@ -1,6 +1,6 @@
 const saveDescription=document.querySelector("#saveButton");
 
-// Allows user to log in
+// Allows user to change bio
 saveDescription?.addEventListener("click",async(e)=>{
     e.preventDefault();
     console.log("clicking");

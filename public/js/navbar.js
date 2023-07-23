@@ -45,7 +45,7 @@ submitLogBtn?.addEventListener("click",async(e)=>{
 
     //retrievves profile href in navbar
     let nav_profile = $('#profile-link');
-    console.log("nav before ",nav_profile.attr('href'));
+    //console.log("nav before ",nav_profile.attr('href'));
 
     try {
         const response = await fetch("/login", {
@@ -114,6 +114,9 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     //retrieves username in nav bar
     let nav_un=document.querySelector(".nav-username");
 
+     //retrieves profile href in navbar
+     let nav_profile = $('#profile-link');
+     console.log("nav before ",nav_profile.attr('href'));
 
     if(pw==confirm_pw){
         try {
@@ -130,9 +133,9 @@ submitSignBtn?.addEventListener("click", async(e)=>{
                 home.classList.remove("show");
                 accountBtn.classList.remove("hidden");
                 formOpenBtn.classList.add("hidden");
+                nav_un.textContent=signData.get("signUsername");
+                nav_profile.attr('href', `/profile/@${signData.get("signUsername")}`);
 
-                nav_un.textContent=loginData.get("signUsername");
-               // console.log(response.userPicture);
             }
             else{
                 console.log("Status code received: ", response.status);
