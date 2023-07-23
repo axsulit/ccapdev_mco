@@ -4,19 +4,22 @@
 <br>
 
 <div class="profile-content">
-    {{>profiletags}}
+  
             <div class="edit-profile"> 
+                {{>profiletags}}
                 <span class="edit-profile-header" id="newUsername">{{username}}</span><br><br>
                 <span class="edit-profile-header">Your Account</span><br><br>
                 <form id="edit-profile-form">
                     <table class="row" border="0">
                         <tr>
+                            
                             <td>
                                 &nbsp; Profile Picture <br> <img src={{picture}} class="edit-pfp">
                             </td>
                             <td> <br>
                                 <input id="file" type="file" onchange="loadFile(event)"/>
                             </td>
+                            
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp; Description<br> <textarea id="description" name="description" class="description">{{bio}}</textarea></td>
