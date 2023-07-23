@@ -4,6 +4,7 @@ import { getDb } from '../db/conn.js';
 const profileRouter=Router();
 const db=getDb();
 const users = db.collection("users");
+const userposts = db.collection("posts");
 
 
 profileRouter.get("/profile/:username", async (req, res)=>{ 
@@ -15,13 +16,16 @@ profileRouter.get("/profile/:username", async (req, res)=>{
     const user = await users.findOne({ 
         username: req.params.username,  
     });
-  
+    const postsArray = await userposts.find({
+        username: req.params.username
+    }).toArray();
     if(user){
         res.render("profile", {
             title: "Profile",
             pfp: user.picture,
             username:user.username,
-            bio: user.bio
+            bio: user.bio,
+            posts:postsArray
 
         });
     }

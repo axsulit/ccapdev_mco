@@ -198,3 +198,15 @@ function closeLoginSignUp(signup) {
     }
 }
 
+// $("#searchInput").on("input", function (e) {
+//     const value = e.target.value.toLowerCase();
+//     $(".post-item").each(function () {
+//       const titleElement = $(this).find(".title").text();
+//       const descriptionElement = $(this).find(".description").text();
+//       const isVisible =
+//         titleElement.toLowerCase().includes(value) ||
+//         descriptionElement.toLowerCase().includes(value);
+//       $(this).css("display", isVisible ? "flex" : "none");
+//     });
+//   });
+

@@ -12,49 +12,9 @@
     <div class="profile-body">
         {{>profiletags}}
         <div class="profile-content">
-            <div class="posts">
-                {{!-- TODO: Add "It looks like there are no posts here." if postCnt == 0 --}}
-                {{displayMsg}}
-                {{#each posts}}
-                    <div class="post-item">
-                        <span class="post-votes">
-                            <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button>
-                            <br>
-                            <p class="vote-cnt">{{voteCnt}}<!--TO DO: upvote count - downvote count--></p>
-                            <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
-                        </span>
-                        <span class="post-content">
-                            <span class="post-content-top">
-                                <!-- TO DO: retrieve images of user in users database and put it here -->
-                                <img class="pfp" src={{pfp}} height=50px width=50px>
-                                <span class="details">
-                                    <div class="top-row">
-                                        <span class="title">{{title}}</span>
-                                        <span class="edited">Edited</span>
-                                        <span class="post-metadata">
-                                            <span class="post-tag">
-                                                <img src="images/default.jpg" height=13px width=13px>
-                                                {{tag}}
-                                            </span>
-                                            <span class="comment-cnt">
-                                                <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
-                                                <!--TO DO: display comment count-->{{commentCnt}}</span>
-                                        </span>
-                                    </div>
-
-                                    <span class="status">
-                                        <span class="username"> {{username}}</span>
-                                        <span class="post-time">{{date}}</span>
-                                    </span>
-                                </span>
-                            </span>
-                            <div class="description">{{content}}</div>
-                        </span>
-                    </div> 
-                {{/each}}
-            </div>
+            {{>posts}}
             <div class="edit-profile invisible">
                 {{>edit-profile}}
             </div>
         </div>
-    </div>
+</div>
