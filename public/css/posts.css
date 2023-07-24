@@ -9,15 +9,17 @@
 
 .post-item {
     padding: 30px;
-    margin: 5px 0px 5px 0;
+    margin-right: 20%;
+    /* margin-top: 5%; */
+    /* margin: 5px 0px 5px 0; */
     color: aliceblue;
     border-radius: 5px;
-    width: 1200px;
+    width: 950px;
     overflow: hidden;
 }
 
 .post-content {
-    width: 100%;
+    width: 95%;
     resize: none;
 }
 
@@ -35,6 +37,7 @@
 .top-row {
     display: flex;
     width: 100%;
+    
 }
 
 .post-metadata {
@@ -56,12 +59,14 @@
 
 .title {
     font-size: 21px;
+    color: #e2e2e2;
 }
 
 .details {
     display: flex;
     flex-direction: column;
     width: 100%;
+    
 }
 
 .status {
