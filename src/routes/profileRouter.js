@@ -25,8 +25,8 @@ profileRouter.get("/profile/:username", async (req, res)=>{
             pfp: user.picture,
             username:user.username,
             bio: user.bio,
-            posts:postsArray
-
+            posts:postsArray,
+            picture: user.picture
         });
     }
     else{
@@ -47,7 +47,8 @@ profileRouter.get("/profile/:username", async (req, res)=>{
         title:"Edit profile",
         picture: user.picture,
         bio: user.bio,
-        username: user.username
+        username: user.username,
+        picture: user.picture
     });
  });
 
@@ -58,7 +59,8 @@ profileRouter.get("/profile/:username", async (req, res)=>{
             let updateResult= await users.updateOne(
                 {username: req.body.username},
                 {$set: {
-                    bio: req.body.bio
+                    bio: req.body.bio,
+                    picture: req.body.picture
                 }}
             );
             console.log(updateResult);

@@ -102,7 +102,7 @@ ul {
     font-weight: bold;
     font-size: x-large;
 } .edit-profile-username {
-    /* display: none; */
+    display: none;
 } .row {
     width: 80%;
 } td {
