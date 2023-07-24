@@ -4,6 +4,19 @@ const contentText = document.querySelector('.content-text');
 let contentEdit = document.querySelector('.content-edit');
 const saveButton=document.querySelector('.save-button');
 
+// function checkOwnerAndHideEditButton() {
+//     const postUsername = username; // Get the post's username from the template
+//     const editButton = document.querySelector('.edit-button');
+
+//     if (loggedInUser === postUsername) {
+//       editButton.style.display = 'inline-block'; // Show the edit button for the post owner
+//     } else {
+//       editButton.style.display = 'none'; // Hide the edit button for other users
+//     }
+//   }
+
+//   checkOwnerAndHideEditButton();
+
   editButton.addEventListener('click', () => {
     contentText.style.display = 'none';
     contentEdit.style.display = 'block';

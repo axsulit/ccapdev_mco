@@ -68,7 +68,7 @@ $('.profile-tags a').click(function(e) {
     else if (activePage.attr('id') == "edit-profile") {
         // hide profile contents
         $('.profile-header').addClass('invisible');
-        $('.posts').addClass('invisible');
+        $('.profile-posts').addClass('invisible');
 
         // add edit-profile contents
         $('.edit-profile').removeClass('invisible');
@@ -76,7 +76,7 @@ $('.profile-tags a').click(function(e) {
     } else if (activePage.attr('id') == "profile") {
         // show profile contents
         $('.profile-header').removeClass('invisible');
-        $('.posts').removeClass('invisible');
+        $('.profile-posts').removeClass('invisible');
         $('.edit-profile').addClass('invisible');
 
         // edit post from replies to posts
