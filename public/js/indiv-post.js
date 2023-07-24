@@ -37,7 +37,8 @@ const saveButton=document.querySelector('.save-button');
 
     const post={
         id:postID,
-        content: newContent
+        content: newContent,
+        edited:true
     }
 
     const jPost=JSON.stringify(post);

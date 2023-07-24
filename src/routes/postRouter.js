@@ -46,12 +46,13 @@ postRouter.get("/post/:id", async (req, res)=>{
  
  postRouter.post("/saveContent", async(req, res)=>{
     console.log("POST request for update in content post received");
-    console.log(req.body);
+    console.log(req.body.edited);
     try{
         let updateResult= await userposts.updateOne(
             {_id: new ObjectId(req.body.id)},
             {$set: {
-                content: req.body.content
+                content: req.body.content,
+                edited:req.body.edited
             }}
         );
         console.log(updateResult);
