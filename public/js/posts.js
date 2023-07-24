@@ -1,250 +1,330 @@
-const User = function (username, password, picture) {
-  this.username = username;
-  this.picture = picture;
-  this.password = password;
-};
-
-const Post = function (postid, username, picture, date, title, content, tag) {
-  this.postid = postid;
-  this.username = username;
-  this.picture = picture;
-
-  this.date = date;
-  this.title = title;
-  this.content = content;
-  this.tag = tag;
-  this.comments = [];
-  this.upvotes = 0;
-  this.downvotes = 0;
-  this.edited = false;
-};
-
-const Tag = function (type, icon) {
-  this.type = type;
-  this.icon = icon;
-};
-
-let posts = [];
-let comments = [];
-let postCtr = 0;
-let currentUser = new User("placeholder", 123, "./images/fade-icon.png");
-
-// ._____________________________________.
-// ||									||
-// ||       DISCUSSION FUNCTIONS        ||
-// ||___________________________________||
-// '
-
-function showWritePost() {
-  $("#popup-container").css("display", "block");
+const Comment = function (postid, commentid, username, date, content) {
+    this.postid = postid;
+    this.commentid = commentid;
+    this.username = username;
+    this.date = date;
+    this.content = content;
+    this.upvotes = 0;
+    this.downvotes = 0;
+    this.edited = false;
+    this.replies = []; // Comments
 }
 
-function closeWritePost() {
-  $("#popup-container").css("display", "none");
-}
 
-function submitPost(event) {
-  event.preventDefault(); // Prevent form submission
+var commentsCnt = 0;
+var comments = [];
+var currentUsername = "";
+var currentuserPfp = "";
+var origPost = 0;
 
-  var title = $("#post-title").val();
-  var caption = $("#post-caption").val();
 
-  // Clear and Close form
-  $("#post-form")[0].reset();
-  closeWritePost();
+$(document).ready(function () {
 
-  // Create a new post and add it to posts
-  postCtr++;
 
-  // Get today's date
-  const today = new Date();
+    currentUsername = localStorage.getItem("username");
+    currentuserPfp = localStorage.getItem("profilepic");
 
-  // Format the date into "Month Day, Year hour:minutes AM/PM" format
-  const options = {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: false,
-  };
-  const formattedDate = today.toLocaleString("en-US", options);
 
-  console.log(formattedDate); // Output: May 29, 2023 10:30 AM
+    $('.nav-username').text(currentUsername);
+    $('.nav-pfp').attr('src', currentuserPfp);
 
-  var item = new Post(
-    postCtr,
-    currentUser.username,
-    currentUser.picture,
-    formattedDate,
-    title,
-    caption,
-    "General Discussion"
-  );
-  posts.push(item);
 
-  console.log(item);
-  console.log(posts);
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('postid');
 
-  // Refresh the displayed posts
-  refreshPostDisplay(posts);
-}
 
-// ._____________________________________.
-// ||									||
-// ||          POST FUNCTIONS           ||
-// ||___________________________________||
-// '
+    window.postid = postId;
 
-function refreshPostDisplay(displayedPosts) {
-  $("#posts-container").html("");
 
-  if (displayedPosts.length == 0) {
-    const filter = $("<p></p>");
-    filter.addClass("filler-text");
-    filter.html("▓▒░(°◡°)░▒▓<br>Wow such empty...");
-    $("#posts-container").append(filter);
-  } else {
-    displayPosts(displayedPosts);
-  }
-}
+    $.getJSON("users.json", function (usersData) {
+        $.getJSON('comments.json', function (commentsData) {
+            $.getJSON('posts.json', function (data) {
 
-function displayPosts(newPosts) {
-  $("#posts-container").html("");
 
-  for (const p of newPosts) {
-    displayPost(p);
-  }
-}
+                const post = data.posts.find(function (item) {
+                    return item.postid === postId;
+                });
 
-function handleVote(buttons, newPost, type, voteCountP) {
-  return function () {
-    let status = $(this).css("color");
-    let button = $(this);
 
-    /**************************
-        
-        if(user == logged in), do the items below, else 
-        
-        *********************************/
-    //activate button
-    if (status !== "rgb(211, 84, 0)") {
-      console.log("clicked" + newPost.title);
+                origPost = post;
 
-      if (type == 1) {
-        newPost.upvotes += 1;
-        buttons[0].css("color", "#d35400");
-        buttons[1].css("color", "#95a5a6");
-      } else {
-        newPost.downvotes += 1;
-        buttons[1].css("color", "#d35400");
-        buttons[0].css("color", "#95a5a6");
-      }
 
-      voteCountP.text(newPost.upvotes - newPost.downvotes);
+                const user = usersData.users.find(function (user) {
+                    return user.username === post.username;
+                });
+
+
+
+
+                $.each(data.posts, function (index, post) {
+                    var postComments = commentsData.comments.filter(function (comment) {
+                        return comment.postid === post.postid;
+                    });
+
+
+                    post.comments = postComments;
+
+
+                });
+
+
+                $.each(commentsData.comments, function (index, comment) {
+                    var user = usersData.users.find(function (user) {
+                        return user.username === comment.username;
+                    });
+
+
+                    var picture = user ? user.picture : "./images/default-1.png";
+                    comment.picture = picture;
+
+
+                    commentsCnt++;
+                });
+
+
+                console.log("num of comments:" + commentsCnt);
+
+
+                // Check if the post is found
+                if (post) {
+
+
+                    var picture = user ? user.picture : "default_icon.png";
+                    post.picture = picture;
+
+
+                    console.log(post);
+
+
+                    refreshPost(post);
+
+
+                    if (post.comments.length != 0) {
+                        for (const c of post.comments) {
+                            comments.push(c);
+                            refreshComment(c);
+                        }
+                    }
+                } else {
+                    console.log("not found");
+                }
+            });
+        });
+    });
+
+
+    function handleVote(buttons, newPost, type, voteCountP) {
+        return function () {
+            let status = $(this).css('color');
+            let button = $(this);
+
+
+            /**************************
+           
+            if(user == logged in), do the items below, else
+           
+            *********************************/
+            //activate button
+            if (status !== 'rgb(211, 84, 0)') {
+                if (type == 1) {
+                    newPost.upvotes += 1;
+                    buttons[0].css('color', '#d35400');
+                    buttons[1].css('color', '#95a5a6');
+                } else {
+                    newPost.downvotes += 1;
+                    buttons[1].css('color', '#d35400');
+                    buttons[0].css('color', '#95a5a6');
+                }
+
+
+                voteCountP.text(newPost.upvotes - newPost.downvotes);
+            }
+            //unclick button
+            else {
+                type == 1 ? newPost.upvotes -= 1 : newPost.downvotes -= 1;
+
+
+                voteCountP.text(newPost.upvotes - newPost.downvotes);
+                button.css('color', '#95a5a6');
+            }
+        };
     }
-    //unclick button
-    else {
-      console.log("unclicked" + newPost.title);
 
-      type == 1 ? (newPost.upvotes -= 1) : (newPost.downvotes -= 1);
 
-      voteCountP.text(newPost.upvotes - newPost.downvotes);
-      button.css("color", "#95a5a6");
+    function refreshPost(post) {
+        $('.post-tag').text(post.tag);
+        $('.title').text(post.title);
+
+
+        var postVotesSpan = $('<span>').addClass('post-votes');
+        var upvoteButton = $('<button>').addClass('votes');
+        var upvoteIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
+        upvoteButton.append(upvoteIcon);
+        var voteCountP = $('<p>').addClass('vote-cnt').text(String(post.upvotes - post.downvotes));
+        var downvoteButton = $('<button>').addClass('votes');
+        var downvoteIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
+        downvoteButton.append(downvoteIcon);
+
+
+        let buttons = [upvoteButton, downvoteButton];
+        upvoteButton.bind('click', handleVote(buttons, post, 1, voteCountP));
+        downvoteButton.bind('click', handleVote(buttons, post, 0, voteCountP));
+
+
+        postVotesSpan.append(upvoteButton, $('<br>'), voteCountP, downvoteButton);
+
+
+        var pfpImg = $('<img>').addClass('pfp').attr('src', post.picture).attr('height', '60px').attr('width', '60px');
+
+
+        var postContentSpan = $('<span>').addClass('post-content');
+        var detailsSpan = $('<span>').addClass('details');
+        var statusSpan = $('<span>').addClass('status');
+        var usernameSpan = $('<span>').addClass('username').text(post.username);
+        var postDateSpan = $('<span>').addClass('post-date').text(post.date);
+        var editedSpan = $('<span>').addClass('edited').text('Edited');
+        statusSpan.append(usernameSpan, postDateSpan, editedSpan);
+        detailsSpan.append(statusSpan);
+        postContentSpan.append(detailsSpan, $('<div>').addClass('description').text(post.content));
+
+
+        $('.post-item').append(postVotesSpan, pfpImg, postContentSpan);
+
+
+        if (post.username != currentUsername) {
+            $('.meatballs').css('display', 'none');
+        }
     }
-  };
+
+
+    window.fresfreshComment = refreshComment;
+
+
+    function refreshComment(c) {
+        /**
+        no functionality for reply, option, error when clicking updown vote on comments
+        **/
+
+
+        const commentItem = $('<div>').addClass('comment-item');
+        const comment = $('<span>').addClass('comment');
+
+
+        const upvoteButton = $('<button>').addClass('votes');
+        const upvoteIcon = $('<i>').addClass('fa-solid fa-arrow-up').attr('id', 'upvote');
+        const upvoteCount = $('<p>').addClass('vote-cnt').text(String(c.upvotes - c.downvotes));
+
+
+        const postVotes = $('<span>').addClass('post-votes');
+        const downvoteButton = $('<button>').addClass('votes');
+        const downvoteIcon = $('<i>').addClass('fa-solid fa-arrow-down').attr('id', 'downvote');
+
+
+        let buttons = [upvoteButton, downvoteButton];
+        upvoteButton.bind('click', handleVote(buttons, c, 1, upvoteCount));
+        downvoteButton.bind('click', handleVote(buttons, c, 0, upvoteCount));
+
+
+        const commentPfp = $('<img>').addClass('comment-pfp').attr('src', c.picture).attr('height', '60px').attr('width', '60px');
+        const postContent = $('<span>').addClass('post-content');
+        const details = $('<span>').addClass('details');
+        const status = $('<span>').addClass('status');
+        const username = $('<span>').addClass('username').text(c.username);
+        const postDate = $('<span>').addClass('post-date').text(c.date);
+        const edited = $('<span>').addClass('edited').text('Edited');
+        const description = $('<div>').addClass('description').text(c.content);
+        const actions = $('<span>').addClass('actions');
+        var replyBtn = $('<button>').text('Reply').on('click', replyToComment);
+        var replyDiv = $('<span>').addClass('reply').append(replyBtn);
+
+
+        edited.css('visibility', 'hidden');
+        upvoteButton.append(upvoteIcon);
+        downvoteButton.append(downvoteIcon);
+        postVotes.append(upvoteButton, $('<br>'), upvoteCount, downvoteButton);
+       
+        status.append(username, postDate, edited);
+       
+        if (c.username == currentUsername) {
+            var optionsBtn = $('<button>').text('Options');
+            var optionsDiv = $('<span>').addClass('meatballs').append(optionsBtn);
+            status.append(optionsDiv);
+        }
+       
+        status.append(replyDiv);
+        details.append(status);
+        postContent.append(details, description);
+        comment.append(postVotes, commentPfp, postContent);
+
+
+        commentItem.append(comment, actions);
+        $('#comments-container').append($('<hr>'), commentItem);
+    }
+});
+
+
+function replyToComment() {
+    $('#popup-container').css('display', 'block');
+    $('.reply-title').text("RE: " + $(this).description);
+   
+    console.log($(this).closest('.details').find('.description'));
 }
 
-function displayPost(newPost) {
-  const postItemDiv = $("<div>").addClass("post-item");
 
-  const postVotesSpan = $("<span>").addClass("post-votes");
-  const voteUpButton = $("<button>").addClass("votes");
-  const voteUpIcon = $("<i>")
-    .addClass("fa-solid fa-arrow-up")
-    .attr("id", "upvote");
+function replyToPost() {
+    $('#popup-container').css('display', 'block');
+    $('.reply-title').text("RE: " + origPost.title);
+}
 
-  const voteCountP = $("<p>")
-    .addClass("vote-cnt")
-    .text(newPost.upvotes - newPost.downvotes);
-  const voteDownButton = $("<button>").addClass("votes");
-  const voteDownIcon = $("<i>")
-    .addClass("fa-solid fa-arrow-down")
-    .attr("id", "downvote");
 
-  let buttons = [voteUpButton, voteDownButton];
-  voteUpButton.bind("click", handleVote(buttons, newPost, 1, voteCountP));
-  voteDownButton.bind("click", handleVote(buttons, newPost, 0, voteCountP));
+function closePopup() {
+    $('#popup-container').css('display', 'none');
+}
 
-  postVotesSpan.append(
-    voteUpButton.append(voteUpIcon),
-    $("<br>"),
-    voteCountP,
-    voteDownButton.append(voteDownIcon)
-  );
 
-  const postContentSpan = $("<span>").addClass("post-content");
-  const postContentTopSpan = $("<span>").addClass("post-content-top");
+function submitReply(event) {
+    event.preventDefault();
 
-  const pfpImg = $("<img>").addClass("pfp").attr({
-    src: newPost.picture,
-    height: "45px",
-    width: "45px",
-  });
 
-  const detailsSpan = $("<span>").addClass("details");
-  const topRowDiv = $("<div>").addClass("top-row");
-  const titleSpan = $("<span>").addClass("title").text(newPost.title);
+    commentsCnt++;
+    var content = $('#reply-caption').val();
 
-  const postMetadataDiv = $("<div>").addClass("post-metadata");
-  const postTagSpan = $("<span>").addClass("post-tag");
 
-  const tagImg = $("<img>").attr({
-    src: "images/default-1.png",
-    height: "15px",
-    width: "15px",
-  });
+    // Get today's date
+    const today = new Date();
 
-  postTagSpan.append(tagImg, newPost.tag);
 
-  const commentCntSpan = $("<span>").addClass("comment-cnt");
-  const commentCntImg = $("<i>")
-    .addClass("fa-solid fa-comment")
-    .attr("id", "comment-icon")
-    .css("color", "lightgray");
+    // Format the date into "Month Day, Year hour:minutes AM/PM" format
+    const options = {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: false
+    };
+    const formattedDate = today.toLocaleString('en-US', options);
 
-  commentCntSpan.append(commentCntImg, String(newPost.comments.length));
-  postMetadataDiv.append(postTagSpan, commentCntSpan);
-  topRowDiv.append(titleSpan, postMetadataDiv);
 
-  const statusSpan = $("<span>").addClass("status");
-  const usernameSpan = $("<span>").addClass("username").text(newPost.username);
-  const postTimeSpan = $("<span>")
-    .addClass("post-time")
-    .text(" started this discussion on " + newPost.date);
 
-  statusSpan.append(usernameSpan, postTimeSpan);
 
-  const descriptionDiv = $("<div>")
-    .addClass("description")
-    .text(newPost.content.substring(0, 120) + "...");
+    var reply = new Comment(postid, commentsCnt, currentUsername, formattedDate, content);
 
-  detailsSpan.append(topRowDiv, statusSpan);
-  postContentTopSpan.append(pfpImg, detailsSpan);
-  postContentSpan.append(postContentTopSpan, descriptionDiv);
-  postItemDiv.append(postVotesSpan, postContentSpan);
 
-  postContentSpan.hover(function () {
-    postContentSpan.css("cursor", "pointer");
-  });
+    reply.picture = currentuserPfp;
 
-  postContentSpan.bind("click", function () {
-    console.log("clicked" + newPost.postid);
-    //window.location.href = 'post.html';
-    let postId = newPost.postid;
 
-    window.location.href = `post.html?postid=${postId}`;
-  });
+    comments.push(reply);
 
-  $("#posts-container").append(postItemDiv);
+
+
+
+    $("#comments-container").html('');
+    for (const c of comments) {
+        fresfreshComment(c);
+    }
+
+
+    $('#reply-form')[0].reset();
+    closePopup();
 }

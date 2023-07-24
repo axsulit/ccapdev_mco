@@ -8,7 +8,7 @@
             "downvotes": 3,
             "username": "@zhoe_g",
             "content": "i hope its not another chamber. i want a sentinel stronger than kj tho."
-                },
+        },
 
         {
             "postid":"1",
@@ -18,6 +18,46 @@
             "downvotes": 8,
             "username": "@dom_b",
             "content": "lol maybe you're just bad"
-                }
+        },
+
+        {
+            "postid":"3",
+            "commentid": "1",
+            "date": "06/11/2023 12:18",
+            "upvotes": 3,
+            "downvotes": 0,
+            "username": "@mar_v",
+            "content": "thats going to make kj OP"
+        },
+
+        {
+            "postid":"5",
+            "commentid": "1",
+            "date": "11/28/2022 15:49",
+            "upvotes": 1,
+            "downvotes": 0,
+            "username": "@vinnie_i",
+            "content": "DMED u ! carry pls"
+        },
+
+        {
+            "postid":"5",
+            "commentid": "2",
+            "date": "11/28/2022 16:02",
+            "upvotes": 1,
+            "downvotes": 1,
+            "username": "@anne_s",
+            "content": "still avail? Dmed i will carry every1"
+        },
+
+        {
+            "postid":"8",
+            "commentid": "1",
+            "date": "11/26/2022 15:00",
+            "upvotes": 1,
+            "downvotes": 0,
+            "username": "@mar_v",
+            "content": "chamber meta is out. honestly theres no broken agent rn to really call it as meta."
+        }
 ]
 
