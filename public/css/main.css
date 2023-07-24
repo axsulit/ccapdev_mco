@@ -4,11 +4,6 @@
         url('fonts/Gilroy/Gilroy-Light.otf') format('opentype');
 }
 
-/*
- * {
-    border: 1px solid
-} 
-*/
 
 :root {
     --b-black: rgb(28, 37, 46);
@@ -37,9 +32,10 @@ ul {
 }
 
 .main {
-    padding: 120px 0 0 0;
+    /* padding: 120px; */
     display: flex;
     height: 100vh;
+    width:100%;
 }
 
 /**** LEFT PANE ****/
@@ -53,10 +49,12 @@ ul {
 }
 
 .tags {
-    position: absolute;
-    top: 0;
+    /* position: absolute; */
+    /* top: 2%; */
     right: 0;
-    margin-right: 25px;
+    /* margin-right: 25px; */
+    margin-top: 24%;
+    margin-left: 15%;
 }
 
 .tag {
@@ -90,7 +88,9 @@ ul {
 /**** RIGHT PANE ****/
 #right-pane {
     flex: 1;
-    margin: 0px 10px;
+    /* margin: 0px 10px; */
+    margin-top: 8%;
+    width: 100%;
 }
 
 /* Style The Dropdown Button */
