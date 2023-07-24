@@ -60,7 +60,7 @@ profileRouter.get("/profile/:username", async (req, res)=>{
                 {username: req.body.username},
                 {$set: {
                     bio: req.body.bio,
-                    picture: req.body.picture
+                    //picture: req.body.picture
                 }}
             );
             console.log(updateResult);
