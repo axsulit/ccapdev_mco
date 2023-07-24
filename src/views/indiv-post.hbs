@@ -7,7 +7,7 @@
             <img src="images/default-1-red.png" height=13px width=13px>
             {{tag}}
         </div>
-        <div class="title">{{title}}</div>
+        <div class="title"><a href="/post/{{id}}" class="title">{{title}}</a></div>
     </div>
     <div class="main">
       <span class="post-container">
@@ -31,23 +31,16 @@
               <!-- TO DO: retrieve images of user in users database and put it here -->
               <span class="details">
                 <div class="top-row">
-                  <p id="postid">post id:{{id}}</p>
-                  {{!-- <span class="title"><a href="/post/{{_id}}">{{title}}</a></span> --}}
+                  <p>post id:</p>
+                  <p id="postid">{{id}}</p>
                   <!-- TO DO: edited should be enabled based on status -->
                   <span class="edited"><!--Edited--></span>
                   <span class="post-metadata">
-                    {{!-- <button class="edit-button">Edit</button> --}}
+                    <button class="edit-button">Edit</button> 
                     {{!-- <span class="post-tag-indiv"> --}}
                       <!-- TO DO: retrieve default icon for gendisc -->
                       <img src="images/default.jpg" height="13px" width="13px" />
-                    {{!-- </span> --}}
-                    {{!-- <span class="comment-cnt">
-                      <i
-                        class="fa-solid fa-comment"
-                        id="comment-icon"
-                        style="color: #ff4654;"
-                      ></i> --}}
-                      <!--TO DO: display comment count-->
+                  
                     </span>
                   </span>
                 </div>
@@ -71,84 +64,4 @@
       <div id="comments-container">
 
       </div>
-      <!-- WRITE POST -->
-      <div id="popup-container">
-            <button class="close-button" onclick="closePopup()">X</button>
-            <form id="reply-form" onsubmit="submitReply(event)">
-                <div class="reply-title">RE: New Agent Speculations</div>
-                <label for="reply-caption"></label>
-                <textarea id="reply-caption" rows="12" placeholder="Write a reply..." required></textarea>
-                <input id="submit-bttn" type="submit" value="Plant the Spike">
-            </form>
-        </div>
-    </div>
-        {{!-- <div class="post-item">
-          <span class="post-votes">
-            <button class="votes" onclick="upvote()"><i
-                class="fa-solid fa-arrow-up"
-                id="upvote"
-              ></i></button>
-            <br />
-            <p class="vote-cnt">{{upvotes}}</p>
-            <button class="votes" onclick="downvote()"><i
-                class="fa-solid fa-arrow-down"
-                id="downvote"
-              ></i></button>
-          </span>
-          
-          <span class="post-content">
-                <p>post id:</p>
-             <p id="postid">{{id}}</p>
-            <span class="post-content-top">
-              <!-- TO DO: retrieve images of user in users database and put it here -->
-              <img
-                class="pfp"
-                src="/static/images/fade-icon.png"
-                height="50px"
-                width="50px"
-              />
-              <span class="details">
-                <div class="top-row">
-                  
-                  <span class="title"><a href="/post/{{_id}}" class="title">{{title}}</a></span>
-                  <!-- TO DO: edited should be enabled based on status -->
-                  <span class="edited"><!--Edited--></span>
-                  <span class="post-metadata">
-                    <button class="edit-button">Edit</button>
-                    <span class="post-tag">
-                      <!-- TO DO: retrieve default icon for gendisc -->
-                      <img
-                        src="images/default.jpg"
-                        height="13px"
-                        width="13px"
-                      />
-                      {{tag}}
-                    </span>
-                    <span class="comment-cnt">
-                      <i
-                        class="fa-solid fa-comment"
-                        id="comment-icon"
-                        style="color: #ff4654;"
-                      ></i>
-                      <!--TO DO: display comment count-->
-                    </span>
-                  </span>
-                </div>
-
-                <span class="status">
-                  <span class="username"> <a href="/profile/{{username}}">{{username}}</a></span>
-                  started at
-                  <span class="post-time">{{date}}</span>
-                </span>
-              </span>
-            </span>
-            <div >
-                 
-                <!-- ID exists: <p>{{id}}</p>-->
-                <div class="content-text">{{content}}</div>
-                <textarea class="content-edit" style="display: none;">{{content}} </textarea>
-                <button class="save-button" style="display: none;" action="/saveContent" type="submit">Save</button>
-            </div>
-           
-          </span>
-        </div> --}}
+    
