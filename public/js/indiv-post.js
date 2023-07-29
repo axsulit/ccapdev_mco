@@ -1,34 +1,18 @@
 //bella work here
-const editButton = document.querySelector('.edit-button');
-const contentText = document.querySelector('.content-text');
+const   writePost = document.querySelector(".ip-write-post-border"),
+        editPost = document.querySelector('.edit-btn'),
+        exitPost = document.querySelector(".close-post");
 let contentEdit = document.querySelector('.content-edit');
-const saveButton=document.querySelector('.save-button');
+const saveButton=document.querySelector('.submit-btn');
 
-// function checkOwnerAndHideEditButton() {
-//     const postUsername = username; // Get the post's username from the template
-//     const editButton = document.querySelector('.edit-button');
+// opens and closes write post
+editPost.addEventListener("click", () => writePost.classList.toggle("active"));
+exitPost.addEventListener("click", () => writePost.classList.remove("active"));
 
-//     if (loggedInUser === postUsername) {
-//       editButton.style.display = 'inline-block'; // Show the edit button for the post owner
-//     } else {
-//       editButton.style.display = 'none'; // Hide the edit button for other users
-//     }
-//   }
-
-//   checkOwnerAndHideEditButton();
-
-  editButton.addEventListener('click', () => {
-    contentText.style.display = 'none';
-    contentEdit.style.display = 'block';
-    saveButton.style.display = 'block';
-    contentEdit.focus();
-    
-  });
-
- saveButton?.addEventListener('click', async (e) => {
+saveButton?.addEventListener('click', async (e) => {
     e.preventDefault();
-    contentEdit = document.querySelector(".content-edit");
-    postID=document.querySelector("#postid").textContent;
+    contentEdit = document.querySelector(".post-caption");
+    postID=document.querySelector(".post-id").textContent;
     console.log(postID);
     
     
@@ -54,9 +38,7 @@ const saveButton=document.querySelector('.save-button');
         });
         console.log(response);
         if (response.status === 200) {
-            contentText.style.display = 'block';
-            contentEdit.style.display = 'none';
-            saveButton.style.display = 'none';
+            writePost.classList.remove("active");
            location.reload();
         } else {
             console.log("Status code received: " + response.status);
@@ -65,8 +47,4 @@ const saveButton=document.querySelector('.save-button');
     } catch (err) {
             console.error('Error occurred:', err);
     } 
-
-    
-   
-    
   });
