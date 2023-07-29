@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/post.css" />
+<script src="/static/js/post.js" defer></script>
 
-{{!-- <script src="/static/js/indiv-post.js" defer></script> --}}
 {{#each posts}}
 <div class="individual-post">
         {{!-- post votes --}}
@@ -16,7 +16,7 @@
             <div class="post-pfp-container"><img src="/static/images/fade-icon.png" class="post-pfp"></div>
             <ul class="post-details">
               <li class="details">
-                  <span id="post-title"> <a href="/post/{{_id}}">{{title}}</a> </span>
+                  <span id="post-title"> <a href="/post/{{_id}}">{{title}}</a></span>
                   <div class="post-metadata">
                     <span id="post-edit">{{edited}}</span>
                     <span id="post"><img src="/static/images/default-1.png" height="13px" width="13px">{{tag}}</span>
@@ -33,54 +33,8 @@
             </ul>
           </div>
           {{!-- post content description--}}
-          <div class="post-description">
-            {{content}}
-          </div>
+          <div class="post-description">{{content}}</div>
         </div>
       </div>
-        {{!-- <div class="post-item">
-          <span class="post-votes">
-            <button class="votes" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button> <br />
-            <p class="vote-cnt">{{upvotes}}</p>
-            <button class="votes" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
-          </span>
-          <span class="post-content">
-            <span class="post-content-top">
-              <!-- TO DO: retrieve images of user in users database and put it here -->
-              <img
-                class="pfp"
-                src="/static/images/sage-icon.png"
-                height="50px"
-                width="50px"
-              />
-              <span class="details">
-                <div class="top-row">
-                  <span class="title"><a href="/post/{{_id}}" class="title">{{title}}</a></span>
-                  <!-- TO DO: edited should be enabled based on status -->
-                  <span class="edited" id="editedSpan">Edited: {{edited}}</span>
-                  <span class="post-metadata">
-                    <span class="post-tag">
-                      <!-- TO DO: retrieve default icon for gendisc -->
-                      <img src="/static/images/default-1.png" height="13px" width="13px">
-                      {{tag}}
-                    </span>
-                    <span class="comment-cnt">
-                      <i class="fa-solid fa-comment" id="comment-icon" style="color: #ff4654;"></i>
-                      <!--TO DO: display comment count-->
-                    </span>
-                  </span>
-                </div>
-
-                <span class="status">
-                  <span class="username"><a href="/profile/{{username}}">{{username}}</a></span>
-                  started at
-                  <span class="post-time">{{date}}</span>
-                </span>
-              </span>
-            </span>
-            <div class="description">{{content}}</div>
-          </span>
-        </div> --}}
     {{/each}}
 
-<script src="/static/js/post.js" defer></script>
