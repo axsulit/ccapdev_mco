@@ -67,7 +67,41 @@
     <div class="submit-post">
       <input class="submit-btn" type="submit" value="Plant the Spike" />
     </div>
-    
+  </div>
+
+  {{!-- POSTS--}}
+  <div class="posts">
+    <div class="individual-post">
+      <div class="post-votes">
+        <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br>
+        2
+        <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
+      </div>
+      <div class="post-content">
+        <div class="post-header">
+          <div class="post-pfp-container"><img src="/static/images/fade-icon.png" class="post-pfp"></div>
+          <ul class="post-details">
+            <li class="details">
+              <ul class="inline">
+                <li id="post-title">Title</li>
+                <li id="post-edit">Edited</li>
+                <li id="post-tag"><img src="/static/images/default-1.png" height="13px" width="13px"> General Discussion</li>
+                <li id="post-comment"><i class="fa-solid fa-comment" id="comment-icon"></i> 2</li>
+              </ul>
+            </li>
+            <li class="subdetails">
+              <ul class="inline">
+                <li id="post-username">@username &nbsp;</li>
+                <li id="post-time">started this discussion on $date $time</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="post-description">
+          lorem ipsum
+        </div>
+      </div>
+    </div>
   </div>
 
   </div>
