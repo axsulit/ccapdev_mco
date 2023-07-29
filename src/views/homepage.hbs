@@ -1,11 +1,51 @@
-{{!-- <link rel="stylesheet" href="/static/css/posts.css" /> --}}
-<link rel="stylesheet" href="/static/css/main.css" />
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-></script>
+<link rel="stylesheet" href="/static/css/homepage.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="/static/js/posts.js" defer></script>
+<script src="/static/js/filter-post.js" defer></script>
 
+<div class="buffer"></div>
 <div class="main">
+  {{!-- DISCUSSION BOARD NAVIGATION --}}
+  <div class="discussion-board-nav">
+    <button class="start-discussion-btn">Start Discussion</button>
+    <ul class="tags">
+      <li><a href="#"><i class="fa-solid fa-comments" id="general-disc"></i> General Discussion</a></li>
+      <li><a href="#"><i class="fa-solid fa-user-group" id="lft"></i> LFT</a></li>
+      <li><a href="#"><i class="fa-solid fa-wrench" id="tech-issues"></i> Technical Issues</a></li>
+      <li><a href="#"><i class="fa-solid fa-comment-dots" id="off-topic"></i> Off Topic</a></li>
+    </ul>
+  </div>
+
+  {{!-- DISCUSSION BOARD (POSTS) --}}
+  <div class="discussion-board">
+
+    {{!-- filter button --}}
+    <div class="filter-menu">
+      <div class="select-filter"><span class="selected-filter">Newest</span> ⏷</div>
+      <div class="filters">
+        <div class="filter"><a href="#"><div class="filter-text">Newest</div></a></div>
+        <div class="filter"><a href="#"><div class="filter-text">Oldest</div></a></div>
+        <div class="filter"><a href="#"><div class="filter-text">Hottest</div></a></div>
+      </div>
+    </div>
+    
+  </div>
+
+
+</div>
+
+{{!-- <div class="filters">
+      <div class="dropdown">
+        <button class="dropbtn">Top</button>
+        <div class="dropdown-content">
+          <a href="#">Latest</a>
+          <a href="#">Top</a>
+          <a href="#">Newest</a>
+          <a href="#">Oldest</a>
+        </div>
+      </div> --}}
+
+{{!-- <div class="main">
   <span id="left-pane">
     <!--add icons-->
     <ul class="tags">
@@ -89,4 +129,4 @@
           {{>posts}}
     </div>
   </span>
-</div>
+</div> --}}
