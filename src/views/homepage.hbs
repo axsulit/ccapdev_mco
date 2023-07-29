@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="/static/css/homepage.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="/static/js/posts.js" defer></script>
+{{!-- <script src="/static/js/posts.js" defer></script> --}}
 <script src="/static/js/filter-post.js" defer></script>
+<script src="/static/js/homepage.js" defer></script>
 
 <div class="buffer"></div>
 <div class="main">
   {{!-- DISCUSSION BOARD NAVIGATION --}}
   <div class="discussion-board-nav">
     <button class="start-discussion-btn">Start Discussion</button>
-    <ul class="tags">
+    <ul class="discussion-nav-tags">
       <li><a href="#"><i class="fa-solid fa-comments" id="general-disc"></i> General Discussion</a></li>
       <li><a href="#"><i class="fa-solid fa-user-group" id="lft"></i> LFT</a></li>
       <li><a href="#"><i class="fa-solid fa-wrench" id="tech-issues"></i> Technical Issues</a></li>
@@ -28,58 +29,51 @@
         <div class="filter"><a href="#"><div class="filter-text">Hottest</div></a></div>
       </div>
     </div>
+
+  {{!-- INDIVIDUAL POST --}}
+  <div class="indiv-post">
+    {{!-- post --}}
+  </div>
+
+  <br>
+  {{!-- WRITE POST --}}
+  <div class="write-post-border">
+    <div class="write-post">
+      <div class="write-post-left">
+        <img src="/static/images/fade-icon.png" class="write-pfp">
+      </div>
+      <div class="write-post-right">
+        {{!-- discussion tags and exit --}}
+        <div class="write-post-tags">
+          <div class="tag-menu">
+            <div class="select-tag"><span class="selected-tag">Choose Tags</span></div>
+            <div class="tags">
+              <div class="tag"><a href="#"><div class="tag-text">General Discussion</div></a></div>
+              <div class="tag"><a href="#"><div class="tag-text">LFT</div></a></div>
+              <div class="tag"><a href="#"><div class="tag-text">Technical Issues</div></a></div>
+              <div class="tag"><a href="#"><div class="tag-text">Off Topic</div></a></div>
+            </div>
+          </div>
+          <div class="close-post">x</div>
+        </div>
+        
+        {{!-- discussion inputs --}}
+        <div class="write-content-div">
+          <input type="text" class="post-title" placeholder="Discussion Title" /><br>
+          <textarea class="post-caption" rows="7" placeholder="Write a Post..." required></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="submit-post">
+      <input class="submit-btn" type="submit" value="Plant the Spike" />
+    </div>
     
   </div>
 
-
+  </div>
 </div>
 
-{{!-- <div class="filters">
-      <div class="dropdown">
-        <button class="dropbtn">Top</button>
-        <div class="dropdown-content">
-          <a href="#">Latest</a>
-          <a href="#">Top</a>
-          <a href="#">Newest</a>
-          <a href="#">Oldest</a>
-        </div>
-      </div> --}}
-
-{{!-- <div class="main">
-  <span id="left-pane">
-    <!--add icons-->
-    <ul class="tags">
-      <button class="start-discussion-btn" onclick="showWritePost()">Start
-        Discussion</button>
-      <li><a href="#">
-          <div class="tag">
-            <i class="fa-regular fa-comments" id="gendisc"></i>
-            General Discussion
-          </div>
-        </a></li>
-      <li><a href="#">
-          <div class="tag">
-            <i class="fa-solid fa-user-group" id="lft"></i>
-            LFT
-          </div>
-        </a></li>
-      <li><a href="#">
-          <div class="tag">
-            <i class="fa-solid fa-wrench" id="wrench"></i>
-            Technical Issues
-          </div>
-        </a></li>
-      <li><a href="#">
-          <div class="tag">
-            <i class="fa-solid fa-comment-dots" id="oft"></i>
-            Off Topic
-          </div>
-        </a></li>
-    </ul>
-
-  </span>
-
-  <!-- WRITE POST -->
+  {{!-- <!-- WRITE POST -->
   <div id="popup-container">
     <button class="close-button" onclick="closeWritePost()">X</button>
 
@@ -129,4 +123,4 @@
           {{>posts}}
     </div>
   </span>
-</div> --}}
+</div> --}} --}}
