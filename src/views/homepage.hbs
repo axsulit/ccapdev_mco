@@ -9,6 +9,7 @@
   {{!-- DISCUSSION BOARD NAVIGATION --}}
   <div class="discussion-board-nav">
     <button class="start-discussion-btn">Start Discussion</button>
+    {{!-- TODO: add separate posts for each tag --}}
     <ul class="discussion-nav-tags">
       <li><a href="#"><i class="fa-solid fa-comments" id="general-disc"></i> General Discussion</a></li>
       <li><a href="#"><i class="fa-solid fa-user-group" id="lft"></i> LFT</a></li>
@@ -19,8 +20,8 @@
 
   {{!-- DISCUSSION BOARD (POSTS) --}}
   <div class="discussion-board">
-
     {{!-- filter button --}}
+    {{!-- TODO: add functionality to sort posts --}}
     <div class="filter-menu">
       <div class="select-filter"><span class="selected-filter">Newest</span> ⏷</div>
       <div class="filters">
@@ -30,16 +31,12 @@
       </div>
     </div>
 
-    {{!-- INDIVIDUAL POST --}}
-    <div class="indiv-post">
-      {{!-- post --}}
-    </div>
-
-    <br>
     {{!-- WRITE POST --}}
     <div class="write-post-border">
       <div class="write-post">
         <div class="write-post-left">
+          {{!-- TODO: disable post if not logged-in (OPEN LOGIN/SIGNUP FORM) --}}
+          {{!-- TODO: get profile picture of logged-in user --}}
           <img src="/static/images/fade-icon.png" class="write-pfp">
         </div>
         <div class="write-post-right">

@@ -15,16 +15,3 @@ submitPost.addEventListener("click", () =>{
     writePost.classList.remove("active");
 })
 
-// truncates long titles
-function truncateParagraph(paragraph, maxLength) {
-    if (paragraph.length <= maxLength) {
-        return paragraph;
-    } else {
-        return paragraph.slice(0, maxLength - 3) + '...';
-    }
-}
-
-const   postTitle = document.querySelector("#post-title").textContent,
-        truncatedParagraph = truncateParagraph(longParagraph, 50);
-
-        document.querySelector("#post-title").textContent = truncateParagraph;

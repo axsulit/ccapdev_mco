@@ -104,7 +104,7 @@ a {
 /* WRITE POST */
 .write-post-border {
     display:none;
-    margin-bottom: 2%;
+    margin: 2% 0;
 }
 .write-post-border.active {
     display: block;

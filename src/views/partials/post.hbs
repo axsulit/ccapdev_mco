@@ -6,6 +6,7 @@
         {{!-- post votes --}}
         <div class="post-votes">
           <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br>
+          {{!-- TODO: add function to calculate upvotes and update in db --}}
           {{upvotes}}
           <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
         </div>
@@ -13,6 +14,7 @@
         <div class="post-content">
           {{!-- post content header--}}
           <div class="post-header">
+            {{!-- TODO: get profile picture per post --}}
             <div class="post-pfp-container"><img src="/static/images/fade-icon.png" class="post-pfp"></div>
             <ul class="post-details">
               <li class="details">
