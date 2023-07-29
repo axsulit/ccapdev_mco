@@ -59,7 +59,6 @@ a {
     flex: 3;
     margin-top: 5%;
     padding-right: 5%;
-
 }
 
 /* filter posts dropdown */
@@ -105,6 +104,7 @@ a {
 /* WRITE POST */
 .write-post-border {
     display:none;
+    margin-bottom: 2%;
 }
 .write-post-border.active {
     display: block;
@@ -226,97 +226,4 @@ a {
     cursor: pointer;
 }
 
-
-/* INDIVIDUAL POST */
-.individual-post {
-    color: #e2e2e2;
-    padding: 3%;
-    border-radius: 7px;
-    display: flex;
-    cursor: pointer;
-    margin-top: 2%;
-} .individual-post:hover {
-    background-color: #1a1a1a;
-} .post-header {
-    display: flex;
-} 
-
-.post-votes {
-    text-align: center;
-} .vote-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #e2e2e2;
-}
-
-.post-content {
-    padding-left: 1%;
-    width: 100%;
-}
-
-/* post header */
-.header-votes {
-    padding: 10px;
-} .header-content {
-    width: 100%;
-    background-color: rebeccapurple;
-    display: flex;
-} .post-pfp-container {
-    width: 8%;
-} .post-pfp {
-    width: 100%;
-    height: auto;
-    border-radius: 50px;
-    border: 1px solid #e2e2e2;
-} 
-
-.post-details {
-    width: 100%; 
-} .details {
-    width: 100%;
-    display: flex;
-} #post-title {
-    font-size: x-large;
-    padding-left: 2%;
-} .inline {
-    width: 100%;
-    display: flex;
-} #post-title {
-    width: 70%;
-} 
-
-
-.inline > li {
-    display: inline;
-    font-size: small;
-} #post-username {
-    padding-left: 2%;
-    font-weight: bold;
-    color: #D8D8D8;
-} #post-tag {
-    background-color: #ff4654;
-    border-radius: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: center;
-    width: 20%;
-    height:55%;
-} #post-edit, #post-time {
-    color:#D8D8D8;
-}
-
-#post-username:hover, 
-#post-title:hover, 
-.vote-btn:hover, 
-#post-comment:hover {
-    color:#ff4654;
-    cursor: pointer;
-} 
-
-.post-description {
-    padding-top: 3px;
-    padding-left: 9%;
-    color: #D8D8D8;
-}
 

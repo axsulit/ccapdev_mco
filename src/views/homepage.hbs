@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/static/css/homepage.css" />
+<link rel="stylesheet" href="/static/css/post.css" />
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-{{!-- <script src="/static/js/posts.js" defer></script> --}}
 <script src="/static/js/filter-post.js" defer></script>
 <script src="/static/js/homepage.js" defer></script>
 
@@ -30,131 +31,48 @@
       </div>
     </div>
 
-  {{!-- INDIVIDUAL POST --}}
-  <div class="indiv-post">
-    {{!-- post --}}
-  </div>
+    {{!-- INDIVIDUAL POST --}}
+    <div class="indiv-post">
+      {{!-- post --}}
+    </div>
 
-  <br>
-  {{!-- WRITE POST --}}
-  <div class="write-post-border">
-    <div class="write-post">
-      <div class="write-post-left">
-        <img src="/static/images/fade-icon.png" class="write-pfp">
-      </div>
-      <div class="write-post-right">
-        {{!-- discussion tags and exit --}}
-        <div class="write-post-tags">
-          <div class="tag-menu">
-            <div class="select-tag"><span class="selected-tag">Choose Tags</span></div>
-            <div class="tags">
-              <div class="tag"><a href="#"><div class="tag-text">General Discussion</div></a></div>
-              <div class="tag"><a href="#"><div class="tag-text">LFT</div></a></div>
-              <div class="tag"><a href="#"><div class="tag-text">Technical Issues</div></a></div>
-              <div class="tag"><a href="#"><div class="tag-text">Off Topic</div></a></div>
+    <br>
+    {{!-- WRITE POST --}}
+    <div class="write-post-border">
+      <div class="write-post">
+        <div class="write-post-left">
+          <img src="/static/images/fade-icon.png" class="write-pfp">
+        </div>
+        <div class="write-post-right">
+          {{!-- discussion tags and exit --}}
+          <div class="write-post-tags">
+            <div class="tag-menu">
+              <div class="select-tag"><span class="selected-tag">Choose Tags</span></div>
+              <div class="tags">
+                <div class="tag"><a href="#"><div class="tag-text">General Discussion</div></a></div>
+                <div class="tag"><a href="#"><div class="tag-text">LFT</div></a></div>
+                <div class="tag"><a href="#"><div class="tag-text">Technical Issues</div></a></div>
+                <div class="tag"><a href="#"><div class="tag-text">Off Topic</div></a></div>
+              </div>
             </div>
+            <div class="close-post">x</div>
           </div>
-          <div class="close-post">x</div>
-        </div>
-        
-        {{!-- discussion inputs --}}
-        <div class="write-content-div">
-          <input type="text" class="post-title" placeholder="Discussion Title" /><br>
-          <textarea class="post-caption" rows="7" placeholder="Write a Post..." required></textarea>
+          
+          {{!-- discussion inputs --}}
+          <div class="write-content-div">
+            <input type="text" class="post-title" placeholder="Discussion Title" /><br>
+            <textarea class="post-caption" rows="7" placeholder="Write a Post..." required></textarea>
+          </div>
         </div>
       </div>
+      <div class="submit-post">
+        <input class="submit-btn" type="submit" value="Plant the Spike" />
+      </div>
     </div>
-    <div class="submit-post">
-      <input class="submit-btn" type="submit" value="Plant the Spike" />
-    </div>
-  </div>
 
-  {{!-- POSTS--}}
-  <div class="posts">
-    <div class="individual-post">
-      <div class="post-votes">
-        <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br>
-        2
-        <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
-      </div>
-      <div class="post-content">
-        <div class="post-header">
-          <div class="post-pfp-container"><img src="/static/images/fade-icon.png" class="post-pfp"></div>
-          <ul class="post-details">
-            <li class="details">
-              <ul class="inline">
-                <li id="post-title">Title</li>
-                <li id="post-edit">Edited</li>
-                <li id="post-tag"><img src="/static/images/default-1.png" height="13px" width="13px"> General Discussion</li>
-                <li id="post-comment"><i class="fa-solid fa-comment" id="comment-icon"></i> 2</li>
-              </ul>
-            </li>
-            <li class="subdetails">
-              <ul class="inline">
-                <li id="post-username">@username &nbsp;</li>
-                <li id="post-time">started this discussion on $date $time</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="post-description">
-          lorem ipsum
-        </div>
-      </div>
+    {{!-- POSTS--}}
+    <div class="posts">
+      {{>post}}
     </div>
-  </div>
-
   </div>
 </div>
-
-  {{!-- <!-- WRITE POST -->
-  <div id="popup-container">
-    <button class="close-button" onclick="closeWritePost()">X</button>
-
-    <form id="post-form" onsubmit="submitPost(event)">
-      <label for="post-title"></label>
-      <input type="text" id="post-title" placeholder="Title" />
-
-      <label for="post-caption"></label>
-      <textarea
-        id="post-caption"
-        rows="12"
-        placeholder="Write a Post..."
-        required
-      ></textarea>
-
-      <input id="submit-bttn" type="submit" value="Plant the Spike" />
-
-      <div class="dropdown">
-        <button class="post-dropbtn">Choose Tags</button>
-        <div class="dropdown-content">
-          <a href="#">General Discussion</a>
-          <a href="#">LFT</a>
-          <a href="#">Off Topic</a>
-          <a href="#">Technical Issues</a>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <span id="right-pane">
-
-    <div class="filters">
-      <div class="dropdown">
-        <button class="dropbtn">Top</button>
-        <div class="dropdown-content">
-          <a href="#">Latest</a>
-          <a href="#">Top</a>
-          <a href="#">Newest</a>
-          <a href="#">Oldest</a>
-        </div>
-      </div>
-
-      <!--refresh button-->
-    </div>
-
-    <div id="posts-container">
-          {{>posts}}
-    </div>
-  </span>
-</div> --}} --}}

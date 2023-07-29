@@ -1,7 +1,3 @@
-// HOMEPAGE DROPDOWNS
-// - filter dropdown
-// - tag dropdown
-
 // FILTER DROPDOWN
 const   filterMenu = document.querySelector(".filter-menu"),
         selectFilter = filterMenu.querySelector(".select-filter"),
