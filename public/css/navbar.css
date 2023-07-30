@@ -203,6 +203,8 @@ ul {
     border-radius:100%;
     height:30px;
     width:30px;
+    margin-right: 5px;
+    margin-top: 5px;
 } .nav-username {
     color: #fff;
     font-size: 12px;
