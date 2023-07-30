@@ -1,47 +1,31 @@
-// System-related packages
 import "dotenv/config";
-import { dirname } from "path";
-import { fileURLToPath } from 'url';
 
-//Web-app related packages
-import express from 'express';
-import exphbs from 'express-handlebars';
+import express from "express";
+import exphbs from "express-handlebars";
+import db from './models/db.js';
 
-//Route modules
-import router from "./src/routes/index.js";
+// import routers
+import homepageRouter from "./routes/homepageRoute.js";
 
-//import database
-import { connectToMongo } from "./src/db/conn.js";
+const port = process.env.PORT;
 
-async function main(){
-    const __dirname = dirname(fileURLToPath(import.meta.url)); // directory URL
-    const app = express();
+const app = express();
 
-    app.use("/static", express.static(__dirname + "/public"));
+app.engine("hbs", exphbs.engine({extname: 'hbs'}));
+app.set("view engine", "hbs");
+app.set("views", "./views");
 
-    app.engine("hbs", exphbs.engine({
-        extname: 'hbs',
-    }));
-    app.set("view engine", "hbs");
-    app.set("views", "./src/views");
-    app.set("view cache", false);
+app.use(express.static(`public`));
 
-    app.use(express.json());
+// use express.json() middleware to parse request body
+app.use(express.json());
 
-    app.use(router);
+// use router (add if necessary)
+app.use(homepageRouter);
 
-    app.listen(process.env.SERVER_PORT, () => {
-        console.log("Express app now listening...");
-        connectToMongo((err) => {
-            if (err) {
-                console.error("An error has occurred:");
-                console.error(err);
-                return;
-            }
-            console.log("Connected to Mongodb");
-        });
-    });
-}
+db.connect();
 
-
-main();
+app.listen(port, function () {
+    console.log(`Server is running at:`);
+    console.log(`http://localhost:` + port);
+});
