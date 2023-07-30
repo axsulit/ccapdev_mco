@@ -72,3 +72,27 @@ function formatDate(date) {
     return `${month}/${day}/${year} ${hours}:${minutes}`;
 }
 
+//
+const lftTag = document.querySelector('#lft-tag');
+
+// Add an event listener to handle the tag click
+lftTag.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  try {
+    // Fetch the posts with tags "LFT" from the server
+    const response = await fetch('/getLFT', {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch posts with tags "LFT"');
+    }
+
+    console.log("getLFT")
+
+  } catch (error) {
+    console.error(error);
+    // Handle the error here, e.g., display an error message on the page.
+  }
+});

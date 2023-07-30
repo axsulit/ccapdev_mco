@@ -24,11 +24,12 @@ const homepageController = {
 
   getLFT: async (req, res) => {
     try {
-      const postsArray = await posts.find({ tags: "LFT" }).toArray();
+      const postsArray = await posts.find({ tag: "LFT" }).toArray();
       res.render("homepage", {
         title: "Homepage",
         posts: postsArray
       });
+      console.log(postsArray);
     } catch (error) {
       res.render("error", {
         title: "Page not Found."
