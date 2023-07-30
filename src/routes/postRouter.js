@@ -3,7 +3,7 @@ import postController from "../controllers/postController.js";
 
 const postRouter = Router();
 
-postRouter.get("/:id", postController.getPost);
+postRouter.get("/post/:id", postController.getPost);
 postRouter.post("/saveContent", postController.saveContent);
 
 export default postRouter;

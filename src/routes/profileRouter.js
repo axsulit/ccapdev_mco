@@ -3,7 +3,7 @@ import profileController from '../controllers/profileController.js';
 
 const profileRouter = Router();
 
-profileRouter.get("/:username", profileController.getProfile);
+profileRouter.get("/profile/:username", profileController.getProfile);
 profileRouter.get("/edit-profile/:username", profileController.editProfile);
 profileRouter.post("/edit-profile/saveDescription", profileController.saveDescription);
 
