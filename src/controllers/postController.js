@@ -1,5 +1,6 @@
 import { getDb } from "../db/conn.js";
 import { ObjectId } from "mongodb";
+import { Post } from "../models/postModel.js";
 const db = getDb();
 
 // import posts collection from database
@@ -59,6 +60,17 @@ const postController = {
       } catch (err) {
         console.error(err);
         res.sendStatus(500);
+      }
+    },
+
+    addPost: async (req, res) => {
+      try {
+        const newPost = new Post(req.body);
+        await newPost.save();
+
+        res.status(200).send("Post added successfully!");
+      } catch (error) {
+        res.status(400).send(error.message);
       }
     }
 };

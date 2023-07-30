@@ -10,7 +10,9 @@ import homepageController from '../controllers/homepageController.js';
 import errorController from '../controllers/errorController.js';
 
 // define the homepage route using the homepageController
-router.get("/", homepageController);
+router.get("/", homepageController.getHomepage);
+router.get("/getLFT", homepageController.getLFT);
+router.post("/addPost", homepageController.addPost);
 
 // use other routers 
 router.use(userRouter);
