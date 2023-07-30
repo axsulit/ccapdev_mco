@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/static/css/profile.css">
+<script src="/static/js/profile.js" defer></script>
 
 <!-- PROFILE CONTENTS -->
     <div class="buffer"></div>
@@ -10,14 +11,25 @@
         </div>
     </div>
     <div class="profile-body">
-        {{>profiletags}}
+        <div class="profile-nav">
+            <ul class="pn-tags">
+                <li id="pn-profile">Profile</li>
+                <li id="pn-comments">Comments</li>
+                <li id="pn-edit">Edit Profile</li>
+            </ul>
+        </div>
         <div class="profile-content">
-            <div class="profile-posts">
+            <div class="profile-post active">
                 {{>post}}
             </div>
-            
-            <div class="edit-profile invisible">
-                {{>edit-profile}}
+            <div class="profile-comment">
+                {{!-- TODO: change this to comment --}}
+                comment
+                {{>post}} 
+            </div>
+            <div class="profile-edit">
+                 {{>edit-profile}}
             </div>
         </div>
+    </div>
 </div>

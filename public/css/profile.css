@@ -11,23 +11,13 @@ body {
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-    color: #FF4654;
-}
-
-/* Remove bullets */
-ul {
-    list-style-type: none; 
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
+.buffer {
+    margin-top:50px;
 }
 
 /* profile header */
 .profile-header{
-    margin-top: 50px;
     padding: 2%;
-    /* padding-top: 6%; */
     padding-left: 12%;
     display: flex;
     align-items: center;
@@ -45,7 +35,6 @@ ul {
     padding-top: 10px;
 } #description {
     margin: 5px;
-    /* margin-top: 20px; */
     color: #e2e2e2;
     font-style: italic;
 } 
@@ -53,44 +42,37 @@ ul {
 /* profile body */
 .profile-body {
     display: flex;
-    height: 100%;
-    margin: 0; padding: 0;
+    margin-left: 2%;
 } .profile-body a{
     color: #E4E4E4;
 } .profile-body a:hover{
     color: #e53e4b
-} .profile-tags {
-    padding-left: 12%;
 } 
 
-.tag {
-    white-space: nowrap;
-    width: 30%;
-    height: 3%;
-} .active, .tag:hover {
+/* profile navigation */
+.profile-nav {
+    margin-left: 10%;
+    margin-top: 2%;
+    color: #e2e2e2;
+} .pn-tags {
+    margin-top: 50%;
+} .pn-tags > li {
+    padding-bottom: 10%;
+}  #pn-profile:hover, #pn-comments:hover, #pn-edit:hover {
+    cursor: pointer;
     color: #e53e4b;
-    font-weight: bold;
-} .selected {
-    color: #e53e4b;
-    font-weight: bold;
 }
 
-.buffer {
-    margin-top:50px;
-}
 
 /* profile content */
 .profile-content{
     flex-grow: 1;
     color: #e2e2e2;
+    padding-left: 2%;
+    margin-right: 5%;
 } 
 
-/* profile posts */
-.posts {
-    font-size: larger;
-    padding-top: 5%;
-    text-align: center;
-} 
+
 
 /* edit profile */
 .edit-profile {
@@ -159,7 +141,19 @@ ul {
     margin-right: 10px;
 }
 
+.profile-edit {
+    padding: 2% 5%;
+}
+
 /* trigger for making posts/replies/edit profile visible (javascript) */
-.invisible {
+.profile-comment, .profile-edit, .profile-post {
+    display: none;
+}
+
+.profile-comment.active, .profile-edit.active, .profile-post.active {
+    display: block;
+}
+
+.profile-header.active {
     display: none;
 }
