@@ -41,12 +41,12 @@ const homepageController = {
   addPost: async (req, res) => {
     // Parse the incoming data
     const newPostData = req.body;
+      console.log("POST request for add new post received");
     console.log('Received new post data:', newPostData);
-    console.log("POST request for add new post received");
 
     // Create a new instance of the Post model and save it to the database
     const newPost = new Post({
-      username: req.body.username,
+      username: "@newUser",
       date: req.body.date,
       title: req.body.title,
       content: req.body.content,
@@ -56,12 +56,13 @@ const homepageController = {
       downvotes: 0,
       edited: false,
     });
+    
 
     try {
-      const result = await newPost.save();
+      const result = newPost.save();
       console.log(result);
       // Respond with a success status code and message
-      res.status(200).json({ message: 'Post added successfully' });
+      res.status(200).json({ message: 'Post added successfully!' });
     } catch (err) {
       // Handle errors and respond with an error status code and message
       console.error('Error adding post:', err);
