@@ -1,0 +1,56 @@
+<div class="comment">
+  {{! comment votes }}
+  <div class="comment-votes">
+    <button class="comment-btn" onclick="upvote()"><i
+        class="fa-solid fa-arrow-up"
+        id="upvote"
+      ></i></button><br />
+    {{! TODO: add function to calculate upvotes and update in db }}
+    {{upvotes}}
+    <button class="vote-btn" onclick="downvote()"><i
+        class="fa-solid fa-arrow-down"
+        id="downvote"
+      ></i></button>
+  </div>
+  {{! comment content }}
+  <div class="comment-content">
+    {{! comment content header}}
+    <div class="comment-header">
+      {{! TODO: get profile picture per post }}
+      <div class="comment-pfp-container"><img
+          src="/static/images/fade-icon.png"
+          class="comment-pfp"
+        /></div>
+      <ul class="comment-details">
+        <li class="details">
+          <div class="comment-metadata">
+            <span id="comment-edit">{{edited}}</span>
+          </div>
+        </li>
+        {{! comment content subdetails}}
+        <li class="subdetails">
+          <ul class="inline">
+            <li id="comment-username"><a
+                href="/profile/{{username}}"
+              >{{username}}
+                &nbsp;</a></li>
+            <li id="comment-time">replied to this discussion on
+              {{date}}</li>
+          </ul>
+        </li>
+        <div class="comment-description">{{content}}</div>
+      </ul>
+    </div>
+    {{! comment content description}}
+
+    <div class="comment-btn">
+      <input
+        class="reply-btn"
+        type="submit"
+        value="Reply"
+        onclick="replyToPost()"
+      />
+      <input class="edit-btn" type="submit" value="Edit" />
+    </div>
+  </div>
+</div>
