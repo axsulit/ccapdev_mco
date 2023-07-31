@@ -2,41 +2,59 @@
 <script src="/static/js/post.js" defer></script>
 <div class="buffer"></div>
 {{#each posts}}
-<div class="individual-post">
-        {{!-- post votes --}}
-        <div class="post-votes">
-          <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br>
-          {{!-- TODO: add function to calculate upvotes and update in db --}}
-          {{upvotes}}
-          <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
-        </div>
-        {{!-- post content --}}
-        <div class="post-content">
-          {{!-- post content header--}}
-          <div class="post-header">
-            {{!-- TODO: get profile picture per post --}}
-            <div class="post-pfp-container"><img src="/static/images/fade-icon.png" class="post-pfp"></div>
-            <ul class="post-details">
-              <li class="details">
-                  <span id="post-title"> <a href="/post/{{_id}}">{{title}}</a></span>
-                  <div class="post-metadata">
-                    <span id="post-edit">{{edited}}</span>
-                    <span id="post"><img src="/static/images/default-1.png" height="13px" width="13px">{{tag}}</span>
-                    <span id="post-comment"><i class="fa-solid fa-comment" id="comment-icon"></i> 2</span>
-                  </div>
-              </li>
-              {{!-- post content subdetails--}}
-              <li class="subdetails">
-                <ul class="inline">
-                  <li id="post-username"><a href="/profile/{{username}}">{{username}} &nbsp;</a></li>
-                  <li id="post-time">started this discussion on {{date}}</li>
-                </ul>
-              </li>
+  <div class="individual-post">
+    {{! post votes }}
+    <div class="post-votes">
+      <button class="vote-btn" onclick="upvote()"><i
+          class="fa-solid fa-arrow-up"
+          id="upvote"
+        ></i></button><br />
+      {{! TODO: add function to calculate upvotes and update in db }}
+      {{upvotes}}
+      <button class="vote-btn" onclick="downvote()"><i
+          class="fa-solid fa-arrow-down"
+          id="downvote"
+        ></i></button>
+    </div>
+    {{! post content }}
+    <div class="post-content">
+      {{! post content header}}
+      <div class="post-header">
+        {{! TODO: get profile picture per post }}
+        <div class="post-pfp-container"><img
+            src="/static/images/fade-icon.png"
+            class="post-pfp"
+          /></div>
+        <ul class="post-details">
+          <li class="details">
+            <span id="post-title"> <a href="/post/{{_id}}">{{title}}</a></span>
+            <div class="post-metadata">
+              <span id="post-edit">{{edited}}</span>
+              <span id="post"><img
+                  src="/static/images/default-1.png"
+                  height="13px"
+                  width="13px"
+                />{{tag}}</span>
+              <span id="post-comment"><i
+                  class="fa-solid fa-comment"
+                  id="comment-icon"
+                ></i>
+                2</span>
+            </div>
+          </li>
+          {{! post content subdetails}}
+          <li class="subdetails">
+            <ul class="inline">
+              <li id="post-username"><a
+                  href="/profile/{{username}}"
+                >{{username}} &nbsp;</a></li>
+              <li id="post-time">started this discussion on {{date}}</li>
             </ul>
-          </div>
-          {{!-- post content description--}}
-          <div class="post-description">{{content}}</div>
-        </div>
+          </li>
+        </ul>
       </div>
-    {{/each}}
-
+      {{! post content description}}
+      <div class="post-description">{{content}}</div>
+    </div>
+  </div>
+{{/each}}

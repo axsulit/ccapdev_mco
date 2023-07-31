@@ -1,8 +1,11 @@
-
 import { Schema, model } from "mongoose";
 
-
-const allowedTags = ["General Discussion", "LFT", "Technical Issues", "Off Topic"];
+const allowedTags = [
+  "General Discussion",
+  "LFT",
+  "Technical Issues",
+  "Off Topic",
+];
 
 const postSchema = new Schema({
   username: {
@@ -28,8 +31,8 @@ const postSchema = new Schema({
     default: "General Discussion",
   },
   comments: {
-    type: [String],
-    default: [],
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "comment",
   },
   upvotes: {
     type: Number,

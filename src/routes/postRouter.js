@@ -4,6 +4,8 @@ import postController from "../controllers/postController.js";
 const postRouter = Router();
 
 postRouter.get("/post/:id", postController.getPost);
+postRouter.get("/comment", postController.getComment);
+postRouter.get("/", postController.getIndex);
 postRouter.post("/saveContent", postController.saveContent);
 
 export default postRouter;
@@ -16,14 +18,14 @@ export default postRouter;
 // const db=getDb();
 // const userposts = db.collection("posts");
 
-// postRouter.get("/post/:id", async (req, res)=>{ 
+// postRouter.get("/post/:id", async (req, res)=>{
 //     try{
 //         const param_postid=req.params.id;
 //        // console.log("post id",param_postid);
 
-//         const existPost = await userposts.findOne({ 
+//         const existPost = await userposts.findOne({
 //             _id: new ObjectId(param_postid)
-            
+
 //         });
 //         //console.log(existPost);
 //         if(existPost){
@@ -48,11 +50,9 @@ export default postRouter;
 //             title: "Page not Found."
 //         });
 //     }
-    
-   
+
 //  });
 
- 
 //  postRouter.post("/saveContent", async(req, res)=>{
 //     console.log("POST request for update in content post received");
 //     console.log(req.body.edited);
