@@ -32,7 +32,11 @@ submitPost.addEventListener("click", async () =>{
         date: formatDate(new Date()),
         title: titleInput.value,
         content: captionInput.value,
-        tag: tagInput.textContent, // Default value, you can change this if needed
+        tag: tagInput.textContent, 
+        comments: [],
+        upvotes: 0,
+        downvotes: 0,
+        edited: false // Default value, you can change this if needed
     };
 
     // send request to server
