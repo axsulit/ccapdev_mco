@@ -31,7 +31,7 @@ const postSchema = new Schema({
     default: "General Discussion",
   },
   comments: {
-    type: [mongoose.Schema.Types.ObjectId],
+    type: [Schema.Types.ObjectId],
     ref: "comment",
   },
   upvotes: {

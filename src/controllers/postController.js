@@ -1,7 +1,7 @@
 import { getDb } from "../db/conn.js";
 import { ObjectId } from "mongodb";
 const db = getDb();
-const Comments = require("../models/commentModel.js");
+//const Comments = require("../models/commentModel.js");
 
 // import posts collection from database
 const userposts = db.collection("posts");
@@ -11,7 +11,7 @@ const postController = {
 
   getIndex: async (req, res) => {
     var result = await db.findMany(
-      Comments,
+     // Comments,
       {},
       "date upvotes username content"
     );
@@ -110,4 +110,4 @@ const postController = {
 
 export default postController;
 
-var comment = require("../models/commentModel.js");
+//var comment = require("../models/commentModel.js");
