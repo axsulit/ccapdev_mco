@@ -47,6 +47,12 @@ const userController = {
       req.session.authorized = true;
       res.sendStatus(200);
     }
+  },
+
+  logoutUser: async(req, res)=>{
+    req.session.destroy();
+    console.log("You are logging out");
+    res.redirect("/");
   }
 };
 

@@ -5,6 +5,7 @@ const userRouter = Router();
 
 userRouter.post("/register", userController.registerUser);
 userRouter.post("/login", userController.loginUser);
+userRouter.get("/logout", userController.logoutUser)
 
 export default userRouter;
 // import {Router} from 'express';
