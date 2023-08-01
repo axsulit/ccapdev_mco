@@ -23,7 +23,8 @@ const profileController = {
         bio: user.bio,
         posts: postsArray,
         picture: user.picture,
-        navusername:req.session.user.username
+        navusername:req.session.user.username,
+        navpfp:req.session.user.picture
       });
     } else {
       res.render("error", {
