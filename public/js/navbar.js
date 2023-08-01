@@ -62,6 +62,7 @@ submitLogBtn?.addEventListener("click",async(e)=>{
             formOpenBtn.classList.add("hidden");
             nav_un.textContent=loginData.get("logUsername");
             nav_profile.attr('href', `/profile/@${loginData.get("logUsername")}`);
+            //location.reload();
             //console.log("nav after: ", nav_profile.attr('href'));
         }
         else{

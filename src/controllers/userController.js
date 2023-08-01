@@ -41,8 +41,10 @@ const userController = {
       res.sendStatus(500);
     } else {
       console.log("You have logged in");
-      const userPicture = existUser.picture;
-      console.log(userPicture);
+      // const userPicture = existUser.picture;
+      // console.log(userPicture);
+      req.session.user = existUser;
+      req.session.authorized = true;
       res.sendStatus(200);
     }
   }

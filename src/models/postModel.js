@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema,SchemaTypes, model } from "mongoose";
 
 const allowedTags = [
   "General Discussion",
@@ -10,6 +10,7 @@ const allowedTags = [
 const postSchema = new Schema({
   username: {
     type: String,
+    ref: 'userModel',
     required: true,
   },
   date: {

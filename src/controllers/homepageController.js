@@ -1,5 +1,6 @@
 import { getDb } from "../db/conn.js";
 import { Post } from "../models/postModel.js";
+import { User } from "../models/userModel.js";
 const db = getDb();
 
 // import post collection from database
@@ -10,11 +11,23 @@ const homepageController = {
   // controller function to handle homepage route
   getHomepage: async (req, res) => {
     try {
+      
       const postsArray = await posts.find({}).toArray();
-      res.render("homepage", {
-        title: "Homepage",
-        posts: postsArray
-      });
+      if(req.session.authorized){
+        res.render("homepage", {
+          title: "Homepage",
+          posts: postsArray,
+          navusername:req.session.user.username,
+          navpfp:req.session.user.picture
+        });
+      }
+      else{
+        res.render("homepage", {
+          title: "Homepage",
+          posts: postsArray,
+        });
+      }
+      
     } catch (error) {
       res.render("error", {
         title: "Page not Found."

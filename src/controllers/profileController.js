@@ -22,7 +22,8 @@ const profileController = {
         username: user.username,
         bio: user.bio,
         posts: postsArray,
-        picture: user.picture
+        picture: user.picture,
+        navusername:req.session.user.username
       });
     } else {
       res.render("error", {
