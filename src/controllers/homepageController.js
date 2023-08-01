@@ -10,7 +10,8 @@ const homepageController = {
   // controller function to handle homepage route
   getHomepage: async (req, res) => {
     try {
-      const postsArray = await posts.find({}).toArray();
+      //const 
+      const postsArray = await Post.find({}).toArray();
       if(req.session.authorized){
         res.render("homepage", {
           title: "Homepage",

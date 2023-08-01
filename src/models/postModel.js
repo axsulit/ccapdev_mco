@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema,SchemaTypes, model } from "mongoose";
 
 const allowedTags = [
   "General Discussion",

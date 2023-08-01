@@ -1,8 +1,8 @@
 import "dotenv/config";
 import mongoose from "mongoose";
-import { User } from "./src/models/user.js";
-import { Post } from "./src/models/post.js";
-import { Comment } from "./src/models/comment.js";
+import { User } from "./src/models/userModel.js";
+import { Post } from "./src/models/postModel.js";
+import { Comment } from "./src/models/commentModel.js";
 import { connect } from "./src/models/db.js";
 
 // import users
