@@ -175,7 +175,8 @@ a:hover {
   padding-top: 1%;
 }
 .reply-btn,
-.edit-btn {
+.edit-btn,
+.delete-btn {
   padding: 2px;
   background-color: #ff4654;
   width: 5%;
@@ -184,7 +185,8 @@ a:hover {
   color: #e2e2e2;
 }
 .reply-btn:hover,
-.edit-btn:hover {
+.edit-btn:hover,
+.delete-btn:hover {
   background-color: #fe3b3b;
   cursor: pointer;
 }

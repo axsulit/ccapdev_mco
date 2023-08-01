@@ -106,6 +106,19 @@ const postController = {
       });
     }
   },
+
+  getDelete: async function (req, res) {
+    const id = req.body.id; 
+
+    try {
+        const result = await userposts.deleteOne({_id: id}).exec();
+        console.log(result);
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }
 };
 
 export default postController;
