@@ -1,5 +1,6 @@
 import { getDb } from "../db/conn.js";
 import { Post } from "../models/postModel.js";
+import { User } from "../models/userModel.js";
 const db = getDb();
 
 // import post collection from database
@@ -10,8 +11,8 @@ const homepageController = {
   // controller function to handle homepage route
   getHomepage: async (req, res) => {
     try {
-      //const 
-      const postsArray = await Post.find({}).toArray();
+      
+      const postsArray = await posts.find({}).toArray();
       if(req.session.authorized){
         res.render("homepage", {
           title: "Homepage",

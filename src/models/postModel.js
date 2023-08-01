@@ -10,6 +10,7 @@ const allowedTags = [
 const postSchema = new Schema({
   username: {
     type: String,
+    ref: 'userModel',
     required: true,
   },
   date: {
