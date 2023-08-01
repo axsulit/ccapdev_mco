@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 //Web-app related packages
 import express from "express";
 import exphbs from "express-handlebars";
+import session from "express-session";
 
 //Route modules
 import router from "./src/routes/index.js";
@@ -30,6 +31,14 @@ async function main() {
   app.set("view cache", false);
 
   app.use(express.json());
+  app.use(session({
+    secret: 'secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie:{
+      sameSite:"strict"
+    }
+  }));
 
   app.use(router);
 

@@ -11,10 +11,21 @@ const homepageController = {
   getHomepage: async (req, res) => {
     try {
       const postsArray = await posts.find({}).toArray();
-      res.render("homepage", {
-        title: "Homepage",
-        posts: postsArray
-      });
+      if(req.session.authorized){
+        res.render("homepage", {
+          title: "Homepage",
+          posts: postsArray,
+          navusername:req.session.user.username,
+          navpfp:req.session.user.picture
+        });
+      }
+      else{
+        res.render("homepage", {
+          title: "Homepage",
+          posts: postsArray,
+        });
+      }
+      
     } catch (error) {
       res.render("error", {
         title: "Page not Found."
