@@ -44,7 +44,11 @@
       <ul class="post-details">
         <li class="details">
           <div class="post-metadata">
-            <span id="post-edit">{{edited}}</span>
+            <span id="post-edit">
+              {{#if edited}}
+                Edited
+              {{/if}}
+            </span>
           </div>
         </li>
         {{! post content subdetails}}

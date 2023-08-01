@@ -53,6 +53,45 @@ document.addEventListener("DOMContentLoaded", function() {
     //     downvotePost(this.dataset.postId);
     //   });
     // });
+
+    // // Function to fetch the logged-in user's data
+    // async function fetchUserData() {
+    //   try {
+    //     const response = await fetch("/api/user"); // Assuming this endpoint provides the user's data
+    //     if (response.status === 200) {
+    //       const userData = await response.json();
+    //       return userData;
+    //     } else {
+    //       console.log("Failed to fetch user data.");
+    //       return null;
+    //     }
+    //   } catch (err) {
+    //     console.error("Error occurred while fetching user data:", err);
+    //     return null;
+    //   }
+    // }
+
+    // // Function to update the profile picture of the logged-in user in the post-pfp-container
+    // async function updateProfilePicture() {
+    //   const postPfpContainer = document.querySelector(".post-pfp-container");
+    //   const userData = await fetchUserData();
+
+    //   if (userData && userData.pfp) {
+    //     // If the user data is available and contains the pfp property
+    //     const profilePictureUrl = userData.pfp;
+    //     const profilePicture = postPfpContainer.querySelector(".post-pfp");
+    //     profilePicture.src = profilePictureUrl;
+    //   } else {
+    //     // If user data or pfp property is not available, you can set a default profile picture
+    //     const profilePicture = postPfpContainer.querySelector(".post-pfp");
+    //     profilePicture.src = "/static/images/default-profile-picture.png";
+    //   }
+    // }
+
+    // // Call the function to update the profile picture
+    // updateProfilePicture();
+
+
 });
   
 

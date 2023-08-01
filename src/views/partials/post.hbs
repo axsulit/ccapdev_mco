@@ -21,15 +21,20 @@
       {{! post content header}}
       <div class="post-header">
         {{! TODO: get profile picture per post }}
+        {{!-- /static/images/fade-icon.png --}}
         <div class="post-pfp-container"><img
-            src="/static/images/fade-icon.png"
+            src="/static/images/fade-icon.png" 
             class="post-pfp"
           /></div>
         <ul class="post-details">
           <li class="details">
             <span id="post-title"> <a href="/post/{{_id}}">{{title}}</a></span>
             <div class="post-metadata">
-              <span id="post-edit">{{edited}}</span>
+              <span id="post-edit">
+                {{#if edited}}
+                 Edited
+                {{/if}}
+              </span>
               <span id="post"><img
                   src="/static/images/default-1.png"
                   height="13px"
