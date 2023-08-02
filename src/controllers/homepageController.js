@@ -1,10 +1,6 @@
-//import { getDb } from "../db/conn.js";
 import { Post } from "../models/postModel.js";
 import { User } from "../models/userModel.js";
-//const db = getDb();
 
-// import post collection from database
-//const posts = db.collection("posts");
 
 const homepageController = {
 

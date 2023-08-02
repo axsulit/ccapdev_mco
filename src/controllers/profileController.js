@@ -1,7 +1,11 @@
 import { User } from "../models/userModel.js";
 import { Post } from "../models/postModel.js";
 
+
+
+
 const profileController = {
+ 
   getProfile: async (req, res) => {
     const param_username = req.params.username;
 
@@ -11,7 +15,7 @@ const profileController = {
     const postsArray = await Post.find({
       username: param_username
     }).lean().exec();
-    console.log(postsArray);
+    //console.log(postsArray);
 
     if (user) {
       res.render("profile", {
@@ -47,13 +51,14 @@ const profileController = {
   saveDescription: async (req, res) => {
     console.log("POST request for homepage for update description received");
     console.log(req.body.username);
+    console.log(req.body.picture);
     try {
       let updateResult = await User.updateOne(
         { username: req.body.username },
         {
           $set: {
             bio: req.body.bio,
-            // picture: req.body.picture
+            picture: req.body.picture
           }
         }
       );
@@ -63,7 +68,8 @@ const profileController = {
       console.error(err);
       res.sendStatus(500);
     }
-  }
+  },
+
 };
 
 export default profileController;
