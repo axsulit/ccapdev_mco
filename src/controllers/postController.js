@@ -1,11 +1,6 @@
-// import { getDb } from "../db/conn.js";
-// import { ObjectId } from "mongodb";
-// const db = getDb();
-
-//const Comments = require("../models/commentModel.js");
-
-// import posts collection from database
-//const userposts = db.collection("posts");
+import { ObjectId } from "mongodb";
+import { User } from "../models/userModel.js";
+import { Post } from "../models/postModel.js";
 
 const postController = {
   // gets post for each user
@@ -28,9 +23,9 @@ const postController = {
       const param_postid = req.params.id;
       console.log("post id", param_postid);
 
-      const existPost = await userposts.findOne({
-        _id: new ObjectId(param_postid),
-      });
+      const existPost = await Post.findOne({
+        _id: new ObjectId(param_postid)
+      }).lean().exec();
 
       if (existPost) {
         res.render("indiv-post", {
@@ -50,6 +45,7 @@ const postController = {
         });
       }
     } catch (err) {
+      console.error(err);
       res.render("error", {
         title: "Page not Found.",
       });
@@ -61,7 +57,7 @@ const postController = {
     console.log("POST request for update in content post received");
     console.log(req.body.edited);
     try {
-      let updateResult = await userposts.updateOne(
+      let updateResult = await Post.updateOne(
         { _id: new ObjectId(req.body.id) },
         {
           $set: {
@@ -83,7 +79,7 @@ const postController = {
       const param_cmtid = req.params.id;
       console.log("comment id", param_cmtid);
 
-      const existCmnt = await userposts.findOne({
+      const existCmnt = await Post.findOne({
         _id: new ObjectId(param_cmtid),
       });
 
@@ -112,7 +108,7 @@ const postController = {
     const id = req.body.id; 
 
     try {
-        const result = await userposts.deleteOne({_id: id}).exec();
+        const result = await Post.deleteOne({_id: id}).exec();
         console.log(result);
         res.sendStatus(200);
     } catch (err) {
@@ -124,4 +120,3 @@ const postController = {
 
 export default postController;
 
-//var comment = require("../models/commentModel.js");

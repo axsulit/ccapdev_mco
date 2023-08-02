@@ -12,12 +12,13 @@ const userSchema = new mongoose.Schema ({
     },
     picture: {
       type: mongoose.SchemaTypes.String,
-      required: true,
+      required: false,
     },
     bio: {
       type: mongoose.SchemaTypes.String,
-      required: true,
+      required: false,
     },
   });
 
-export const User = mongoose.model("User", userSchema);
+
+export const User = mongoose.model("user", userSchema);

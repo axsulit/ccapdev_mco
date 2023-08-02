@@ -11,13 +11,22 @@ const homepageController = {
   // controller function to handle homepage route
   getHomepage: async (req, res) => {
     try {
+      const users=await User.find({}).lean().exec();
+      const posts = await Post.find({}).lean().exec();
+      // try{
+      //   const test = await Post.find({}).populate({
+      //     path: 'username',
+      //     select: 'picture'
+      //   }).lean().exec();        
+      // }catch(err){
+      //   console.error(err);
+      // }
       
-      const postsArray = await Post.find({}).lean().exec();
-      console.log(postsArray);
+      //console.log(users);
       if(req.session.authorized){
         res.render("homepage", {
           title: "Homepage",
-          posts: postsArray,
+          posts: posts,
           navusername:req.session.user.username,
           navpfp:req.session.user.picture
         });
@@ -25,7 +34,7 @@ const homepageController = {
       else{
         res.render("homepage", {
           title: "Homepage",
-          posts: postsArray,
+          posts: posts,
         });
       }
       

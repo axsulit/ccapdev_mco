@@ -8,80 +8,79 @@ import { Comment } from "./src/models/commentModel.js";
 import database from "./src/models/db.js";
 
 // import users
-// connectToMongo().then((connection) => {
-//     User.create({
-//         username: "@anne_s",
-//         password: "sulit123",
-//         picture: "/static/images/fade-icon.png",
-//         bio: "Ikaw ang binibini na ninanais ko",
-//       });
+database.connectToMongo().then(() => {
+    User.create({
+        username: "@anne_s",
+        password: "sulit123",
+        picture: "/static/images/fade-icon.png",
+        bio: "Ikaw ang binibini na ninanais ko",
+      });
 
-//     User.create({
-//         username: "@bella_t",
-//         password: "torio123",
-//         picture: "/static/images/neon-icon.png",
-//         bio: "Binibining marikit na dalangin ko",
-//       });
+    User.create({
+        username: "@bella_t",
+        password: "torio123",
+        picture: "/static/images/neon-icon.png",
+        bio: "Binibining marikit na dalangin ko",
+      });
     
-//     User.create({
-//         username: "@zhoe_g",
-//         password: "gon123",
-//         picture: "/static/images/killjoy-icon.png",
-//         bio: "Ikaw ang nagbigay ng kulay sa'king mundo",
-//       });
+    User.create({
+        username: "@zhoe_g",
+        password: "gon123",
+        picture: "/static/images/killjoy-icon.png",
+        bio: "Ikaw ang nagbigay ng kulay sa'king mundo",
+      });
 
-//     User.create({
-//         username: "@mar_v",
-//         password: "villa123",
-//         picture: "/static/images/phoenix-icon.png",
-//         bio: "Sana ay pang-habang buhay na ito",
-//       }); 
+    User.create({
+        username: "@mar_v",
+        password: "villa123",
+        picture: "/static/images/phoenix-icon.png",
+        bio: "Sana ay pang-habang buhay na ito",
+      }); 
     
-//     User.create({
-//         username: "@jack_e",
-//         password: "eli123",
-//         picture: "/static/images/fade-icon.png",
-//         bio: "Mga ngiti mong matamis na ba ay sakto na",
-//       });
+    User.create({
+        username: "@jack_e",
+        password: "eli123",
+        picture: "/static/images/fade-icon.png",
+        bio: "Mga ngiti mong matamis na ba ay sakto na",
+      });
 
-//     User.create({
-//         username: "@andre_a",
-//         password: "aqui123",
-//         picture: "/static/images/brimstone-icon.png",
-//         bio: "Mala-anghel na mukha sayo'y naakit na",
-//       });
+    User.create({
+        username: "@andre_a",
+        password: "aqui123",
+        picture: "/static/images/brimstone-icon.png",
+        bio: "Mala-anghel na mukha sayo'y naakit na",
+      });
     
-//     User.create({
-//         username: "@bien_m",
-//         password: "mir123",
-//         picture: "/static/images/omen-icon.png",
-//         bio: "Ang tangling hiling, Diyos, iyong dinggin",
-//       });
+    User.create({
+        username: "@bien_m",
+        password: "mir123",
+        picture: "/static/images/omen-icon.png",
+        bio: "Ang tangling hiling, Diyos, iyong dinggin",
+      });
 
-//     User.create({
-//         username: "@dom_b",
-//         password: "bac123",
-//         picture: "/static/images/jett-icon.png",
-//         bio: "Oh, aking binibini, ikaw ang pinipili",
-//       }); 
+    User.create({
+        username: "@dom_b",
+        password: "bac123",
+        picture: "/static/images/jett-icon.png",
+        bio: "Oh, aking binibini, ikaw ang pinipili",
+      }); 
     
-//     User.create({
-//         username: "@vinnie_i",
-//         password: "ino123",
-//         picture: "/static/images/omen-icon.png",
-//         bio: "Di ka man ginto, pero ikaw ay mamahalin",
-//       });
+    User.create({
+        username: "@vinnie_i",
+        password: "ino123",
+        picture: "/static/images/omen-icon.png",
+        bio: "Di ka man ginto, pero ikaw ay mamahalin",
+      });
 
-//     User.create({
-//         username: "@luis_r",
-//         password: "ran123",
-//         picture: "/static/images/fade-icon.png",
-//         bio: "Kislap ng iyong mata'y tanawing napakaganda",
-//       }); 
+    User.create({
+        username: "@luis_r",
+        password: "ran123",
+        picture: "/static/images/fade-icon.png",
+        bio: "Kislap ng iyong mata'y tanawing napakaganda",
+      }); 
 
-//     console.log("users created");
-//     connection.close();
-// });
+    console.log("users created");
+});
 
 // import posts
 database.connectToMongo().then(() => {

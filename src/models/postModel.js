@@ -10,7 +10,7 @@ const allowedTags = [
 const postSchema = new mongoose.Schema({
   username: {
     type: mongoose.SchemaTypes.String,
-    ref: 'userModel',
+    ref: 'user',
     required: true,
   },
   date: {
@@ -49,4 +49,4 @@ const postSchema = new mongoose.Schema({
   },
 });
 
-export const Post = mongoose.model("Post", postSchema);
+export const Post = mongoose.model("post", postSchema);
