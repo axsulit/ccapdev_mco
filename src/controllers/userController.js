@@ -1,7 +1,7 @@
-import { getDb } from '../db/conn.js';
+//import { getDb } from '../db/conn.js';
 
-const db = getDb();
-const users = db.collection("users");
+// const db = getDb();
+// const users = db.collection("users");
 
 const userController = {
   registerUser: async (req, res) => {

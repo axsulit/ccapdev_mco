@@ -1,10 +1,11 @@
-import { getDb } from "../db/conn.js";
-import { ObjectId } from "mongodb";
-const db = getDb();
+// import { getDb } from "../db/conn.js";
+// import { ObjectId } from "mongodb";
+// const db = getDb();
+
 //const Comments = require("../models/commentModel.js");
 
 // import posts collection from database
-const userposts = db.collection("posts");
+//const userposts = db.collection("posts");
 
 const postController = {
   // gets post for each user

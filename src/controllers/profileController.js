@@ -1,8 +1,8 @@
-import { getDb } from '../db/conn.js';
+//import { getDb } from '../db/conn.js';
 
-const db = getDb();
-const users = db.collection("users");
-const userposts = db.collection("posts");
+// const db = getDb();
+// const users = db.collection("users");
+// const userposts = db.collection("posts");
 
 const profileController = {
   getProfile: async (req, res) => {

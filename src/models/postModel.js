@@ -1,4 +1,4 @@
-import { Schema,SchemaTypes, model } from "mongoose";
+import { Schema,SchemaTypes, model, mongoose} from "mongoose";
 
 const allowedTags = [
   "General Discussion",
@@ -7,26 +7,26 @@ const allowedTags = [
   "Off Topic",
 ];
 
-const postSchema = new Schema({
+const postSchema = new mongoose.Schema({
   username: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     ref: 'userModel',
     required: true,
   },
   date: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
   },
   title: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
   },
   content: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
   },
   tag: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
     enum: allowedTags,
     default: "General Discussion",
@@ -36,17 +36,17 @@ const postSchema = new Schema({
     ref: "comment",
   },
   upvotes: {
-    type: Number,
+    type: mongoose.SchemaTypes.Number,
     default: 0,
   },
   downvotes: {
-    type: Number,
+    type: mongoose.SchemaTypes.Number,
     default: 0,
   },
   edited: {
-    type: Boolean,
+    type: mongoose.SchemaTypes.Boolean,
     default: false,
   },
 });
 
-export const Post = model("post", postSchema);
+export const Post = mongoose.model("Post", postSchema);

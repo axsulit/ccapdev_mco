@@ -1,10 +1,10 @@
-import { getDb } from "../db/conn.js";
+//import { getDb } from "../db/conn.js";
 import { Post } from "../models/postModel.js";
 import { User } from "../models/userModel.js";
-const db = getDb();
+//const db = getDb();
 
 // import post collection from database
-const posts = db.collection("posts");
+//const posts = db.collection("posts");
 
 const homepageController = {
 
@@ -12,7 +12,8 @@ const homepageController = {
   getHomepage: async (req, res) => {
     try {
       
-      const postsArray = await posts.find({}).toArray();
+      const postsArray = await Post.find({}).lean().exec();
+      console.log(postsArray);
       if(req.session.authorized){
         res.render("homepage", {
           title: "Homepage",
