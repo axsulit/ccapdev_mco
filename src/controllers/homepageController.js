@@ -59,20 +59,6 @@ const homepageController = {
 
     const { username, date, title, content, tag, comment, upvotes, downvotes, edited } = req.body;
 
-    // Create a new instance of the Post model and save it to the database
-    // const newPost = new Post({
-    //   username: "@newUser",
-    //   date: req.body.date,
-    //   title: req.body.title,
-    //   content: req.body.content,
-    //   tag: req.body.tag,
-    //   comments: [],
-    //   upvotes: 0,
-    //   downvotes: 0,
-    //   edited: false,
-    // });
-    
-
     try {
       await posts.insertOne({
         username,
