@@ -1,19 +1,17 @@
-import { getDb } from '../db/conn.js';
-
-const db = getDb();
-const users = db.collection("users");
-const userposts = db.collection("posts");
+import { User } from "../models/userModel.js";
+import { Post } from "../models/postModel.js";
 
 const profileController = {
   getProfile: async (req, res) => {
     const param_username = req.params.username;
 
-    const user = await users.findOne({
+    const user = await User.findOne({
       username: param_username
     });
-    const postsArray = await userposts.find({
+    const postsArray = await Post.find({
       username: param_username
-    }).toArray();
+    }).lean().exec();
+    console.log(postsArray);
 
     if (user) {
       res.render("profile", {
@@ -34,7 +32,7 @@ const profileController = {
   },
 
   editProfile: async (req, res) => {
-    const user = await users.findOne({
+    const user = await User.findOne({
       username: req.params.username
     });
     res.render("edit-profile", {
@@ -50,7 +48,7 @@ const profileController = {
     console.log("POST request for homepage for update description received");
     console.log(req.body.username);
     try {
-      let updateResult = await users.updateOne(
+      let updateResult = await User.updateOne(
         { username: req.body.username },
         {
           $set: {

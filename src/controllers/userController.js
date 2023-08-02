@@ -1,21 +1,18 @@
-import { getDb } from '../db/conn.js';
-
-const db = getDb();
-const users = db.collection("users");
+import { User } from "../models/userModel.js";
 
 const userController = {
   registerUser: async (req, res) => {
     const { username, password, picture } = req.body;
 
     // Check if the username already exists
-    const existUsername = await users.findOne({ username });
+    const existUsername = await User.findOne({ username });
 
     if (existUsername) {
       console.log("ERROR in Registering: username is taken");
       res.sendStatus(500);
     } else {
       try {
-        await users.insertOne({
+        await User.create({
           username,
           password,
           picture
@@ -34,15 +31,13 @@ const userController = {
     const { username, password } = req.body;
 
     // Check if the user exists and the password is correct
-    const existUser = await users.findOne({ username, password });
+    const existUser = await User.findOne({ username, password });
 
     if (!existUser) {
       console.log("Username or Password is incorrect");
       res.sendStatus(500);
     } else {
       console.log("You have logged in");
-      // const userPicture = existUser.picture;
-      // console.log(userPicture);
       req.session.user = existUser;
       req.session.authorized = true;
       res.sendStatus(200);

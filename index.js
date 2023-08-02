@@ -12,7 +12,8 @@ import session from "express-session";
 import router from "./src/routes/index.js";
 
 //import database
-import { connectToMongo } from "./src/db/conn.js";
+const port=process.env.SERVER_PORT;
+import database from "./src/models/db.js";
 
 async function main() {
   const __dirname = dirname(fileURLToPath(import.meta.url)); // directory URL
@@ -42,16 +43,13 @@ async function main() {
 
   app.use(router);
 
-  app.listen(process.env.SERVER_PORT, () => {
+  database.connectToMongo();
+
+  app.listen(port, function ()  {
     console.log("Express app now listening...");
-    connectToMongo((err) => {
-      if (err) {
-        console.error("An error has occurred:");
-        console.error(err);
-        return;
-      }
-      console.log("Connected to Mongodb");
-    });
+    console.log(`Server is running at:`);
+    console.log(`http://localhost:` + port);
+    
   });
 }
 

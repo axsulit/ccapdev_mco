@@ -3,10 +3,12 @@ import mongoose from "mongoose";
 import { User } from "./src/models/userModel.js";
 import { Post } from "./src/models/postModel.js";
 import { Comment } from "./src/models/commentModel.js";
-import { connect } from "./src/models/db.js";
+//import { connect } from "./src/models/db.js";
+//import { connectToMongo } from "./src/db/conn.js";
+import database from "./src/models/db.js";
 
 // import users
-connect().then(() => {
+database.connectToMongo().then(() => {
     User.create({
         username: "@anne_s",
         password: "sulit123",
@@ -81,7 +83,7 @@ connect().then(() => {
 });
 
 // import posts
-connect().then(() => {
+database.connectToMongo().then(() => {
     Post.create({
         username: "@anne_s",
         date: "06/21/2023 18:43",
@@ -179,69 +181,70 @@ connect().then(() => {
     });
 
     console.log("posts created");
+    //connection.close();
 });
 
 //import comments
-connect().then(() => {
-    Comment.create({
-        postid:"1",
-        commentid: "1",
-        date: "06/21/2023 19:02",
-        upvotes: 10,
-        downvotes: 3,
-        username: "@zhoe_g",
-        content: "i hope its not another chamber. i want a sentinel stronger than kj tho."
-    });
+// connect().then(() => {
+//     Comment.create({
+//         postid:"1",
+//         commentid: "1",
+//         date: "06/21/2023 19:02",
+//         upvotes: 10,
+//         downvotes: 3,
+//         username: "@zhoe_g",
+//         content: "i hope its not another chamber. i want a sentinel stronger than kj tho."
+//     });
 
-    Comment.create({
-        postid:"1",
-        commentid: "2",
-        date: "06/21/2023 19:10",
-        upvotes: 15,
-        downvotes: 8,
-        username: "@dom_b",
-        content: "lol maybe you're just bad"
-    });
+//     Comment.create({
+//         postid:"1",
+//         commentid: "2",
+//         date: "06/21/2023 19:10",
+//         upvotes: 15,
+//         downvotes: 8,
+//         username: "@dom_b",
+//         content: "lol maybe you're just bad"
+//     });
 
-    Comment.create({
-        postid:"3",
-        commentid: "1",
-        date: "06/11/2023 12:18",
-        upvotes: 3,
-        downvotes: 0,
-        username: "@mar_v",
-        content: "thats going to make kj OP"
-    });
+//     Comment.create({
+//         postid:"3",
+//         commentid: "1",
+//         date: "06/11/2023 12:18",
+//         upvotes: 3,
+//         downvotes: 0,
+//         username: "@mar_v",
+//         content: "thats going to make kj OP"
+//     });
 
-    Comment.create({
-        postid:"5",
-        commentid: "1",
-        date: "11/28/2022 15:49",
-        upvotes: 1,
-        downvotes: 0,
-        username: "@vinnie_i",
-        content: "DMED u ! carry pls"
-    });
+//     Comment.create({
+//         postid:"5",
+//         commentid: "1",
+//         date: "11/28/2022 15:49",
+//         upvotes: 1,
+//         downvotes: 0,
+//         username: "@vinnie_i",
+//         content: "DMED u ! carry pls"
+//     });
 
-    Comment.create({
-        postid:"5",
-        commentid: "2",
-        date: "11/28/2022 16:02",
-        upvotes: 1,
-        downvotes: 1,
-        username: "@anne_s",
-        content: "still avail? Dmed i will carry every1"
-    });
+//     Comment.create({
+//         postid:"5",
+//         commentid: "2",
+//         date: "11/28/2022 16:02",
+//         upvotes: 1,
+//         downvotes: 1,
+//         username: "@anne_s",
+//         content: "still avail? Dmed i will carry every1"
+//     });
 
-    Comment.create({
-        postid:"8",
-        commentid: "1",
-        date: "11/26/2022 15:00",
-        upvotes: 1,
-        downvotes: 0,
-        username: "@mar_v",
-        content: "chamber meta is out. honestly theres no broken agent rn to really call it as meta."
-    });
+//     Comment.create({
+//         postid:"8",
+//         commentid: "1",
+//         date: "11/26/2022 15:00",
+//         upvotes: 1,
+//         downvotes: 0,
+//         username: "@mar_v",
+//         content: "chamber meta is out. honestly theres no broken agent rn to really call it as meta."
+//     });
 
-    console.log("comments created");
-});
+//     console.log("comments created");
+// });
