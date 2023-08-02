@@ -5,17 +5,17 @@ import profileController from '../controllers/profileController.js';
 
 const profileRouter = Router();
 
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-      cb(null,'../../public/images')
-    },
-    filename: (req, file, cb)=>{
-      console.log(file);
-      cb(null, Date.now() + path.extname(file.originalname));
-    }
-  });
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//       cb(null,'../../public/images')
+//     },
+//     filename: (req, file, cb)=>{
+//       console.log(file);
+//       cb(null, Date.now() + path.extname(file.originalname));
+//     }
+//   });
 
-const upload = multer({storage: storage});
+// const upload = multer({storage: storage});
 profileRouter.get("/profile/:username", profileController.getProfile);
 profileRouter.get("/edit-profile/:username", profileController.editProfile);
 profileRouter.post("/edit-profile/saveDescription", profileController.saveDescription);
