@@ -47,7 +47,7 @@ const homepageController = {
 
   getLFT: async (req, res) => {
     try {
-      const postsArray = await posts.find({ tag: "LFT" }).toArray();
+      const postsArray = await Post.find({ tag: "LFT" }).toArray();
       res.render("homepage", {
         title: "Homepage",
         posts: postsArray
@@ -70,7 +70,7 @@ const homepageController = {
     const { username, date, title, content, tag, comment, upvotes, downvotes, edited } = req.body;
 
     try {
-      await posts.insertOne({
+      await Post.insertOne({
         username,
         date,
         title,
