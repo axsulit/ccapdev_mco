@@ -8,6 +8,8 @@ postRouter.get("/comment", postController.getComment);
 postRouter.get("/", postController.getIndex);
 postRouter.post("/saveContent", postController.saveContent);
 
+postRouter.post("/delete", postController.getDelete);
+
 export default postRouter;
 
 // import {Router} from 'express';
