@@ -29,7 +29,7 @@ const postController = {
       
       if (posts) {
         if (req.session.authorized) {
-          //console.log("Authorized session in getProfile")
+          console.log("Authorized session in getProfile")
           const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
           if(nav_user.username==posts[0].username.username){
             canEdit=true;
@@ -54,8 +54,8 @@ const postController = {
             canEdit:canEdit
           });
         }else{
+          // console.log("working");
           res.render("indiv-post", {
-            title: "Edit profile",
             upvotes: posts[0].upvotes,
             downvotes: posts[0].downvotes,
             title: posts[0].title,

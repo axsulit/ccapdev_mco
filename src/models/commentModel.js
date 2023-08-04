@@ -1,28 +1,34 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, mongoose, SchemaType } from "mongoose";
 
 const commentSchema = new Schema({
   username: {
-    type: String,
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'user',
+    required: true,
+  },
+  post: {
+    type:  mongoose.SchemaTypes.ObjectId,
+    ref: 'post',
     required: true,
   },
   date: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
   },
   content: {
-    type: String,
+    type: mongoose.SchemaTypes.String,
     required: true,
   },
   upvotes: {
-    type: Number,
+    type: mongoose.SchemaTypes.Number,
     default: 0,
   },
   downvotes: {
-    type: Number,
+    type: mongoose.SchemaTypes.Number,
     default: 0,
   },
   edited: {
-    type: Boolean,
+    type: mongoose.SchemaTypes.Boolean,
     default: false,
   },
 });
