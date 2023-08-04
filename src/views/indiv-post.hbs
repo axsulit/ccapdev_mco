@@ -79,13 +79,7 @@
   </div>
 </div>
 
-<div class="comments-container">
-  {{#each comment}}
 
-   {{> comment date=date upvotes=upvotes username=username  content=content}}
-
-  {{/each}}
-</div>
 
 {{! WRITE POST }}
 <div class="ip-write-post-border">
@@ -137,5 +131,11 @@
 
 {{! TODO: ADD COMMENTS }}
 
+<div class="comments-container">
+  {{#each comments}}
 
+   {{> comment }}
+
+  {{/each}}
+</div>
 {{! TODO: REPLY BUTTON }}

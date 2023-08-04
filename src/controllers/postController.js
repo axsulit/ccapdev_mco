@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { User } from "../models/userModel.js";
 import { Post } from "../models/postModel.js";
-
+import { Comment } from "../models/commentModel.js";
 const postController = {
   // gets post for each user
 
@@ -25,7 +25,9 @@ const postController = {
       console.log("post id", param_postid);
 
       const posts = await Post.find({_id:new ObjectId(param_postid)}).populate({ path: 'username', model: User }).lean().exec();
-      console.log(posts);
+      const comments=await Comment.find({post:new ObjectId(param_postid)}).populate({ path: 'username', model: User }).lean().exec();
+      console.log(comments);
+      //console.log(posts);
       
       if (posts) {
         if (req.session.authorized) {
@@ -48,6 +50,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
+            comments:comments,
             navusername:nav_user.username,
             navpfp:nav_user.picture,
             notAuth: false,
@@ -65,6 +68,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
+            comments:comments,
             notAuth: true,
             canEdit:false
           });

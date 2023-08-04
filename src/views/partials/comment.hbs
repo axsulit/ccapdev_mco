@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/static/css/post.css" />
 <div class="comment">
   {{! comment votes }}
   <div class="comment-votes">
@@ -18,7 +19,7 @@
     <div class="comment-header">
       {{! TODO: get profile picture per post }}
       <div class="comment-pfp-container"><img
-          src="/static/images/fade-icon.png"
+          src={{username.picture}}
           class="comment-pfp"
         /></div>
       <ul class="comment-details">
@@ -31,8 +32,8 @@
         <li class="subdetails">
           <ul class="inline">
             <li id="comment-username"><a
-                href="/profile/{{username}}"
-              >{{username}}
+                href="/profile/{{username.username}}"
+              >{{username.username}}
                 &nbsp;</a></li>
             <li id="comment-time">replied to this discussion on
               {{date}}</li>
@@ -44,12 +45,12 @@
     {{! comment content description}}
 
     <div class="comment-btn">
-      <input
+      {{!-- <input
         class="reply-btn"
         type="submit"
         value="Reply"
         onclick="replyToPost()"
-      />
+      /> --}}
       <input class="edit-btn" type="submit" value="Edit" />
     </div>
   </div>
