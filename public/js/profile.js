@@ -26,6 +26,7 @@ if (canEditBool) {
     editNav.addEventListener("click", () => {
         if (!editDiv.classList.contains("active")) {
             editDiv.classList.add("active");
+            
             profileHeader.classList.add("active");
             commentDiv.classList.remove("active");
             profileDiv.classList.remove("active");

@@ -3,14 +3,18 @@
 
 
 <span class="edit-profile-header">Your Account</span><br><br>
-<form id="edit-profile-form">
+
+       
+<form id="edit-profile-form" method="POST" action="/upload" enctype="multipart/form-data">
     <table class="row" border="0">
         <tr>
             <td>
                 &nbsp; Profile Picture <br> <img src={{pfp}} class="edit-pfp">
             </td>
             <td> <br>
-                <input id="file" type="file" name="file"/>
+
+                    <input type="file" name="image">
+            
             </td>
         </tr>
         <tr>
@@ -20,9 +24,11 @@
             <td colspan="2"> <center>
                 <span class="edit-profile-username" id="newUsername">{{username}}</span><br><br>
                 <button type="reset" class="btn">Reset</button>
-                <button type="submit" class="btn" action="/edit-profile/saveDescription" id="saveButton">Save</button>
+                <button type="submit" class="btn"  id="saveButton">Save</button>
             </center></td>
         </tr>
     </table>
 </form>
+
+
                

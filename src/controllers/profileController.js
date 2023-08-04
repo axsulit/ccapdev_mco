@@ -95,6 +95,37 @@ const profileController = {
       res.sendStatus(500);
     }
   },
+  uploadFile: async(req, res)=>{
+    console.log("File is being uploaded")
+    //console.log("Name of file", req.file.filename);
+    console.log("Username of current user: ", req.session.user.username);
+    console.log("Description: ", req.body.description);
+    
+    try{
+      let updateResult = await User.updateOne(
+        { username: req.session.user.username },
+        {
+          $set: {
+            bio: req.body.description,
+            picture: `/static/images/${req.file.filename}`
+          }
+        }
+      );
+    }catch(error){
+      let updateResult = await User.updateOne(
+        { username: req.session.user.username },
+        {
+          $set: {
+            bio: req.body.description,
+          }
+        }
+      );
+    }
+    
+
+    //put redirect here just like sir's
+    res.redirect(`/profile/${req.session.user.username}`);
+  }
 
 };
 
