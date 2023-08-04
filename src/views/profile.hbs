@@ -15,7 +15,10 @@
             <ul class="pn-tags">
                 <li id="pn-profile">Profile</li>
                 <li id="pn-comments">Comments</li>
-                <li id="pn-edit">Edit Profile</li>
+                {{#if canEdit}}
+                    
+                        <li id="pn-edit">Edit Profile</li>
+                {{/if}}
             </ul>
         </div>
         <div class="profile-content">

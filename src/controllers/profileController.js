@@ -7,7 +7,7 @@ import { Post } from "../models/postModel.js";
 const profileController = {
  
   getProfile: async (req, res) => {
-    let notAuth = false;
+    let canEdit= false;
     console.log("getProfile called");
     const param_username = req.params.username;
    // console.log(param_username)
@@ -21,9 +21,15 @@ const profileController = {
  
     if (user) {
       if (req.session.authorized) {
-        //console.log("Authorized session in getProfile")
         const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
-        //console.log("User authorized in homepage: ", nav_user);
+
+        //check if logged in user is similar to the one viewing the profile
+        if(nav_user.username==user.username){
+          canEdit=true;
+        }
+        else{
+          canEdit=false;
+        }
         res.render("profile", {
           title: "Profile",
           notAuth: false,
@@ -33,7 +39,8 @@ const profileController = {
           posts: posts,
           picture: user.picture,
           navusername:nav_user.username,
-          navpfp:nav_user.picture
+          navpfp:nav_user.picture,
+          canEdit: canEdit
         });
       } else {
         res.render("profile", {
@@ -44,6 +51,7 @@ const profileController = {
           bio: user.bio,
           posts: posts,
           picture: user.picture,
+          canEdit:false
         });
       }
     } else {
