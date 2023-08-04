@@ -23,21 +23,26 @@ const postController = {
       const param_postid = req.params.id;
       console.log("post id", param_postid);
 
-      const existPost = await Post.findOne({
-        _id: new ObjectId(param_postid)
-      }).lean().exec();
-
-      if (existPost) {
+      const posts = await Post.find({_id:new ObjectId(param_postid)}).populate({ path: 'username', model: User }).lean().exec();
+      console.log(posts);
+      // const existPost = await Post.findOne({
+      //   _id: new ObjectId(param_postid)
+      // }).lean().exec();
+      // console.log("EXIST POST", existPost.date);
+      //console.log("USERNAMEEEE", posts[0].username.username);
+      
+      if (posts) {
         res.render("indiv-post", {
           title: "Edit profile",
-          upvotes: existPost.upvotes,
-          downvotes: existPost.downvotes,
-          title: existPost.title,
-          tag: existPost.tag,
-          username: existPost.username,
-          date: existPost.date,
-          content: existPost.content,
-          id: existPost._id,
+          upvotes: posts[0].upvotes,
+          downvotes: posts[0].downvotes,
+          title: posts[0].title,
+          tag: posts[0].tag,
+          pfp: posts[0].username.picture,
+          username: posts[0].username.username,
+          date: posts[0].date,
+          content: posts[0].content,
+          id: posts[0]._id,
         });
       } else {
         res.render("error", {

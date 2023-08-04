@@ -7,8 +7,16 @@ const homepageController = {
   // controller function to handle homepage route
   getHomepage: async (req, res) => {
     try {
-      const users=await User.find({}).lean().exec();
-      const posts = await Post.find({}).lean().exec();
+      const posts = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
+      console.log(posts);
+      //const posts = await Post.find({}).lean().exec();
+      // try{
+      //   const tests = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
+      //   console.log(tests);
+      // }catch(err){
+      //     console.error(err);
+      // }
+     
       // try{
       //   const test = await Post.find({}).populate({
       //     path: 'username',

@@ -12,7 +12,7 @@ database.connectToMongo().then(() => {
     User.create({
         username: "@anne_s",
         password: "sulit123",
-        picture: "/static/images/fade-icon.png",
+        picture: "/static/images/jett-icon.png",
         bio: "Ikaw ang binibini na ninanais ko",
       });
 
@@ -44,48 +44,22 @@ database.connectToMongo().then(() => {
         bio: "Mga ngiti mong matamis na ba ay sakto na",
       });
 
-    User.create({
-        username: "@andre_a",
-        password: "aqui123",
-        picture: "/static/images/brimstone-icon.png",
-        bio: "Mala-anghel na mukha sayo'y naakit na",
-      });
-    
-    User.create({
-        username: "@bien_m",
-        password: "mir123",
-        picture: "/static/images/omen-icon.png",
-        bio: "Ang tangling hiling, Diyos, iyong dinggin",
-      });
-
-    User.create({
-        username: "@dom_b",
-        password: "bac123",
-        picture: "/static/images/jett-icon.png",
-        bio: "Oh, aking binibini, ikaw ang pinipili",
-      }); 
-    
-    User.create({
-        username: "@vinnie_i",
-        password: "ino123",
-        picture: "/static/images/omen-icon.png",
-        bio: "Di ka man ginto, pero ikaw ay mamahalin",
-      });
-
-    User.create({
-        username: "@luis_r",
-        password: "ran123",
-        picture: "/static/images/fade-icon.png",
-        bio: "Kislap ng iyong mata'y tanawing napakaganda",
-      }); 
-
     console.log("users created");
 });
+
+// Getting user's ID
+const user_mar = await User.findOne({ username: '@mar_v' });
+const user_a = await User.findOne({ username: '@anne_s' });
+const user_b = await User.findOne({ username: '@bella_t' });
+const user_z = await User.findOne({ username: '@zhoe_g' });
+const user_j = await User.findOne({ username: '@jack_e' });
+console.log("USER,, ",user_mar);
+console.log(user_mar._id);
 
 // import posts
 database.connectToMongo().then(() => {
     Post.create({
-        username: "@anne_s",
+        username: user_mar._id,
         date: "06/21/2023 18:43",
         title: "New Agent Speculations",
         content: "Hey SpikeZoners! Since Riot recently released a teaser for a new agent, what are your thoughts? Do you think this sentinel will actually be a sentinel that can extremely hold sites, or another Chamber that is more on the aggressive side? What’s your bet?",
@@ -97,7 +71,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@bella_t",
+        username: user_a._id,
         date: "07/15/2021 18:45",
         title: "I Topfragged With No Crosshair",
         content: "Title says itself. I’m even a Neon main and I love Breeze. Top fragged on a ranked game ggez",
@@ -109,7 +83,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@zhoe_g",
+        username: user_b._id ,
         date: "06/03/2023 09:15",
         title: "Killjoy Buff Where",
         content: "I am so TIRED of Riot nerfing Killjoy over and over and over again. I miss Episode 1 KJ fr. Do you think they will do another rebalance of sentinel agents since there will be a new one coming? Please i miss KJ make her turrent and alarmbot placeable without restricted distance AGAIN",
@@ -121,7 +95,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@mar_v",
+        username: user_z._id,
         date: "09/12/2021 18:30",
         title: "Hardstuck Plat? (Advice from a Diamond)",
         content: "If u r hardstuck plat i think u should aim train and play more. Play 10 deathmatch before a rank game and calculate u dpi. Stop muting ur teammates and then flaming them after. Just shoot ur enemies. It’s not that hard trust me bro and ull get there",
@@ -133,7 +107,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@jack_e",
+        username: user_j._id,
         date: "11/28/2022 15:45",
         title: "LF 1 Gold Lobby",
         content: "Need 1 teammate for gold lobby. My immo friend will carry you we promise. Drop ign in the comments and we’ll add you ASAP. Will block no comms.",
@@ -145,7 +119,7 @@ database.connectToMongo().then(() => {
     });
     
     Post.create({
-        username: "@andre_a",
+        username: user_mar._id,
         date: "06/26/2023 23:10",
         title: "LF Duo",
         content: "I'm so done playing with @anne_s and @jack_e D:",
@@ -157,7 +131,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@bien_m",
+        username: user_a._id,
         date: "11/27/2022 15:49",
         title: "VCT Tokyo",
         content: "The games are so fire. I couldn’t believe Paper Rex would reach that far without PRX something. PRX cgrs supremacy me thinks. #PRXWin",
@@ -169,7 +143,7 @@ database.connectToMongo().then(() => {
     });
 
     Post.create({
-        username: "@dom_b",
+        username: user_b._id,
         date: "11/26/2022 13:48",
         title: "Returning to Valorant",
         content: "Hi! Been MIA for the past few months because of academic work. Can someone give me a TLDR of what’s the meta?",

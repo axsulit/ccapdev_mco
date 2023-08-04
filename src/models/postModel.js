@@ -9,7 +9,7 @@ const allowedTags = [
 
 const postSchema = new mongoose.Schema({
   username: {
-    type: mongoose.SchemaTypes.String,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'user',
     required: true,
   },

@@ -23,7 +23,7 @@
         {{! TODO: get profile picture per post }}
         {{!-- /static/images/fade-icon.png --}}
         <div class="post-pfp-container"><img
-            src="/static/images/fade-icon.png" 
+            src={{username.picture}}
             class="post-pfp"
           /></div>
         <ul class="post-details">
@@ -51,8 +51,8 @@
           <li class="subdetails">
             <ul class="inline">
               <li id="post-username"><a
-                  href="/profile/{{username}}"
-                >{{username}} &nbsp;</a></li>
+                  href="/profile/{{username.username}}"
+                >{{username.username}} &nbsp;</a></li>
               <li id="post-time">started this discussion on {{date}}</li>
             </ul>
           </li>

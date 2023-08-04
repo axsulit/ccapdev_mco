@@ -7,15 +7,16 @@ import { Post } from "../models/postModel.js";
 const profileController = {
  
   getProfile: async (req, res) => {
+    console.log("getProfile called");
     const param_username = req.params.username;
+   // console.log(param_username)
 
     const user = await User.findOne({
       username: param_username
     });
-    const postsArray = await Post.find({
-      username: param_username
-    }).lean().exec();
-    //console.log(postsArray);
+    console.log("/getProfile user: ",user);
+    const posts = await Post.find({username:user._id}).populate({ path: 'username', model: User }).lean().exec();
+    //console.log(posts);
 
     if (user) {
       res.render("profile", {
@@ -23,10 +24,10 @@ const profileController = {
         pfp: user.picture,
         username: user.username,
         bio: user.bio,
-        posts: postsArray,
+        posts: posts,
         picture: user.picture,
-        navusername:req.session.user.username,
-        navpfp:req.session.user.picture
+        // navusername:req.session.user.username,
+        // navpfp:req.session.user.picture
       });
     } else {
       res.render("error", {
