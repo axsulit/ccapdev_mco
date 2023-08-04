@@ -2,7 +2,7 @@
 const formOpenBtn = document.querySelector("#form-open"),
 home = document.querySelector(".home"),
 
-//comtains form content for login or signup
+//contains form content for login or signup
 formContainer = document.querySelector(".form-container");
 
 //closes form
@@ -206,3 +206,47 @@ function closeLoginSignUp(signup) {
 //     });
 //   });
 
+// const search = () => {
+//     const searchbox = document.getElementById("search-input").value.toLowerCase();
+//     const postItems = document.getElementsByClassName("posts");
+//     const post = document.querySelectorAll(".individual-post");
+//     const title = postItems.getElementsByClassName("post-header");
+
+//     for(var i = 0; i < title.length; i++){
+//         let match = product[i].getElementsByClassName("post-header")[0];
+
+//         if(match) {
+//             let textValue = match.textContent || match.innerHTML;
+
+//             if (textValue.toLowerCase().indexOf(searchbox) > -1){
+//                 [post][i].style.display = "";
+//             } else {
+//                 post[i].style.display = "none";
+//             }
+//         }
+//     }
+// }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("keyup", search);
+});
+
+function search() {
+    const searchbox = document.getElementById("search-input").value.toLowerCase();
+    const postItems = document.getElementsByClassName("individual-post");
+
+    const searchEvent = new CustomEvent("search", { detail: { query: searchbox } });
+    document.dispatchEvent(searchEvent);
+
+    // for (const post of postItems) {
+    //     const titleElement = post.querySelector(".post-header");
+    //     const title = titleElement.textContent.toLowerCase();
+
+    //     if (title.includes(searchbox)) {
+    //         post.style.display = "";
+    //     } else {
+    //         post.style.display = "none";
+    //     }
+    // }
+}

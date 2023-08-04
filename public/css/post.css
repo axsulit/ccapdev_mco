@@ -97,7 +97,10 @@
   color: #d8d8d8;
 }
 
-#post-edit,
+#post-edit {
+  color: #ff4654;
+  font-weight: bold;
+}
 #post-time {
   color: #d8d8d8;
 }
