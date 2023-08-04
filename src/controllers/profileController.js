@@ -14,13 +14,14 @@ const profileController = {
     const user = await User.findOne({
       username: param_username
     });
-    console.log("/getProfile user: ",user);
+    //console.log("/getProfile user: ",user);
     const posts = await Post.find({username:user._id}).populate({ path: 'username', model: User }).lean().exec();
     //console.log(posts);
 
     if (user) {
       res.render("profile", {
         title: "Profile",
+        notAuth: true,
         pfp: user.picture,
         username: user.username,
         bio: user.bio,

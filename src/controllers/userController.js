@@ -19,6 +19,9 @@ const userController = {
         });
 
         console.log("new user: ", username, " has been created. You are logged in.");
+        const existUser = await User.findOne({ username });
+        req.session.user = existUser;
+        req.session.authorized = true;
         res.sendStatus(200);
       } catch (err) {
         console.error(err);

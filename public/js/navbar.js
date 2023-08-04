@@ -58,11 +58,11 @@ submitLogBtn?.addEventListener("click",async(e)=>{
         if(response.status==200){
             errormsg.textContent="";
             home.classList.remove("show");
-            accountBtn.classList.remove("hidden");
+            //accountBtn.classList.remove("hidden");
             formOpenBtn.classList.add("hidden");
-            nav_un.textContent=loginData.get("logUsername");
-            nav_profile.attr('href', `/profile/@${loginData.get("logUsername")}`);
-            //location.reload();
+            // nav_un.textContent=loginData.get("logUsername");
+            // nav_profile.attr('href', `/profile/@${loginData.get("logUsername")}`);
+            location.reload();
             //console.log("nav after: ", nav_profile.attr('href'));
         }
         else{
@@ -76,19 +76,19 @@ submitLogBtn?.addEventListener("click",async(e)=>{
       
 });
 
-logoutBtn.addEventListener("click",async(e)=>{
-    console.log("working");
-    accountBtn.classList.add("hidden");
-    formOpenBtn.classList.remove("hidden");
+// logoutBtn.addEventListener("click",async(e)=>{
+//     console.log("working");
+//     accountBtn.classList.add("hidden");
+//     formOpenBtn.classList.remove("hidden");
 
-    //retrieves username in nav bar
-    let nav_un=document.querySelector(".nav-username");
-    nav_un.textContent="";
+//     //retrieves username in nav bar
+//     let nav_un=document.querySelector(".nav-username");
+//     nav_un.textContent="";
 
-    //clears form
-    let forms = document.querySelectorAll(".form-log-sign");
-    forms.forEach((form) => form.reset());
-});
+//     //clears form
+//     let forms = document.querySelectorAll(".form-log-sign");
+//     forms.forEach((form) => form.reset());
+// });
 
 // Allows user to create an account
 submitSignBtn?.addEventListener("click", async(e)=>{
@@ -132,10 +132,11 @@ submitSignBtn?.addEventListener("click", async(e)=>{
             if(response.status==200){
                 errormsg.textContent="";
                 home.classList.remove("show");
-                accountBtn.classList.remove("hidden");
+                //accountBtn.classList.remove("hidden");
                 formOpenBtn.classList.add("hidden");
-                nav_un.textContent=signData.get("signUsername");
-                nav_profile.attr('href', `/profile/@${signData.get("signUsername")}`);
+                //nav_un.textContent=signData.get("signUsername");
+                //nav_profile.attr('href', `/profile/@${signData.get("signUsername")}`);
+                location.reload();
 
             }
             else{
@@ -151,36 +152,30 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     }
 });
 
-// LOGIN AND SIGN UP FUNCTIONS
-handleLoginSignUp();
-function handleLoginSignUp() {
-    let signup = false;
-    // opens login form
-    formOpenBtn.addEventListener("click", () => {
+formOpenBtn.addEventListener("click", () => {
+    console.log("called log in button");
         home.classList.add("show");
         formContainer.classList.remove("active");
         signup=false;
         closeLoginSignUp(signup);
-    });
-
-    // switches to signup form
-    signUpBtn.addEventListener("click", (e) => {
+});
+signUpBtn.addEventListener("click", (e) => {
+        console.log("from log in, called sign up")
         e.preventDefault();
         formContainer.classList.add("active");
         signup=true;
         // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
-    });
-    //switches to signup form
-    loginBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        formContainer.classList.remove("active");
-        signup=false;
-        // DEBUG: console.log(signup);
-        closeLoginSignUp(signup);
-    });
-};
-
+});
+//switches to signup form
+loginBtn.addEventListener("click", (e) => {
+    console.log("from sign up, called log in")
+    e.preventDefault();
+    formContainer.classList.remove("active");
+    signup=false;
+    // DEBUG: console.log(signup);
+    closeLoginSignUp(signup);
+});
 
 function closeLoginSignUp(signup) {
     // DEBUG: console.log("inside close: " + signup);

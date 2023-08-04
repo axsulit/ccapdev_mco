@@ -8,37 +8,27 @@ const homepageController = {
   getHomepage: async (req, res) => {
     try {
       const posts = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
-      console.log(posts);
-      //const posts = await Post.find({}).lean().exec();
-      // try{
-      //   const tests = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
-      //   console.log(tests);
-      // }catch(err){
-      //     console.error(err);
-      // }
-     
-      // try{
-      //   const test = await Post.find({}).populate({
-      //     path: 'username',
-      //     select: 'picture'
-      //   }).lean().exec();        
-      // }catch(err){
-      //   console.error(err);
-      // }
-      
-      //console.log(users);
+      //console.log(posts);
+  
       if(req.session.authorized){
+        const user = await User.findOne({username: req.session.user.username}).lean().exec();
+        console.log("User authorized in homepage: ", user);
+        console.log(user.username);
+
         res.render("homepage", {
+          
           title: "Homepage",
           posts: posts,
-          navusername:req.session.user.username,
-          navpfp:req.session.user.picture
+          notAuth: false,
+          navusername:user.username,
+          navpfp:user.picture
         });
       }
       else{
         res.render("homepage", {
           title: "Homepage",
           posts: posts,
+          notAuth:true
         });
       }
       

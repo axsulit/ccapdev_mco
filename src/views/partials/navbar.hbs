@@ -6,8 +6,6 @@
             <ul class="nav-menu">
                 <li class="nav-menu-logo"><a href="/" class="nav-logo"><img src="/static/images/logo.png" class="logo"></a></li>
                 <li ><a href="/" class="nav-logo">SpikeZone</a></li>
-                <p>Username:{{navusername}}</p>
-                <img class="nav-pfp" src="{{{navpfp}}}">
             </ul>
             
             <div class="nav-right">
@@ -16,25 +14,28 @@
                         <button id="search-btn">🔍︎</button>
                         <input type="text" id="search-input" placeholder="Search Forum">
                     </li>
-                    <li>
-                        <button class="button" id="form-open" >Login/Register</button>
-                    </li>
-                    <li>
-                        <div class="user-profile hidden nav-dropdown">
-                            <!-- NOTE: only used as template -->
-                            <div class="nav-dropbtn">
-                                <ul class="nav-menu-dropdown">
-                                    {{!-- TODO: get profile picture --}}
-                                    <li><img class="nav-pfp" src="/static/images/default.jpg"></li>
-                                    <li><div class="nav-username"> {{{username}}} </div></li>
-                                </ul>
+                    {{#if notAuth}}
+                        <li>
+                            <button class="button" id="form-open" >Login/Register</button>
+                        </li>
+                    {{else}}
+                        <li>
+                            <div class="user-profile nav-dropdown">
+                                <!-- NOTE: only used as template -->
+                                <div class="nav-dropbtn">
+                                    <ul class="nav-menu-dropdown">
+                                        {{!-- TODO: get profile picture --}}
+                                        <li><img class="nav-pfp" src={{{navpfp}}}></li>
+                                        <li><div class="nav-username"> {{navusername}} </div></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-content">
+                                    <a href="/profile/{{{navusername}}}" id="profile-link"> Profile</a>
+                                    <a href="/logout" class="logout">Logout</a>
+                                </div>
                             </div>
-                            <div class="dropdown-content">
-                                <a href="/profile" id="profile-link"> Profile</a>
-                                <a href="/logout" class="logout">Logout</a>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    {{/if}}
                 </ul>
         </div>
         </nav>
