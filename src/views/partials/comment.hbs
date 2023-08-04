@@ -1,42 +1,33 @@
-<link rel="stylesheet" href="/static/css/post.css" />
-<div class="comment">
+<link rel="stylesheet" href="/static/css/comment.css" />
+<div class="individual-comment">
   {{! comment votes }}
   <div class="comment-votes">
-    <button class="comment-btn" onclick="upvote()"><i
-        class="fa-solid fa-arrow-up"
-        id="upvote"
-      ></i></button><br />
+    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
     {{! TODO: add function to calculate upvotes and update in db }}
     {{upvotes}}
-    <button class="vote-btn" onclick="downvote()"><i
-        class="fa-solid fa-arrow-down"
-        id="downvote"
-      ></i></button>
+    <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
   </div>
   {{! comment content }}
   <div class="comment-content">
     {{! comment content header}}
     <div class="comment-header">
       {{! TODO: get profile picture per post }}
-      <div class="comment-pfp-container"><img
-          class="comment-pfp"
-          src={{username.picture}}
-        /></div>
+      <div class="comment-pfp-container"><img class="comment-pfp" src={{username.picture}} /></div>
       <ul class="comment-details">
         <li class="details">
           <div class="comment-metadata">
-            <span id="comment-edit">{{edited}}</span>
+            <span id="comment-edit">
+              {{#if edited}}
+                Edited
+              {{/if}}
+            </span>
           </div>
         </li>
         {{! comment content subdetails}}
         <li class="subdetails">
           <ul class="inline">
-            <li id="comment-username"><a
-                href="/profile/{{username.username}}"
-              >{{username.username}}
-                &nbsp;</a></li>
-            <li id="comment-time">replied to this discussion on
-              {{date}}</li>
+            <li id="comment-username"><a href="/profile/{{username.username}}">{{username.username}} &nbsp;</a></li>
+            <li id="comment-time">replied to this discussion on {{date}}</li>
           </ul>
         </li>
         <div class="comment-description">{{content}}</div>
@@ -45,13 +36,9 @@
     {{! comment content description}}
 
     <div class="comment-btn">
-      {{!-- <input
-        class="reply-btn"
-        type="submit"
-        value="Reply"
-        onclick="replyToPost()"
-      /> --}}
+      {{#if canEdit}}
         <input class="edit-btn" type="submit" value="Edit" />
+      {{/if}}
     </div>
   </div>
 </div>

@@ -11,36 +11,24 @@
         {{tag}}
       </span>
     </div>
-    <div class="ip-title"><a
-        href="/post/{{id}}"
-        class="title"
-      >{{title}}</a></div>
+    <div class="ip-title"><a href="/post/{{id}}" class="title">{{title}}</a></div>
     <div class="post-id">{{id}}</div>
   </div>
 </div>
 <div class="individual-post">
   {{! post votes }}
   <div class="post-votes">
-    <button class="vote-btn" onclick="upvote()"><i
-        class="fa-solid fa-arrow-up"
-        id="upvote"
-      ></i></button><br />
+    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br />
     {{! TODO: add function to calculate upvotes and update in db }}
     {{upvotes}}
-    <button class="vote-btn" onclick="downvote()"><i
-        class="fa-solid fa-arrow-down"
-        id="downvote"
-      ></i></button>
+    <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
   </div>
   {{! post content }}
   <div class="post-content">
     {{! post content header}}
     <div class="post-header">
       {{! TODO: get profile picture per post }}
-      <div class="post-pfp-container"><img
-          src={{pfp}}
-          class="post-pfp"
-        /></div>
+      <div class="post-pfp-container"><img src={{pfp}} class="post-pfp" /></div>
       <ul class="post-details">
         <li class="details">
           <div class="post-metadata">
@@ -54,8 +42,7 @@
         {{! post content subdetails}}
         <li class="subdetails">
           <ul class="inline">
-            <li id="post-username"><a href="/profile/{{username}}">{{username}}
-                &nbsp;</a></li>
+            <li id="post-username"><a href="/profile/{{username}}">{{username}} &nbsp;</a></li>
             <li id="post-time">started this discussion on {{date}}</li>
           </ul>
         </li>
@@ -65,12 +52,8 @@
     {{! post content description}}
 
     <div class="post-btn">
-      <input
-        class="reply-btn"
-        type="submit"
-        value="Reply"
-        onclick="replyToPost()"
-      />
+      {{!-- TODO: add if can reply --}}
+      <input class="reply-btn" type="submit" value="Reply" onclick="replyToPost()" />
       {{#if canEdit}}
           <input class="edit-btn" type="submit" value="Edit" />
           <input class="delete-btn" type="submit" value="Delete" />
@@ -96,15 +79,10 @@
       {{! discussion tags and exit }}
       <div class="write-post-tags">
         <div class="tag-menu">
-          <div class="select-tag"><span
-              class="selected-tag"
-            >{{tag}}</span></div>
+          <div class="select-tag"><span class="selected-tag">{{tag}}</span></div>
           <div class="tags">
-            <div class="tag"><a href="#"><div class="tag-text">General
-                  Discussion</div></a></div>
-            <div class="tag"><a href="#"><div
-                  class="tag-text"
-                >LFT</div></a></div>
+            <div class="tag"><a href="#"><div class="tag-text">General Discussion</div></a></div>
+            <div class="tag"><a href="#"><div class="tag-text" >LFT</div></a></div>
             <div class="tag"><a href="#"><div class="tag-text">Technical Issues</div></a></div>
             <div class="tag"><a href="#"><div class="tag-text">Off Topic</div></a></div>
           </div>
@@ -115,12 +93,7 @@
       {{! discussion inputs }}
       <div class="write-content-div">
         <input type="text" class="post-title" placeholder="{{title}}" /><br />
-        <textarea
-          class="post-caption"
-          rows="7"
-          placeholder="Write a Post..."
-          required
-        >{{content}}</textarea>
+        <textarea class="post-caption" rows="7" placeholder="Write a Post..." required>{{content}}</textarea>
       </div>
     </div>
   </div>
@@ -130,12 +103,9 @@
 </div>
 
 {{! TODO: ADD COMMENTS }}
-
-<div class="comments-container">
   {{#each comments}}
 
    {{> comment }}
 
   {{/each}}
-</div>
 {{! TODO: REPLY BUTTON }}
