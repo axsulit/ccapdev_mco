@@ -21,7 +21,7 @@ const homepageController = {
           posts: posts,
           notAuth: false,
           navusername:user.username,
-          navpfp:user.picture
+          navpfp:user.picture,
         });
       }
       else{
