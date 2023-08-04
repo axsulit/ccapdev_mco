@@ -202,3 +202,16 @@ a:hover {
   border-radius: 3px;
   padding: 2px;
 }
+
+.ip-write-comment-border {
+  display: none;
+  margin: 1% 10%;
+}.ip-write-comment-border.active {
+  display: block;
+  border: 2px solid #ff4654;
+  border-radius: 3px;
+  padding: 2px;
+} .close-reply {
+  text-align: right;
+  cursor: pointer;
+}

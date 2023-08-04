@@ -41,17 +41,18 @@ async function deletePost(postId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const writePost = document.querySelector(".ip-write-post-border"),
-    editPost = document.querySelector(".edit-btn"),
-    exitPost = document.querySelector(".close-post");
+  const writePost = document.querySelector(".ip-write-post-border");
+  const editPost = document.querySelector(".edit-btn");
+  const exitPost = document.querySelector(".close-post");
   let contentEdit = document.querySelector(".content-edit");
-  const saveButton = document.querySelector(".submit-btn");
+  const saveEditBtn = document.querySelector(".saveEdit-btn");
 
+  
   // opens and closes write post
   editPost.addEventListener("click", () => writePost.classList.toggle("active"));
   exitPost.addEventListener("click", () => writePost.classList.remove("active"));
 
-  saveButton?.addEventListener("click", async (e) => {
+  saveEditBtn?.addEventListener("click", async (e) => {
     e.preventDefault();
     contentEdit = document.querySelector(".post-caption");
     postID = document.querySelector(".post-id").textContent;
@@ -87,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (err) {
       console.error("Error occurred:", err);
     }
+
   });
 
   // Event listener for the delete button
@@ -157,7 +159,52 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// REPLY TO POST (COMMENTS)
+  const writeComment = document.querySelector(".ip-write-comment-border");
+  const openReply = document.querySelector(".reply-btn");
+  const closeReply = document.querySelector(".close-reply");
+  const submitReplyBtn = document.querySelector(".submit-reply");
 
-// $(document).ready(async function () {
+  // opens and closesreply button
+  openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
+  closeReply.addEventListener("click", () => writeComment.classList.remove("active"));
+  
+  // successfully adds comment
+  submitReplyBtn?.addEventListener("click", async (e) => {
+    e.preventDefault();
+    contentReply = document.querySelector(".reply-caption");
+    postID = document.querySelector(".post-id").textContent;
+    console.log("id" + postID);
 
-// });
+    newContent = contentEdit.value;
+    console.log("desc", newContent);
+
+    const post = {
+      id: postID,
+      content: newContent,
+      edited: true,
+    };
+
+    const jPost = JSON.stringify(post);
+    console.log("JPOST: ", jPost);
+
+    try {
+      const response = await fetch("/saveContent", {
+        method: "POST",
+        body: jPost,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
+      if (response.status === 200) {
+        writePost.classList.remove("active");
+        location.reload();
+      } else {
+        console.log("Status code received: " + response.status);
+      }
+    } catch (err) {
+      console.error("Error occurred:", err);
+    }
+
+  });
