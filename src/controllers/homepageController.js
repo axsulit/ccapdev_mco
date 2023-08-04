@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { Post } from "../models/postModel.js";
 import { User } from "../models/userModel.js";
 
@@ -60,11 +61,11 @@ const homepageController = {
     console.log("POST request for add new post received");
     console.log('Received new post data:', newPostData);
 
-    const { username, date, title, content, tag, comment, upvotes, downvotes, edited } = req.body;
-
+    const {  date, title, content, tag, comment, upvotes, downvotes, edited } = req.body;
+    
     try {
-      await Post.insertOne({
-        username,
+      await Post.create({
+        username: new ObjectId(req.session.user._id),
         date,
         title,
         content,
@@ -75,11 +76,11 @@ const homepageController = {
         edited
       });
       // Respond with a success status code and message
-      res.status(200).json({ message: 'Post added successfully!' });
+      res.sendStatus(200);
     } catch (err) {
       // Handle errors and respond with an error status code and message
       console.error('Error adding post:', err);
-      res.status(500).json({ error: 'Error adding post to the database' });
+      res.sendStatus(500);
     }
   }
 }

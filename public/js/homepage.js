@@ -50,6 +50,8 @@ submitPost.addEventListener("click", async () =>{
   
       if (response.status==400) {
         throw new Error('Error adding post.');
+      } else if(response.status==200){
+          location.reload();
       }
   
       // Handle successful post creation here (e.g., show a success message, redirect, etc.)
