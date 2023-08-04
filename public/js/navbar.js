@@ -99,7 +99,7 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     const  newUser={
         username:"@"+signData.get("signUsername"),
         password:signData.get("signPassword"),
-        picture:"static/images/default.jpg",
+        picture:"/static/images/default.jpg",
         bio:""
     };
     const jnewUser=JSON.stringify(newUser);
