@@ -20,6 +20,7 @@ const postController = {
 
   getPost: async (req, res) => {
     try {
+      let canEdit= false;
       const param_postid = req.params.id;
       console.log("post id", param_postid);
 
@@ -30,6 +31,12 @@ const postController = {
         if (req.session.authorized) {
           //console.log("Authorized session in getProfile")
           const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
+          if(nav_user.username==posts[0].username.username){
+            canEdit=true;
+          }
+          else{
+            canEdit=false;
+          }
           res.render("indiv-post", {
             title: "Edit profile",
             upvotes: posts[0].upvotes,
@@ -43,7 +50,8 @@ const postController = {
             id: posts[0]._id,
             navusername:nav_user.username,
             navpfp:nav_user.picture,
-            notAuth: false
+            notAuth: false,
+            canEdit:canEdit
           });
         }else{
           res.render("indiv-post", {
@@ -57,7 +65,8 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            notAuth: true
+            notAuth: true,
+            canEdit:false
           });
         }
       } else {

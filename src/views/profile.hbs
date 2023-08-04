@@ -14,10 +14,9 @@
         <div class="profile-nav">
             <ul class="pn-tags">
                 <li id="pn-profile">Profile</li>
-                <li id="pn-comments">Comments</li>
+                <li id="pn-comments" data-can-edit="{{canEdit}}">Comments</li>
                 {{#if canEdit}}
-                    
-                        <li id="pn-edit">Edit Profile</li>
+                        <li id="pn-edit" >Edit Profile</li>
                 {{/if}}
             </ul>
         </div>

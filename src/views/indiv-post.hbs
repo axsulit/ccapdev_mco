@@ -71,8 +71,10 @@
         value="Reply"
         onclick="replyToPost()"
       />
-      <input class="edit-btn" type="submit" value="Edit" />
-      <input class="delete-btn" type="submit" value="Delete" />
+      {{#if canEdit}}
+          <input class="edit-btn" type="submit" value="Edit" />
+          <input class="delete-btn" type="submit" value="Delete" />
+      {{/if}}
     </div>
   </div>
 </div>
@@ -91,7 +93,7 @@
     <div class="write-post-left">
       {{! TODO: disable post if not logged-in (OPEN LOGIN/SIGNUP FORM) }}
       {{! TODO: get profile picture of logged-in user }}
-      <img src="/static/images/fade-icon.png" class="write-pfp" />
+      <img src={{navpfp}} class="write-pfp" />
     </div>
     <div class="write-post-right">
       {{! discussion tags and exit }}

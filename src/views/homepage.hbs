@@ -10,7 +10,11 @@
 <div class="main">
   {{!-- DISCUSSION BOARD NAVIGATION --}}
   <div class="discussion-board-nav">
-    <button class="start-discussion-btn">Start Discussion</button>
+    {{#if notAuth}}
+        {{else}}
+        <button class="start-discussion-btn">Start Discussion</button>
+    {{/if}}
+   
     {{!-- TODO: add separate posts for each tag --}}
     <ul class="discussion-nav-tags">
       <li><a href="#"><i class="fa-solid fa-comments" id="general-disc"></i> General Discussion</a></li>
@@ -39,7 +43,7 @@
         <div class="write-post-left">
           {{!-- TODO: disable post if not logged-in (OPEN LOGIN/SIGNUP FORM) --}}
           {{!-- TODO: get profile picture of logged-in user --}}
-          <img src="/static/images/fade-icon.png" class="write-pfp">
+          <img src={{navpfp}} class="write-pfp">
         </div>
           <div class="write-post-right">
             {{!-- discussion tags and exit --}}
