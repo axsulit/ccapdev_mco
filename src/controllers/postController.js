@@ -25,25 +25,41 @@ const postController = {
 
       const posts = await Post.find({_id:new ObjectId(param_postid)}).populate({ path: 'username', model: User }).lean().exec();
       console.log(posts);
-      // const existPost = await Post.findOne({
-      //   _id: new ObjectId(param_postid)
-      // }).lean().exec();
-      // console.log("EXIST POST", existPost.date);
-      //console.log("USERNAMEEEE", posts[0].username.username);
       
       if (posts) {
-        res.render("indiv-post", {
-          title: "Edit profile",
-          upvotes: posts[0].upvotes,
-          downvotes: posts[0].downvotes,
-          title: posts[0].title,
-          tag: posts[0].tag,
-          pfp: posts[0].username.picture,
-          username: posts[0].username.username,
-          date: posts[0].date,
-          content: posts[0].content,
-          id: posts[0]._id,
-        });
+        if (req.session.authorized) {
+          //console.log("Authorized session in getProfile")
+          const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
+          res.render("indiv-post", {
+            title: "Edit profile",
+            upvotes: posts[0].upvotes,
+            downvotes: posts[0].downvotes,
+            title: posts[0].title,
+            tag: posts[0].tag,
+            pfp: posts[0].username.picture,
+            username: posts[0].username.username,
+            date: posts[0].date,
+            content: posts[0].content,
+            id: posts[0]._id,
+            navusername:nav_user.username,
+            navpfp:nav_user.picture,
+            notAuth: false
+          });
+        }else{
+          res.render("indiv-post", {
+            title: "Edit profile",
+            upvotes: posts[0].upvotes,
+            downvotes: posts[0].downvotes,
+            title: posts[0].title,
+            tag: posts[0].tag,
+            pfp: posts[0].username.picture,
+            username: posts[0].username.username,
+            date: posts[0].date,
+            content: posts[0].content,
+            id: posts[0]._id,
+            notAuth: true
+          });
+        }
       } else {
         res.render("error", {
           title: "Page not Found.",

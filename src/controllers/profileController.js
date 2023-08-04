@@ -8,7 +8,6 @@ const profileController = {
  
   getProfile: async (req, res) => {
     let notAuth = false;
-    let nav_user;
     console.log("getProfile called");
     const param_username = req.params.username;
    // console.log(param_username)
@@ -23,7 +22,7 @@ const profileController = {
     if (user) {
       if (req.session.authorized) {
         //console.log("Authorized session in getProfile")
-        nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
+        const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
         //console.log("User authorized in homepage: ", nav_user);
         res.render("profile", {
           title: "Profile",
