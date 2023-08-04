@@ -7,6 +7,8 @@ import { Post } from "../models/postModel.js";
 const profileController = {
  
   getProfile: async (req, res) => {
+    let notAuth = false;
+    let nav_user;
     console.log("getProfile called");
     const param_username = req.params.username;
    // console.log(param_username)
@@ -17,19 +19,34 @@ const profileController = {
     //console.log("/getProfile user: ",user);
     const posts = await Post.find({username:user._id}).populate({ path: 'username', model: User }).lean().exec();
     //console.log(posts);
-
+ 
     if (user) {
-      res.render("profile", {
-        title: "Profile",
-        notAuth: true,
-        pfp: user.picture,
-        username: user.username,
-        bio: user.bio,
-        posts: posts,
-        picture: user.picture,
-        // navusername:req.session.user.username,
-        // navpfp:req.session.user.picture
-      });
+      if (req.session.authorized) {
+        //console.log("Authorized session in getProfile")
+        nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
+        //console.log("User authorized in homepage: ", nav_user);
+        res.render("profile", {
+          title: "Profile",
+          notAuth: false,
+          pfp: user.picture,
+          username: user.username,
+          bio: user.bio,
+          posts: posts,
+          picture: user.picture,
+          navusername:nav_user.username,
+          navpfp:nav_user.picture
+        });
+      } else {
+        res.render("profile", {
+          title: "Profile",
+          notAuth: true,
+          pfp: user.picture,
+          username: user.username,
+          bio: user.bio,
+          posts: posts,
+          picture: user.picture,
+        });
+      }
     } else {
       res.render("error", {
         title: "Page not Found."

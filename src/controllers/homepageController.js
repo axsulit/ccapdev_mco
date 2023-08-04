@@ -16,7 +16,6 @@ const homepageController = {
         console.log(user.username);
 
         res.render("homepage", {
-          
           title: "Homepage",
           posts: posts,
           notAuth: false,
