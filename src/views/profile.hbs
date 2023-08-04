@@ -27,7 +27,9 @@
             <div class="profile-comment">
                 {{!-- TODO: change this to comment --}}
                 comment
-                {{>post}} 
+                {{#each comments}}
+                    {{>comment}} 
+                {{/each}}  
             </div>
             <div class="profile-edit">
                  {{>edit-profile}}

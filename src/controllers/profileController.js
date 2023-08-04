@@ -1,6 +1,6 @@
 import { User } from "../models/userModel.js";
 import { Post } from "../models/postModel.js";
-
+import { Comment } from "../models/commentModel.js";
 
 
 
@@ -10,15 +10,18 @@ const profileController = {
     let canEdit= false;
     console.log("getProfile called");
     const param_username = req.params.username;
-   // console.log(param_username)
+    console.log("req.params.username",req.params.username)
+   console.log("param_username", param_username);
 
     const user = await User.findOne({
       username: param_username
     });
+    console.log("user",user);
     //console.log("/getProfile user: ",user);
     const posts = await Post.find({username:user._id}).populate({ path: 'username', model: User }).lean().exec();
     //console.log(posts);
- 
+    const comments=await Comment.find({username:user._id}).populate({ path: 'username', model: User }).lean().exec();
+    console.log(comments);
     if (user) {
       if (req.session.authorized) {
         const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
@@ -30,18 +33,20 @@ const profileController = {
         else{
           canEdit=false;
         }
-        res.render("profile", {
-          title: "Profile",
-          notAuth: false,
-          pfp: user.picture,
-          username: user.username,
-          bio: user.bio,
-          posts: posts,
-          picture: user.picture,
-          navusername:nav_user.username,
-          navpfp:nav_user.picture,
-          canEdit: canEdit
-        });
+          res.render("profile", {
+            title: "Profile",
+            notAuth: false,
+            pfp: user.picture,
+            username: user.username,
+            bio: user.bio,
+            posts: posts,
+            picture: user.picture,
+            navusername:nav_user.username,
+            navpfp:nav_user.picture,
+            canEdit: canEdit,
+            comments:comments
+          });
+          console.log(comments);
       } else {
         res.render("profile", {
           title: "Profile",
@@ -51,7 +56,8 @@ const profileController = {
           bio: user.bio,
           posts: posts,
           picture: user.picture,
-          canEdit:false
+          canEdit:false,
+          comments:comments
         });
       }
     } else {
