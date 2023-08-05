@@ -9,7 +9,12 @@ const homepageController = {
   getHomepage: async (req, res) => {
     try {
       const posts = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
-      //console.log(posts);
+
+      let totalCommentsCount = 0;
+      posts.forEach(post => {
+        post.commentsCnt = post.comments.length;
+        totalCommentsCount += post.commentsCnt;
+      });
   
       if(req.session.authorized){
         const user = await User.findOne({username: req.session.user.username}).lean().exec();
@@ -22,13 +27,15 @@ const homepageController = {
           notAuth: false,
           navusername:user.username,
           navpfp:user.picture,
+          commentsCnt: totalCommentsCount
         });
       }
       else{
         res.render("homepage", {
           title: "Homepage",
           posts: posts,
-          notAuth:true
+          notAuth:true,
+          commentsCnt: totalCommentsCount
         });
       }
       
