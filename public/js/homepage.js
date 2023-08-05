@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filterPostsBySearch(searchQuery);
   });
 
-  // filters
+  // filters here
   document.getElementById("filter-newest").addEventListener("click", () => {
       filterPosts("newest");
   });
