@@ -49,6 +49,12 @@ database.connectToMongo().then(() => {
 
 // Getting user's ID
 const user_mar = await User.findOne({ username: '@mar_v' });
+if (user_mar) {
+    console.log("USER: ", user_mar);
+    console.log(user_mar._id);
+  } else {
+    console.log("User '@mar_v' not found.");
+  }
 const user_a = await User.findOne({ username: '@anne_s' });
 const user_b = await User.findOne({ username: '@bella_t' });
 const user_z = await User.findOne({ username: '@zhoe_g' });

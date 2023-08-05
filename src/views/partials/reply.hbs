@@ -1,0 +1,27 @@
+<div class="ip-write-comment-border">
+  <div class="write-post">
+    <div class="write-post-left">
+      {{! TODO: disable post if not logged-in (OPEN LOGIN/SIGNUP FORM) }}
+      {{! TODO: get profile picture of logged-in user }}
+      {{#if notAuth}}
+        {{else}}
+          <img src={{navpfp}} class="write-pfp" />
+      {{/if}}
+    </div>
+    <div class="write-post-right">
+      {{! discussion tags and exit }}
+      <div class="write-post-tags">
+        <div class="tag-menu"><div class="tags"></div></div>
+        <div class="close-reply">x</div>
+      </div>
+
+      {{! discussion inputs }}
+      <div class="write-content-div">
+        <textarea class="reply-caption" rows="4" placeholder="Write a Comment..." required></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="submit-post">
+    <input class="submit-reply" type="submit" value="Reply to {{username}}" />
+  </div>
+</div>

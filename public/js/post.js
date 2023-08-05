@@ -113,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // // Call the function to update the profile picture
     // updateProfilePicture();
 
-
 });
   
 
