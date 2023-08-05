@@ -8,8 +8,15 @@ const   discussionMenu = document.querySelector(".discussion-board-nav"),
         captionInput = document.querySelector(".post-caption"),
         tagInput = document.querySelector(".selected-tag");
 
+// let cantAuth = document.querySelector("#filter-newest").getAttribute("data-not-auth");
+        //cantAuthBool = cantAuth === "false";
+
 // opens and closes write post
-startDiscussion.addEventListener("click", () => writePost.classList.toggle("active"));
+if(cantAuth==="false"){
+    console.log("withauthority");
+    startDiscussion.addEventListener("click", () => writePost.classList.toggle("active"));
+}
+
 exitPost.addEventListener("click", () => writePost.classList.remove("active"));
 
 // submit post

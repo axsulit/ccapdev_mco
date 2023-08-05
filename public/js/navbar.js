@@ -18,10 +18,13 @@ submitLogBtn=document.querySelector("#log-submit");
 const loginForm=document.forms.loginForm;
 const signForm=document.forms.signForm;
 
+
 //retrieves log out button
 logoutBtn=document.querySelector(".logout");
 //retrieves username + pfp in navbar
 accountBtn=document.querySelector(".user-profile");
+
+let cantAuth = document.querySelector(".nav-menu-logo").getAttribute("data-not-auth");
 
 // Allows user to log in
 submitLogBtn?.addEventListener("click",async(e)=>{
@@ -152,13 +155,16 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     }
 });
 
-formOpenBtn.addEventListener("click", () => {
-    console.log("called log in button");
-        home.classList.add("show");
-        formContainer.classList.remove("active");
-        signup=false;
-        closeLoginSignUp(signup);
-});
+if(cantAuth==="true"){
+    formOpenBtn.addEventListener("click", () => {
+        console.log("called log in button");
+            home.classList.add("show");
+            formContainer.classList.remove("active");
+            signup=false;
+            closeLoginSignUp(signup);
+    });
+}
+
 signUpBtn.addEventListener("click", (e) => {
         console.log("from log in, called sign up")
         e.preventDefault();
