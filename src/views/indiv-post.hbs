@@ -65,13 +65,13 @@
     {{! post content description}}
 
     <div class="post-btn">
-      <input
-        class="reply-btn"
-        type="submit"
-        value="Reply"
-        onclick="replyToPost()"
-      />
       {{#if canEdit}}
+          <input
+            class="reply-btn"
+            type="submit"
+            value="Reply"
+            onclick="replyToPost()"
+          />
           <input class="edit-btn" type="submit" value="Edit" />
           <input class="delete-btn" type="submit" value="Delete" />
       {{/if}}
