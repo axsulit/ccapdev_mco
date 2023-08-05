@@ -5,6 +5,48 @@ function shortenContent(content, maxLength) {
     }
     return content;
 }
+
+async function upvotePost(postId) {
+  try {
+    const response = await fetch(`/upvote/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const upvotesElement = document.querySelector(`#post-${postId} .post-upvotes`);
+      upvotesElement.textContent = data.upvotes;
+    } else {
+      console.error("Failed to upvote post.");
+    }
+  } catch (error) {
+    console.error("Error occurred while upvoting post:", error);
+  }
+}
+
+async function downvotePost(postId) {
+  try {
+    const response = await fetch(`/downvote/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const upvotesElement = document.querySelector(`#post-${postId} .post-upvotes`);
+      upvotesElement.textContent = data.downvotes;
+    } else {
+      console.error("Failed to downvote post.");
+    }
+  } catch (error) {
+    console.error("Error occurred while downvoting post:", error);
+  }
+}
   
 // function upvotePost(postId) {
 //   // TODO: Perform logic to upvote the post with the given `postId`
@@ -32,11 +74,11 @@ document.addEventListener("DOMContentLoaded", function() {
     var maxLength = 100;
     var paragraphElements = document.querySelectorAll(".post-description");
 
-    // const upvoteBtn = document.querySelectorAll("#upvote");
-    // const downvoteBtn = document.querySelectorAll("#downvote");
+    // // const upvoteBtn = document.querySelectorAll("#upvote");
+    // // const downvoteBtn = document.querySelectorAll("#downvote");
 
-    const upvoteBtns = document.querySelectorAll("#upvote");
-    const downvoteBtns = document.querySelectorAll("#downvote");
+    // const upvoteBtns = document.querySelectorAll("#upvote");
+    // const downvoteBtns = document.querySelectorAll("#downvote");
 
     paragraphElements.forEach(function(paragraphElement) {
     var content = paragraphElement.textContent;
@@ -46,19 +88,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- VOTES ---
 
-    upvoteBtns.forEach(function(upvoteBtn) {
-      upvoteBtn.addEventListener('click', async function (e) {
-        console.log("upvote");
-        // Add your upvote logic here (e.g., update the vote count, send a request to the server, etc.)
-      });
-    });
+    // upvoteBtns.forEach(function(upvoteBtn) {
+    //   upvoteBtn.addEventListener('click', async function (e) {
+    //     console.log("upvote");
+    //     // Add your upvote logic here (e.g., update the vote count, send a request to the server, etc.)
+    //   });
+    // });
   
-    downvoteBtns.forEach(function(downvoteBtn) {
-      downvoteBtn.addEventListener('click', async function (e) {
-        console.log("downvote");
-        // Add your downvote logic here (e.g., update the vote count, send a request to the server, etc.)
-      });
-    });
+    // downvoteBtns.forEach(function(downvoteBtn) {
+    //   downvoteBtn.addEventListener('click', async function (e) {
+    //     console.log("downvote");
+    //     // Add your downvote logic here (e.g., update the vote count, send a request to the server, etc.)
+    //   });
+    // });
+
 
     // // Event listeners for upvote and downvote buttons
     // var upvoteButtons = document.querySelectorAll(".vote-btn#upvote");

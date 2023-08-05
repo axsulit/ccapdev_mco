@@ -5,10 +5,10 @@
   <div class="individual-post">
     {{! post votes }}
     <div class="post-votes">
-      <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
+      <button class="vote-btn" onclick="upvotePost('{{_id}}')"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
       {{! TODO: add function to calculate upvotes and update in db }}
-      {{upvotes}}
-      <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
+      <div class="post-upvotes">{{upvotes}}</div>
+      <button class="vote-btn" onclick="downvotePost('{{_id}}')"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
     </div>
     {{! post content }}
     <div class="post-content">
@@ -26,7 +26,7 @@
                  Edited
                 {{/if}}
               </span>
-              <span id="post"><img src="/static/images/default-1.png" height="13px" width="13px" />{{tag}}</span>
+              <span id="post" class="post-tag"><img src="/static/images/default-1.png" height="13px" width="13px" />{{tag}}</span>
               {{!-- TODO: add no. of comments --}}
               <span id="post-comment"><i class="fa-solid fa-comment" id="comment-icon" ></i> {{commentsCnt}}</span>
             </div>
