@@ -149,7 +149,39 @@ const postController = {
         console.error(err);
         res.sendStatus(500);
     }
+  },
+
+  addComment: async (req, res) => {
+    const newCommentData = req.body;
+    console.log("POST request for add new comment received");
+    console.log('Received new comment data:', newCommentData);
+
+    const {post, date, content, upvotes, downvotes, edited} = req.body;
+    try {
+      const newComment = await Comment.create({
+        username: new ObjectId(req.session.user._id),
+        post,
+        date,
+        content,
+        upvotes,
+        downvotes,
+        edited
+      });
+
+      // Update the corresponding Post's comments array
+      await Post.findByIdAndUpdate(
+        post,
+        { $push: { comments: newComment._id } }, // Add the new comment's ObjectId to the comments array
+        { new: true }
+      );
+    // Respond with a success status code and message
+    res.sendStatus(200);
+  } catch (err) {
+    // Handle errors and respond with an error status code and message
+    console.error('Error adding post:', err);
+    res.sendStatus(500);
   }
+}
 };
 
 export default postController;

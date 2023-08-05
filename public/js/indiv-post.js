@@ -1,23 +1,3 @@
-// TODO: delete functionality (still not working)
-// function deletePost(postId) {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       const response = await fetch(`/delete/${postId}`, {
-//         method: "GET",
-//       });
-
-//       if (response.status === 200) {
-//         resolve(true); // Deletion success
-//       } else {
-//         resolve(false); // Deletion failure
-//       }
-//     } catch (err) {
-//       console.error("Error occurred:", err);
-//       resolve(false); // Deletion failure
-//     }
-//   });
-// }
-
 async function deletePost(postId) {
   try {
     const response = await fetch(`/api/posts/${postId}`, {
@@ -93,34 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listener for the delete button
   const deleteBtn = document.querySelectorAll(".delete-btn");
-
-  // deleteBtn.addEventListener("click", function() {
-  //   const postId = document.querySelector(".post-id").textContent;
-  //   deletePost(postId);
-  // });
-
-  // -----
-
-  // deleteButton.forEach(function (button) {
-  //   button.addEventListener("click", async function () {
-  //     console.log("delete btn clicked");
-  //     // Get the post ID from the "data-post-id" attribute of the delete button
-  //     const postId = button.dataset.postId;
-  //     // Call the deletePost function passing the post ID
-  //     const isDeleted = await deletePost(postId);
-
-  //     if (isDeleted) {
-  //       // If the post is successfully deleted, redirect to another page
-  //       window.location.href = "/profile"; 
-  //       console.log("Post deleted.");
-  //     } else {
-  //       // Handle deletion failure if needed
-  //       console.log("Failed to delete the post.");
-  //     }
-  //   });
-  // });
-
-  //------
   deleteBtn.addEventListener('click', async function (e) {
     console.log("delete btn clicked");
     e.preventDefault();
@@ -164,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const openReply = document.querySelector(".reply-btn");
   const closeReply = document.querySelector(".close-reply");
   const submitReplyBtn = document.querySelector(".submit-reply");
+  const replyInput = document.querySelector(".reply-caption");
+  const postId = document.querySelector(".post-id");
 
   // opens and closesreply button
   openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
@@ -172,39 +126,50 @@ document.addEventListener("DOMContentLoaded", function () {
   // successfully adds comment
   submitReplyBtn?.addEventListener("click", async (e) => {
     e.preventDefault();
-    contentReply = document.querySelector(".reply-caption");
-    postID = document.querySelector(".post-id").textContent;
-    console.log("id" + postID);
+    
+    if (replyInput.value.trim() === "") {
+      alert("Please write a comment.");
+      return;
+  }
 
-    newContent = contentEdit.value;
-    console.log("desc", newContent);
+  // add comment
+  const newComment = {
+    _id: "",
+    username: "",
+    post: postId.textContent,
+    date: formatDate(new Date()),
+    content: replyInput.value,
+    upvotes: 0,
+    downvotes: 0,
+    edited: false
+  }
 
-    const post = {
-      id: postID,
-      content: newContent,
-      edited: true,
-    };
+  // send POST request to server
+  const response = await fetch('/addComment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newComment),
+  });
 
-    const jPost = JSON.stringify(post);
-    console.log("JPOST: ", jPost);
-
-    try {
-      const response = await fetch("/saveContent", {
-        method: "POST",
-        body: jPost,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response);
-      if (response.status === 200) {
-        writePost.classList.remove("active");
-        location.reload();
-      } else {
-        console.log("Status code received: " + response.status);
-      }
-    } catch (err) {
-      console.error("Error occurred:", err);
-    }
+  if (response.status==400) {
+    throw new Error('Error adding comment.');
+  } else if(response.status==200){
+      location.reload();
+      console.log('Comment created successfully:', newComment);
+  }
 
   });
+
+// function to format date to "11/26/2022 13:48"
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // January is month 0
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+    return `${month}/${day}/${year} ${hours}:${minutes}`;
+}
+

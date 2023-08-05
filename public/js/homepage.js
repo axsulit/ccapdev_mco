@@ -28,7 +28,7 @@ submitPost.addEventListener("click", async () =>{
 
     // if all fields are valid, add post
     const newPost = {
-        username: "@newUser", // TODO: replace with username of logged-in user
+        username: "",
         date: formatDate(new Date()),
         title: titleInput.value,
         content: captionInput.value,
