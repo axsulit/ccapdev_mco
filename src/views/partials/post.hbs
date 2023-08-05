@@ -10,7 +10,7 @@
           id="upvote"
         ></i></button><br />
       {{! TODO: add function to calculate upvotes and update in db }}
-      <div class="post-upvotes">{{upvotes}}</div>
+      {{upvotes}}
       <button class="vote-btn" onclick="downvote()"><i
           class="fa-solid fa-arrow-down"
           id="downvote"
@@ -35,7 +35,7 @@
                  Edited
                 {{/if}}
               </span>
-              <span class="post-tag" id="post"><img
+              <span id="post"><img
                   src="/static/images/default-1.png"
                   height="13px"
                   width="13px"
@@ -53,7 +53,7 @@
               <li id="post-username"><a
                   href="/profile/{{username.username}}"
                 >{{username.username}} &nbsp;</a></li>
-              <li class="post-time" id="post-time">started this discussion on {{date}}</li>
+              <li id="post-time">started this discussion on {{date}}</li>
             </ul>
           </li>
         </ul>
