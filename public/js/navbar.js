@@ -206,3 +206,26 @@ function closeLoginSignUp(signup) {
 //     });
 //   });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("keyup", search);
+});
+
+function search() {
+    const searchbox = document.getElementById("search-input").value.toLowerCase();
+    const postItems = document.getElementsByClassName("individual-post");
+
+    const searchEvent = new CustomEvent("search", { detail: { query: searchbox } });
+    document.dispatchEvent(searchEvent);
+
+    // for (const post of postItems) {
+    //     const titleElement = post.querySelector(".post-header");
+    //     const title = titleElement.textContent.toLowerCase();
+
+    //     if (title.includes(searchbox)) {
+    //         post.style.display = "";
+    //     } else {
+    //         post.style.display = "none";
+    //     }
+    // }
+}
