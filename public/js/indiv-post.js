@@ -1,3 +1,5 @@
+let canEdit = document.querySelector("#upvote").getAttribute("data-can-edit");
+console.log("canEdit",canEdit);
 async function deletePost(postId) {
   try {
     const response = await fetch("/delete", {
@@ -31,7 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   // opens and closes write post
-  editPost.addEventListener("click", () => writePost.classList.toggle("active"));
+  if(canEdit==="true"){
+    console.log("can edit post");
+    editPost.addEventListener("click", () => writePost.classList.toggle("active"));
+  }
+  
   exitPost.addEventListener("click", () => writePost.classList.remove("active"));
 
   saveEditBtn?.addEventListener("click", async (e) => {
@@ -122,7 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const postId = document.querySelector(".post-id");
 
   // opens and closesreply button
-  openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
+  if(canEdit==="true"){
+    openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
+  }
   closeReply.addEventListener("click", () => writeComment.classList.remove("active"));
   
   // successfully adds comment
