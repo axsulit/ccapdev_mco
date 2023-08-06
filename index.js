@@ -1,5 +1,5 @@
 // System-related packages
-// import "dotenv/config";
+import "dotenv/config";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -7,13 +7,12 @@ import { fileURLToPath } from "url";
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
-// import bcrypt from "bcrypt";
 
 //Route modules
 import router from "./src/routes/index.js";
 
 //import database
-const port=process.env.PORT;
+const port=process.env.SERVER_PORT;
 import database from "./src/models/db.js";
 
 async function main() {
