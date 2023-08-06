@@ -98,6 +98,14 @@ submitSignBtn?.addEventListener("click", async(e)=>{
     e.preventDefault();
     const signData=new FormData(signForm);
 
+    // Check if any required fields are empty
+    if (!signData.get("signUsername") || !signData.get("signPassword")) {
+        // Display an error message indicating empty fields
+        let errormsg = document.getElementById("sign-error-msg");
+        errormsg.textContent = "Please fill in all fields.";
+        return;
+    }
+
     //store new users in object
     const  newUser={
         username:"@"+signData.get("signUsername"),
@@ -170,6 +178,7 @@ signUpBtn.addEventListener("click", (e) => {
         e.preventDefault();
         formContainer.classList.add("active");
         signup=true;
+        document.getElementById("signForm").reset()
         // DEBUG: console.log(signup);
         closeLoginSignUp(signup);
 });
@@ -179,6 +188,7 @@ loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     formContainer.classList.remove("active");
     signup=false;
+    document.getElementById("loginForm").reset()
     // DEBUG: console.log(signup);
     closeLoginSignUp(signup);
 });
@@ -189,28 +199,18 @@ function closeLoginSignUp(signup) {
         formCloseBtn.addEventListener("click", () => {
             home.classList.remove("show");
             formContainer.classList.add("active");
+            document.getElementById("signForm").reset();
             // DEBUG: console.log(signup);
         });
     } else {
         formCloseBtn.addEventListener("click", () => {
             home.classList.remove("show");
             formContainer.classList.remove("active");
+            document.getElementById("loginForm").reset();
             // DEBUG: console.log(signup);
         });
     }
 }
-
-// $("#searchInput").on("input", function (e) {
-//     const value = e.target.value.toLowerCase();
-//     $(".post-item").each(function () {
-//       const titleElement = $(this).find(".title").text();
-//       const descriptionElement = $(this).find(".description").text();
-//       const isVisible =
-//         titleElement.toLowerCase().includes(value) ||
-//         descriptionElement.toLowerCase().includes(value);
-//       $(this).css("display", isVisible ? "flex" : "none");
-//     });
-//   });
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
@@ -223,15 +223,4 @@ function search() {
 
     const searchEvent = new CustomEvent("search", { detail: { query: searchbox } });
     document.dispatchEvent(searchEvent);
-
-    // for (const post of postItems) {
-    //     const titleElement = post.querySelector(".post-header");
-    //     const title = titleElement.textContent.toLowerCase();
-
-    //     if (title.includes(searchbox)) {
-    //         post.style.display = "";
-    //     } else {
-    //         post.style.display = "none";
-    //     }
-    // }
 }
