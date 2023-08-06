@@ -17,7 +17,7 @@ async function upvotePost(postId) {
 
     if (response.ok) {
       const data = await response.json();
-      const upvotesElement = document.querySelector(`#post-${postId} .post-upvotes`);
+      const upvotesElement = document.querySelector(`#post-${postId} .post-votes`);
       upvotesElement.textContent = data.upvotes;
     } else {
       console.error("Failed to upvote post.");
@@ -38,7 +38,7 @@ async function downvotePost(postId) {
 
     if (response.ok) {
       const data = await response.json();
-      const upvotesElement = document.querySelector(`#post-${postId} .post-upvotes`);
+      const upvotesElement = document.querySelector(`#post-${postId} .post-votes`);
       upvotesElement.textContent = data.downvotes;
     } else {
       console.error("Failed to downvote post.");
@@ -87,6 +87,37 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // --- VOTES ---
+
+    const voteBtns = document.querySelectorAll(".vote-btn");
+
+    voteBtns.forEach((voteBtn) => {
+      voteBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const postId = voteBtn.getAttribute("data-post-id");
+        const voteType = voteBtn.getAttribute("data-vote-type");
+        await toggleVote(postId, voteType);
+      });
+    });
+
+    // const upvoteBtns = document.querySelectorAll("#upvoteBtn");
+    // const downvoteBtns = document.querySelectorAll("#downvoteBtn");
+
+    // upvoteBtns.forEach((upvoteBtn) => {
+    //   upvoteBtn.addEventListener("click", async (e) => {
+    //     e.preventDefault();
+    //     const postId = upvoteBtn.getAttribute("data-post-id");
+    //     await toggleVote(postId, "upvote");
+    //   });
+    // });
+
+    // downvoteBtns.forEach((downvoteBtn) => {
+    //   downvoteBtn.addEventListener("click", async (e) => {
+    //     e.preventDefault();
+    //     const postId = downvoteBtn.getAttribute("data-post-id");
+    //     await toggleVote(postId, "downvote");
+    //   });
+    // });
+  
 
     // upvoteBtns.forEach(function(upvoteBtn) {
     //   upvoteBtn.addEventListener('click', async function (e) {
@@ -162,38 +193,70 @@ const upvoteBtn=document.querySelector("#upvoteBtn"),
       downvoteBtn=document.querySelector("#downvoteBtn");
 //let cantAuth = document.querySelector(".nav-menu-logo").getAttribute("data-not-auth");
 
-upvoteBtn?.addEventListener("click", async(e)=>{
-  e.preventDefault;
-  console.log("clicking upvote");
-  if(cantAuth==="false"){
-    console.log("processing upvote")
-    await fetch("/upvotePost", {
-      method: 'POST',
+// upvoteBtn?.addEventListener("click", async(e)=>{
+//   e.preventDefault();
+//   console.log("clicking upvote");
+//   if(cantAuth==="false"){
+//     console.log("processing upvote")
+//     await fetch("/upvotePost", {
+//       method: 'POST',
      
-    });
+//     });
    
-  }
-  else{
-    console.log("unauthorized to upvote");
-  }
+//   }
+//   else{
+//     console.log("unauthorized to upvote");
+//   }
   
+// });
+
+upvoteBtn?.addEventListener("click", async (e) => {
+  e.preventDefault();
+  await toggleVote("upvote");
 });
 
-downvoteBtn?.addEventListener("click", async(e)=>{
-  e.preventDefault;
-  console.log("clicking downvote");
-  if(cantAuth==="false"){
-    console.log("processing downvote")
-    await fetch("/downvotePost", {
-      method: 'POST',
+// downvoteBtn?.addEventListener("click", async(e)=>{
+//   e.preventDefault();
+//   console.log("clicking downvote");
+//   if(cantAuth==="false"){
+//     console.log("processing downvote")
+//     await fetch("/downvotePost", {
+//       method: 'POST',
      
-    });
+//     });
    
-  }
-  else{
-    console.log("unauthorized to downvote");
-  }
+//   }
+//   else{
+//     console.log("unauthorized to downvote");
+//   }
   
+// });
+
+downvoteBtn?.addEventListener("click", async (e) => {
+  e.preventDefault();
+  await toggleVote("downvote");
 });
+
+async function toggleVote(postId, voteType) {
+  
+  try {
+    const response = await fetch(`/toggleVote/${postId}/${voteType}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const votesElement = document.querySelector(`#post-${postId} .post-votes`);
+      votesElement.textContent = data.totalVotes;
+    } else {
+      console.error(`Failed to ${voteType} post.`);
+    }
+  } catch (error) {
+    console.error(`Error ${voteType}ing post:`, error);
+  }
+}
   
 

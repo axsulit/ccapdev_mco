@@ -14,6 +14,11 @@ postRouter.post("/delete", postController.getDelete);
 postRouter.post("/upvotePost", postController.putUpvote);
 postRouter.post("/downvotePost", postController.putDownvote);
 
+postRouter.post("/toggleVote/:id/:voteType", postController.toggleVote);
+
+// postRouter.post("/toggleVote/:id", postController.toggleVote);
+
+
 // Upvote a post
 // postRouter.post("/upvote/:id", async (req, res) => {
 //     try {
