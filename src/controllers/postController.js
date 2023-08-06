@@ -139,7 +139,16 @@ const postController = {
   },
   putUpvote: async (req, res)=>{
       console.log("Upvote request received");
-  },
+      console.log(req.session.user._id);
+      const post_upvotes = await Post.findOne({ upvotes: { $in: [req.session.user._id] } }).lean().exec();
+      console.log(post_upvotes);
+      if(post_upvotes){
+        console.log("You already upvoted");
+      }
+      else{
+        console.log("Adding you in upvotes");
+      }
+    },
   putDownvote: async (req, res)=>{
     console.log("Downvote request received");
   },
