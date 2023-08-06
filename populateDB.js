@@ -71,8 +71,8 @@ database.connectToMongo().then(() => {
         content: "Hey SpikeZoners! Since Riot recently released a teaser for a new agent, what are your thoughts? Do you think this sentinel will actually be a sentinel that can extremely hold sites, or another Chamber that is more on the aggressive side? What’s your bet?",
         tag: "General Discussion",
         comments: [],
-        upvotes: 23,
-        downvotes: 2,
+        upvotes: [user_mar, user_b],
+        downvotes: [],
         edited: false
     });
 
@@ -83,8 +83,8 @@ database.connectToMongo().then(() => {
         content: "Title says itself. I’m even a Neon main and I love Breeze. Top fragged on a ranked game ggez",
         tag: "General Discussion",
         comments: [],
-        upvotes: 15,
-        downvotes: 6,
+        upvotes: [user_mar, user_b],
+        downvotes:[user_z],
         edited: false
     });
 
@@ -95,8 +95,8 @@ database.connectToMongo().then(() => {
         content: "I am so TIRED of Riot nerfing Killjoy over and over and over again. I miss Episode 1 KJ fr. Do you think they will do another rebalance of sentinel agents since there will be a new one coming? Please i miss KJ make her turrent and alarmbot placeable without restricted distance AGAIN",
         tag: "General Discussion",
         comments: [],
-        upvotes: 12,
-        downvotes: 11,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
 
@@ -107,8 +107,8 @@ database.connectToMongo().then(() => {
         content: "If u r hardstuck plat i think u should aim train and play more. Play 10 deathmatch before a rank game and calculate u dpi. Stop muting ur teammates and then flaming them after. Just shoot ur enemies. It’s not that hard trust me bro and ull get there",
         tag: "General Discussion",
         comments: [],
-        upvotes: 2,
-        downvotes: 30,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
 
@@ -119,8 +119,8 @@ database.connectToMongo().then(() => {
         content: "Need 1 teammate for gold lobby. My immo friend will carry you we promise. Drop ign in the comments and we’ll add you ASAP. Will block no comms.",
         tag: "LFT",
         comments: [],
-        upvotes: 1,
-        downvotes: 0,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
     
@@ -131,8 +131,8 @@ database.connectToMongo().then(() => {
         content: "I'm so done playing with @anne_s and @jack_e D:",
         tag: "General Discussion",
         comments: [],
-        upvotes: 0,
-        downvotes: 2,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
 
@@ -143,8 +143,8 @@ database.connectToMongo().then(() => {
         content: "The games are so fire. I couldn’t believe Paper Rex would reach that far without PRX something. PRX cgrs supremacy me thinks. #PRXWin",
         tag: "General Discussion",
         comments: [],
-        upvotes: 5,
-        downvotes: 1,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
 
@@ -155,8 +155,8 @@ database.connectToMongo().then(() => {
         content: "Hi! Been MIA for the past few months because of academic work. Can someone give me a TLDR of what’s the meta?",
         tag: "General Discussion",
         comments: [],
-        upvotes: 1,
-        downvotes: 0,
+        upvotes: [],
+        downvotes: [],
         edited: false
     });
 
