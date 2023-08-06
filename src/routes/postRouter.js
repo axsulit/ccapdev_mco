@@ -11,6 +11,7 @@ postRouter.get("/", postController.getIndex);
 postRouter.post("/saveContent", postController.saveContent);
 postRouter.post("/addComment", postController.addComment);
 postRouter.post("/delete", postController.getDelete);
+postRouter.post("/saveComment", postController.saveComment);
 
 // Upvote a post
 postRouter.post("/upvote/:id", async (req, res) => {

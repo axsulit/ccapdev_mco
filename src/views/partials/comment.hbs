@@ -17,6 +17,7 @@
       <ul class="comment-details">
         <li class="details">
           <div class="comment-metadata">
+            {{!-- TODO: fix edited UI --}}
             <span id="comment-edit">
               {{#if edited}}
                 Edited
@@ -37,7 +38,6 @@
     {{! comment content description}}
 
     <div class="comment-btn">
-      
       <span class="comment-id">{{commentId}}</span>
       {{!-- {{#if canEdit}} --}}
           <input class="commentEdit-btn" type="submit" value="Edit" />

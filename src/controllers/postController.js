@@ -138,6 +138,28 @@ const postController = {
     }
   },
 
+  // save comment edits to database
+  saveComment: async function (req, res) {
+    console.log("POST request for update in content comment received");
+    console.log(req.body.edited);
+    try {
+      let updateResult = await Comment.updateOne(
+        { _id: new ObjectId(req.body.id) },
+        {
+          $set: {
+            content: req.body.content,
+            edited: req.body.edited,
+          },
+        }
+      );
+      console.log(updateResult);
+      res.sendStatus(200);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  },
+
   getDelete: async function (req, res) {
     const id = req.body.id; 
 
