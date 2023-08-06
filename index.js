@@ -1,5 +1,5 @@
 // System-related packages
-// import "dotenv/config";
+// import "dotenv/config"; // UNCOMMENT FOR FOR LOCAL HOSTING
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -12,8 +12,8 @@ import session from "express-session";
 import router from "./src/routes/index.js";
 
 //import database
-// const port=process.env.SERVER_PORT;
-const port=process.env.PORT;
+// const port=process.env.SERVER_PORT; // UNCOMMENT FOR LOCAL HOSTING
+const port=process.env.PORT; // COMMENT FOR LOCAL HOSTING
 import database from "./src/models/db.js";
 
 async function main() {
