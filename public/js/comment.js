@@ -1,4 +1,4 @@
-let canEditComments = document.querySelector(".comment-content").getAttribute("data-can-edit");
+let canEditComments = document.querySelector(".comment-content").getAttribute("data-can-edit-comment");
 console.log(canEditComments);
 
 // get all elements with the class name "edit-comment-border"
