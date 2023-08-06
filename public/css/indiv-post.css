@@ -63,6 +63,7 @@ a:hover {
   padding: 2%;
   border-radius: 7px;
   display: flex;
+  border-bottom: 3px solid #ff4654
 }
 
 .post-header {
