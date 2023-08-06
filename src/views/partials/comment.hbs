@@ -12,7 +12,6 @@
   <div class="comment-content" data-can-edit-comment="{{canEditComment}}">
     {{! comment content header}}
     <div class="comment-header">
-      {{! TODO: get profile picture per post }}
       <div class="comment-pfp-container"><img class="comment-pfp" src={{username.picture}} /></div>
       <ul class="comment-details">
         <li class="details">
@@ -49,7 +48,6 @@
 <div class="edit-comment-border">
   <div class="write-post">
      <div class="write-post-left">
-      {{!-- TODO: show pfp when logged in --}}
       {{#if notAuth}}
         {{else}}
           <img  class="write-pfp" src="{{commentPfp}}"/>

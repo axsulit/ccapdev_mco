@@ -27,7 +27,6 @@
   <div class="post-content">
     {{! post content header}}
     <div class="post-header">
-      {{! TODO: get profile picture per post }}
       <div class="post-pfp-container"><img src={{pfp}} class="post-pfp" /></div>
       <ul class="post-details">
         <li class="details">
@@ -41,7 +40,6 @@
             <li id="post-username"><a href="/profile/{{username}}">{{username}} &nbsp;</a></li>
             <li id="post-time">started this discussion on {{date}}</li>
             <li><span id="post-edit">
-              {{!-- TODO: show edited --}}
               {{#if edited}}
                 Edited
               {{/if}}
