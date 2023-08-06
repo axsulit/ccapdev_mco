@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if(notAuth==="false"){
     openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
   }
-  
+
   closeReply.addEventListener("click", () => writeComment.classList.remove("active"));
   
   // successfully adds comment

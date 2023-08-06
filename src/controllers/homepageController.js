@@ -11,18 +11,9 @@ const homepageController = {
       const posts = await Post.find({}).populate({ path: 'username', model: User }).lean().exec();
 
       let totalCommentsCount = 0;
-      let upvoteCount=0;
       posts.forEach(post => {
         post.commentsCnt = post.comments.length;
         totalCommentsCount += post.commentsCnt;
-       // console.log(totalCommentsCount);
-        post.upvoteCnt=post.upvotes.length;
-        post.downvoteCnt=post.downvotes.length;
-        post.totalVoteCnt=(post.upvoteCnt-post.downvoteCnt);
-        upvoteCount +=(post.upvoteCnt-post.downvoteCnt);
-        // console.log("upvote count",post.upvoteCnt);
-        // console.log("downvote count", post.downvoteCnt);
-        // console.log("total upvotes", upvoteCount);
       });
   
       if(req.session.authorized){
@@ -36,8 +27,7 @@ const homepageController = {
           notAuth: false,
           navusername:user.username,
           navpfp:user.picture,
-          commentsCnt: totalCommentsCount,
-          totalVoteCnt:upvoteCount
+          commentsCnt: totalCommentsCount
         });
       }
       else{
@@ -45,8 +35,7 @@ const homepageController = {
           title: "Homepage",
           posts: posts,
           notAuth:true,
-          commentsCnt: totalCommentsCount,
-          totalVoteCnt:upvoteCount
+          commentsCnt: totalCommentsCount
         });
       }
       

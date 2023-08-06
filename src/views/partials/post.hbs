@@ -5,10 +5,10 @@
   <div class="individual-post">
     {{! post votes }}
     <div class="post-votes">
-      <button class="vote-btn" id="upvoteBtn" data-post-id="{{_id}}" data-vote-type="upvote"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
+      <button class="vote-btn" onclick="upvotePost('{{_id}}')"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
       {{! TODO: add function to calculate upvotes and update in db }}
-      <div class="post-votes">{{totalVoteCnt}}</div>
-      <button class="vote-btn" id="downvoteBtn" data-post-id="{{_id}}" data-vote-type="downvote"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
+      <div class="post-upvotes">{{upvotes}}</div>
+      <button class="vote-btn" onclick="downvotePost('{{_id}}')"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
     </div>
     {{! post content }}
     <div class="post-content">

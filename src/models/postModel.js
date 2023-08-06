@@ -36,12 +36,12 @@ const postSchema = new mongoose.Schema({
     ref: "comment",
   },
   upvotes: {
-    type: [mongoose.Schema.Types.ObjectId],
-  
+    type: mongoose.SchemaTypes.Number,
+    default: 0,
   },
   downvotes: {
-    type: [mongoose.Schema.Types.ObjectId],
-   
+    type: mongoose.SchemaTypes.Number,
+    default: 0,
   },
   edited: {
     type: mongoose.SchemaTypes.Boolean,
