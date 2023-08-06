@@ -1,5 +1,5 @@
 // System-related packages
-import "dotenv/config";
+// import "dotenv/config";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -13,7 +13,7 @@ import bcrypt from "bcrypt";
 import router from "./src/routes/index.js";
 
 //import database
-const port=process.env.SERVER_PORT;
+const port=process.env.PORT;
 import database from "./src/models/db.js";
 
 async function main() {
