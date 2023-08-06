@@ -41,7 +41,7 @@ for (let i = 0; i < editCommentBtns.length; i++) {
       const comment = {
         id: commentID,
         content: newEditCommentContent,
-        edited: true,
+        edited: true
       }
   
       const jPost = JSON.stringify(comment);
@@ -88,6 +88,7 @@ async function deleteComment(commentId) {
       if (response.ok) {
         // Comment deleted successfully, remove it from the page or update its visibility
         console.log("Comment deleted successfully!");
+        window.location.reload();
       } else {
         console.error("Failed to delete post.");
       }

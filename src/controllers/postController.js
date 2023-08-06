@@ -178,6 +178,7 @@ const postController = {
   deleteComment: async function(req, res) {
     const id = req.body.id; 
     const currentUrl = req.url;
+
     try {
         const result = await Comment.deleteOne({_id: id}).exec();
         console.log(result);
