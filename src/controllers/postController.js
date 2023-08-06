@@ -151,6 +151,91 @@ const postController = {
       });
     }
   },
+  putUpvote: async (req, res)=>{
+    try {
+      const postId = req.body.id; // Assuming you are sending the post ID from the frontend
+      const userId = req.session.user._id;
+  
+      const post = await Post.findById(postId);
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      // Check if the user has already upvoted this post
+      if (!post.upvotes.includes(userId)) {
+        post.upvotes.push(userId);
+        await post.save();
+      } else {
+        console.log("You already upvoted this post");
+      }
+  
+      res.sendStatus(200);
+    } catch (error) {
+      console.error("Error upvoting post:", error);
+      res.sendStatus(500);
+    }
+  },
+  putDownvote: async (req, res)=>{
+    console.log("Downvote request received");
+
+    try {
+      const postId = req.body.id; // Assuming you are sending the post ID from the frontend
+      const userId = req.session.user._id;
+  
+      const post = await Post.findById(postId);
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      // Check if the user has already downvoted this post
+      if (!post.downvotes.includes(userId)) {
+        post.downvotes.push(userId);
+        await post.save();
+      } else {
+        console.log("You already downvoted this post");
+      }
+  
+      res.sendStatus(200);
+    } catch (error) {
+      console.error("Error downvoting post:", error);
+      res.sendStatus(500);
+    }
+  },
+
+  toggleVote: async (req, res) => {
+    const postId = req.params.id;
+    const userId = req.session.user._id;
+    const voteType = req.query.voteType; // "upvote" or "downvote"
+  
+    try {
+      const post = await Post.findById(postId);
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      const voteArray = voteType === "upvote" ? post.upvotes : post.downvotes;
+      const voteIndex = voteArray.indexOf(userId);
+  
+      if (voteIndex === -1) {
+        // User hasn't voted, so add their vote
+        voteArray.push(userId);
+      } else {
+        // User has already voted, so remove their vote
+        voteArray.splice(voteIndex, 1);
+      }
+  
+      await post.save();
+  
+      return res.status(200).json({
+        message: `Vote toggled successfully`,
+        upvotes: post.upvotes,
+        downvotes: post.downvotes,
+      });
+    } catch (error) {
+      console.error(`Error toggling vote:`, error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  },
 
   // save comment edits to database
   saveComment: async function (req, res) {
@@ -243,6 +328,7 @@ const postController = {
     res.sendStatus(500);
   }
 }
+
 };
 
 // Vote on a post (either upvote or downvote)
@@ -277,5 +363,99 @@ export const votePost = async (req, res) => {
   }
 };
 
+// export const toggleVote = async (req, res) => {
+//   const { id, voteType } = req.params;
+
+//   try {
+//     const post = await Post.findById(id);
+//     if (!post) {
+//       return res.status(404).json({ message: "Post not found" });
+//     }
+
+//     const userId = req.session.user._id;
+//     const upvoteIndex = post.upvotes.indexOf(userId);
+//     const downvoteIndex = post.downvotes.indexOf(userId);
+
+//     if (voteType === "upvote") {
+//       if (upvoteIndex === -1) {
+//         post.upvotes.push(userId);
+//         if (downvoteIndex !== -1) {
+//           post.downvotes.splice(downvoteIndex, 1);
+//         }
+//       } else {
+//         post.upvotes.splice(upvoteIndex, 1);
+//       }
+//     } else if (voteType === "downvote") {
+//       if (downvoteIndex === -1) {
+//         post.downvotes.push(userId);
+//         if (upvoteIndex !== -1) {
+//           post.upvotes.splice(upvoteIndex, 1);
+//         }
+//       } else {
+//         post.downvotes.splice(downvoteIndex, 1);
+//       }
+//     } else {
+//       return res.status(400).json({ message: "Invalid vote type" });
+//     }
+
+//     await post.save();
+
+//     return res.status(200).json({
+//       message: `${voteType.charAt(0).toUpperCase() + voteType.slice(1)}d successfully`,
+//       totalVotes: post.upvotes.length - post.downvotes.length,
+//     });
+//   } catch (error) {
+//     console.error(`Error ${voteType}ing post:`, error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// };
+
+async function toggleVote(req, res) {
+  const postId = req.params.id;
+  const voteType = req.params.voteType;
+  const userId = req.session.user._id;
+
+  try {
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    const isUpvote = voteType === "upvote";
+    const isDownvote = voteType === "downvote";
+
+    const alreadyUpvoted = post.upvotes.includes(userId);
+    const alreadyDownvoted = post.downvotes.includes(userId);
+
+    if (isUpvote && alreadyUpvoted) {
+      post.upvotes.pull(userId);
+    } else if (isDownvote && alreadyDownvoted) {
+      post.downvotes.pull(userId);
+    } else {
+      if (isUpvote) {
+        post.upvotes.push(userId);
+        if (alreadyDownvoted) {
+          post.downvotes.pull(userId);
+        }
+      } else if (isDownvote) {
+        post.downvotes.push(userId);
+        if (alreadyUpvoted) {
+          post.upvotes.pull(userId);
+        }
+      }
+    }
+
+    await post.save();
+
+    const totalVotes = post.upvotes.length - post.downvotes.length;
+    return res.status(200).json({ totalVotes });
+  } catch (error) {
+    console.error("Error toggling vote:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 export default postController;
+
 
