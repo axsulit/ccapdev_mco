@@ -1,0 +1,34 @@
+<div class="ip-write-comment-border">
+  <div class="write-post">
+    <div class="write-post-left">
+      {{#if notAuth}}
+        {{else}}
+          <img src={{navpfp}} class="write-pfp" />
+      {{/if}}
+    </div>
+    <div class="write-post-right">
+      {{! discussion tags and exit }}
+      <div class="write-post-tags">
+        <div class="tag-menu">
+          <div class="select-tag"><span class="selected-tag">{{tag}}</span></div>
+          <div class="tags">
+            <div class="tag"><a href="#"><div class="tag-text">General Discussion</div></a></div>
+            <div class="tag"><a href="#"><div class="tag-text" >LFT</div></a></div>
+            <div class="tag"><a href="#"><div class="tag-text">Technical Issues</div></a></div>
+            <div class="tag"><a href="#"><div class="tag-text">Off Topic</div></a></div>
+          </div>
+        </div>
+        <div class="close-post">x</div>
+      </div>
+
+      {{! discussion inputs }}
+      <div class="write-content-div">
+        <input type="text" class="post-title" placeholder="{{title}}" /><br />
+        <textarea class="post-caption" rows="7" placeholder="Write a Post..." required>{{content}}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="submit-post">
+    <input class="saveEdit-btn" type="submit" value="Save Edits" />
+  </div>
+</div>

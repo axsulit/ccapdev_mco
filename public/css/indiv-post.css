@@ -176,7 +176,9 @@ a:hover {
 }
 .reply-btn,
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.commentEdit-btn,
+.commentDelete-btn {
   padding: 2px;
   background-color: #ff4654;
   width: 5%;
@@ -186,17 +188,19 @@ a:hover {
 }
 .reply-btn:hover,
 .edit-btn:hover,
-.delete-btn:hover {
+.delete-btn:hover,
+.commentEdit-btn:hover,
+.commentDelete-btn:hover {
   background-color: #fe3b3b;
   cursor: pointer;
 }
 
 /* write post */
-.ip-write-post-border {
+.ip-write-post-border, .edit-comment-border {
   display: none;
   margin: 1% 10%;
 }
-.ip-write-post-border.active {
+.ip-write-post-border.active, .edit-comment-border.active {
   display: block;
   border: 2px solid #ff4654;
   border-radius: 3px;

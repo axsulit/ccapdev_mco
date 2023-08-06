@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/static/css/comment.css" />
+<script src="/static/js/comment.js" defer></script>
 <div class="individual-comment">
   {{! comment votes }}
   <div class="comment-votes">
@@ -38,9 +39,30 @@
     <div class="comment-btn">
       {{commentId}}
       {{!-- {{#if canEdit}} --}}
-          <input class="edit-btn" type="submit" value="Edit" />
-          <input class="delete-btn" type="submit" value="Delete" onclick="deletePost('{{id}}')" />
+          <input class="commentEdit-btn" type="submit" value="Edit" />
+          <input class="commentDelete-btn" type="submit" value="Delete" onclick="deleteComment('{{commentId}}')" />
       {{!-- {{/if}} --}}
     </div>
+  </div>
+</div>
+{{! EDIT COMMENT }}
+<div class="edit-comment-border">
+  <div class="write-post">
+     <div class="write-post-left">
+      {{!-- TODO: show pfp when logged in --}}
+      {{#if notAuth}}
+        {{else}}
+          <img src={{navpfp}} class="write-pfp" />
+      {{/if}}
+    </div>
+    <div class="write-post-right">
+      <div class="write-content-div">
+        <input type="text" class="post-title" placeholder="{{title}}" /><br />
+        <textarea class="post-caption" rows="7" placeholder="Write a comment..." required></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="submit-post">
+    <input class="saveEdit-btn" type="submit" value="Save Edits" />
   </div>
 </div>
