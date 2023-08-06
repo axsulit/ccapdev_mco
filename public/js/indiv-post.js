@@ -135,9 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const postId = document.querySelector(".post-id");
 
   // opens and closesreply button
-  if(canEdit==="true"){
-    openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
-  }
+  openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
   closeReply.addEventListener("click", () => writeComment.classList.remove("active"));
   
   // successfully adds comment
