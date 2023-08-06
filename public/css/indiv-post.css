@@ -63,6 +63,7 @@ a:hover {
   padding: 2%;
   border-radius: 7px;
   display: flex;
+  border-bottom: 3px solid #ff4654
 }
 
 .post-header {
@@ -123,6 +124,7 @@ a:hover {
 /* post metadata */
 #post-edit {
   font-size: small;
+  padding-left: 15%;
 }
 #post {
   font-size: small;

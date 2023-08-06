@@ -32,11 +32,7 @@
       <ul class="post-details">
         <li class="details">
           <div class="post-metadata">
-            <span id="post-edit">
-              {{#if edited}}
-                Edited
-              {{/if}}
-            </span>
+            
           </div>
         </li>
         {{! post content subdetails}}
@@ -44,6 +40,12 @@
           <ul class="inline">
             <li id="post-username"><a href="/profile/{{username}}">{{username}} &nbsp;</a></li>
             <li id="post-time">started this discussion on {{date}}</li>
+            <li><span id="post-edit">
+              {{!-- TODO: show edited --}}
+              {{#if edited}}
+                Edited
+              {{/if}}
+            </span></li>
           </ul>
         </li>
         <div class="post-description">{{content}}</div>
@@ -52,14 +54,15 @@
     {{! post content description}}
 
     <div class="post-btn">
-      {{#if notAuth}}
-        {{else}}
-          <input class="reply-btn" type="submit" value="Reply"  />
-      {{/if}}
       {{#if canEdit}}
           <input class="edit-btn" type="submit" value="Edit" />
           <input class="delete-btn" type="submit" value="Delete" onclick="deletePost('{{id}}')" />
       {{/if}}
+      {{#if notAuth}}
+        {{else}}
+          <span class="reply-btn-container"><input class="reply-btn" type="submit" value="Reply" onclick="replyToPost()" /></span>
+      {{/if}}
+      
     </div>
   </div>
 </div>

@@ -33,7 +33,7 @@ const postController = {
         if (req.session.authorized) {
           console.log("Authorized session in getProfile")
           const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
-          if(nav_user.username==posts[0].username.username){
+          if((nav_user.username==posts[0].username.username) || (comments.length > 0 && nav_user.username == comments[0].username.username)){
             canEdit=true;
           }
           else{
@@ -50,7 +50,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: canEdit })),
             navusername:nav_user.username,
             navpfp:nav_user.picture,
             notAuth: false,
@@ -68,7 +68,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: false})),
             notAuth: true,
             canEdit:false
           });
@@ -96,7 +96,7 @@ const postController = {
         {
           $set: {
             content: req.body.content,
-            edited: req.body.edited,
+            edited: true
           },
         }
       );
@@ -138,15 +138,60 @@ const postController = {
     }
   },
 
+  // save comment edits to database
+  saveComment: async function (req, res) {
+    console.log("POST request for update in content comment received");
+    console.log(req.body.edited);
+    try {
+      let updateResult = await Comment.updateOne(
+        { _id: new ObjectId(req.body.id) },
+        {
+          $set: {
+            content: req.body.content,
+            edited: req.body.edited,
+          },
+        }
+      );
+      console.log(updateResult);
+      res.sendStatus(200);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  },
+
   getDelete: async function (req, res) {
     const id = req.body.id; 
 
     try {
         const result = await Post.deleteOne({_id: id}).exec();
-        const deleteComment = await Comment.deleteMany({post: id}).exec();
+        const deleteAllComments = await Comment.deleteMany({post: id}).exec();
         console.log(result);
-        console.log(deleteComment);
+        console.log(deleteAllComments);
         res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  },
+
+  deleteComment: async function(req, res) {
+    const {post, id} = req.body;
+    const currentUrl = req.url;
+
+    try {
+        const result = await Comment.deleteOne({_id: id}).exec();
+        console.log(result);
+        res.redirect(currentUrl);
+
+        if (result.deletedCount === 1){
+          // Update the corresponding Post's comments array
+          await Post.findByIdAndUpdate(
+            post,
+            { $pull: { comments: id }}, // Add the new comment's ObjectId to the comments array
+            { new: true }
+          );
+        }
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
