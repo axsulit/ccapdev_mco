@@ -143,7 +143,9 @@ const postController = {
 
     try {
         const result = await Post.deleteOne({_id: id}).exec();
+        const deleteComment = await Comment.deleteMany({post: id}).exec();
         console.log(result);
+        console.log(deleteComment);
         res.sendStatus(200);
     } catch (err) {
         console.error(err);
