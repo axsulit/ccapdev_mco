@@ -18,7 +18,7 @@
 <div class="individual-post">
   {{! post votes }}
   <div class="post-votes">
-    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" data-can-edit="{{canEdit}}"></i></button><br />
+    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" data-can-edit="{{canEdit}}" data-not-auth="{{notAuth}}"></i></button><br />
     {{! TODO: add function to calculate upvotes and update in db }}
     {{upvotes}}
     <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote"></i></button>
@@ -54,7 +54,7 @@
     <div class="post-btn">
       {{#if notAuth}}
         {{else}}
-          <input class="reply-btn" type="submit" value="Reply" onclick="replyToPost()" />
+          <input class="reply-btn" type="submit" value="Reply" />
       {{/if}}
       {{#if canEdit}}
           <input class="edit-btn" type="submit" value="Edit" />
