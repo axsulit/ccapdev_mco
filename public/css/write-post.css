@@ -96,6 +96,7 @@
     background-color: #1a1a1a;
     font-size: large;
     border: none;
+    width: 100%;
     color: #e2e2e2;
 } .post-title:focus {
     outline: none;
