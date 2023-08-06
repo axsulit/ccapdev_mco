@@ -13,8 +13,7 @@ const userController = {
       res.sendStatus(500);
     } else {
       try {
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, 10);
         console.log(hashedPassword);
 
         await User.create({
@@ -39,16 +38,26 @@ const userController = {
     const { username, password } = req.body;
 
     // Check if the user exists and the password is correct
-    const existUser = await User.findOne({ username, password });
+    const existUser = await User.findOne({ username });
 
     if (!existUser) {
-      console.log("Username or Password is incorrect");
+      console.log("Username incorrect");
       res.sendStatus(500);
     } else {
-      console.log("You have logged in");
-      req.session.user = existUser;
-      req.session.authorized = true;
-      res.sendStatus(200);
+      try {
+        if (await bcrypt.compare(password, existUser.password)){
+          console.log("You have logged in");
+          req.session.user = existUser;
+          req.session.authorized = true;
+          res.sendStatus(200);
+        } else {
+          console.log("Password incorrect");
+          res.sendStatus(500);
+        }
+      }catch {
+        res.sendStatus(500);
+      }
+      
     }
   },
 
