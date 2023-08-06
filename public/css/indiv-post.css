@@ -123,6 +123,7 @@ a:hover {
 /* post metadata */
 #post-edit {
   font-size: small;
+  padding-left: 15%;
 }
 #post {
   font-size: small;

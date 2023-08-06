@@ -16,20 +16,18 @@
       <div class="comment-pfp-container"><img class="comment-pfp" src={{username.picture}} /></div>
       <ul class="comment-details">
         <li class="details">
-          <div class="comment-metadata">
-            {{!-- TODO: fix edited UI --}}
-            <span id="comment-edit">
-              {{#if edited}}
-                Edited
-              {{/if}}
-            </span>
-          </div>
+          <div class="comment-metadata"></div>
         </li>
         {{! comment content subdetails}}
         <li class="subdetails">
           <ul class="inline">
             <li id="comment-username"><a href="/profile/{{username.username}}">{{username.username}} &nbsp;</a></li>
             <a href="/post/{{post}}"><li id="comment-time">replied to this discussion on {{date}}</li></a>
+            <li><span id="post-edit">
+              {{#if edited}}
+                Edited
+              {{/if}}
+            </span></li>
           </ul>
         </li>
         <div class="comment-description">{{content}}</div>

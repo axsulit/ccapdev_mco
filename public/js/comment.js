@@ -68,7 +68,7 @@ for (let i = 0; i < editCommentBtns.length; i++) {
 // delete post
 async function deleteComment(commentId) {
     try {
-      const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+      const confirmDelete = window.confirm("Are you sure you want to delete this comment?");
       if (!confirmDelete) {
         return; // User canceled the deletion
       }

@@ -58,8 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const post = {
       id: postID,
-      content: newContent,
-      edited: true,
+      content: newContent
     };
 
     const jPost = JSON.stringify(post);

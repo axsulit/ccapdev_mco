@@ -96,7 +96,7 @@ const postController = {
         {
           $set: {
             content: req.body.content,
-            edited: req.body.edited,
+            edited: true
           },
         }
       );
