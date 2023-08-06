@@ -1,3 +1,5 @@
+
+
 // get all elements with the class name "edit-comment-border"
 const allOpenEditComments = document.querySelectorAll(".edit-comment-border");
 const editCommentBtns = document.querySelectorAll(".commentEdit-btn");
@@ -62,34 +64,30 @@ for (let i = 0; i < editCommentBtns.length; i++) {
     });
   }
 
-
-    // newContent = contentEdit.value;
-    // console.log("desc", newContent);
-
-    // const post = {
-    //   id: postID,
-    //   content: newContent,
-    //   edited: true,
-    // };
-
-    // const jPost = JSON.stringify(post);
-    // console.log("JPOST: ", jPost);
-
-    // try {
-    //   const response = await fetch("/saveContent", {
-    //     method: "POST",
-    //     body: jPost,
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   console.log(response);
-    //   if (response.status === 200) {
-    //     writePost.classList.remove("active");
-    //     location.reload();
-    //   } else {
-    //     console.log("Status code received: " + response.status);
-    //   }
-    // } catch (err) {
-    //   console.error("Error occurred:", err);
-    // }
+// delete comment
+// delete post
+async function deleteComment(commentId) {
+    try {
+      const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+      if (!confirmDelete) {
+        return; // User canceled the deletion
+      }
+  
+      const response = await fetch("/deleteComment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: commentId }),
+      });
+  
+      if (response.ok) {
+        // Comment deleted successfully, remove it from the page or update its visibility
+        console.log("Comment deleted successfully!");
+      } else {
+        console.error("Failed to delete post.");
+      }
+    } catch (error) {
+      console.error("Error occurred while deleting post:", error);
+    }
+  }

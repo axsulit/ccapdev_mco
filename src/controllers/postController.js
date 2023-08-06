@@ -165,10 +165,24 @@ const postController = {
 
     try {
         const result = await Post.deleteOne({_id: id}).exec();
-        const deleteComment = await Comment.deleteMany({post: id}).exec();
+        const deleteAllComments = await Comment.deleteMany({post: id}).exec();
         console.log(result);
-        console.log(deleteComment);
+        console.log(deleteAllComments);
         res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  },
+
+  deleteComment: async function(req, res) {
+    const id = req.body.id; 
+    const currentUrl = req.url;
+    try {
+        const result = await Comment.deleteOne({_id: id}).exec();
+        console.log(result);
+        //TODO: redirect to current page
+        res.redirect(currentUrl);
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
