@@ -1,5 +1,7 @@
 let canEdit = document.querySelector("#upvote").getAttribute("data-can-edit");
 console.log("canEdit",canEdit);
+let notAuth = document.querySelector("#upvote").getAttribute("data-not-auth");
+console.log("notAuth",notAuth);
 
 // delete post
 async function deletePost(postId) {
@@ -137,7 +139,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const postId = document.querySelector(".post-id");
 
   // opens and closesreply button
-  openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
+  if(notAuth==="false"){
+    openReply.addEventListener("click", () => writeComment.classList.toggle("active"));
+  }
+
   closeReply.addEventListener("click", () => writeComment.classList.remove("active"));
   
   // successfully adds comment
