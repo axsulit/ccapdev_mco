@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
 
 //Route modules
 import router from "./src/routes/index.js";
