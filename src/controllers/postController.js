@@ -137,6 +137,12 @@ const postController = {
       });
     }
   },
+  putUpvote: async (req, res)=>{
+      console.log("Upvote request received");
+  },
+  putDownvote: async (req, res)=>{
+    console.log("Downvote request received");
+  },
 
   getDelete: async function (req, res) {
     const id = req.body.id; 
@@ -185,6 +191,7 @@ const postController = {
   }
 }
 };
+
 
 // // Upvote a post
 // router.post("/upvote/:id", async (req, res) => {

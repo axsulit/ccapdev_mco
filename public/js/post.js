@@ -157,5 +157,43 @@ document.addEventListener("DOMContentLoaded", function() {
     // updateProfilePicture();
 
 });
+
+const upvoteBtn=document.querySelector("#upvoteBtn"),
+      downvoteBtn=document.querySelector("#downvoteBtn");
+//let cantAuth = document.querySelector(".nav-menu-logo").getAttribute("data-not-auth");
+
+upvoteBtn?.addEventListener("click", async(e)=>{
+  e.preventDefault;
+  console.log("clicking upvote");
+  if(cantAuth==="false"){
+    console.log("processing upvote")
+    await fetch("/upvotePost", {
+      method: 'POST',
+     
+    });
+   
+  }
+  else{
+    console.log("unauthorized to upvote");
+  }
+  
+});
+
+downvoteBtn?.addEventListener("click", async(e)=>{
+  e.preventDefault;
+  console.log("clicking downvote");
+  if(cantAuth==="false"){
+    console.log("processing downvote")
+    await fetch("/downvotePost", {
+      method: 'POST',
+     
+    });
+   
+  }
+  else{
+    console.log("unauthorized to downvote");
+  }
+  
+});
   
 
