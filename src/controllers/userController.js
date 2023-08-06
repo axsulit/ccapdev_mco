@@ -1,4 +1,5 @@
 import { User } from "../models/userModel.js";
+import bcrypt from "bcrypt";
 
 const userController = {
   registerUser: async (req, res) => {
@@ -12,9 +13,13 @@ const userController = {
       res.sendStatus(500);
     } else {
       try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        console.log(hashedPassword);
+
         await User.create({
           username,
-          password,
+          password:hashedPassword,
           picture
         });
 
