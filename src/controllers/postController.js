@@ -33,7 +33,7 @@ const postController = {
         if (req.session.authorized) {
           console.log("Authorized session in getProfile")
           const nav_user = await User.findOne({username: req.session.user.username}).lean().exec();
-          if(nav_user.username==posts[0].username.username){
+          if((nav_user.username==posts[0].username.username) || (comments.length > 0 && nav_user.username == comments[0].username.username)){
             canEdit=true;
           }
           else{
@@ -50,7 +50,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: canEdit })),
             navusername:nav_user.username,
             navpfp:nav_user.picture,
             notAuth: false,
@@ -68,7 +68,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: false})),
             notAuth: true,
             canEdit:false
           });

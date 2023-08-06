@@ -127,3 +127,7 @@
   background-color: #fe3b3b;
   cursor: pointer;
 }
+
+.comment-id {
+  display:none;
+}

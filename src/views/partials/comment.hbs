@@ -3,13 +3,13 @@
 <div class="individual-comment">
   {{! comment votes }}
   <div class="comment-votes">
-    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote" ></i></button><br />
+    <button class="vote-btn" onclick="upvote()"><i class="fa-solid fa-arrow-up" id="upvote"></i></button><br />
     {{! TODO: add function to calculate upvotes and update in db }}
     {{upvotes}}
     <button class="vote-btn" onclick="downvote()"><i class="fa-solid fa-arrow-down" id="downvote" ></i></button>
   </div>
   {{! comment content }}
-  <div class="comment-content">
+  <div class="comment-content" data-can-edit="{{canEditComment}}">
     {{! comment content header}}
     <div class="comment-header">
       {{! TODO: get profile picture per post }}
@@ -37,11 +37,10 @@
 
     <div class="comment-btn">
       <span class="comment-id">{{commentId}}</span>
-      {{!-- TODO: allow only correct logged in user to edit comments --}}
-      {{!-- {{#if canEditComments}} --}}
+      {{#if canEditComment}}
           <input class="commentEdit-btn" type="submit" value="Edit" />
           <input class="commentDelete-btn" type="submit" value="Delete" onclick="deleteComment('{{commentId}}')" />
-      {{!-- {{/if}} --}}
+      {{/if}}
     </div>
   </div>
 </div>

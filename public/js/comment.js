@@ -1,5 +1,5 @@
-
-
+let canEditComments = document.querySelector(".comment-content").getAttribute("data-can-edit");
+console.log(canEditComments);
 // get all elements with the class name "edit-comment-border"
 const allOpenEditComments = document.querySelectorAll(".edit-comment-border");
 const editCommentBtns = document.querySelectorAll(".commentEdit-btn");
@@ -16,9 +16,13 @@ for (let i = 0; i < editCommentBtns.length; i++) {
     const saveEditComment = saveEditCommentBtns[i];
     const editCommentContent = editCommentContentsAll[i];
     const selectedCommentID = allCommentIDs[i];
+    const canEditComment = canEditComments[i];
   
     // opens edit comment
-    editCommentBtn.addEventListener("click", () => { openEditComment.classList.toggle("active"); });
+    // if (canEditComment==="true") {
+      editCommentBtn.addEventListener("click", () => { openEditComment.classList.toggle("active"); });
+    // }
+    
   
     // closes edit comment
     closeEditComment.addEventListener("click", () => {
