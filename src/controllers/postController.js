@@ -46,8 +46,10 @@ const postController = {
           for (const comment of comments) {
             if (nav_user.username === comment.username.username) {
               comment.canEditComment = true;
+              comment.commentPfp = nav_user.picture;
             } else {
               comment.canEditComment = false;
+              comment.commentPfp = nav_user.picture;
             }
           }
           
