@@ -37,7 +37,8 @@
     {{! comment content description}}
 
     <div class="comment-btn">
-      {{commentId}}
+      
+      <span class="comment-id">{{commentId}}</span>
       {{!-- {{#if canEdit}} --}}
           <input class="commentEdit-btn" type="submit" value="Edit" />
           <input class="commentDelete-btn" type="submit" value="Delete" onclick="deleteComment('{{commentId}}')" />
@@ -62,12 +63,11 @@
         <div class="close-edit-comment">x</div>
       </div>
       <div class="write-content-div">
-        <input type="text" class="post-title" placeholder="{{title}}" /><br />
-        <textarea class="post-caption" rows="7" placeholder="Write a comment..." required></textarea>
+        <textarea class="editComment-caption" rows="7" placeholder="Write a comment..." required></textarea>
       </div>
     </div>
   </div>
   <div class="submit-post">
-    <input class="saveEdit-btn" type="submit" value="Save Edits" />
+    <input class="saveEditComments-btn" type="submit" value="Save Edits" />
   </div>
 </div>

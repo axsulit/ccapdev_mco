@@ -11,7 +11,7 @@ const profileController = {
     console.log("getProfile called");
     const param_username = req.params.username;
     console.log("req.params.username",req.params.username)
-   console.log("param_username", param_username);
+    console.log("param_username", param_username);
 
     const user = await User.findOne({
       username: param_username
