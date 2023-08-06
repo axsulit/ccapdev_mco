@@ -42,13 +42,15 @@ const postController = {
             canEdit=false;
           }
 
-          // check comment
-          if(comments.length > 0 && nav_user.username == comments[0].username.username){
-            canEditComment=true;
+          // Loop through all comments and update canEditComment
+          for (const comment of comments) {
+            if (nav_user.username === comment.username.username) {
+              comment.canEditComment = true;
+            } else {
+              comment.canEditComment = false;
+            }
           }
-          else{
-            canEditComment=false;
-          }
+          
           res.render("indiv-post", {
             title: "Edit profile",
             upvotes: posts[0].upvotes,
@@ -60,7 +62,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: canEditComment })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
             navusername:nav_user.username,
             navpfp:nav_user.picture,
             notAuth: false,
@@ -78,7 +80,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id, canEditComment: canEditComment})),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
             notAuth: true,
             canEdit:false
           });
