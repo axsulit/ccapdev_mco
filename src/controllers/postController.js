@@ -146,7 +146,7 @@ const postController = {
         const deleteComment = await Comment.deleteMany({post: id}).exec();
         console.log(result);
         console.log(deleteComment);
-        res.sendStatus(200);
+        res.redirect("/");
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
