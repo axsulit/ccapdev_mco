@@ -153,6 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //     });
 //   });
 
+window.addEventListener("load", () => {
+    filterPosts("newest");
+});
+
   // filters here
   document.getElementById("filter-newest").addEventListener("click", () => {
       filterPosts("newest");
