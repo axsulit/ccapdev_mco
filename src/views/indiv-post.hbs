@@ -52,11 +52,15 @@
     {{! post content description}}
 
     <div class="post-btn">
-      {{#if notAuth}}
-        {{else}}
-          <input class="reply-btn" type="submit" value="Reply" onclick="replyToPost()" />
-      {{/if}}
+      {{!-- TODO: add if can reply --}}
+      {{!-- <input class="reply-btn" type="submit" value="Reply" /> --}}
       {{#if canEdit}}
+          <input
+            class="reply-btn"
+            type="submit"
+            value="Reply"
+            onclick="replyToPost()"
+          />
           <input class="edit-btn" type="submit" value="Edit" />
           <input class="delete-btn" type="submit" value="Delete" onclick="deletePost('{{id}}')" />
       {{/if}}
