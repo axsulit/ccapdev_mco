@@ -176,14 +176,22 @@ const postController = {
   },
 
   deleteComment: async function(req, res) {
-    const id = req.body.id; 
+    const {post, id} = req.body;
     const currentUrl = req.url;
 
     try {
         const result = await Comment.deleteOne({_id: id}).exec();
         console.log(result);
-        //TODO: redirect to current page
         res.redirect(currentUrl);
+
+        if (result.deletedCount === 1){
+          // Update the corresponding Post's comments array
+          await Post.findByIdAndUpdate(
+            post,
+            { $pull: { comments: id }}, // Add the new comment's ObjectId to the comments array
+            { new: true }
+          );
+        }
     } catch (err) {
         console.error(err);
         res.sendStatus(500);

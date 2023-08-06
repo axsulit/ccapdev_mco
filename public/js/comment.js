@@ -1,5 +1,6 @@
 let canEditComments = document.querySelector(".comment-content").getAttribute("data-can-edit");
 console.log(canEditComments);
+
 // get all elements with the class name "edit-comment-border"
 const allOpenEditComments = document.querySelectorAll(".edit-comment-border");
 const editCommentBtns = document.querySelectorAll(".commentEdit-btn");
@@ -71,6 +72,11 @@ for (let i = 0; i < editCommentBtns.length; i++) {
 // delete comment
 // delete post
 async function deleteComment(commentId) {
+  const deleteComment = {
+    id: commentId,
+    post: postId.textContent
+  };
+
     try {
       const confirmDelete = window.confirm("Are you sure you want to delete this comment?");
       if (!confirmDelete) {
@@ -82,7 +88,7 @@ async function deleteComment(commentId) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: commentId }),
+        body: JSON.stringify(deleteComment),
       });
   
       if (response.ok) {
