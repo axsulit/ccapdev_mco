@@ -22,11 +22,7 @@ async function deletePost(postId) {
     if (response.ok) {
       // Post deleted successfully, remove it from the page or update its visibility
       console.log("Post deleted successfully!");
-      // Example: Reload the page to reflect the updated content after deletion
-      // window.location.reload();
       window.location.href = "/";
-      // window.history.pushState(null, null, "/");
-      // window.dispatchEvent(new PopStateEvent("popstate"));
     } else {
       console.error("Failed to delete post.");
     }
@@ -59,9 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     newContent = contentEdit.value;
     console.log("desc", newContent);
-
-    
-    
+ 
       if (contentEdit.value===""){
         alert("You cannot leave your post blank. Please try again.");
         return;
@@ -100,44 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   });
-
-  // // Event listener for the delete button
-  // const deleteBtn = document.querySelectorAll(".delete-btn");
-  // deleteBtn.addEventListener('click', async function (e) {
-  //   console.log("delete btn clicked");
-  //   e.preventDefault();
-
-  //   if (e.target instanceof Element && e.target.matches('.delete-btn')) { // ensures that the event is triggered only when the element is clicked
-  //       console.log(e.target.parentElement);
-  //       const postElement = document.querySelector(".individual-post");
-  //       const postID = document.querySelector(".post-id").textContent; // stores value
-        
-  //       console.log(postID);
-  //       const data = {postID: postID.innerText}; 
-  //       deletePost(postId);
-
-
-  //       const json = JSON.stringify(data);
-        
-  //       const response = await fetch('/delete', {
-  //           method: 'POST',
-  //           body: json,
-  //           headers: {
-  //               'Content-Type': 'application/json' // This sets the request header to specify that the content type of the request body is JSON.
-  //           }
-  //       });
-
-  //       if (response.status == 200) {
-  //           postElement.parentNode.removeChild(postElement);
-
-  //           console.log("Post deleted successfully!");
-  //           window.location.href = "src/views/homepage.hbs";
-  //       } else {
-  //           console.log('server error occurred');
-  //       }
-  //   }
-  // }, true);
-
 });
 
 

@@ -79,20 +79,6 @@ submitLogBtn?.addEventListener("click",async(e)=>{
       
 });
 
-// logoutBtn.addEventListener("click",async(e)=>{
-//     console.log("working");
-//     accountBtn.classList.add("hidden");
-//     formOpenBtn.classList.remove("hidden");
-
-//     //retrieves username in nav bar
-//     let nav_un=document.querySelector(".nav-username");
-//     nav_un.textContent="";
-
-//     //clears form
-//     let forms = document.querySelectorAll(".form-log-sign");
-//     forms.forEach((form) => form.reset());
-// });
-
 // Allows user to create an account
 submitSignBtn?.addEventListener("click", async(e)=>{
     e.preventDefault();

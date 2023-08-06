@@ -127,9 +127,7 @@ const profileController = {
         }
       );
     }
-    
-
-    //put redirect here just like sir's
+  
     res.redirect(`/profile/${req.session.user.username}`);
   }
 

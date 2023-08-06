@@ -18,12 +18,8 @@ for (let i = 0; i <= editCommentBtns.length; i++) {
     const editCommentContent = editCommentContentsAll[i];
     const selectedCommentID = allCommentIDs[i];
   
-    // opens edit comment
-    // if (canEditComment==="true") {
-      editCommentBtn.addEventListener("click", () => { openEditComment.classList.toggle("active"); });
-    // }
+    editCommentBtn.addEventListener("click", () => { openEditComment.classList.toggle("active"); });
     
-  
     // closes edit comment
     closeEditComment.addEventListener("click", () => {
       openEditComment.classList.remove("active");
@@ -78,7 +74,6 @@ for (let i = 0; i <= editCommentBtns.length; i++) {
   }
 
 // delete comment
-// delete post
 async function deleteComment(commentId) {
   const deleteComment = {
     id: commentId,
