@@ -73,12 +73,13 @@ ul {
 }.nav-logo {
     font-size: 25px;
 } .nav-logo, .nav-link, .button {
-    color: #fff;
+    color: #fefefe;
 } .nav-right {
     float: right;
 } .logo {
     height: 40px;
-
+} .nav-logo:hover {
+    color:#fefefe;
 }
 
 .nav-menu-logo {
