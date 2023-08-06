@@ -62,7 +62,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, commentCaption: comment.content })),
             navusername:nav_user.username,
             navpfp:nav_user.picture,
             notAuth: false,
@@ -80,7 +80,7 @@ const postController = {
             date: posts[0].date,
             content: posts[0].content,
             id: posts[0]._id,
-            comments:comments.map(comment => ({ ...comment, commentId: comment._id })),
+            comments:comments.map(comment => ({ ...comment, commentId: comment._id, commentCaption: comment.content })),
             notAuth: true,
             canEdit:false
           });

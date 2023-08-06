@@ -10,14 +10,13 @@ const editCommentContentsAll = document.querySelectorAll(".editComment-caption")
 const allCommentIDs = document.querySelectorAll(".comment-id");
 
 // iterate through each comment element and attach the event listener
-for (let i = 0; i < editCommentBtns.length; i++) {
+for (let i = 0; i <= editCommentBtns.length; i++) {
     const editCommentBtn = editCommentBtns[i];
     const openEditComment = allOpenEditComments[i];
     const closeEditComment = closeCommentBtns[i];
     const saveEditComment = saveEditCommentBtns[i];
     const editCommentContent = editCommentContentsAll[i];
     const selectedCommentID = allCommentIDs[i];
-    const canEditComment = canEditComments[i];
   
     // opens edit comment
     // if (canEditComment==="true") {
@@ -38,6 +37,15 @@ for (let i = 0; i < editCommentBtns.length; i++) {
       const commentID = selectedCommentID.textContent;
       console.log("comment id:" + commentID);
       console.log("edits:" + newEditCommentContent);
+
+      const confirmEdit = window.confirm("Are you sure you want to make these changes?");
+      if (!confirmEdit) {
+        return; // User canceled the deletion
+      }
+
+      if (newEditCommentContent===""){
+        alert("Please write a comment.");
+      }
   
       const comment = {
         id: commentID,

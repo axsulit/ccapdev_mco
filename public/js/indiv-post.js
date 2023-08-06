@@ -60,6 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
     newContent = contentEdit.value;
     console.log("desc", newContent);
 
+    
+    
+      if (contentEdit.value===""){
+        alert("You cannot leave your post blank. Please try again.");
+        return;
+      } else {
+        const confirmEdit = window.confirm("Are you sure you want to make these changes?");
+        if (!confirmEdit) {
+          return; // User canceled the deletion
+        }
+      }
+
     const post = {
       id: postID,
       content: newContent
