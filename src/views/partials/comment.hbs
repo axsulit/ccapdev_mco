@@ -36,9 +36,11 @@
     {{! comment content description}}
 
     <div class="comment-btn">
-      {{#if canEdit}}
+      {{!-- {{#if canEdit}} --}}
+        <div class="comment-id">{{id}}</div>
         <input class="edit-btn" type="submit" value="Edit" />
-      {{/if}}
+        <input class="delete-btn" type="submit" value="Delete" onclick="deletePost('{{id}}')" />
+      {{!-- {{/if}} --}}
     </div>
   </div>
 </div>

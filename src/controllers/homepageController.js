@@ -46,21 +46,6 @@ const homepageController = {
     }
   }, 
 
-  getLFT: async (req, res) => {
-    try {
-      const postsArray = await Post.find({ tag: "LFT" }).toArray();
-      res.render("homepage", {
-        title: "Homepage",
-        posts: postsArray
-      });
-      console.log(postsArray);
-    } catch (error) {
-      res.render("error", {
-        title: "Page not Found."
-      });
-    }
-  },
-
   // adds new post to database
   addPost: async (req, res) => {
     // Parse the incoming data
