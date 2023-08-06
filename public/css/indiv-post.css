@@ -215,7 +215,7 @@ a:hover {
   border: 2px solid #ff4654;
   border-radius: 3px;
   padding: 2px;
-} .close-reply {
+} .close-reply, .close-edit-comment {
   text-align: right;
   cursor: pointer;
 }
