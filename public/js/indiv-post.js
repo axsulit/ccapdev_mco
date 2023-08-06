@@ -1,7 +1,14 @@
 let canEdit = document.querySelector("#upvote").getAttribute("data-can-edit");
 console.log("canEdit",canEdit);
+
+// delete post
 async function deletePost(postId) {
   try {
+    const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+    if (!confirmDelete) {
+      return; // User canceled the deletion
+    }
+
     const response = await fetch("/delete", {
       method: "POST",
       headers: {
