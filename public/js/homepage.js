@@ -110,6 +110,22 @@ lftTag.addEventListener('click', async (e) => {
   }
 });
 
+// // event listeners for tag clicks
+// document.getElementById("general-disc").addEventListener("click", () => {
+//     filterPostsByTag("General Discussion");
+// });
+
+// document.getElementById("lft-tag").addEventListener("click", () => {
+//     filterPostsByTag("LFT");
+// });
+
+// document.getElementById("tech-issues").addEventListener("click", () => {
+//     filterPostsByTag("Technical Issues");
+// });
+
+// document.getElementById("off-topic").addEventListener("click", () => {
+//     filterPostsByTag("Off Topic");
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -118,6 +134,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const searchQuery = event.detail.query;
       filterPostsBySearch(searchQuery);
   });
+
+  filterPostsByTag("All");
+
+//   let activeTag = "General Discussion";
+
+//   const tagElements = document.querySelectorAll(".discussion-nav-tags li a");
+//   tagElements.forEach(tagElement => {
+//     tagElement.addEventListener("click", (event) => {
+//       tagElements.forEach(tag => tag.classList.remove("active-tag"));
+//       event.target.classList.add("active-tag");
+
+//       // Update active tag state
+//       activeTag = event.target.textContent.trim();
+      
+//       // Call filterPostsByTag with the updated active tag
+//       filterPostsByTag(activeTag);
+//     });
+//   });
 
   // filters here
   document.getElementById("filter-newest").addEventListener("click", () => {
@@ -212,10 +246,82 @@ function filterPostsByTag(tag) {
 
   posts.forEach(post => {
       const postTag = post.querySelector(".post-tag").textContent;
-      if (postTag === tag) {
+      if (postTag === tag || tag === "All") {
           post.style.display = "";
       } else {
           post.style.display = "none";
       }
   });
 }
+
+// // --- PAGINATION ---
+
+// // Pagination settings
+// const postsPerPage = 5; // Number of posts per page
+// let currentPage = 1; // Current page number
+// let totalPosts = document.querySelectorAll(".individual-post").length;
+// const pageLinks = document.querySelectorAll(".page-link");
+
+// // Function to calculate total number of pages
+// function calculateTotalPages() {
+//   return Math.ceil(totalPosts / postsPerPage);
+// }
+
+// // Function to update posts display based on current page
+// function updatePostsDisplay() {
+//   const posts = document.querySelectorAll(".individual-post");
+//   posts.forEach((post, index) => {
+//     if (index >= (currentPage - 1) * postsPerPage && index < currentPage * postsPerPage) {
+//       post.style.display = "";
+//     } else {
+//       post.style.display = "none";
+//     }
+//   });
+// }
+
+// // Function to generate an array of page numbers
+// function generatePageNumbers() {
+//   const totalPages = calculateTotalPages();
+//   return Array.from({ length: totalPages }, (_, i) => i + 1);
+// }
+
+// // Function to add "active" class to active page link
+// Handlebars.registerHelper("isActivePage", function(page) {
+//   return currentPage === page ? "active" : "";
+// });
+
+// // Handle page link click events
+// pageLinks.forEach(link => {
+//   link.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     const targetPage = link.getAttribute("data-page");
+//     if (targetPage === "prev" && currentPage > 1) {
+//       currentPage--;
+//     } else if (targetPage === "next" && currentPage < calculateTotalPages()) {
+//       currentPage++;
+//     } else if (!isNaN(parseInt(targetPage))) {
+//       currentPage = parseInt(targetPage);
+//     }
+//     updatePostsDisplay();
+//     updatePageLinks();
+//   });
+// });
+
+// // Update page numbers and posts display on initial load
+// const pageNumbers = generatePageNumbers();
+// updatePostsDisplay();
+// updatePageLinks();
+
+// // Function to update active page links
+// function updatePageLinks() {
+//   pageLinks.forEach(link => {
+//     const page = link.getAttribute("data-page");
+//     if (page === "prev" && currentPage === 1) {
+//       link.classList.add("disabled");
+//     } else if (page === "next" && currentPage === calculateTotalPages()) {
+//       link.classList.add("disabled");
+//     } else {
+//       link.classList.remove("disabled");
+//     }
+//   });
+// }

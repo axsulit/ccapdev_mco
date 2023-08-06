@@ -26,18 +26,22 @@ a {
 .discussion-nav-tags > li{
     padding-bottom: 5%;
     
-} #general-disc {
+} #general-disc-tag {
     margin-right: 2%;
     color: #ff4654;
-} #lft {
+} #lft-tag {
     margin-right: 2%;
     color: #ff4654;
-} #tech-issues {
+} #tech-issues-tag {
     margin-right: 2%;
     color: #ff4654;
-} #off-topic {
+} #off-topic-tag {
     margin-right: 2%;
     color: #ff4654;
+}
+
+.active-tag {
+    color: #ff4654; 
 }
 
 .start-discussion-btn{
@@ -98,6 +102,20 @@ a {
     color: #e2e2e2;
 } .filter-text {
     padding-left: 15%;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}.page-link {
+    margin: 0 5px;
+    color: #e2e2e2;
+    text-decoration: none;
+    cursor: pointer;
+}.page-link.active {
+    color: #ff4654;
 }
 
 

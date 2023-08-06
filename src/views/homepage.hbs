@@ -17,10 +17,10 @@
    
     {{!-- TODO: add separate posts for each tag --}}
     <ul class="discussion-nav-tags">
-      <li><a href="#"><i class="fa-solid fa-comments" id="general-disc"></i> General Discussion</a></li>
-      <li><a href="#" id="lft-tag"><i class="fa-solid fa-user-group" id="lft"></i> LFT</a></li>
-      <li><a href="#"><i class="fa-solid fa-wrench" id="tech-issues"></i> Technical Issues</a></li>
-      <li><a href="#"><i class="fa-solid fa-comment-dots" id="off-topic"></i> Off Topic</a></li>
+      <li><a href="#" id="general-disc" ><i class="fa-solid fa-comments" id="general-disc-tag"></i> General Discussion</a></li>
+      <li><a href="#" id="lft" ><i class="fa-solid fa-user-group" id="lft-tag"></i> LFT</a></li>
+      <li><a href="#" id="tech-issues" ><i class="fa-solid fa-wrench" id="tech-issues-tag"></i> Technical Issues</a></li>
+      <li><a href="#" id="off-topic" ><i class="fa-solid fa-comment-dots" id="off-topic-tag"></i> Off Topic</a></li>
     </ul>
   </div>
 
@@ -45,5 +45,17 @@
     <div class="posts">
       {{>post}}
     </div>
+
+    <div class="pagination">
+      <a href="#" class="page-link" data-page="prev">Previous</a>
+      {{#each pageNumbers}}
+        <a href="#" class="page-link {{isActivePage this}}" data-page="{{this}}">{{this}}</a>
+      {{/each}}
+      <a href="#" class="page-link" data-page="next">Next</a>
+    </div>
+    
   </div>
+
+  
+
 </div>

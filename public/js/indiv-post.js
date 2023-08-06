@@ -23,6 +23,8 @@ async function deletePost(postId) {
       // Example: Reload the page to reflect the updated content after deletion
       // window.location.reload();
       window.location.href = "/";
+      // window.history.pushState(null, null, "/");
+      // window.dispatchEvent(new PopStateEvent("popstate"));
     } else {
       console.error("Failed to delete post.");
     }

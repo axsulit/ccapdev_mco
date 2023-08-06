@@ -147,6 +147,8 @@ const postController = {
         console.log(result);
         console.log(deleteAllComments);
         res.sendStatus(200);
+
+        // res.redirect("/");
     } catch (err) {
         console.error(err);
         res.sendStatus(500);
