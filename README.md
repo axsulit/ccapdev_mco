@@ -25,3 +25,6 @@ Developed by: Gon Gon, Sulit, Torio, Villaceran
 3. username: @mar_v     password: villa123
 4. username: @zhoe_g    password: gon123
 5. username: jack_e     password: eli123
+
+## Note from developers
+- This is a WIP website. There are bugs, especially in the functionalities of editing comments and voting. Please use carefully.
